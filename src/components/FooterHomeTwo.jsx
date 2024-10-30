@@ -11,9 +11,9 @@ function FooterHomeTwo() {
                         <div className="col-lg-5 col-md-6">
                             <div className="footer-about-widget footer-about-widget-2">
                                 <div className="logo">
-                                    <a href="#">
+                                    <Link to="/#">
                                         <img src={logo} alt="" />
-                                    </a>
+                                    </Link>
                                 </div> 
                                 <p>
                                 Cambridge Conveyancing offers quotes for expert, fixed-fee property transfer services, with local knowledge and personalised support for smooth home buying, selling, and remortgaging experiences.
@@ -53,10 +53,10 @@ function FooterHomeTwo() {
                                         <Link to="#">Terms & Conditions</Link>
                                     </li>
                                     <li>
-                                        <a href="#">Privacy Policy</a>
+                                    <Link to="/#">Privacy Policy</Link>
                                     </li>
                                     <li>
-                                        <a href="/form">Contact Us</a>
+                                    <Link to="/#">Contact Us</Link>
                                     </li>
                                
                                 </ul>
@@ -68,24 +68,24 @@ function FooterHomeTwo() {
                                 <div className="social mt-30">
                                     <ul>
                                         <li>
-                                            <a href="#">
+                                            <Link to="/#">
                                                 <i className="fab fa-facebook-f" />
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <Link to="/#">
                                                 <i className="fab fa-twitter" />
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <Link to="/#">
                                                 <i className="fab fa-pinterest-p" />
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <Link to="/#">
                                                 <i className="fab fa-linkedin-in" />
-                                            </a>
+                                            </Link>
                                         </li>
                                     </ul>
                                 </div>

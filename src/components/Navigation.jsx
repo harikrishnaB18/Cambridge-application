@@ -5,9 +5,9 @@ function Navigation() {
     return (
         <ul>
             <li>
-                <a href="#">
+                <Link to="/">
                     Advice <i className="fal fa-angle-down" />
-                </a>
+                </Link>
                 <ul className="sub-menu">
                     <li>
                         <Link to="/">Conveyancing Process</Link>
@@ -31,9 +31,9 @@ function Navigation() {
             </li>
             
             <li>
-                <a href="#">
+                <Link to="/">
                 Local Conveyancing <i className="fal fa-angle-down" />
-                </a>
+                </Link>
                 <ul className="sub-menu">
                     <li>
                         <Link to="/#">Cambridge Conveyancing</Link>

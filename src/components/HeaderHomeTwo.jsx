@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import logo from '../Images/logo.png';
+import { Link } from 'react-router-dom';
 import StickyMenu from './StickyMenu.js';
 import Navigation from './Navigation.jsx';
 
@@ -15,9 +16,9 @@ function HeaderHomeTwo({ action }) {
                         <div className="row align-items-center">
                             <div className="col-lg-2 col-md-4 col-sm-5 col-6 order-1 order-sm-1">
                                 <div className="appie-logo-box">
-                                    <a href="/">
+                                    <Link to="/#">
                                         <img src={logo} alt="" />
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="col-lg-8 col-md-1 col-sm-1 order-3 order-sm-2 text-right">
