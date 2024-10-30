@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import localconveyancing from '../Images/local conveyancing solicitors.png';
 
 function HelpingSection() {
