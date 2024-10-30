@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import TopToBottom from './TopToBottom.js';
 
 function BackToTop({ className }) {
@@ -8,9 +9,9 @@ function BackToTop({ className }) {
     return (
         <>
             <div className={`back-to-top ${className || ''}`}>
-                <a href="#">
-                    <i className="fal fa-arrow-up" />
-                </a>
+                <Link to="/#">
+                    <i className="fal fa-arrow-up" ></i>
+                </Link>
             </div>
         </>
     );
