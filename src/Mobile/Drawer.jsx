@@ -43,7 +43,7 @@ function Drawer({ drawer, action, lang }) {
                                             <span className="menu-expand">
                                                 <i className="fa fa-angle-down"></i>
                                             </span>
-                                            <a href="#">Advice</a>
+                                            <Link to="/#">Advice</Link>
                                             <ul
                                                 className="sub-menu"
                                                 style={{
