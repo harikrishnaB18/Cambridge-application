@@ -79,7 +79,7 @@ function Drawer({ drawer, action, lang }) {
                                             <span className="menu-expand">
                                                 <i className="fa fa-angle-down"></i>
                                             </span>
-                                            <a href="#">Local Conveyancing</a>
+                                            <Link to="/#">Local Conveyancing</Link>
                                             <ul
                                                 className="sub-menu"
                                                 style={{
@@ -113,34 +113,34 @@ function Drawer({ drawer, action, lang }) {
                                 <div className="offcanvas-social">
                                     <ul className="text-center">
                                         <li>
-                                            <a href="https://www.facebook.com">
+                                            <Link to="/#">
                                                 <i className="fab fa-facebook-f"></i>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a href="https://www.twitter.com">
+                                        <Link to="/#">
                                                 <i className="fab fa-twitter"></i>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a href="https://www.instagram.com">
+                                        <Link to="/#">
                                                 <i className="fab fa-instagram"></i>
-                                            </a>
+                                            </Link>
                                         </li>
                                         <li>
-                                            <a href="https://www.dribbble.com">
+                                        <Link to="/#">
                                                 <i className="fab fa-dribbble"></i>
-                                            </a>
+                                            </Link>
                                         </li>
                                     </ul>
                                 </div>
                                 <div className="footer-widget-info">
                                     <ul>
                                         <li>
-                                            <a href="mailto:info@cambridgeconveyancing.com">
+                                        <Link to="/#">
                                                 <i className="fal fa-envelope"></i>{' '}
                                                 info@cambridgeconveyancing.com
-                                            </a>
+                                            </Link>
                                         </li>
                                         {/* Uncomment and replace with valid details if needed */}
                                         {/* <li>
