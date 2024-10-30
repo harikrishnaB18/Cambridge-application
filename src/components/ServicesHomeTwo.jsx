@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Buying from '../Images/buying.png'
 import Sale from '../Images/for sale.png'
 import buyandsell from '../Images/buying and selling.png'
@@ -23,7 +24,7 @@ function ServicesHomeTwo({ className }) {
                             <div className="appie-section-title text-right">
                                 <a className="main-btn" href="#">
                                     View all Features <i className="fal fa-arrow-right" />
-                                </a>
+                                </Link>
                             </div>
                         </div> */}
                     </div>
@@ -41,9 +42,9 @@ function ServicesHomeTwo({ className }) {
                                 <p>
                                 Cost for conveyancing when buying a property
                                 </p>
-                                <a href="/purchasing-property">
+                                <Link to="/purchasing-property">
                                    Get a Quote <i className="fal fa-arrow-right" />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                         <div className="col-lg-3 col-md-6">
@@ -59,9 +60,9 @@ function ServicesHomeTwo({ className }) {
                                 <p>
                                 Use a conveyancing solicitor you can rely on
                                 </p>
-                                <a href="/purchasing-property">
+                                <Link to="/purchasing-property">
                                 Get a Quote <i className="fal fa-arrow-right" />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                         <div className="col-lg-3 col-md-6">
@@ -77,9 +78,9 @@ function ServicesHomeTwo({ className }) {
                                 <p>
                                 Unlock savings when you buy and sell with us
                                 </p>
-                                <a href="/purchasing-property">
+                                <Link to="/purchasing-property">
                                 Get a Quote <i className="fal fa-arrow-right" />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                         <div className="col-lg-3 col-md-6">
@@ -95,9 +96,9 @@ function ServicesHomeTwo({ className }) {
                                 <p>
                                 Affordable quotes when you are remortgaging
                                 </p>
-                                <a href="/purchasing-property">
+                                <Link to="/purchasing-property">
                                 Get a Quote <i className="fal fa-arrow-right" />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
