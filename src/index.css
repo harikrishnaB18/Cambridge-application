@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   background: #f5f5f5 !important;
   font-family: 'Inter' !important;
@@ -16,9 +16,42 @@ p{
   font-size: 2em;
   text-align: center;
   margin-bottom: 30px;
+} */
+.css-1ixbsqz{
+  background-image: url(./Images/banner-brand-default.png);
+  background-color: #fff !important;
+  background-position: center;
+  
 }
-.next-btn{
+.css-sc8y68-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused .MuiOutlinedInput-notchedOutline{
+  border-color: #233955 !important;
+}
+.css-1blp12k-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{
+  border-color: #233955 !important;
+}
+.css-19qnlrw-MuiFormLabel-root-MuiInputLabel-root{
+  color: #233955 !important;
+  font-weight: 500 !important;
+}
+.css-113d811-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: #233955 !important;
+  font-weight: 500;
+}
+.MuiFormControl-root{
+  background-color: #f5f5f5 !important;
+}
+.MuiFormControl-root:hover{
+  background: transparent !important;
+  border: none !important;
+}
+/* .MuiPaper-root {
+  border-color: #233955  2px solid !important;
 
+} */
+/* .MuiFormControl-root:hover{
+  border:none !important;
+} */
+.next-btn{
   border-radius: 20px !important;
   border-color: #233955 !important;
   background-color: #233955 !important;

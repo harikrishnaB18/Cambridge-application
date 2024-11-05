@@ -6478,7 +6478,7 @@ blockquote cite {
   }
 }
 .appie-counter-area.appie-counter-5-area {
-  background: #eef1f6;
+  background: #eef1f6 !important;
 }
 
 .appie-single-counter {
@@ -6709,6 +6709,7 @@ blockquote cite {
 ===========================*/
 .appie-download-area {
   /* background-image: url(./../images/download-bg.png); */
+  background-color: #f5f5f5;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -8165,14 +8166,13 @@ blockquote cite {
   background: #2b70fa;
 }
 
-/*# sourceMappingURL=style.css.map */
-
-
-
 /* custom css */
 .appie-about-area {
   background: #fff;
   padding-top: 40px;
+}
+.appie-counter-area {
+  background-color: #f5f5f5;
 }
 .appie-about-content .title{
 font-size: 30px;
