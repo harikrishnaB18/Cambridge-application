@@ -28,7 +28,7 @@ function HeaderHomeTwo({ action }) {
                             </div>
                             <div className="col-lg-2  col-md-7 col-sm-6 col-6 order-2 order-sm-3">
                                 <div className="appie-btn-box text-right">
-                                    <a className="main-btn ml-30" href="/Purchasing-Property">
+                                    <a className="main-btn ml-30" href="/purchasing-property">
                                         Get a Quote
                                     </a>
                                     <div
