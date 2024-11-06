@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
 import PropertyManagemntForm from './PropertyManagementForm/PropertyManagemntForm';
 import HomeTwo from './components/index'
+import ContactUsForm from './PropertyManagementForm/ContactUs';
+
 
 const App = () => {
   return (
@@ -12,6 +14,7 @@ const App = () => {
         <Routes> 
           <Route path='/' element={<HomeTwo />} />
           <Route path='/purchasing-property' element={<PropertyManagemntForm/>} />
+          <Route path="/contact-us" element={<ContactUsForm />} />
         </Routes>
       </Router>
       </>
