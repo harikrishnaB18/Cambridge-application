@@ -108,7 +108,7 @@ function FooterHomeTwo() {
                                     
                                 </div>
                                 <div className="copyright-text">
-                                    <p>Copyright © 2024 Appie. All rights reserved.</p>
+                                    <p>Copyright © 2024 Fleekvertex. All rights reserved.</p>
                                 </div>
                             </div>
                         </div>

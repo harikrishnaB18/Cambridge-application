@@ -81,24 +81,24 @@ const PurchasingPropertyForm = () => {
     if (accordion2Data.allbuyersindividuals === 'Yes') {
       coststep2 += 0; // Mortgage cost
     }
-    if (accordion2Data.allbuyersindividuals === 'no') {
-      navigate('/contact-us'); // Mortgage cost
-    }
+    // if (accordion2Data.allbuyersindividuals === 'no') {
+    //   navigate('/contact-us');
+    // }
     if (accordion2Data.allbuyersUKresidents === 'no') {
       coststep2 += 80000; // Shared Ownership cost
     }
     if (accordion2Data.residentialproperty === 'Yes') {
       coststep2 += 0; // Purchase Funds Gifted cost
     }
-    if (accordion2Data.residentialproperty === 'no') {
-      navigate('/contact-us'); // Mortgage cost
-    }
+    // if (accordion2Data.residentialproperty === 'no') {
+    //   navigate('/contact-us'); 
+    // }
     if (accordion2Data.newleasehold === 'no') {
       coststep2 += 0; // New Build cost
     }
-    if (accordion2Data.newleasehold === 'Yes') {
-      navigate('/contact-us'); // Mortgage cost
-    }
+    // if (accordion2Data.newleasehold === 'Yes') {
+    //   navigate('/contact-us'); 
+    // }
     if (accordion2Data.mainresidence === 'Yes') {
       coststep2 += 0; // Unregistered cost
     }
@@ -160,9 +160,9 @@ const PurchasingPropertyForm = () => {
     } else {
       setToastOpen(true);
     }
-    if (parseFloat(accordion1Data.price) > 4000000) {
-      navigate('/contact-us');
-    } 
+    // if (parseFloat(accordion1Data.price) > 4000000) {
+    //   navigate('/contact-us');
+    // } 
   };
 
   const handleNext2Click = () => {
