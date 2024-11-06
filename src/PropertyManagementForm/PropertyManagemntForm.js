@@ -112,7 +112,7 @@ const PurchasingPropertyForm = () => {
     }
   
     setTotalCost2(coststep2);
-  }, [accordion2Data]);
+  }, [accordion2Data,navigate]);
 
   const handleAccordion1Change = (field,name) => (event) => {
     setAccordion1Data({
