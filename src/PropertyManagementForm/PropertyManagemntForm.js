@@ -204,8 +204,8 @@ const PurchasingPropertyForm = () => {
     console.log("Accordion 2 Data:", accordion2Data);
     // You can also add third accordion data here if needed in future
   };
-  // console.log('step-1:','€',totalCost)
-  // console.log('step-2:','€',totalCost2)
+  console.log('step-1:','€',totalCost)
+  console.log('step-2:','€',totalCost2)
   return (
     <>
       <HeaderHomeTwo />
