@@ -324,7 +324,7 @@ const PurchasingPropertyForm = () => {
                     helperText={validationErrors.price ? 'This field is required' : ''}
                     sx={{
                       '& .MuiOutlinedInput-root': {
-                        '&.Mui-error': { borderColor: 'red' },
+                        '&.Mui-error ': { borderColor: 'red' },
                       },
                     }}
                   />

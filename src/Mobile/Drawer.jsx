@@ -1,8 +1,9 @@
 import React, { useState} from 'react';
 import { Link } from 'react-router-dom';
+import '../Mobile/Drawer.css';
 import logo from '../Images/logo.png';
 
-function Drawer({ drawer, action, lang }) {
+function Drawer({ drawer, action }) {
     const [itemSize, setSize] = useState('0px');
     const [item, setItem] = useState('home');
 
@@ -25,11 +26,12 @@ function Drawer({ drawer, action, lang }) {
                     <div className="row">
                         <div className="col-12">
                             <div className={`offcanvas_menu_wrapper ${drawer ? 'active' : ''}`}>
-                                <div className="canvas_close">
-                                    <button onClick={(e) => action(e)}>
-                                        <i className="fa fa-times"></i>
-                                    </button>
-                                </div>
+                            <div className="canvas_close">
+    <button onClick={(e) => action(e)} className="next-btn">
+        <i className="fa fa-times"></i>
+    </button>
+</div>
+
                                 <div className="offcanvas-brand text-center mb-40">
                                 <Link to='/'><img src={logo} alt="Logo" /></Link>    
                                 </div>
