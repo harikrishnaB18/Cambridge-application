@@ -14,9 +14,11 @@ import {
   Grid,
   Snackbar,
   Alert,
-  FormHelperText
+  FormHelperText, Modal,
 } from '@mui/material';
-
+import '../PropertyManagementForm/PropertyManagemntForm.css'
+import jsPDF from 'jspdf';
+import "jspdf-autotable";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import HeaderHomeTwo from '../components/HeaderHomeTwo';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -200,12 +202,88 @@ const PurchasingPropertyForm = () => {
     // Log data from all three accordions
     setAccordionCompleted3(true)
     setAccordion3Open(false)
-    console.log("Accordion 1 Data:", accordion1Data);
-    console.log("Accordion 2 Data:", accordion2Data);
+    // console.log("Accordion 1 Data:", accordion1Data);
+    // console.log("Accordion 2 Data:", accordion2Data);
     // You can also add third accordion data here if needed in future
   };
-  console.log('step-1:','€',totalCost)
-  console.log('step-2:','€',totalCost2)
+  // console.log('step-1:','€',totalCost)
+  // console.log('step-2:','€',totalCost2)
+  const [open, setOpen] = useState(false);
+  const [pdfUrl, setPdfUrl] = useState('');
+  const handlePreviewPDF = () => {
+    const doc = new jsPDF();
+    
+    // Title for the PDF
+    doc.setFontSize(18);
+    doc.text('Property Purchase Information', 10, 10);
+    
+    // Create table headers
+    const headers = [
+      ['Field', 'Value', 'Cost']
+    ];
+  
+    // Create the data array dynamically from the form data
+    const data = [
+      ['Price',  '-',accordion1Data.price],
+      ['Leasehold', accordion1Data.leasehold, accordion1Data.leasehold === 'Yes' ? '€300' : '-'],
+      ['Mortgage', accordion1Data.mortgage, accordion1Data.mortgage === 'Yes' ? '€360' : '-'],
+      ['Shared Ownership', accordion1Data.sharedOwnership, accordion1Data.sharedOwnership === 'Yes' ? '€150' : '-'],
+      ['Purchase Funds Gifted', accordion1Data.purchaseFunds, accordion1Data.purchaseFunds === 'Yes' ? '€150' : '-'],
+      ['New Build', accordion1Data.newBuild, accordion1Data.newBuild === 'Yes' ? '€420' : '-'],
+      ['Staircasing', accordion1Data.staircasing, accordion1Data.staircasing === 'Yes' ? '€420' : '-'],
+      ['Unregistered', accordion1Data.unregistered, accordion1Data.unregistered === 'Yes' ? '€420' : '-'],
+      ['All Buyers Individuals', accordion2Data.allbuyersindividuals, '-'],
+      ['All Buyers UK Residents', accordion2Data.allbuyersUKresidents, accordion2Data.allbuyersUKresidents === 'no' ? '€80000' : '-'],
+      ['Residential Property', accordion2Data.residentialproperty, '-'],
+      ['New Leasehold', accordion2Data.newleasehold, '-'],
+      ['Any Buyer Has Ever Owned', accordion2Data.anybuyerseverowned, '-'],
+      ['Own More Than One House', accordion2Data.ownmorethanonehouse, accordion2Data.ownmorethanonehouse === 'Yes' ? '€120000' : '-'],
+      ['Main Residence', accordion2Data.mainresidence, '-'],
+    ];
+  
+  
+    // Add the table to the PDF with styling
+    doc.autoTable({
+      head: headers,
+      body: data,
+      startY: 20, // Adjust starting Y position for the table
+      margin: { top: 20 }, // Add top margin to avoid collision with title
+      styles: {
+        font: 'helvetica',
+        fontSize: 10,
+        cellPadding: 5,
+        overflow: 'linebreak',
+        lineColor: [44, 62, 80],
+        lineWidth: 0.3,
+      },
+      headStyles: {
+        fillColor: [44, 62, 80], // Header background color
+        textColor: [255, 255, 255], // Header text color
+        fontSize: 12,
+        fontStyle: 'bold',
+      },
+      bodyStyles: {
+        fillColor: [255, 255, 255], // Body background color
+      },
+    });
+  
+    // Generate the PDF as a Blob and preview it in a modal
+    const pdfBlob = doc.output('blob');
+    const pdfUrl = URL.createObjectURL(pdfBlob);
+    
+    // Set the PDF URL and open the modal
+    setPdfUrl(pdfUrl);
+    setOpen(true);
+  };
+  
+
+  const handleClose = () => {
+    setOpen(false);
+    // Revoke the URL to free memory
+    URL.revokeObjectURL(pdfUrl);
+    setPdfUrl('');
+  };
+  
   return (
     <>
       <HeaderHomeTwo />
@@ -228,7 +306,7 @@ const PurchasingPropertyForm = () => {
                 },
               }}
             >
-              <Typography variant="h6">Step-1</Typography>
+              <Typography variant="h6">Step 1</Typography>
             </AccordionSummary>
             <AccordionDetails className='pt-4'>
               <Grid container spacing={2}>
@@ -399,10 +477,12 @@ const PurchasingPropertyForm = () => {
                 <button className='next-btn' onClick={handleNextClick}>
                   Next
                 </button>
-              </Box>
-            </AccordionDetails>
-          </Accordion>
 
+
+    </Box>
+              
+    </AccordionDetails>
+    </Accordion>
           <Accordion  expanded={isAccordion2Open}>
             <AccordionSummary
               expandIcon={isAccordionCompleted2 ? <CheckCircleIcon color="success" /> : <ExpandMoreIcon />}
@@ -413,7 +493,7 @@ const PurchasingPropertyForm = () => {
                 },
               }}
             >
-              <Typography variant="h6">Step-2 </Typography>
+              <Typography variant="h6">Step 2 </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Grid container spacing={2}>
@@ -581,7 +661,7 @@ const PurchasingPropertyForm = () => {
                 },
               }}
             >
-              <Typography variant="h6">Step-3</Typography>
+              <Typography variant="h6">Step 3</Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Grid container spacing={2}>
@@ -618,6 +698,30 @@ const PurchasingPropertyForm = () => {
                 </Grid>
               </Grid>
               <div className='d-flex justify-content-end align-items-end'>
+      <Modal open={open} onClose={handleClose}>
+        <Box
+          sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',width: '80%',height: '80%',bgcolor: 'background.paper',boxShadow: 24, p: 4,display: 'flex',flexDirection: 'column',
+          }}
+        >
+          <iframe
+            src={pdfUrl}
+            title="PDF Preview"
+            style={{ flex: 1, border: 'none' }}
+          ></iframe>
+          <button
+            className='next-btn mt-2' onClick={handleClose}
+            style={{
+              float:'left',
+              width: '200px', 
+            }}
+          >
+            Close
+          </button>
+        </Box>
+      </Modal>
+      <button className='next-btn mr-2' onClick={handlePreviewPDF}>
+        Preview Data
+      </button>
               <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
                 <button className='next-btn'onClick={handlePrevious2Click}>
                   Previous Step
@@ -627,11 +731,14 @@ const PurchasingPropertyForm = () => {
                 <button className='next-btn' onClick={handleSubmit}>
                   Submit
                 </button>
+
               </Box>
+
               </div>
             </AccordionDetails>
 
           </Accordion>
+
           <Snackbar open={toastOpen} autoHideDuration={4000} onClose={() => setToastOpen(false)}
              anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
             <Alert onClose={() => setToastOpen(false)} severity="error" sx={{ width: '100%' }}>

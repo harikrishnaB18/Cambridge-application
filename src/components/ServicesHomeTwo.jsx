@@ -60,7 +60,7 @@ function ServicesHomeTwo({ className }) {
                                 <p>
                                 Use a conveyancing solicitor you can rely on
                                 </p>
-                                <Link to="/purchasing-property">
+                                <Link to="/selling-property">
                                 Get a Quote <i className="fal fa-arrow-right" />
                                 </Link>
                             </div>
