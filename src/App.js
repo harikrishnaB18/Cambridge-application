@@ -5,6 +5,7 @@ import PropertyManagemntForm from './PropertyManagementForm/PropertyManagemntFor
 import SellingProperty from './SellingProperty/SellingProperty'
 import HomeTwo from './components/index'
 import ContactUsForm from './PropertyManagementForm/ContactUs';
+import ConveyancingProcess from './Conveyancing Process/ConveyancingProcess';
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
           <Route path='/purchasing-property' element={<PropertyManagemntForm/>} />
           <Route path='/selling-property' element={<SellingProperty/>} />
           <Route path="/contact-us" element={<ContactUsForm />} />
+          <Route path="/conveyancing-process" element={<ConveyancingProcess />} />
         </Routes>
       </Router>
       </>

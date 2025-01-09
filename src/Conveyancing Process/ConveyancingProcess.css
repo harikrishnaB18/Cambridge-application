@@ -1,0 +1,28 @@
+.section-1{
+    background-color: #233955;
+    margin: 40px 0;
+    padding: 40px 0;
+    color: #ffff;
+}
+.section-2{
+    padding: 50px 0;
+}
+.pdf-btn {
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .pdf-btn:hover {
+    background-color: #233955;
+  }
+  .faq-accrodion .accrodion.active .accrodion-title::after{
+    opacity: 1;
+    color: #fff;
+  }
+  .faq-accrodion .accrodion .accrodion-title::after{
+    background:#233955 !important;
+  }

@@ -27,7 +27,7 @@ function Drawer({ drawer, action }) {
                         <div className="col-12">
                             <div className={`offcanvas_menu_wrapper ${drawer ? 'active' : ''}`}>
                             <div className="canvas_close">
-    <button onClick={(e) => action(e)} className="next-btn">
+    <button onClick={(e) => action(e)} className="close-btn">
         <i className="fa fa-times"></i>
     </button>
 </div>

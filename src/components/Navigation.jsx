@@ -10,7 +10,7 @@ function Navigation() {
                 </Link>
                 <ul className="sub-menu">
                     <li>
-                        <Link to="/">Conveyancing Process</Link>
+                        <Link to="/conveyancing-process">Conveyancing Process</Link>
                     </li>
                     <li>
                         <Link to="/#">What a Conveyancing Solicitor Does</Link>

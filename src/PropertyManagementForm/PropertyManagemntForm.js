@@ -1,5 +1,4 @@
-import {React,useState,useEffect} from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import React, { useState, useEffect } from 'react';
 import {
   Accordion,
   AccordionSummary,
@@ -12,741 +11,612 @@ import {
   Typography,
   Box,
   Grid,
-  Snackbar,
-  Alert,
-  FormHelperText, Modal,
 } from '@mui/material';
 import '../PropertyManagementForm/PropertyManagemntForm.css'
-import jsPDF from 'jspdf';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "jspdf-autotable";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import HeaderHomeTwo from '../components/HeaderHomeTwo';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import FooterHomeTwo from '../components/FooterHomeTwo';
 
 
 
 const PurchasingPropertyForm = () => {
-  const [accordion1Data, setAccordion1Data] = useState({
-    price: '',leasehold: '',mortgage: '',sharedOwnership: '',purchaseFunds: '',newBuild: '',staircasing: '',unregistered: '',
-  });
-  const [accordion2Data, setAccordion2Data] = useState({
-    allbuyersindividuals: '',allbuyersUKresidents: '',residentialproperty: '',newleasehold: '',anybuyerseverowned: '',ownmorethanonehouse: '',mainresidence: '',
-  });
-  const navigate = useNavigate();
-  const [isAccordion1Open, setAccordion1Open] = useState(true);
-  const [isAccordion2Open, setAccordion2Open] = useState(false);
-  const [isAccordion3Open, setAccordion3Open] = useState(false);
-  const [isAccordionCompleted, setAccordionCompleted] = useState(false);
-  const [isAccordionCompleted2, setAccordionCompleted2] = useState(false);
-  const [isAccordionCompleted3, setAccordionCompleted3] = useState(false);
-  const [toastOpen, setToastOpen] = useState(false);
-  const [validationErrors, setValidationErrors] = useState({});
-  const [totalCost, setTotalCost] = useState(0);
-  const [totalCost2, setTotalCost2] = useState(0);
-
-  useEffect(() => {
-    let cost = 0;
-  
-    // Update costs based on field selections
-    if (accordion1Data.mortgage === 'Yes') {
-      cost += 360; // Mortgage cost
-    }
-    if (accordion1Data.sharedOwnership === 'Yes') {
-      cost += 150; // Shared Ownership cost
-    }
-    if (accordion1Data.purchaseFunds === 'Yes') {
-      cost += 150; // Purchase Funds Gifted cost
-    }
-    if (accordion1Data.newBuild === 'Yes') {
-      cost += 420; // New Build cost
-    }
-    if (accordion1Data.unregistered === 'Yes') {
-      cost += 420; // Unregistered cost
-    }
-  
-    // Other fields can remain the same or be updated as needed
-    if (accordion1Data.leasehold === 'Yes') {
-      cost += 300; // Leasehold cost
-    }
-    if (accordion1Data.staircasing === 'Yes') {
-      cost += 420; // Staircasing cost
-    }
-  
-    setTotalCost(cost);
-  }, [accordion1Data]);
-
-  useEffect(() => {
-    let coststep2=0;
-
-    // Update costs based on field selections
-    if (accordion2Data.allbuyersindividuals === 'Yes') {
-      coststep2 += 0; // Mortgage cost
-    }
-    // if (accordion2Data.allbuyersindividuals === 'no') {
-    //   navigate('/contact-us');
-    // }
-    if (accordion2Data.allbuyersUKresidents === 'no') {
-      coststep2 += 80000; // Shared Ownership cost
-    }
-    if (accordion2Data.residentialproperty === 'Yes') {
-      coststep2 += 0; // Purchase Funds Gifted cost
-    }
-    // if (accordion2Data.residentialproperty === 'no') {
-    //   navigate('/contact-us'); 
-    // }
-    if (accordion2Data.newleasehold === 'no') {
-      coststep2 += 0; // New Build cost
-    }
-    // if (accordion2Data.newleasehold === 'Yes') {
-    //   navigate('/contact-us'); 
-    // }
-    if (accordion2Data.mainresidence === 'Yes') {
-      coststep2 += 0; // Unregistered cost
-    }
-  
-    // Other fields can remain the same or be updated as needed
-    if (accordion2Data.anybuyerseverowned === 'Yes') {
-      coststep2 += 0; // Leasehold cost
-    }
-    if (accordion2Data.ownmorethanonehouse === 'Yes') {
-      coststep2 += 120000; // Staircasing cost
-    }
-  
-    setTotalCost2(coststep2);
-  }, [accordion2Data,navigate]);
-
-  const handleAccordion1Change = (field,name) => (event) => {
-    setAccordion1Data({
-      ...accordion1Data,
-      [field]: event.target.value,
-      [name]: event.target.value
-    })
-      setValidationErrors({ ...validationErrors, [field]: false });
-      // if (parseFloat(accordion1Data.price) > 4000000) {
-      //   navigate('/contact-us');
-      // } 
-
-  };
-
-  const handleAccordion2Change = (field,name) => (event) => {
-    setAccordion2Data({
-      ...accordion2Data,
-      [field]: event.target.value,
-      [name]: event.target.value
-    });
-    setValidationErrors({ ...validationErrors, [field]: false });
-  };
-
-  const handleNextClick = () => {
-    // Check if all fields in Accordion 1 are filled
-    const allFieldsFilled = Object.values(accordion1Data).every(value => value !== '') ;
-    let errors = {};
-    Object.keys(accordion1Data).forEach((field) => {
-      if (!accordion1Data[field]) errors[field] = true;
-    });
-
-    setValidationErrors(errors);
-   
-
-    if (Object.keys(errors).length === 0) {
-      // All fields are filled, proceed to next step
-      setAccordionCompleted(true);
-      // handle your next steps here
-    }
-
-    if (allFieldsFilled) {
-      setAccordion2Open(true);
-      setAccordion1Open(false);
-      setAccordionCompleted(true);
-    } else {
-      setToastOpen(true);
-    }
-    // if (parseFloat(accordion1Data.price) > 4000000) {
-    //   navigate('/contact-us');
-    // } 
-  };
-
-  const handleNext2Click = () => {
-    // Check if all fields in Accordion 1 are filled
-    const allFieldsFilled = Object.values(accordion2Data).every(value => value !== '') ;
-    let errors = {};
-    Object.keys(accordion2Data).forEach((field) => {
-      if (!accordion2Data[field]) errors[field] = true;
-    });
-    setValidationErrors(errors);
-    if (Object.keys(errors).length === 0) {
-      // All fields are filled, proceed to next step
-      setAccordionCompleted(true);
-      // handle your next steps here
-    }
-    if (allFieldsFilled) {
-      setAccordion2Open(false);
-      setAccordion3Open(true);
-      setAccordionCompleted2(true);
-    } else {
-      setToastOpen(true);
-    }
-  };
-  const handlePreviousClick = () => {
-    setAccordion2Open(false);
-    setAccordion1Open(true);
-    setAccordionCompleted(false)
-  };
-  const handlePrevious2Click = () => {
-    setAccordion2Open(true);
-    setAccordionCompleted2(false)
-    setAccordion3Open(false)
-  };
-  const handleSubmit = () => {
-    // Log data from all three accordions
-    setAccordionCompleted3(true)
-    setAccordion3Open(false)
-    // console.log("Accordion 1 Data:", accordion1Data);
-    // console.log("Accordion 2 Data:", accordion2Data);
-    // You can also add third accordion data here if needed in future
-  };
-  console.log('step-1:','€',totalCost)
-  console.log('step-2:','€',totalCost2)
-  const [open, setOpen] = useState(false);
-  const [pdfUrl, setPdfUrl] = useState('');
-  const handlePreviewPDF = () => {
-    const doc = new jsPDF();
+  const [formData, setFormData] = useState({
+    // Step 1
+    price: '',
+    leasehold: '',
+    mortgage: '',
+    sharedOwnership: '',
+    giftedFunds: '',
+    newBuild: '',
+    staircasing: '',
+    unregistered: '',
     
-    // Title for the PDF
-    doc.setFontSize(18);
-    doc.text('Property Purchase Information', 10, 10);
-    
-    // Create table headers
-    const headers = [
-      ['Field', 'Value', 'Cost']
+    // Step 2
+    buyersIndividuals: '',
+    ukResidents: '',
+    residentialProperty: '',
+    newLeasehold: '',
+    ownedBefore: '',
+    moreThanOneHouse: '',
+    mainResidence: '',
+  });
+
+  const [step1Total, setStep1Total] = useState(0);
+  const [step2Total, setStep2Total] = useState(0);
+
+  // Update state when inputs change
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // Calculate total for Step 1
+  const calculateStep1Total = () => {
+    const price = parseFloat(formData.price) || 0;
+
+    // Step 1 Price logic (Price-based fees)
+    let priceFee = 0;
+    if (price < 250001) priceFee = 1200;
+    else if (price < 500001) priceFee = 1500;
+    else if (price < 750001) priceFee = 1800;
+    else if (price < 900001) priceFee = 2100;
+    else if (price < 1000001) priceFee = 2400;
+    else if (price < 1500001) priceFee = 2500;
+    else if (price < 2000001) priceFee = 3000;
+    else if (price >= 2000001) priceFee= 3600
+    else priceFee = "Please Contact Us";  // Handle special case
+
+    // Additional fees for Step 1
+    const leaseholdFee = formData.leasehold === 'Yes' ? 300 : 0;
+    const mortgageFee = formData.mortgage === 'Yes' ? 360 : 0;
+    const sharedOwnershipFee = formData.sharedOwnership === 'Yes' ? 150 : 0;
+    const giftedFundsFee = formData.giftedFunds === 'Yes' ? 150 : 0;
+    const newBuildFee = formData.newBuild === 'Yes' ? 420 : 0;
+    const staircasingFee = formData.staircasing === 'Yes' ? 420 : 0;
+    const unregisteredFee = formData.unregistered === 'Yes' ? 420 : 0;
+
+    // Total calculation for Step 1
+    let step1TotalAmount = priceFee + leaseholdFee + mortgageFee + sharedOwnershipFee + giftedFundsFee + newBuildFee + staircasingFee + unregisteredFee;
+
+    if (step1TotalAmount === "Please Contact Us") {
+      setStep1Total("Please Contact Us");
+      return;
+    }
+
+    setStep1Total(step1TotalAmount);
+  };
+
+  // Calculate total for Step 2
+  const calculateStep2Total = () => {
+    const price = parseFloat(formData.price) || 0;
+  
+    // Step 2 Additional fees and logic
+    let step2TotalAmount = 0;
+    let hasContactUsCondition = false;
+  
+    // Are all buyers individuals? (If 'No', please contact form)
+    if (formData.buyersIndividuals === 'No') {
+      hasContactUsCondition = true;
+    }
+  
+    // Are all buyers UK residents? (If 'No', calculate 2% of price)
+    if (formData.ukResidents === 'No') {
+      step2TotalAmount += price * 0.02;
+    }
+  
+    // Is it a residential property? (If 'No', please contact form)
+    if (formData.residentialProperty === 'No') {
+      hasContactUsCondition = true;
+    }
+  
+    // Is it a new leasehold? (If 'Yes', please contact form)
+    if (formData.newLeasehold === 'Yes') {
+      hasContactUsCondition = true;
+    }
+  
+    // Will you own more than one house? (If 'Yes', calculate 3% of price)
+    if (formData.moreThanOneHouse === 'Yes') {
+      step2TotalAmount += price * 0.03;
+    }
+  
+    // Main residence: Apply different percentages based on price ranges
+    if (formData.mainResidence === 'Yes') {
+      if (price > 250000) {
+        if (price <= 925000) {
+          step2TotalAmount += (price - 250000) * 0.05;
+        } else if (price <= 1500000) {
+          step2TotalAmount += (925000 - 250000) * 0.05 + (price - 925000) * 0.1;
+        } else {
+          step2TotalAmount +=
+            (925000 - 250000) * 0.05 +
+            (1500000 - 925000) * 0.1 +
+            (price - 1500000) * 0.12;
+        }
+      }
+    }
+  
+    // Finalize result
+    if (hasContactUsCondition) {
+      setStep2Total("Please Contact Us");
+    } else {
+      setStep2Total(step2TotalAmount);
+    }
+  };
+  
+
+  // Call calculate totals when price or other fields change
+  React.useEffect(() => {
+    calculateStep1Total();
+    calculateStep2Total();
+  }, [formData.price, formData.leasehold, formData.mortgage, formData.sharedOwnership, formData.giftedFunds, formData.newBuild, formData.staircasing, formData.unregistered, formData.buyersIndividuals, formData.ukResidents, formData.residentialProperty, formData.newLeasehold, formData.moreThanOneHouse, 
+    formData.mainResidence,]);
+
+
+  const validateStep1Fields = () => {
+    const requiredFields = [
+      'price',
+      'leasehold',
+      'mortgage',
+      'sharedOwnership',
+      'giftedFunds',
+      'newBuild',
+      'staircasing',
+      'unregistered',
     ];
   
-    // Create the data array dynamically from the form data
-    const data = [
-      ['Price',  '-',accordion1Data.price],
-      ['Leasehold', accordion1Data.leasehold, accordion1Data.leasehold === 'Yes' ? '€300' : '-'],
-      ['Mortgage', accordion1Data.mortgage, accordion1Data.mortgage === 'Yes' ? '€360' : '-'],
-      ['Shared Ownership', accordion1Data.sharedOwnership, accordion1Data.sharedOwnership === 'Yes' ? '€150' : '-'],
-      ['Purchase Funds Gifted', accordion1Data.purchaseFunds, accordion1Data.purchaseFunds === 'Yes' ? '€150' : '-'],
-      ['New Build', accordion1Data.newBuild, accordion1Data.newBuild === 'Yes' ? '€420' : '-'],
-      ['Staircasing', accordion1Data.staircasing, accordion1Data.staircasing === 'Yes' ? '€420' : '-'],
-      ['Unregistered', accordion1Data.unregistered, accordion1Data.unregistered === 'Yes' ? '€420' : '-'],
-      ['All Buyers Individuals', accordion2Data.allbuyersindividuals, '-'],
-      ['All Buyers UK Residents', accordion2Data.allbuyersUKresidents, accordion2Data.allbuyersUKresidents === 'no' ? '€80000' : '-'],
-      ['Residential Property', accordion2Data.residentialproperty, '-'],
-      ['New Leasehold', accordion2Data.newleasehold, '-'],
-      ['Any Buyer Has Ever Owned', accordion2Data.anybuyerseverowned, '-'],
-      ['Own More Than One House', accordion2Data.ownmorethanonehouse, accordion2Data.ownmorethanonehouse === 'Yes' ? '€120000' : '-'],
-      ['Main Residence', accordion2Data.mainresidence, '-'],
+
+    for (const field of requiredFields) {
+      if (!formData[field]) {
+        toast.error(`Please fill the ${field.replace(/([A-Z])/g, ' $1')} field!`, {
+          position: 'top-right',
+          autoClose: 3000,
+        });
+        return false;
+      }
+    }
+     setIsStep1Complete(true);
+    return true;
+
+  };
+  const [activeStep, setActiveStep] = useState(1); // 1 = Step 1, 2 = Step 2
+  const [isStep1Complete, setIsStep1Complete] = useState(false);
+  const [isStep2Complete, setIsStep2Complete] = useState(false);
+
+  const handleNext = () => {
+    if (validateStep1Fields()) {
+      // Proceed to Step 2
+      toast.success('Step 1 is complete! Moving to Step2.', {
+        position: 'top-right',
+        autoClose: 3000,
+      });
+      setActiveStep(2); // Set active step to Step 2
+    }
+  };
+  
+  const validateStep2Fields = () => {
+    const requiredFields = [
+      'buyersIndividuals',
+      'ukResidents',
+      'residentialProperty',
+      'newLeasehold',
+      'ownedBefore',
+      'moreThanOneHouse',
+      'mainResidence',
     ];
   
+    for (const field of requiredFields) {
+      if (!formData[field]) {
+        toast.error(`Please fill the ${field.replace(/([A-Z])/g, ' $1')} field!`, {
+          position: 'top-right',
+          autoClose: 3000,
+        });
+        return false;
+      }
+    }
+    return true;
+  };
+  const handleNextStep2 = () => {
+    if (validateStep2Fields()) {
+      setIsStep2Complete(true); // Mark Step 2 as complete
+      toast.success('Step2 is complete! successfully Submit your form', {
+        position: 'top-right',
+        autoClose: 3000,
+      });
+      // Logic to move to Step 3
+      setActiveStep(3);
+    }
+  };
   
-    // Add the table to the PDF with styling
-    doc.autoTable({
-      head: headers,
-      body: data,
-      startY: 20, // Adjust starting Y position for the table
-      margin: { top: 20 }, // Add top margin to avoid collision with title
-      styles: {
-        font: 'helvetica',
-        fontSize: 10,
-        cellPadding: 5,
-        overflow: 'linebreak',
-        lineColor: [44, 62, 80],
-        lineWidth: 0.3,
-      },
-      headStyles: {
-        fillColor: [44, 62, 80], // Header background color
-        textColor: [255, 255, 255], // Header text color
-        fontSize: 12,
-        fontStyle: 'bold',
-      },
-      bodyStyles: {
-        fillColor: [255, 255, 255], // Body background color
-      },
+  const handlePrevious = () => {
+    // Logic to move back to Step 1
+    toast.success('Moved to Step 1', {
+      position: 'top-right',
+      autoClose: 3000,
     });
-  
-    // Generate the PDF as a Blob and preview it in a modal
-    const pdfBlob = doc.output('blob');
-    const pdfUrl = URL.createObjectURL(pdfBlob);
-    
-    // Set the PDF URL and open the modal
-    setPdfUrl(pdfUrl);
-    setOpen(true);
+    // Update active step state
+    setActiveStep(1);
   };
-  
-
-  const handleClose = () => {
-    setOpen(false);
-    // Revoke the URL to free memory
-    URL.revokeObjectURL(pdfUrl);
-    setPdfUrl('');
-  };
-  
+      
   return (
     <>
       <HeaderHomeTwo />
       <div className='mt-3 mb-3' style={{backgroundColor: '#f6f8fb'}}>
-        <Box sx={{ padding: '50px', maxWidth: '900px', margin: 'auto' }}>
-          <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 'bold' }}>
-            Purchasing Property  
-          </Typography> 
-          <Typography variant="body1" align="center" gutterBottom>
-            Complete these simple steps to get your quote for purchasing the property.
-          </Typography>
+  <Box sx={{ padding: '50px', maxWidth: '900px', margin: 'auto' }}>
+    <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 'bold' }}>
+      Purchasing Property
+    </Typography>
+    <Typography variant="body1" align="center" gutterBottom>
+      Complete these simple steps to get your quote for purchasing the property.
+    </Typography>
 
-          <Accordion expanded={isAccordion1Open} className='mb-2'>
-            <AccordionSummary
-              expandIcon={isAccordionCompleted ? <CheckCircleIcon color="success" /> : <ExpandMoreIcon />}
-              sx={{
-                borderBottom: '1px solid #ddd', 
-                '& .MuiTypography-root': {
-                  fontSize: '1.15rem', 
-                },
-              }}
-            >
-              <Typography variant="h6">Step 1</Typography>
-            </AccordionSummary>
-            <AccordionDetails className='pt-4'>
-              <Grid container spacing={2}>
-                <Grid item xs={12} md={4}>
+    <Accordion className='mb-2' expanded={activeStep === 1}>
+      <AccordionSummary
+        sx={{
+          borderBottom: '1px solid #ddd',
+          '& .MuiTypography-root': {
+            fontSize: '1.15rem',
+          },
+        }}
+        
+      >
+        <Typography variant="h6">Step 1</Typography>
+{isStep1Complete && (
+  <div
+    style={{
+      color: 'green',
+      marginLeft: 'auto',
+      width: '30px',
+      height: '30px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      border: '2px solid green',
+      borderRadius: '50%',
+    }}
+  >
+    ✔
+  </div>
+)}
+      
+      </AccordionSummary>
+      {activeStep === 1 && (
+      <AccordionDetails>
+      <Grid container spacing={2}>
+        {/* Step 1 Fields */}
+        <Grid item xs={12} md={12}>
+          <TextField
+            label="Enter Property Price"
+            name="price"
+            variant="outlined"
+            fullWidth
+            type="number"
+            value={formData.price}
+            onChange={handleInputChange}
 
-                  <TextField
-                    label="Enter Property Price"
-                    name="price"
-                    variant="outlined"
-                    fullWidth
-                    type='number'
-                    value={accordion1Data.price}
-                    onChange={handleAccordion1Change('price','price')}
-                    error={validationErrors.price}
-                    helperText={validationErrors.price ? 'This field is required' : ''}
-                    sx={{
-                      '& .MuiOutlinedInput-root': {
-                        '&.Mui-error ': { borderColor: 'red' },
-                      },
-                    }}
-                  />
-                </Grid>
+          />
+        </Grid>
 
-                <Grid item xs={12} md={4}>
-                <FormControl variant="outlined" fullWidth error={validationErrors.leasehold} >
-                <InputLabel>Leasehold</InputLabel>
-                    <Select   label="Leasehold"
-                    name='leasehold'
-                      value={accordion1Data.leasehold}
-                      onChange={handleAccordion1Change('leasehold','leasehold')}
-                      sx={{
-                        '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
-                      }}
-                      >
-                      <MenuItem value="Yes">Yes</MenuItem>
-                      <MenuItem value="No">No</MenuItem>
-                    </Select>
-                    {validationErrors.leasehold && (
-                <FormHelperText error>This field is required</FormHelperText>
-              )}
-                  </FormControl>
-                </Grid>
+        <Grid item xs={12} md={12}>
+          <FormControl variant="outlined" fullWidth
 
-                <Grid item xs={12} md={4}>
-                <FormControl variant="outlined" fullWidth error={validationErrors.mortgage} >
-                    <InputLabel>Mortgage</InputLabel>
-                    <Select label="Mortgage"
-                    name='mortgage'
-                     value={accordion1Data.mortgage}
-                     onChange={handleAccordion1Change('mortgage','mortgage')}
-                     sx={{
-                      '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
-                    }}
-                     >
-                      <MenuItem value="Yes">Yes</MenuItem>
-                      <MenuItem value="no">No</MenuItem>
-                    </Select>
-                    {validationErrors.mortgage && (
-                <FormHelperText error>This field is required</FormHelperText>
-              )}
-                  </FormControl>
-                </Grid>
-
-                <Grid item xs={12} md={4}>
-                <FormControl variant="outlined" fullWidth error={validationErrors.sharedOwnership} >
-                    <InputLabel>Shared Ownership</InputLabel>
-                    <Select label="Shared Ownership"
-                    name='sharedOwnership'
-                                         value={accordion1Data.sharedOwnership}
-                                         onChange={handleAccordion1Change('sharedOwnership','sharedOwnership')}
-                                         sx={{
-                                          '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
-                                        }}
-                                         >
-                      <MenuItem value="Yes">Yes</MenuItem>
-                      <MenuItem value="no">No</MenuItem>
-                    </Select>
-                    {validationErrors.sharedOwnership && (
-                <FormHelperText error>This field is required</FormHelperText>
-              )}
-                  </FormControl>
-                </Grid>
-
-                <Grid item xs={12} md={4}>
-                <FormControl variant="outlined" fullWidth error={validationErrors.purchaseFunds} >
-                    <InputLabel>Purchase Funds Being Gifted</InputLabel>
-                    <Select label="Purchase Funds Being Gifted"
-                    name='purchaseFunds'
-                                                             value={accordion1Data.purchaseFunds}
-                 onChange={handleAccordion1Change('purchaseFunds','purchaseFunds')}
-                 sx={{
-                  '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
-                }}
-                 >
-                      <MenuItem value="Yes">Yes</MenuItem>
-                      <MenuItem value="no">No</MenuItem>
-                    </Select>
-                    {validationErrors.purchaseFunds && (
-                <FormHelperText error>This field is required</FormHelperText>
-              )}
-                  </FormControl>
-                </Grid>
-                
-                <Grid item xs={12} md={4}>
-                <FormControl variant="outlined" fullWidth error={validationErrors.newBuild} >
-                    <InputLabel>New Build</InputLabel>
-                    <Select label="New Build"
-                    name='newBuild'
-                                          value={accordion1Data.newBuild}
-                                          onChange={handleAccordion1Change('newBuild','newBuild')}
-                                          sx={{
-                                            '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
-                                          }}
-                                          >
-                      <MenuItem value="Yes">Yes</MenuItem>
-                      <MenuItem value="no">No</MenuItem>
-                    </Select>
-                    {validationErrors.newBuild && (
-                <FormHelperText error>This field is required</FormHelperText>
-              )}
-                  </FormControl>
-                </Grid>
-
-                <Grid item xs={12} md={4}>
-                <FormControl variant="outlined" fullWidth error={validationErrors.staircasing} >
-                    <InputLabel>Staircasing?</InputLabel>
-                    <Select label="Staircasing"
-                    name='staircasing'
-                                          value={accordion1Data.staircasing}
-                                          onChange={handleAccordion1Change('staircasing','staircasing')}
-                                          sx={{
-                                            '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
-                                          }}
-                                          >
-                      <MenuItem value="Yes">Yes</MenuItem>
-                      <MenuItem value="no">No</MenuItem>
-                    </Select>
-                    {validationErrors.staircasing && (
-                <FormHelperText error>This field is required</FormHelperText>
-              )}
-                  </FormControl>
-                </Grid>
-
-                <Grid item xs={12} md={4}>
-                <FormControl variant="outlined" fullWidth error={validationErrors.unregistered} >
-                    <InputLabel>Unregistered?</InputLabel>
-                    <Select label="Unregistered"
-                    name='unregistered'
-                                          value={accordion1Data.unregistered}
-                                          onChange={handleAccordion1Change('unregistered','unregistered')}
-                                          sx={{
-                                            '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
-                                          }}
-                                          >
-                      <MenuItem value="Yes">Yes</MenuItem>
-                      <MenuItem value="no">No</MenuItem>
-                    </Select>
-                    {validationErrors.unregistered && (
-                <FormHelperText error>This field is required</FormHelperText>
-              )}
-                  </FormControl>
-                </Grid>
-
-              
-
-              </Grid>
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-                <button className='next-btn' onClick={handleNextClick}>
-                  Next
-                </button>
-
-
-    </Box>
-              
-    </AccordionDetails>
-    </Accordion>
-          <Accordion  expanded={isAccordion2Open}>
-            <AccordionSummary
-              expandIcon={isAccordionCompleted2 ? <CheckCircleIcon color="success" /> : <ExpandMoreIcon />}
-              sx={{
-                borderBottom: '1px solid #ddd',
-                '& .MuiTypography-root': {
-                  fontSize: '1.25rem',
-                },
-              }}
-            >
-              <Typography variant="h6">Step 2 </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Grid container spacing={2}>
-
-                <Grid item xs={12} md={4}>
-                <FormControl variant="outlined" fullWidth error={validationErrors.allbuyersindividuals} >
-                    <InputLabel>Are all buyers individuals?</InputLabel>
-                   
-                    <Select label="Are all buyers individuals?"
-                     name='allbuyersindividuals'
-                           value={accordion2Data.allbuyersindividuals}
-                           onChange={handleAccordion2Change('allbuyersindividuals','allbuyersindividuals')}
-                           sx={{
-                            '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
-                          }}
-                           >
-                      <MenuItem value="Yes">Yes</MenuItem>
-                      <MenuItem value="no">No</MenuItem>
-                    </Select>
-                    {validationErrors.allbuyersindividuals && (
-                <FormHelperText error>This field is required</FormHelperText>
-              )}
-                  </FormControl>
-                </Grid>
-
-                <Grid item xs={12} md={4}>
-                <FormControl variant="outlined" fullWidth error={validationErrors.allbuyersUKresidents} >
-                    <InputLabel>Are all buyers UK residents?</InputLabel>
-                    <Select label="Are all buyers UK residents?"
-                      name='allbuyersUKresidents'
-                        value={accordion2Data.allbuyersUKresidents}
-                        onChange={handleAccordion2Change('allbuyersUKresidents','allbuyersUKresidents')}
-                        sx={{
-                          '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
-                        }}
-                        >
-                      <MenuItem value="Yes">Yes</MenuItem>
-                      <MenuItem value="no">No</MenuItem>
-                    </Select>
-                    {validationErrors.allbuyersUKresidents && (
-                <FormHelperText error>This field is required</FormHelperText>
-              )}
-                  </FormControl>
-                </Grid>
-                <Grid item xs={12} md={4}>
-                <FormControl variant="outlined" fullWidth error={validationErrors.residentialproperty} >
-                    <InputLabel>Is it a residential property?</InputLabel>
-                    <Select label="Is it a residential property?"
-                    name='residentialproperty'
-                     value={accordion2Data.residentialproperty}
-                     onChange={handleAccordion2Change('residentialproperty','residentialproperty')}
-                     sx={{
-                      '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
-                    }}
-                     >
-                      <MenuItem value="Yes">Yes</MenuItem>
-                      <MenuItem value="no">No</MenuItem>
-                    </Select>
-                    {validationErrors.residentialproperty && (
-                <FormHelperText error>This field is required</FormHelperText>
-              )}
-                  </FormControl>
-                </Grid>
-                <Grid item xs={12} md={6}>
-                <FormControl variant="outlined" fullWidth error={validationErrors.newleasehold} >
-                    <InputLabel>Is it a new leasehold?</InputLabel>
-                    <Select label="Is it a new leasehold?"
-                    name='newleasehold'
-                     value={accordion2Data.newleasehold}
-                     onChange={handleAccordion2Change('newleasehold','newleasehold')}
-                     sx={{
-                      '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
-                    }}
-                     >
-                      <MenuItem value="Yes">Yes</MenuItem>
-                      <MenuItem value="no">No</MenuItem>
-                    </Select>
-                    {validationErrors.newleasehold && (
-                <FormHelperText error>This field is required</FormHelperText>
-              )}
-                  </FormControl>
-                </Grid>
-                <Grid item xs={12} md={6}>
-                <FormControl variant="outlined" fullWidth error={validationErrors.mainresidence} >
-                    <InputLabel>Will this house be your main residence?</InputLabel>
-                    <Select label="Will this house be your main residence?"
-                    name='mainresidence'
-                     value={accordion2Data.mainresidence}
-                     onChange={handleAccordion2Change('mainresidence','mainresidence')}
-                     sx={{
-                      '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
-                    }}
-                     >
-                      <MenuItem value="Yes">Yes</MenuItem>
-                      <MenuItem value="no">No</MenuItem>
-                    </Select>
-                    {validationErrors.mainresidence && (
-                <FormHelperText error>This field is required</FormHelperText>
-              )}
-                  </FormControl>
-                </Grid>
-                <Grid item xs={12} md={12}>
-                <FormControl variant="outlined" fullWidth error={validationErrors.anybuyerseverowned} >
-                    <InputLabel >Have any buyers ever owned a house before anywhere in the world?</InputLabel>
-                    <Select label="Have any buyers ever owned a house before anywhere in the world?"
-                    name='anybuyerseverowned'
-                     value={accordion2Data.anybuyerseverowned}
-                     onChange={handleAccordion2Change('anybuyerseverowned','anybuyerseverowned')}
-                     sx={{
-                      '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
-                    }}
-                     >
-                      <MenuItem value="Yes">Yes</MenuItem>
-                      <MenuItem value="no">No</MenuItem>
-                    </Select>
-                    {validationErrors.anybuyerseverowned && (
-                <FormHelperText error>This field is required</FormHelperText>
-              )}
-                  </FormControl>
-                </Grid>
-                <Grid item xs={12} md={12}>
-                <FormControl variant="outlined" fullWidth error={validationErrors.ownmorethanonehouse} >
-                    <InputLabel>At the end of this transaction will you own more than one house?</InputLabel>
-                    <Select label="At the end of this transaction will you own more than one house?"
-                    name='ownmorethanonehouse'
-                     value={accordion2Data.ownmorethanonehouse}
-                     onChange={handleAccordion2Change('ownmorethanonehouse','ownmorethanonehouse')}
-                     sx={{
-                      '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
-                    }}
-                     >
-                      <MenuItem value="Yes">Yes</MenuItem>
-                      <MenuItem value="no">No</MenuItem>
-                    </Select>
-                    {validationErrors.ownmorethanonehouse && (
-                <FormHelperText error>This field is required</FormHelperText>
-              )}
-                  </FormControl>
-                </Grid>
-                
-              </Grid>
-              <div className='d-flex justify-content-end align-items-end'>
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-                <button className='next-btn'onClick={handlePreviousClick}>
-                  Previous Step
-                </button>
-              </Box> 
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px',marginLeft: '16px' }}>
-                <button className='next-btn' onClick={handleNext2Click}>
-                  Next
-                </button>
-              </Box>
-              </div>
-            </AccordionDetails>
-
-          </Accordion>
-
-          <Accordion expanded={isAccordion3Open}>
-            <AccordionSummary
-                expandIcon={isAccordionCompleted3 ? <CheckCircleIcon color="success" /> : <ExpandMoreIcon />}
-              sx={{
-                borderBottom: '1px solid #ddd',
-                '& .MuiTypography-root': {
-                  fontSize: '1.25rem',
-                },
-              }}
-            >
-              <Typography variant="h6">Step 3</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Grid container spacing={2}>
-
-                <Grid item xs={12} md={4}>
-                  <FormControl variant="outlined" fullWidth>
-                    <InputLabel>Are all buyers individuals?</InputLabel>
-                    <Select label="Are all buyers individuals?">
-                      <MenuItem value="yes">Yes</MenuItem>
-                      <MenuItem value="no">No</MenuItem>
-                    </Select>
-                  </FormControl>
-                </Grid>
-
-                <Grid item xs={12} md={4}>
-                  <FormControl variant="outlined" fullWidth>
-                    <InputLabel>Are all buyers UK residents?</InputLabel>
-                    <Select label="Are all buyers UK residents?">
-                      <MenuItem value="yes">Yes</MenuItem>
-                      <MenuItem value="no">No</MenuItem>
-                    </Select>
-                  </FormControl>
-                </Grid>
-
-
-                <Grid item xs={12} md={4}>
-                  <FormControl variant="outlined" fullWidth>
-                    <InputLabel>Will this house be your main residence?</InputLabel>
-                    <Select label="Will this house be your main residence?">
-                      <MenuItem value="yes">Yes</MenuItem>
-                      <MenuItem value="no">No</MenuItem>
-                    </Select>
-                  </FormControl>
-                </Grid>
-              </Grid>
-              <div className='d-flex justify-content-end align-items-end'>
-      <Modal open={open} onClose={handleClose}>
-        <Box
-          sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',width: '80%',height: '80%',bgcolor: 'background.paper',boxShadow: 24, p: 4,display: 'flex',flexDirection: 'column',
-          }}
-        >
-          <iframe
-            src={pdfUrl}
-            title="PDF Preview"
-            style={{ flex: 1, border: 'none' }}
-          ></iframe>
-          <button
-            className='next-btn mt-2' onClick={handleClose}
-            style={{
-              float:'left',
-              width: '200px', 
-            }}
           >
-            Close
-          </button>
+            <InputLabel>Leasehold</InputLabel>
+            <Select
+              label="Leasehold"
+              name="leasehold"
+              value={formData.leasehold}
+              onChange={handleInputChange}
+            >
+              <MenuItem value="Yes">Yes</MenuItem>
+              <MenuItem value="No">No</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={12} md={12}>
+          <FormControl variant="outlined" fullWidth>
+            <InputLabel>Mortgage</InputLabel>
+            <Select
+              label="Mortgage"
+              name="mortgage"
+              value={formData.mortgage}
+              onChange={handleInputChange}
+            >
+              <MenuItem value="Yes">Yes</MenuItem>
+              <MenuItem value="No">No</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={12} md={12}>
+          <FormControl variant="outlined" fullWidth>
+            <InputLabel>Shared Ownership</InputLabel>
+            <Select
+              label="Shared Ownership"
+              name="sharedOwnership"
+              value={formData.sharedOwnership}
+              onChange={handleInputChange}
+            >
+              <MenuItem value="Yes">Yes</MenuItem>
+              <MenuItem value="No">No</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={12} md={12}>
+          <FormControl variant="outlined" fullWidth>
+            <InputLabel>Purchase Funds Being Gifted</InputLabel>
+            <Select
+              label="Purchase Funds Being Gifted"
+              name="giftedFunds"
+              value={formData.giftedFunds}
+              onChange={handleInputChange}
+            >
+              <MenuItem value="Yes">Yes</MenuItem>
+              <MenuItem value="No">No</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={12} md={12}>
+          <FormControl variant="outlined" fullWidth>
+            <InputLabel>New Build</InputLabel>
+            <Select
+              label="New Build"
+              name="newBuild"
+              value={formData.newBuild}
+              onChange={handleInputChange}
+            >
+              <MenuItem value="Yes">Yes</MenuItem>
+              <MenuItem value="No">No</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={12} md={12}>
+          <FormControl variant="outlined" fullWidth>
+            <InputLabel>Staircasing</InputLabel>
+            <Select
+              label="Staircasing"
+              name="staircasing"
+              value={formData.staircasing}
+              onChange={handleInputChange}
+            >
+              <MenuItem value="Yes">Yes</MenuItem>
+              <MenuItem value="No">No</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={12} md={12}>
+          <FormControl variant="outlined" fullWidth>
+            <InputLabel>Unregistered Property</InputLabel>
+            <Select
+              label="Unregistered Property"
+              name="unregistered"
+              value={formData.unregistered}
+              onChange={handleInputChange}
+            >
+              <MenuItem value="Yes">Yes</MenuItem>
+              <MenuItem value="No">No</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+
+        {/* Display Step 1 Total */}
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px', marginLeft: '16px' }}>
+          <button className="next-btn" onClick={handleNext}>Next</button>
+        </Box>  
+
+             
+      </Grid>
+      <div> 
+          <Typography variant="h6">Step1 Total: {step1Total}</Typography>
+        </div>
+    </AccordionDetails>
+    )}
+    </Accordion>
+
+    <Accordion expanded={activeStep === 2}>
+      <AccordionSummary
+        sx={{
+          borderBottom: '1px solid #ddd',
+          '& .MuiTypography-root': {
+            fontSize: '1.25rem',
+          },
+        }}
+      >
+        <Typography variant="h6">Step 2</Typography>
+        {isStep2Complete &&  (
+         <div
+    style={{
+      color: 'green',
+      marginLeft: 'auto',
+      width: '30px',
+      height: '30px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      border: '2px solid green',
+      borderRadius: '50%',
+    }}
+  >
+    ✔
+  </div>
+  )}
+      </AccordionSummary>
+      {activeStep === 2 && (
+      <AccordionDetails>
+    <Grid container spacing={2}>
+    <Grid item xs={12} md={12}>
+          <FormControl variant="outlined" fullWidth>
+            <InputLabel>Are all Buyers Individuals?</InputLabel>
+            <Select
+              label="Are all Buyers Individuals?"
+              name="buyersIndividuals"
+              value={formData.buyersIndividuals}
+              onChange={handleInputChange}
+            >
+              <MenuItem value="Yes">Yes</MenuItem>
+              <MenuItem value="No">No</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={12} md={12}>
+          <FormControl variant="outlined" fullWidth>
+            <InputLabel>Are all Buyers UK Residents?</InputLabel>
+            <Select
+              label="Are all Buyers UK Residents?"
+              name="ukResidents"
+              value={formData.ukResidents}
+              onChange={handleInputChange}
+            >
+              <MenuItem value="Yes">Yes</MenuItem>
+              <MenuItem value="No">No</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={12} md={12}>
+          <FormControl variant="outlined" fullWidth>
+            <InputLabel>Is it a Residential Property?</InputLabel>
+            <Select
+              label="Is it a Residential Property?"
+              name="residentialProperty"
+              value={formData.residentialProperty}
+              onChange={handleInputChange}
+            >
+              <MenuItem value="Yes">Yes</MenuItem>
+              <MenuItem value="No">No</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={12} md={12}>
+          <FormControl variant="outlined" fullWidth>
+            <InputLabel>Is it a New Leasehold?</InputLabel>
+            <Select
+              label="Is it a New Leasehold?"
+              name="newLeasehold"
+              value={formData.newLeasehold}
+              onChange={handleInputChange}
+            >
+              <MenuItem value="Yes">Yes</MenuItem>
+              <MenuItem value="No">No</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={12} md={12}>
+          <FormControl variant="outlined" fullWidth>
+            <InputLabel>Have any buyer ever owned a house before anywhere in the world?</InputLabel>
+            <Select
+              label="Have any buyer ever owned a house before anywhere in the world?"
+              name="ownedBefore"
+              value={formData.ownedBefore}
+              onChange={handleInputChange}
+            >
+              <MenuItem value="Yes">Yes</MenuItem>
+              <MenuItem value="No">No</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={12} md={12}>
+          <FormControl variant="outlined" fullWidth>
+            <InputLabel>At the end of this transaction will you own more than one house</InputLabel>
+            <Select
+              label="At the end of this transaction will you own more than one house"
+              name="moreThanOneHouse"
+              value={formData.moreThanOneHouse}
+              onChange={handleInputChange}
+            >
+              <MenuItem value="Yes">Yes</MenuItem>
+              <MenuItem value="No">No</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={12} md={12}>
+          <FormControl variant="outlined" fullWidth>
+            <InputLabel>Will this house be your main residence</InputLabel>
+            <Select
+              label="Will this house be your main residence"
+              name="mainResidence"
+              value={formData.mainResidence}
+              onChange={handleInputChange}
+            >
+              <MenuItem value="Yes">Yes</MenuItem>
+              <MenuItem value="No">No</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px', marginLeft: '12px'}}>
+          <button className="next-btn" onClick={handlePrevious}>Previous Step</button>
         </Box>
-      </Modal>
-      <button className='next-btn mr-2' onClick={handlePreviewPDF}>
-        Preview Data
-      </button>
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-                <button className='next-btn'onClick={handlePrevious2Click}>
-                  Previous Step
-                </button>
-              </Box> 
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px',marginLeft: '16px' }}>
-                <button className='next-btn' onClick={handleSubmit}>
-                  Submit
-                </button>
-
-              </Box>
-
-              </div>
-            </AccordionDetails>
-
-          </Accordion>
-
-          <Snackbar open={toastOpen} autoHideDuration={4000} onClose={() => setToastOpen(false)}
-             anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
-            <Alert onClose={() => setToastOpen(false)} severity="error" sx={{ width: '100%' }}>
-              Please fill out all fields before proceeding.
-            </Alert>
-          </Snackbar>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px', marginLeft: '12px' }}>
+          <button className="next-btn" onClick={handleNextStep2}>Submit</button>
         </Box>
-      </div>
+    </Grid>
+    <div> 
+          <Typography variant="h6">Step2 Total: {step2Total}</Typography>
+        </div>
+      </AccordionDetails>
+      )}
+    </Accordion>
+
+    {/* <Accordion expanded={activeStep === 3}>
+      <AccordionSummary
+        sx={{
+          borderBottom: '1px solid #ddd',
+          '& .MuiTypography-root': {
+            fontSize: '1.25rem',
+          },
+        }}
+      >
+        <Typography variant="h6">Step 3</Typography>
+      </AccordionSummary>
+      {activeStep === 3 && (
+      <AccordionDetails>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={12}>
+            <FormControl variant="outlined" fullWidth>
+              <InputLabel>Are all buyers individuals?</InputLabel>
+              <Select label="Are all buyers individuals?">
+                <MenuItem value="Yes">Yes</MenuItem>
+                <MenuItem value="No">No</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+
+
+          <div className='d-flex justify-content-end align-items-end'>
+            <button className='next-btn mr-2'>Preview Data</button>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
+              <button className='next-btn'>Previous Step</button>
+            </Box>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px', marginLeft: '16px' }}>
+              <button className='next-btn'>Submit</button>
+            </Box>
+          </div>
+        </Grid>
+      </AccordionDetails>
+        )}
+    </Accordion>
+
+    <Snackbar open={false} autoHideDuration={4000} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
+      <Alert severity="error" sx={{ width: '100%' }}>
+        Please fill out all fields before proceeding.
+      </Alert>
+    </Snackbar> */}
+  </Box>
+  <ToastContainer />
+</div>
+
       <FooterHomeTwo />
     </>
   );
