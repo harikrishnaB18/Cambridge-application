@@ -53,106 +53,99 @@ const PurchasingPropertyForm = () => {
   };
 
   // Calculate total for Step 1
-  const calculateStep1Total = () => {
-    const price = parseFloat(formData.price) || 0;
-
-    // Step 1 Price logic (Price-based fees)
-    let priceFee = 0;
-    if (price < 250001) priceFee = 1200;
-    else if (price < 500001) priceFee = 1500;
-    else if (price < 750001) priceFee = 1800;
-    else if (price < 900001) priceFee = 2100;
-    else if (price < 1000001) priceFee = 2400;
-    else if (price < 1500001) priceFee = 2500;
-    else if (price < 2000001) priceFee = 3000;
-    else if (price >= 2000001) priceFee= 3600
-    else priceFee = "Please Contact Us";  // Handle special case
-
-    // Additional fees for Step 1
-    const leaseholdFee = formData.leasehold === 'Yes' ? 300 : 0;
-    const mortgageFee = formData.mortgage === 'Yes' ? 360 : 0;
-    const sharedOwnershipFee = formData.sharedOwnership === 'Yes' ? 150 : 0;
-    const giftedFundsFee = formData.giftedFunds === 'Yes' ? 150 : 0;
-    const newBuildFee = formData.newBuild === 'Yes' ? 420 : 0;
-    const staircasingFee = formData.staircasing === 'Yes' ? 420 : 0;
-    const unregisteredFee = formData.unregistered === 'Yes' ? 420 : 0;
-
-    // Total calculation for Step 1
-    let step1TotalAmount = priceFee + leaseholdFee + mortgageFee + sharedOwnershipFee + giftedFundsFee + newBuildFee + staircasingFee + unregisteredFee;
-
-    if (step1TotalAmount === "Please Contact Us") {
-      setStep1Total("Please Contact Us");
-      return;
-    }
-
-    setStep1Total(step1TotalAmount);
-  };
-
-  // Calculate total for Step 2
-  const calculateStep2Total = () => {
-    const price = parseFloat(formData.price) || 0;
+  React.useEffect(() => {
+    const calculateStep1Total = () => {
+      const price = parseFloat(formData.price) || 0;
   
-    // Step 2 Additional fees and logic
-    let step2TotalAmount = 0;
-    let hasContactUsCondition = false;
+      let priceFee = 0;
+      if (price < 250001) priceFee = 1200;
+      else if (price < 500001) priceFee = 1500;
+      else if (price < 750001) priceFee = 1800;
+      else if (price < 900001) priceFee = 2100;
+      else if (price < 1000001) priceFee = 2400;
+      else if (price < 1500001) priceFee = 2500;
+      else if (price < 2000001) priceFee = 3000;
+      else if (price >= 2000001) priceFee = 3600;
+      else priceFee = "Please Contact Us";
   
-    // Are all buyers individuals? (If 'No', please contact form)
-    if (formData.buyersIndividuals === 'No') {
-      hasContactUsCondition = true;
-    }
+      const leaseholdFee = formData.leasehold === 'Yes' ? 300 : 0;
+      const mortgageFee = formData.mortgage === 'Yes' ? 360 : 0;
+      const sharedOwnershipFee = formData.sharedOwnership === 'Yes' ? 150 : 0;
+      const giftedFundsFee = formData.giftedFunds === 'Yes' ? 150 : 0;
+      const newBuildFee = formData.newBuild === 'Yes' ? 420 : 0;
+      const staircasingFee = formData.staircasing === 'Yes' ? 420 : 0;
+      const unregisteredFee = formData.unregistered === 'Yes' ? 420 : 0;
   
-    // Are all buyers UK residents? (If 'No', calculate 2% of price)
-    if (formData.ukResidents === 'No') {
-      step2TotalAmount += price * 0.02;
-    }
+      let step1TotalAmount = priceFee + leaseholdFee + mortgageFee + sharedOwnershipFee + giftedFundsFee + newBuildFee + staircasingFee + unregisteredFee;
   
-    // Is it a residential property? (If 'No', please contact form)
-    if (formData.residentialProperty === 'No') {
-      hasContactUsCondition = true;
-    }
+      if (step1TotalAmount === "Please Contact Us") {
+        setStep1Total("Please Contact Us");
+        return;
+      }
   
-    // Is it a new leasehold? (If 'Yes', please contact form)
-    if (formData.newLeasehold === 'Yes') {
-      hasContactUsCondition = true;
-    }
+      setStep1Total(step1TotalAmount);
+    };
   
-    // Will you own more than one house? (If 'Yes', calculate 3% of price)
-    if (formData.moreThanOneHouse === 'Yes') {
-      step2TotalAmount += price * 0.03;
-    }
+    const calculateStep2Total = () => {
+      const price = parseFloat(formData.price) || 0;
+      let step2TotalAmount = 0;
+      let hasContactUsCondition = false;
   
-    // Main residence: Apply different percentages based on price ranges
-    if (formData.mainResidence === 'Yes') {
-      if (price > 250000) {
-        if (price <= 925000) {
-          step2TotalAmount += (price - 250000) * 0.05;
-        } else if (price <= 1500000) {
-          step2TotalAmount += (925000 - 250000) * 0.05 + (price - 925000) * 0.1;
-        } else {
-          step2TotalAmount +=
-            (925000 - 250000) * 0.05 +
-            (1500000 - 925000) * 0.1 +
-            (price - 1500000) * 0.12;
+      if (formData.buyersIndividuals === 'No') {
+        hasContactUsCondition = true;
+      }
+  
+      if (formData.ukResidents === 'No') {
+        step2TotalAmount += price * 0.02;
+      }
+  
+      if (formData.residentialProperty === 'No') {
+        hasContactUsCondition = true;
+      }
+  
+      if (formData.newLeasehold === 'Yes') {
+        hasContactUsCondition = true;
+      }
+  
+      if (formData.moreThanOneHouse === 'Yes') {
+        step2TotalAmount += price * 0.03;
+      }
+  
+      if (formData.mainResidence === 'Yes') {
+        if (price > 250000) {
+          if (price <= 925000) {
+            step2TotalAmount += (price - 250000) * 0.05;
+          } else if (price <= 1500000) {
+            step2TotalAmount += (925000 - 250000) * 0.05 + (price - 925000) * 0.1;
+          } else {
+            step2TotalAmount +=
+              (925000 - 250000) * 0.05 +
+              (1500000 - 925000) * 0.1 +
+              (price - 1500000) * 0.12;
+          }
         }
       }
-    }
   
-    // Finalize result
-    if (hasContactUsCondition) {
-      setStep2Total("Please Contact Us");
-    } else {
-      setStep2Total(step2TotalAmount);
-    }
-  };
+      if (hasContactUsCondition) {
+        setStep2Total("Please Contact Us");
+      } else {
+        setStep2Total(step2TotalAmount);
+      }
+    };
+  
+    calculateStep1Total();
+    calculateStep2Total();
+  }, [formData]);  // Include formData as the dependency
+  
   
 
   // Call calculate totals when price or other fields change
-  React.useEffect(() => {
-    calculateStep1Total();
-    calculateStep2Total();
-  }, [formData.price, formData.leasehold, formData.mortgage, formData.sharedOwnership, formData.giftedFunds, formData.newBuild, formData.staircasing, formData.unregistered, formData.buyersIndividuals, formData.ukResidents, formData.residentialProperty, formData.newLeasehold, formData.moreThanOneHouse, 
-    formData.mainResidence, calculateStep1Total,  
-    calculateStep2Total,]);
+  // React.useEffect(() => {
+  //   calculateStep1Total();
+  //   calculateStep2Total();
+  // }, [formData.price, formData.leasehold, formData.mortgage, formData.sharedOwnership, formData.giftedFunds, formData.newBuild, formData.staircasing, formData.unregistered, formData.buyersIndividuals, formData.ukResidents, formData.residentialProperty, formData.newLeasehold, formData.moreThanOneHouse, 
+  //   formData.mainResidence, calculateStep1Total,  
+  //   calculateStep2Total,]);
 
 
   const validateStep1Fields = () => {
@@ -414,7 +407,7 @@ const PurchasingPropertyForm = () => {
              
       </Grid>
       <div> 
-          <Typography variant="h6">Step1 Total: {step1Total}</Typography>
+          <Typography variant="h6">Step1 Total:{step1Total}</Typography>
         </div>
     </AccordionDetails>
     )}
