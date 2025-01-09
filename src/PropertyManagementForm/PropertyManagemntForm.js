@@ -151,7 +151,8 @@ const PurchasingPropertyForm = () => {
     calculateStep1Total();
     calculateStep2Total();
   }, [formData.price, formData.leasehold, formData.mortgage, formData.sharedOwnership, formData.giftedFunds, formData.newBuild, formData.staircasing, formData.unregistered, formData.buyersIndividuals, formData.ukResidents, formData.residentialProperty, formData.newLeasehold, formData.moreThanOneHouse, 
-    formData.mainResidence,]);
+    formData.mainResidence, calculateStep1Total,  
+    calculateStep2Total,]);
 
 
   const validateStep1Fields = () => {
