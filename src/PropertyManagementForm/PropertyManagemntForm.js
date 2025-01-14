@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import {
   Accordion,
   AccordionSummary,
@@ -18,7 +18,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import "jspdf-autotable";
 import HeaderHomeTwo from '../components/HeaderHomeTwo';
 import FooterHomeTwo from '../components/FooterHomeTwo';
-
+import ContactCard from './ContactCard'
 
 
 const PurchasingPropertyForm = () => {
@@ -45,15 +45,79 @@ const PurchasingPropertyForm = () => {
 
   const [step1Total, setStep1Total] = useState(0);
   const [step2Total, setStep2Total] = useState(0);
+  const [showPopup, setShowPopup] = useState(false);
+  const [formSubmitted1, setFormSubmitted1] = useState(false);
+  const [formSubmitted2, setFormSubmitted2] = useState(false);
+  const [error, setError] = useState(false);
+
+    console.log('Step1 Total:', step1Total);
+
+    console.log('Step2 Total:', step2Total);
 
   // Update state when inputs change
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    if (name === "price") {
+      const numericValue = parseFloat(value);
+
+      // Check if the value is empty or a valid number greater than 0
+      if (value === "") {
+        setError(false); // Reset error when input is cleared
+      } else if (numericValue <= 0 || isNaN(numericValue)) {
+        setError(true); // Set error if value is <= 0 or NaN
+        toast.error("Price must be greater than 0"); // Show error toast
+      } else {
+        setError(false); // Reset error if value is valid
+      }
+    }
     setFormData({ ...formData, [name]: value });
   };
+  const handleFormSubmit1 = (data) => {
+    console.log("Form Submitted:", data); // You should see the submitted data in the console
+    setFormSubmitted1(true);
+    setShowPopup(false); // Close the popup after submission
+    toast.success("Data submitted successfully!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  };
+
+  const handleFormSubmit2 = (data) => {
+    console.log("Form Submitted:", data); // You should see the submitted data in the console
+    setFormSubmitted2(true);
+    setShowPopup(false); // Close the popup after submission
+    toast.success("Data submitted successfully!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  };
+
+  useEffect(() => {
+  const handlePopupVisibility = () => {
+    // Show the popup only if conditions are met and form is not submitted yet
+    if ((formData.buyersIndividuals === "No" && formData.residentialProperty === "No" && formData.newLeasehold === "Yes") && !formSubmitted2) {
+      setShowPopup(true); // Show the popup
+    } else {
+      setShowPopup(false); // Hide the popup
+    }
+  };
+
+    handlePopupVisibility();
+  }, [formData, formSubmitted2]); // Add handlePopupVisibility as a dependency
+  
+  
+  
 
   // Calculate total for Step 1
-  React.useEffect(() => {
+  useEffect(() => {
     const calculateStep1Total = () => {
       const price = parseFloat(formData.price) || 0;
   
@@ -65,8 +129,11 @@ const PurchasingPropertyForm = () => {
       else if (price < 1000001) priceFee = 2400;
       else if (price < 1500001) priceFee = 2500;
       else if (price < 2000001) priceFee = 3000;
-      else if (price >= 2000001) priceFee = 3600;
-      else priceFee = "Please Contact Us";
+      else if (price < 2500001) priceFee = 3600;
+      else if (price >= 2500002 && !formSubmitted1) {
+        setShowPopup(true); // Show the popup for ContactCard
+        return; // Exit from function early
+      }
   
       const leaseholdFee = formData.leasehold === 'Yes' ? 300 : 0;
       const mortgageFee = formData.mortgage === 'Yes' ? 360 : 0;
@@ -81,37 +148,24 @@ const PurchasingPropertyForm = () => {
       if (step1TotalAmount === "Please Contact Us") {
         setStep1Total("Please Contact Us");
         return;
-      }
-  
+      }  
       setStep1Total(step1TotalAmount);
     };
   
     const calculateStep2Total = () => {
       const price = parseFloat(formData.price) || 0;
       let step2TotalAmount = 0;
-      let hasContactUsCondition = false;
-  
-      if (formData.buyersIndividuals === 'No') {
-        hasContactUsCondition = true;
-      }
-  
+          // Handle other Step 2 submission logic here
+          
       if (formData.ukResidents === 'No') {
         step2TotalAmount += price * 0.02;
-      }
-  
-      if (formData.residentialProperty === 'No') {
-        hasContactUsCondition = true;
-      }
-  
-      if (formData.newLeasehold === 'Yes') {
-        hasContactUsCondition = true;
       }
   
       if (formData.moreThanOneHouse === 'Yes') {
         step2TotalAmount += price * 0.03;
       }
   
-      if (formData.mainResidence === 'Yes') {
+      if (formData.mainResidence === 'Yes' && formData.ownedBefore === 'Yes') {
         if (price > 250000) {
           if (price <= 925000) {
             step2TotalAmount += (price - 250000) * 0.05;
@@ -124,28 +178,54 @@ const PurchasingPropertyForm = () => {
               (price - 1500000) * 0.12;
           }
         }
+      } else if (formData.ownedBefore === 'No') {
+        if (price <= 450000) {
+          // No tax for prices up to 450,000
+          step2TotalAmount += 0;
+        } else if (price <= 625000) {
+          // Add 5% tax for the amount exceeding 450,000
+          step2TotalAmount += (price - 450000) * 0.05;
+        } else {
+          // Add 5% tax for the range 450,001 to 625,000
+          step2TotalAmount += (625000 - 450000) * 0.05;
+          // Add remaining tax (if needed) for prices above 625,000
+          step2TotalAmount += (price - 625000);  /* applicable tax rate */
+        }
       }
-  
-      if (hasContactUsCondition) {
-        setStep2Total("Please Contact Us");
-      } else {
-        setStep2Total(step2TotalAmount);
-      }
-    };
-  
+        
+        setStep2Total(step2TotalAmount);  
+    }
     calculateStep1Total();
     calculateStep2Total();
-  }, [formData]);  // Include formData as the dependency
+  }, [formData,formSubmitted1]);
   
+  const popupOverlayStyle = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)', // Semi-transparent black overlay
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 1000, // Ensure it's above the step content
+  };
   
-
-  // Call calculate totals when price or other fields change
-  // React.useEffect(() => {
-  //   calculateStep1Total();
-  //   calculateStep2Total();
-  // }, [formData.price, formData.leasehold, formData.mortgage, formData.sharedOwnership, formData.giftedFunds, formData.newBuild, formData.staircasing, formData.unregistered, formData.buyersIndividuals, formData.ukResidents, formData.residentialProperty, formData.newLeasehold, formData.moreThanOneHouse, 
-  //   formData.mainResidence, calculateStep1Total,  
-  //   calculateStep2Total,]);
+  // ContactCard Container Style (Centering the ContactCard)
+  const contactCardContainerStyle = {
+    padding: '20px',
+    maxWidth: '600px', // Increased width
+    width: '100%', // Ensure it takes up full width of the container (if needed)
+    fontFamily: 'Arial, sans-serif',
+    margin: '20px auto',
+    border: '1px solid #ccc',
+    borderRadius: '10px',
+    background: '#f9f9f9',
+    boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+    position: 'relative',
+    zIndex: 1001, // To ensure the contact card is above the overlay
+  };
 
 
   const validateStep1Fields = () => {
@@ -285,7 +365,6 @@ const PurchasingPropertyForm = () => {
             name="price"
             variant="outlined"
             fullWidth
-            type="number"
             value={formData.price}
             onChange={handleInputChange}
 
@@ -294,7 +373,6 @@ const PurchasingPropertyForm = () => {
 
         <Grid item xs={12} md={12}>
           <FormControl variant="outlined" fullWidth
-
           >
             <InputLabel>Leasehold</InputLabel>
             <Select
@@ -406,9 +484,16 @@ const PurchasingPropertyForm = () => {
 
              
       </Grid>
-      <div> 
-          <Typography variant="h6">Step1 Total:{step1Total}</Typography>
+      {showPopup && (
+        <div style={popupOverlayStyle}>
+          <div style={contactCardContainerStyle}>
+            <ContactCard
+              onSubmit={handleFormSubmit1}
+              closePopup={() => setShowPopup(false)} // Close popup on cancel
+            />
+          </div>
         </div>
+      )}
     </AccordionDetails>
     )}
     </Accordion>
@@ -557,8 +642,18 @@ const PurchasingPropertyForm = () => {
         </Box>
     </Grid>
     <div> 
-          <Typography variant="h6">Step2 Total: {step2Total}</Typography>
+          {/* <Typography variant="h6">console.log(Step2 Total: {step2Total})</Typography> */}
         </div>
+        {showPopup && (
+        <div style={popupOverlayStyle}>
+          <div style={contactCardContainerStyle}>
+            <ContactCard
+              onSubmit={handleFormSubmit2}
+              closePopup={() => setShowPopup(false)}
+            />
+          </div>
+        </div>
+      )}
       </AccordionDetails>
       )}
     </Accordion>
