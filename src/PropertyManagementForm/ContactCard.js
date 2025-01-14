@@ -27,7 +27,7 @@ const ContactCard = ({  onSubmit, closePopup,  }) => {
   return (
     <div>
       {/* Close Button */}
-      {/* <button
+      <button
         onClick={closePopup}
         style={{
           position: "absolute",
@@ -41,7 +41,7 @@ const ContactCard = ({  onSubmit, closePopup,  }) => {
         }}
       >
         ✖
-      </button> */}
+      </button>
 
       <h3 style={{ textAlign: "center", color: "#233955" }}>Contact Form</h3>
       <form onSubmit={handleSubmit}>
