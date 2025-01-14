@@ -50,6 +50,7 @@ const PurchasingPropertyForm = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [formSubmitted1, setFormSubmitted1] = useState(false);
   const [formSubmitted2, setFormSubmitted2] = useState(false);
+  const [showThankYouMessage, setShowThankYouMessage] = useState(false);
   const [error, setError] = useState(false);
 
     console.log('Step1 Total:', step1Total);
@@ -302,6 +303,8 @@ const PurchasingPropertyForm = () => {
       });
       // Logic to move to Step 3
       setActiveStep(3);
+      setShowThankYouMessage(true);
+
     }
   };
   
@@ -324,7 +327,7 @@ const PurchasingPropertyForm = () => {
       Purchasing Property
     </Typography>
     <Typography variant="body1" align="center" gutterBottom>
-      Complete these simple steps to get your quote for purchasing the property.
+      Complete these simple steps to get your quote for purchasing the property As the property’s value is over £4000000, please contact us directly for a quote.
     </Typography>
 
     <Accordion className='mb-2' expanded={activeStep === 1}>
@@ -671,6 +674,8 @@ const PurchasingPropertyForm = () => {
         </Box>
     </Grid>
     <div> 
+
+
           {/* <Typography variant="h6">console.log(Step2 Total: {step2Total})</Typography> */}
         </div>
         {showPopup && (
@@ -687,50 +692,13 @@ const PurchasingPropertyForm = () => {
       )}
     </Accordion>
 
-    {/* <Accordion expanded={activeStep === 3}>
-      <AccordionSummary
-        sx={{
-          borderBottom: '1px solid #ddd',
-          '& .MuiTypography-root': {
-            fontSize: '1.25rem',
-          },
-        }}
-      >
-        <Typography variant="h6">Step 3</Typography>
-      </AccordionSummary>
-      {activeStep === 3 && (
-      <AccordionDetails>
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={12}>
-            <FormControl variant="outlined" fullWidth>
-              <InputLabel>Are all buyers individuals?</InputLabel>
-              <Select label="Are all buyers individuals?">
-                <MenuItem value="Yes">Yes</MenuItem>
-                <MenuItem value="No">No</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-
-
-          <div className='d-flex justify-content-end align-items-end'>
-            <button className='next-btn mr-2'>Preview Data</button>
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-              <button className='next-btn'>Previous Step</button>
-            </Box>
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px', marginLeft: '16px' }}>
-              <button className='next-btn'>Submit</button>
-            </Box>
-          </div>
-        </Grid>
-      </AccordionDetails>
-        )}
-    </Accordion>
-
-    <Snackbar open={false} autoHideDuration={4000} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
-      <Alert severity="error" sx={{ width: '100%' }}>
-        Please fill out all fields before proceeding.
-      </Alert>
-    </Snackbar> */}
+    {showThankYouMessage && (
+        <div style={{ marginTop: "20px", textAlign: "center" }}>
+          <Typography variant="h6" style={{ color: "green" }}>
+            Thank you for submitting the form! A team member will reach out to you within 1-2 business days.
+          </Typography>
+        </div>
+      )}
   </Box>
   <ToastContainer />
 </div>
