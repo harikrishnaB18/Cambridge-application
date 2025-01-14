@@ -12,6 +12,8 @@ import {
   Box,
   Grid,
 } from '@mui/material';
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import Tooltip from "@mui/material/Tooltip";
 import '../PropertyManagementForm/PropertyManagemntForm.css'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -402,7 +404,7 @@ const PurchasingPropertyForm = () => {
           </FormControl>
         </Grid>
 
-        <Grid item xs={12} md={12}>
+        <Grid item xs={12} md={12} >
           <FormControl variant="outlined" fullWidth>
             <InputLabel>Shared Ownership</InputLabel>
             <Select
@@ -416,22 +418,7 @@ const PurchasingPropertyForm = () => {
             </Select>
           </FormControl>
         </Grid>
-
-        <Grid item xs={12} md={12}>
-          <FormControl variant="outlined" fullWidth>
-            <InputLabel>Purchase Funds Being Gifted</InputLabel>
-            <Select
-              label="Purchase Funds Being Gifted"
-              name="giftedFunds"
-              value={formData.giftedFunds}
-              onChange={handleInputChange}
-            >
-              <MenuItem value="Yes">Yes</MenuItem>
-              <MenuItem value="No">No</MenuItem>
-            </Select>
-          </FormControl>
-        </Grid>
-
+        
         <Grid item xs={12} md={12}>
           <FormControl variant="outlined" fullWidth>
             <InputLabel>New Build</InputLabel>
@@ -447,7 +434,31 @@ const PurchasingPropertyForm = () => {
           </FormControl>
         </Grid>
 
-        <Grid item xs={12} md={12}>
+        <Grid item xs={12} md={12} display="flex" alignItems="center">
+          <FormControl variant="outlined" fullWidth>
+            <InputLabel>Purchase Funds Being Gifted</InputLabel>
+            <Select
+              label="Purchase Funds Being Gifted"
+              name="giftedFunds"
+              value={formData.giftedFunds}
+              onChange={handleInputChange}
+            >
+              <MenuItem value="Yes">Yes</MenuItem>
+              <MenuItem value="No">No</MenuItem>
+            </Select>
+          </FormControl>
+          <Tooltip title="Funds being gifted by a third party or family to assist with the purchase." arrow>
+    <InfoOutlinedIcon
+      sx={{
+        color: "#233955", // Blue color for the icon
+        marginLeft: "2px", // Add spacing between icon and field
+        cursor: "pointer", // Make it look clickable
+      }}
+    />
+  </Tooltip>
+        </Grid>
+
+        <Grid item xs={12} md={12} display="flex" alignItems="center">
           <FormControl variant="outlined" fullWidth>
             <InputLabel>Staircasing</InputLabel>
             <Select
@@ -460,9 +471,18 @@ const PurchasingPropertyForm = () => {
               <MenuItem value="No">No</MenuItem>
             </Select>
           </FormControl>
+          <Tooltip title="Process of purchasing additional shares in a shared ownership property." arrow>
+    <InfoOutlinedIcon
+      sx={{
+        color: "#233955",
+        marginLeft: "2px",
+        cursor: "pointer",
+      }}
+    />
+  </Tooltip>
         </Grid>
 
-        <Grid item xs={12} md={12}>
+        <Grid item xs={12} md={12} display="flex" alignItems="center">
           <FormControl variant="outlined" fullWidth>
             <InputLabel>Unregistered Property</InputLabel>
             <Select
@@ -475,6 +495,15 @@ const PurchasingPropertyForm = () => {
               <MenuItem value="No">No</MenuItem>
             </Select>
           </FormControl>
+          <Tooltip title="A property that has not been registered with the Land Registry." arrow>
+    <InfoOutlinedIcon
+      sx={{
+        color: "#233955",
+        marginLeft: "2px",
+        cursor: "pointer",
+      }}
+    />
+  </Tooltip>
         </Grid>
 
         {/* Display Step 1 Total */}
