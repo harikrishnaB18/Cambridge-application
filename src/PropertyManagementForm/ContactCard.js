@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./ContactCard.css";
+import Typography from '@mui/material/Typography';
 const ContactCard = ({  onSubmit, closePopup,  }) => {
   const [formData, setFormData] = useState({
     firstName: "",
