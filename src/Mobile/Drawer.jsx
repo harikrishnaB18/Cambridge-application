@@ -23,7 +23,6 @@ function Drawer({ drawer = false, action = () => {} }) {
                 className={`off_canvars_overlay ${drawer ? 'active' : ''}`}
             ></div>
 
-            {/* Drawer Menu */}
             <div className="offcanvas_menu">
                 <div className="container-fluid">
                     <div className="row">
