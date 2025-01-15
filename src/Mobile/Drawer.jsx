@@ -144,7 +144,6 @@ function Drawer({ drawer = false, action = () => {} }) {
                                     </ul>
                                 </div>
 
-                                {/* Footer Information */}
                                 <div className="footer-widget-info">
                                     <ul>
                                         <li>
