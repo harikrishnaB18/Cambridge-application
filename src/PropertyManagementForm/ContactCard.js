@@ -44,6 +44,10 @@ const ContactCard = ({  onSubmit, closePopup,  }) => {
       </button>
 
       <h3 style={{ textAlign: "center", color: "#233955" }}>Contact Form</h3>
+       
+      <Typography variant="body1" align="center" gutterBottom>
+      As the property’s value is over £4000000, please contact us directly for a quote.
+    </Typography>
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: "10px" }}>
           <label

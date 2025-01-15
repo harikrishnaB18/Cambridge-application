@@ -331,7 +331,7 @@ const PurchasingPropertyForm = () => {
       Purchasing Property
     </Typography>
     <Typography variant="body1" align="center" gutterBottom>
-      Complete these simple steps to get your quote for purchasing the property As the property’s value is over £4000000, please contact us directly for a quote.
+      Complete these simple steps to get your quote for purchasing the property.
     </Typography>
 
     <Accordion className='mb-2' expanded={activeStep === 1}>
