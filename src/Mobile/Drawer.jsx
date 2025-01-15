@@ -34,7 +34,6 @@ function Drawer({ drawer = false, action = () => {} }) {
                                     </button>
                                 </div>
 
-                                {/* Logo */}
                                 <div className="offcanvas-brand text-center mb-40">
                                     <Link to="/">
                                         <img src={logo} alt="Logo" />
