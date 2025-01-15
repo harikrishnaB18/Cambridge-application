@@ -437,7 +437,7 @@ const PurchasingPropertyForm = () => {
           </FormControl>
         </Grid>
 
-        <Grid item xs={12} md={12} display="flex" alignItems="center">
+        {/* <Grid item xs={12} md={12} display="flex" alignItems="center">
           <FormControl variant="outlined" fullWidth>
             <InputLabel>Purchase Funds Being Gifted</InputLabel>
             <Select
@@ -459,7 +459,30 @@ const PurchasingPropertyForm = () => {
       }}
     />
   </Tooltip>
-        </Grid>
+        </Grid> */}
+        <Grid item xs={12} md={12} display="flex" alignItems="center">
+  <FormControl variant="outlined" fullWidth>
+    <InputLabel>Purchase Funds Being Gifted</InputLabel>
+    <Select
+      label="Purchase Funds Being Gifted"
+      name="giftedFunds"
+      value={formData.giftedFunds}
+      onChange={handleInputChange}
+    >
+      <MenuItem value="Yes">Yes</MenuItem>
+      <MenuItem value="No">No</MenuItem>
+    </Select>
+  </FormControl>
+  <Tooltip
+    title="Funds being gifted by a third party or family to assist with the purchase."
+    arrow disableInteractive enterTouchDelay={0} leaveTouchDelay={3000}  >
+    <div style={{ display: "flex", alignItems: "center",cursor: "pointer", }}>
+      <InfoOutlinedIcon sx={{color: "#233955", marginLeft: "2px",}}
+      />
+    </div>
+  </Tooltip>
+</Grid>
+
 
         <Grid item xs={12} md={12} display="flex" alignItems="center">
           <FormControl variant="outlined" fullWidth>
@@ -474,7 +497,8 @@ const PurchasingPropertyForm = () => {
               <MenuItem value="No">No</MenuItem>
             </Select>
           </FormControl>
-          <Tooltip title="Process of purchasing additional shares in a shared ownership property." arrow>
+          <Tooltip title="Process of purchasing additional shares in a shared ownership property." arrow disableInteractive enterTouchDelay={0} leaveTouchDelay={3000}>
+          <div style={{ display: "flex", alignItems: "center",cursor: "pointer", }}>
     <InfoOutlinedIcon
       sx={{
         color: "#233955",
@@ -482,6 +506,7 @@ const PurchasingPropertyForm = () => {
         cursor: "pointer",
       }}
     />
+    </div>
   </Tooltip>
         </Grid>
 
@@ -498,7 +523,7 @@ const PurchasingPropertyForm = () => {
               <MenuItem value="No">No</MenuItem>
             </Select>
           </FormControl>
-          <Tooltip title="A property that has not been registered with the Land Registry." arrow>
+          <Tooltip title="A property that has not been registered with the Land Registry." arrow disableInteractive enterTouchDelay={0} leaveTouchDelay={3000}>
     <InfoOutlinedIcon
       sx={{
         color: "#233955",
