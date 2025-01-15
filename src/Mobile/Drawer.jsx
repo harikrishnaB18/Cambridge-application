@@ -119,7 +119,6 @@ function Drawer({ drawer = false, action = () => {} }) {
                                     </ul>
                                 </div>
 
-                                {/* Social Icons */}
                                 <div className="offcanvas-social">
                                     <ul className="text-center">
                                         <li>
