@@ -18,7 +18,6 @@ function Drawer({ drawer = false, action = () => {} }) {
 
     return (
         <>
-            {/* Overlay for the drawer */}
             <div
                 onClick={action}
                 className={`off_canvars_overlay ${drawer ? 'active' : ''}`}
