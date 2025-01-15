@@ -1,46 +1,57 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import '../Mobile/Drawer.css';
 import logo from '../Images/logo.png';
 
-function Drawer({ drawer, action }) {
-    const [itemSize, setSize] = useState('0px');
-    const [item, setItem] = useState('home');
+function Drawer({ drawer = false, action = () => {} }) {
+    const [itemSize, setItemSize] = useState('0px');
+    const [activeItem, setActiveItem] = useState('home');
 
-    const handler = (e, value) => {
-        const getItems = document.querySelectorAll(`#${value} li`).length;
-        if (getItems > 0) {
-            setSize(`${43 * getItems}px`);
-            setItem(value);
+    const handleMenuClick = (value) => {
+        const itemsCount = document.querySelectorAll(`#${value} li`).length;
+        if (itemsCount > 0) {
+            setItemSize(`${43 * itemsCount}px`);
+            setActiveItem(value);
         }
     };
 
     return (
         <>
+            {/* Overlay for the drawer */}
             <div
-                onClick={(e) => action(e)}
+                onClick={action}
                 className={`off_canvars_overlay ${drawer ? 'active' : ''}`}
             ></div>
+
+            {/* Drawer Menu */}
             <div className="offcanvas_menu">
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-12">
                             <div className={`offcanvas_menu_wrapper ${drawer ? 'active' : ''}`}>
-                            <div className="canvas_close">
-    <button onClick={(e) => action(e)} className="close-btn">
-        <i className="fa fa-times"></i>
-    </button>
-</div>
-
-                                <div className="offcanvas-brand text-center mb-40">
-                                <Link to='/'><img src={logo} alt="Logo" /></Link>    
+                                <div className="canvas_close">
+                                    <button onClick={action} className="close-btn">
+                                        <i className="fa fa-times"></i>
+                                    </button>
                                 </div>
+
+                                {/* Logo */}
+                                <div className="offcanvas-brand text-center mb-40">
+                                    <Link to="/">
+                                        <img src={logo} alt="Logo" />
+                                    </Link>
+                                </div>
+
+                                {/* Menu Items */}
                                 <div id="menu" className="text-left">
                                     <ul className="offcanvas_main_menu">
                                         <li
-                                            onClick={(e) => handler(e, 'home')}
+                                            onClick={() => handleMenuClick('home')}
                                             id="home"
-                                            className="menu-item-has-children active"
+                                            className={`menu-item-has-children ${
+                                                activeItem === 'home' ? 'active' : ''
+                                            }`}
                                         >
                                             <span className="menu-expand">
                                                 <i className="fa fa-angle-down"></i>
@@ -49,7 +60,7 @@ function Drawer({ drawer, action }) {
                                             <ul
                                                 className="sub-menu"
                                                 style={{
-                                                    height: item === 'home' ? itemSize : '0px',
+                                                    height: activeItem === 'home' ? itemSize : '0px',
                                                 }}
                                             >
                                                 <li>
@@ -74,9 +85,11 @@ function Drawer({ drawer, action }) {
                                         </li>
 
                                         <li
-                                            onClick={(e) => handler(e, 'pages')}
+                                            onClick={() => handleMenuClick('pages')}
                                             id="pages"
-                                            className="menu-item-has-children active"
+                                            className={`menu-item-has-children ${
+                                                activeItem === 'pages' ? 'active' : ''
+                                            }`}
                                         >
                                             <span className="menu-expand">
                                                 <i className="fa fa-angle-down"></i>
@@ -85,7 +98,7 @@ function Drawer({ drawer, action }) {
                                             <ul
                                                 className="sub-menu"
                                                 style={{
-                                                    height: item === 'pages' ? itemSize : '0px',
+                                                    height: activeItem === 'pages' ? itemSize : '0px',
                                                 }}
                                             >
                                                 <li>
@@ -103,15 +116,13 @@ function Drawer({ drawer, action }) {
                                             </ul>
                                         </li>
 
-                                        <li
-                                            onClick={(e) => handler(e, 'contact')}
-                                            id="contact"
-                                            className="menu-item-has-children active"
-                                        >
+                                        <li id="contact" className="menu-item">
                                             <Link to="/#">Contact</Link>
                                         </li>
                                     </ul>
                                 </div>
+
+                                {/* Social Icons */}
                                 <div className="offcanvas-social">
                                     <ul className="text-center">
                                         <li>
@@ -120,42 +131,31 @@ function Drawer({ drawer, action }) {
                                             </Link>
                                         </li>
                                         <li>
-                                        <Link to="/#">
+                                            <Link to="/#">
                                                 <i className="fab fa-twitter"></i>
                                             </Link>
                                         </li>
                                         <li>
-                                        <Link to="/#">
+                                            <Link to="/#">
                                                 <i className="fab fa-instagram"></i>
                                             </Link>
                                         </li>
                                         <li>
-                                        <Link to="/#">
+                                            <Link to="/#">
                                                 <i className="fab fa-dribbble"></i>
                                             </Link>
                                         </li>
                                     </ul>
                                 </div>
+
+                                {/* Footer Information */}
                                 <div className="footer-widget-info">
                                     <ul>
                                         <li>
-                                        <Link to="/#">
-                                                <i className="fal fa-envelope"></i>{' '}
-                                                info@cambridgeconveyancing.com
+                                            <Link to="/#">
+                                                <i className="fal fa-envelope"></i> info@cambridgeconveyancing.com
                                             </Link>
                                         </li>
-                                        {/* Uncomment and replace with valid details if needed */}
-                                        {/* <li>
-                                            <a href="tel:+64234276244">
-                                                <i className="fal fa-phone"></i> +(642) 342 762 44
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i className="fal fa-map-marker-alt"></i>{' '}
-                                                442 Belle Terre St Floor 7, San Francisco, AV 4206
-                                            </a>
-                                        </li> */}
                                     </ul>
                                 </div>
                             </div>
@@ -166,5 +166,10 @@ function Drawer({ drawer, action }) {
         </>
     );
 }
+
+Drawer.propTypes = {
+    drawer: PropTypes.bool.isRequired,
+    action: PropTypes.func,
+};
 
 export default Drawer;
