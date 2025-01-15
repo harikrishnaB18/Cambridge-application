@@ -4,8 +4,11 @@ import HeaderHomeTwo from '../components/HeaderHomeTwo';
 import localconveyancing from '../Images/local conveyancing solicitors.png';
 import '../Conveyancing Process/ConveyancingProcess.css';
 import FooterHomeTwo from '../components/FooterHomeTwo';
+import Drawer from '../Mobile/Drawer.jsx';
+import useToggle from '../components/useToggle.js';
 
 const ConveyancingProcess = (style,className) => {
+    const [drawer, drawerAction] = useToggle(false);
   const [tab, setTab] = useState('setting');
   const [showQues, setQues] = useState(1);
 
@@ -19,7 +22,8 @@ const ConveyancingProcess = (style,className) => {
   }
   return (
     <div>
-      <HeaderHomeTwo />
+      <Drawer drawer={drawer} action={drawerAction.toggle} />
+      <HeaderHomeTwo action={drawerAction.toggle} />
       <div className='container'>
         <div className='row '>
           <div className='text-center pt-5 '>

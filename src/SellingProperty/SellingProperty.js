@@ -23,8 +23,11 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import HeaderHomeTwo from '../components/HeaderHomeTwo';
 import FooterHomeTwo from '../components/FooterHomeTwo';
+import Drawer from '../Mobile/Drawer.jsx';
+import useToggle from '../components/useToggle.js';
 
 const SellingProperty = () => {
+  const [drawer, drawerAction] = useToggle(false);
   const [accordion1Data, setAccordion1Data] = useState({
     price: '',
     leasehold: '',
@@ -169,7 +172,8 @@ const SellingProperty = () => {
   };
   return (
     <>
-      <HeaderHomeTwo />
+      <Drawer drawer={drawer} action={drawerAction.toggle} />
+      <HeaderHomeTwo action={drawerAction.toggle} />
       <div className="mt-3 mb-3" style={{ backgroundColor: '#f6f8fb' }}>
         <Box sx={{ padding: '50px', maxWidth: '900px', margin: 'auto' }}>
           <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 'bold' }}>
@@ -377,13 +381,23 @@ const SellingProperty = () => {
           </button>
         </Box>
       </Modal>
-              <button className='next-btn mr-2' onClick={handlePreviewPDF}>
-        Preview Data
-      </button>
-              <button className='next-btn mr-2' onClick={handleSubmitClick}>
-Submit
-</button>
-
+      <Box
+  sx={{
+    display: 'flex',
+    flexDirection: { xs: 'column', sm: 'row' }, // Column on mobile, row on larger screens
+    alignItems: 'center', // Center align items
+    justifyContent: { sm: 'flex-end' }, // Right align on larger screens if needed
+    marginTop: '14px',
+    gap: '10px', // Space between buttons
+  }}
+>
+  <button className="next-btn" onClick={handlePreviewPDF}>
+    Preview Data
+  </button>
+  <button className="next-btn" onClick={handleSubmitClick}>
+    Submit
+  </button>
+</Box>
 
     </Box>
               

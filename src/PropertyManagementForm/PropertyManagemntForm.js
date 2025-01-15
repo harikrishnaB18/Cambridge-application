@@ -21,9 +21,12 @@ import "jspdf-autotable";
 import HeaderHomeTwo from '../components/HeaderHomeTwo';
 import FooterHomeTwo from '../components/FooterHomeTwo';
 import ContactCard from './ContactCard'
+import Drawer from '../Mobile/Drawer.jsx';
+import useToggle from '../components/useToggle.js';
 
 
 const PurchasingPropertyForm = () => {
+  const [drawer, drawerAction] = useToggle(false);
   const [formData, setFormData] = useState({
     // Step 1
     price: '',
@@ -65,12 +68,12 @@ const PurchasingPropertyForm = () => {
 
       // Check if the value is empty or a valid number greater than 0
       if (value === "") {
-        setError(false); // Reset error when input is cleared
+        setError(false);
       } else if (numericValue <= 0 || isNaN(numericValue)) {
-        setError(true); // Set error if value is <= 0 or NaN
-        toast.error("Price must be greater than 0"); // Show error toast
+        setError(true); 
+        toast.error("Price must be greater than 0"); 
       } else {
-        setError(false); // Reset error if value is valid
+        setError(false); 
       }
     }
     setFormData({ ...formData, [name]: value });
@@ -320,7 +323,8 @@ const PurchasingPropertyForm = () => {
       
   return (
     <>
-      <HeaderHomeTwo />
+      <Drawer drawer={drawer} action={drawerAction.toggle} />
+            <HeaderHomeTwo action={drawerAction.toggle} />
       <div className='mt-3 mb-3' style={{backgroundColor: '#f6f8fb'}}>
   <Box sx={{ padding: '50px', maxWidth: '900px', margin: 'auto' }}>
     <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 'bold' }}>
@@ -365,15 +369,9 @@ const PurchasingPropertyForm = () => {
       <Grid container spacing={2}>
         {/* Step 1 Fields */}
         <Grid item xs={12} md={12}>
-          <TextField
-            label="Enter Property Price"
-            name="price"
-            variant="outlined"
-            fullWidth
-            value={formData.price}
-            onChange={handleInputChange}
-
-          />
+        <TextField label="Enter Property Price" name="price"
+          variant="outlined" fullWidth value={formData.price}  onChange={handleInputChange}
+          error={error && formData.price === ""}  helperText={error && formData.price === "" ? "Price is required" : ""} />
         </Grid>
 
         <Grid item xs={12} md={12}>
