@@ -36,7 +36,7 @@ function Navigation() {
                 </Link>
                 <ul className="sub-menu">
                     <li>
-                        <Link to="/#">Cambridge Conveyancing</Link>
+                        <Link to="/conveyancing-in-cambridge">Cambridge Conveyancing</Link>
                     </li>
                     <li>
                         <Link to="/#">Ely Conveyancing</Link>
@@ -52,7 +52,7 @@ function Navigation() {
             </li>
 
             <li>
-                <Link to="/#">Contact Us</Link>
+                <Link to="/contact-us">Contact Us</Link>
             </li>
         </ul>
     );

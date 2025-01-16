@@ -11,6 +11,10 @@ import StagesConveyancing from './Stages of Conveyancing/StagesConveyancing';
 import Remortgaging from './Remortgaging Cambridge/Remortgaging';
 import ConveyancingTake from './Conveyancing Take/ConveyancingTake';
 import FirstTimeBuyers from './First Time Buyers/FirstTimeBuyers';
+import CambridgeConveyancing from './Cambridge Conveyancing/CambridgeConveyancing';
+import Forms from './components/Forms';
+import TermsConditions from './T&C and Privacy/TermsConditions';
+
 const App = () => {
   return (
     
@@ -27,6 +31,9 @@ const App = () => {
           <Route path="/guide-to-remortgaging-in-cambridge" element={<Remortgaging />} />
           <Route path="/how-long-does-conveyancing-take" element={<ConveyancingTake />} />
           <Route path="/conveyancing-for-first-time-buyers" element={<FirstTimeBuyers />} />
+          <Route path="/conveyancing-in-cambridge" element={<CambridgeConveyancing />} />
+          <Route path="/contact-us" element={<Forms />} />
+          <Route path="/terms-conditions" element={<TermsConditions />} />
         </Routes>
       </Router>
       </>

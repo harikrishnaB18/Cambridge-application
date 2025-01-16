@@ -25,22 +25,22 @@ function FooterHomeTwo() {
                                 <h4 className="title">Advice</h4>
                                 <ul>
                                     <li>
-                                        <Link to="#">Conveyancing Process</Link>
+                                        <Link to="/conveyancing-process">Conveyancing Process</Link>
                                     </li>
                                     <li>
-                                        <Link to="#">What a Conveyancing Solicitor Does</Link>
+                                        <Link to="/what-a-conveyancing-solicitor-does">What a Conveyancing Solicitor Does</Link>
                                     </li>
                                     <li>
-                                    <Link to="#">3 Stages of Conveyancing</Link>
+                                    <Link to="/3-stages-of-conveyancing">3 Stages of Conveyancing</Link>
                                     </li>
                                     <li>
-                                        <Link to="#">Guide to Remortgaging in Cambridge</Link>
+                                        <Link to="/guide-to-remortgaging-in-cambridge">Guide to Remortgaging in Cambridge</Link>
                                     </li>
                                     <li>
-                                        <Link to="#">How Long Does Conveyancing Take</Link>
+                                        <Link to="/how-long-does-conveyancing-take">How Long Does Conveyancing Take</Link>
                                     </li>
                                     <li>
-                                        <Link to="#">Conveyancing for First Time Buyers</Link>
+                                        <Link to="/conveyancing-for-first-time-buyers">Conveyancing for First Time Buyers</Link>
                                     </li>
                                 </ul>
                             </div>
@@ -50,13 +50,13 @@ function FooterHomeTwo() {
                                 <h4 className="title">Quick Links</h4>
                                 <ul>
                                     <li>
-                                        <Link to="#">Terms & Conditions</Link>
+                                        <Link to="/terms-conditions">Terms & Conditions</Link>
                                     </li>
                                     <li>
                                     <Link to="/#">Privacy Policy</Link>
                                     </li>
                                     <li>
-                                    <Link to="/#">Contact Us</Link>
+                                    <Link to="/contact-us">Contact Us</Link>
                                     </li>
                                
                                 </ul>

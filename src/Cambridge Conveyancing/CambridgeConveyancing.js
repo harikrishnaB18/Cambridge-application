@@ -6,10 +6,9 @@ import '../Conveyancing Process/ConveyancingProcess.css';
 import FooterHomeTwo from '../components/FooterHomeTwo';
 import Drawer from '../Mobile/Drawer.jsx';
 import useToggle from '../components/useToggle.js';
-import './StagesConveyancing.css'
 
-const StagesConveyancing = (style,className) => {
-  const [drawer, drawerAction] = useToggle(false);
+const CambridgeConveyancing = (style,className) => {
+    const [drawer, drawerAction] = useToggle(false);
   const [tab, setTab] = useState('setting');
   const [showQues, setQues] = useState(null);
 
@@ -28,228 +27,46 @@ const StagesConveyancing = (style,className) => {
       <div className='container'>
         <div className='row '>
           <div className='text-center pt-5 '>
-            <h1>3 Stages of Conveyancing</h1>
-            <h3 className='pt-4'>Get Expert Help at Affordable Rates</h3>
+            <h1>Cambridge Conveyancing Solicitors
+            </h1>
+            {/* <h3 className='pt-4'>Free Instant Online Quotes</h3> */}
             <p className='pt-4 fs-5 lh-lg'>
-            Understanding the 3 Stages of Conveyancing for Cambridge Property Buyers and Sellers
+            Offering expert, reliable services to make buying, selling, or remortgaging a property in Cambridge a smooth and stress-free experience.
             </p>
           </div>
         </div>
         <p className='pt-4 text-center fs-5 fw-medium section-1'>
-        Navigating the conveyancing process can feel overwhelming,
-        whether you're buying or selling property in Cambridge or the surrounding villages.
-        To help you feel confident in what to expect, let's break down the three main stages of conveyancing.
-        This guide will make the steps more transparent and explain how working with local Cambridge Conveyancing Solicitors adds real value.
+          Finding the best conveyancing quotes in Cambridge doesn't have to be complicated.
+          Understanding the conveyancing process is crucial to ensure everything runs smoothly,
+          whether buying, selling, or remortgaging a property. In this guide, we'll explain what
+          conveyancing involves and how to get the best fixed-fee quotes from local solicitors
+          in Cambridge.
         </p>
-
       </div>
-      <section className="appie-features-area pt-10 obligation-conveyance" id="features">
-      <h2 className='mt-5 text-center'>Stage 1: Pre-Contract Phase</h2>
-      <p className='mt-3 fs-5 text-center'>In the pre-contract phase, the groundwork is laid to ensure both parties are ready for the sale. This stage covers essential tasks like property searches, document reviews, and draft contracts, all necessary to give buyers peace of mind and sellers a clear path to sale.</p>
-        <div className="container mt-5 pb-2">
-          <div className="row align-items-center pb-10">
-            <div className="col-lg-3 mt-5">
-              <div className="appie-features-tabs-btn">
-                <div
-                  className="nav flex-column nav-pills"
-                  id="v-pills-tab"
-                  role="tablist"
-                  aria-orientation="vertical"
-                >
-                  <a
-                    onClick={(e) => handleClick(e, 'setting')}
-                    className={`nav-link ${tab === 'setting' ? 'active' : ''}`}
-                    id="v-pills-home-tab"
-                    data-toggle="pill"
-                    href="#v-pills-home"
-                    role="tab"
-                    aria-controls="v-pills-home"
-                    aria-selected="true"
-                  >
-                    Property Searches
-                  </a>
-                  <a
-                    onClick={(e) => handleClick(e, 'report')}
-                    className={`nav-link ${tab === 'report' ? 'active' : ''}`}
-                    id="v-pills-profile-tab"
-                    data-toggle="pill"
-                    href="#v-pills-profile"
-                    role="tab"
-                    aria-controls="v-pills-profile"
-                    aria-selected="false"
-                  >
-                   Reviewing and Drafting Contracts
-                  </a>
-                  <a
-                    onClick={(e) => handleClick(e, 'notice')}
-                    className={`nav-link ${tab === 'notice' ? 'active' : ''}`}
-                    id="v-pills-messages-tab"
-                    data-toggle="pill"
-                    href="#v-pills-messages"
-                    role="tab"
-                    aria-controls="v-pills-messages"
-                    aria-selected="false"
-                  >
-                    Mortgage and Finances
-                  </a>
-                  {/* <a
-                    onClick={(e) => handleClick(e, 'app')}
-                    className={`nav-link ${tab === 'app' ? 'active' : ''}`}
-                    id="v-pills-settings-tab"
-                    data-toggle="pill"
-                    href="#v-pills-settings"
-                    role="tab"
-                    aria-controls="v-pills-settings"
-                    aria-selected="false"
-                  >
-                    Completion
-                  </a> */}
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-9">
-              <div className="tab-content" id="v-pills-tabContent">
-                <div
-                  className={`${
-                    tab === 'setting' ? 'show active' : ''
-                  } tab-pane fade`}
-                  id="v-pills-home"
-                  role="tabpanel"
-                  aria-labelledby="v-pills-home-tab"
-                >
-                                                 <div className="row align-items-center">
-                                    {/* <div className="col-lg-6">
-                                        <div
-                                            className="appie-features-thumb text-center wow animated fadeInUp"
-                                            data-wow-duration="2000ms"
-                                            data-wow-delay="200ms"
-                                        >
-                                            <img src={thumb} alt="" />
-                                        </div>
-                                    </div> */}
-                                    <div className="col-lg-12">
-                                        <div
-                                            className="appie-features-content wow animated fadeInRight"
-                                            data-wow-duration="2000ms"
-                                            data-wow-delay="600ms"
-                                        >
-                                            <span>Explanation</span>
-                                            {/* <h3 className="title">
-                                                Let the <br /> Conversation flow
-                                            </h3> */}
-                                            <p className='fs-5'>
-                                            During this stage, a solicitor conducts various searches to uncover essential information about the property and surrounding area.Typical searches include:
-                                            Local authority search: This examines planning permissions, building control records, and any potential issues affecting the property's value.<br/>
-
-<b>Environmental search:</b>Environmental search: Ensures there are no environmental risks, such as flooding or contamination, associated with the land.<br/>
-
-<b>Water and drainage search:</b> Confirms whether the property is connected to public water and drainage systems.<br/>
-
-These searches help prevent unwanted surprises after purchase. With their local knowledge,Cambridge Conveyancing Solicitors can offer quicker turnarounds by knowing the specifics of Cambridge City and nearby villages.
-
-
-                                            </p>
-                                            {/* <Link className="main-btn" to="/about-us">
-                                                Learn More
-                                            </Link> */}
-                                        </div>
-                                    </div>
-                                </div>
-                </div>
-                <div
-                  className={`${
-                    tab === 'report' ? 'show active' : ''
-                  } tab-pane fade`}
-                  id="v-pills-profile"
-                  role="tabpanel"
-                  aria-labelledby="v-pills-profile-tab"
-                >
-                                    <div className="col-lg-12">
-                                        <div
-                                            className="appie-features-content wow animated fadeInRight"
-                                            data-wow-duration="2000ms"
-                                            data-wow-delay="600ms"
-                                        >
-                                            <span>Explanation</span>
-                                            {/* <h3 className="title">
-                                                Let the <br /> Conversation flow
-                                            </h3> */}
-                                            <p className='fs-5'>
-                                            The solicitor prepares a draft contract, and the seller's solicitor will review this. The contract outlines the property price, boundaries, and any fixtures and fittings included. Both parties will review this carefully to reflect the agreed terms accurately. Any discrepancies or questions are resolved in this phase.
-                                            </p>
-                                            {/* <Link className="main-btn" to="/about-us">
-                                                Learn More
-                                            </Link> */}
-                                        </div>
-                                    </div>                
-                                    </div>
-                <div
-                  className={`${
-                    tab === 'notice' ? 'show active' : ''
-                  } tab-pane fade`}
-                  id="v-pills-messages"
-                  role="tabpanel"
-                  aria-labelledby="v-pills-messages-tab"
-                >
-                                    <div className="col-lg-12">
-                                        <div
-                                            className="appie-features-content wow animated fadeInRight"
-                                            data-wow-duration="2000ms"
-                                            data-wow-delay="600ms"
-                                        >
-                                            <span>Explanation</span>
-                                            {/* <h3 className="title">
-                                                Let the <br /> Conversation flow
-                                            </h3> */}
-                                            <p className='fs-5'>
-                                            The solicitor will also liaise with the mortgage lender for buyers.
-                                            They ensure all loan conditions are clear and manageable and work to protect the buyer's legal rights.
-                                            They'll also arrange to transfer funds for the purchase once contracts are exchanged.
-                                            </p>
-                                            {/* <Link className="main-btn" to="/about-us">
-                                                Learn More
-                                            </Link> */}
-                                        </div>
-                                    </div>                 
-                                    </div>
-                {/* <div
-                  className={`${
-                    tab === 'app' ? 'show active' : ''
-                  } tab-pane fade`}
-                  id="v-pills-settings"
-                  role="tabpanel"
-                  aria-labelledby="v-pills-settings-tab"
-                >
-                                    <div className="col-lg-12">
-                                        <div
-                                            className="appie-features-content wow animated fadeInRight"
-                                            data-wow-duration="2000ms"
-                                            data-wow-delay="600ms"
-                                        >
-                                            <span>Explanation</span>
-                                            <h3 className="title">
-                                                Let the <br /> Conversation flow
-                                            </h3>
-                                            <p className='fs-5'>
-                                            The final stage of the conveyancing process is completion, where the purchase price balance 
-                                            is transferred, and you receive the keys to your new home. At this point, all legal ownership
-                                             is transferred, completing the process. Your solicitor will ensure that any outstanding fees,
-                                             including stamp duty, are paid and will register the property in your name with the HM Land Registry.
-                                            </p>
-                                            <Link className="main-btn" to="/about-us">
-                                                Learn More
-                                            </Link>
-                                        </div>
-                                    </div>
-                    </div> */}
-              </div>
-            </div>
+      <div className='container'>
+        <div className='row '>
+          <div className='ml-3 mr-3 pt-3 section-2'>
+            <h2>What is Conveyancing?</h2>
+            <p className='pt-4 fs-5'>
+              Conveyancing is the legal process of transferring property ownership from one
+              person to another. It involves several steps, including initial property searches,
+              checks, exchanging contracts, and completing the sale. A professional conveyancer or
+              solicitor ensures that all legal aspects are properly managed, helping you avoid delays
+              or potential issues down the line.
+            </p>
+            <p className='pt-5 fs-5'>
+              When moving home in Cambridge, you'll need to hire a licensed conveyancer or a
+              conveyancing solicitor to guide you through this process. They will handle the legal
+              paperwork, communicate with the other party's solicitor, and ensure everything is in
+              place before completing the transaction. Choosing the right conveyancer can make a
+              significant difference in keeping the process simple, stress-free, and cost-effective.
+            </p>
           </div>
         </div>
-      </section>
+      </div>
       <section className="appie-features-area pt-10" id="features">
-      <h2 className='mt-5 text-center'>Stage 2: Exchange of Contracts</h2>
-      <p className='mt-3 fs-5 text-center'>The exchange of contracts is a significant milestone in conveyancing, as this is when the sale becomes legally binding. After this point, neither the buyer nor the seller can withdraw from the sale without a financial penalty.</p>
+      <h2 className='mt-5 text-center'>The Conveyancing Process Explained</h2>
+      <p className='mt-3 fs-5 text-center'>Many people aren't entirely sure what the conveyancing process entails. Let's break it down step by step so you know what to expect:</p>
         <div className="container mt-5 pb-2">
           <div className="row align-items-center pb-10">
             <div className="col-lg-3 mt-5">
@@ -270,7 +87,7 @@ These searches help prevent unwanted surprises after purchase. With their local 
                     aria-controls="v-pills-home"
                     aria-selected="true"
                   >
-                   Signing Contracts
+                     Instruction of Solicitors
                   </a>
                   <a
                     onClick={(e) => handleClick(e, 'report')}
@@ -282,7 +99,7 @@ These searches help prevent unwanted surprises after purchase. With their local 
                     aria-controls="v-pills-profile"
                     aria-selected="false"
                   >
-                   Deposits and Financial Arrangements
+                   Property Searches
                   </a>
                   <a
                     onClick={(e) => handleClick(e, 'notice')}
@@ -294,9 +111,9 @@ These searches help prevent unwanted surprises after purchase. With their local 
                     aria-controls="v-pills-messages"
                     aria-selected="false"
                   >
-                     Setting a Completion Date
+                    Drafting and Exchanging Contracts
                   </a>
-                  {/* <a
+                  <a
                     onClick={(e) => handleClick(e, 'app')}
                     className={`nav-link ${tab === 'app' ? 'active' : ''}`}
                     id="v-pills-settings-tab"
@@ -307,7 +124,7 @@ These searches help prevent unwanted surprises after purchase. With their local 
                     aria-selected="false"
                   >
                     Completion
-                  </a> */}
+                  </a>
                 </div>
               </div>
             </div>
@@ -342,10 +159,10 @@ These searches help prevent unwanted surprises after purchase. With their local 
                                                 Let the <br /> Conversation flow
                                             </h3> */}
                                             <p className='fs-5'>
-                                            Once all contract details are agreed upon, the buyer and the seller sign the final contract.
-                                            Your solicitor will arrange for you to review the document and explain any terms or clauses.
-                                            Once signed,the solicitor will send the contract to the other party's solicitor, completing the exchange.
-
+                                            Once you've made an offer on a property or agreed to a sale, you'll need to instruct a conveyancing 
+                                            solicitor. They will begin by gathering details about the property and preparing the initial paperwork.
+                                            It's important to choose a solicitor who is experienced and local to Cambridge, 
+                                            as they will have in-depth knowledge of the area and can help ensure that everything proceeds smoothly.
                                             </p>
                                             {/* <Link className="main-btn" to="/about-us">
                                                 Learn More
@@ -373,7 +190,11 @@ These searches help prevent unwanted surprises after purchase. With their local 
                                                 Let the <br /> Conversation flow
                                             </h3> */}
                                             <p className='fs-5'>
-                                            The buyer's solicitor will transfer the deposit, usually around 10% of the purchase price, to the seller's solicitor at this stage. This deposit serves as a commitment to follow through with the sale. Cambridge Conveyancing Solicitors can help streamline this process with local knowledge of banking times, ensuring funds transfer smoothly.</p>
+                                                Your solicitor will conduct several property searches to check for any issues that 
+                                                could affect the sale. These include local authority searches, water and drainage searches, 
+                                                and environmental checks. This is particularly important in Cambridge, 
+                                                as some properties may be impacted by historical land use or environmental factors specific to the area.
+                                            </p>
                                             {/* <Link className="main-btn" to="/about-us">
                                                 Learn More
                                             </Link> */}
@@ -399,10 +220,9 @@ These searches help prevent unwanted surprises after purchase. With their local 
                                                 Let the <br /> Conversation flow
                                             </h3> */}
                                             <p className='fs-5'>
-                                            Both parties agree on a completion date when the contracts are exchanged.
-                                            This is when the remaining funds are paid, and the buyer officially takes ownership of the property.
-                                            The completion date typically occurs 7-28 days after the contract exchange,
-                                            though this can vary based on each party's preferences and circumstances.
+                                            Once the searches are complete, your solicitor will draft the contract for the sale or purchase.
+                                            They will liaise with the other party's solicitor to agree on the terms. Once both parties are satisfied with the contract, 
+                                            you'll exchange contracts, which is when the sale becomes legally binding.
                                             </p>
                                             {/* <Link className="main-btn" to="/about-us">
                                                 Learn More
@@ -410,7 +230,7 @@ These searches help prevent unwanted surprises after purchase. With their local 
                                         </div>
                                     </div>                 
                                     </div>
-                {/* <div
+                <div
                   className={`${
                     tab === 'app' ? 'show active' : ''
                   } tab-pane fade`}
@@ -425,223 +245,74 @@ These searches help prevent unwanted surprises after purchase. With their local 
                                             data-wow-delay="600ms"
                                         >
                                             <span>Explanation</span>
-                                            <h3 className="title">
+                                            {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
-                                            </h3>
+                                            </h3> */}
                                             <p className='fs-5'>
                                             The final stage of the conveyancing process is completion, where the purchase price balance 
                                             is transferred, and you receive the keys to your new home. At this point, all legal ownership
                                              is transferred, completing the process. Your solicitor will ensure that any outstanding fees,
                                              including stamp duty, are paid and will register the property in your name with the HM Land Registry.
                                             </p>
-                                            <Link className="main-btn" to="/about-us">
+                                            {/* <Link className="main-btn" to="/about-us">
                                                 Learn More
-                                            </Link>
+                                            </Link> */}
                                         </div>
                                     </div>
-                    </div> */}
+                    </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="appie-features-area pt-10 obligation-conveyance" id="features">
-      <h2 className='mt-5 text-center'>Stage 3: Completion and Post-Completion</h2>
-      <p className='mt-3 fs-5 text-center'>The final conveyancing stage is the completion phase, where ownership is officially transferred from the seller to the buyer. After this stage, the buyer can move into the property, and the conveyancing process concludes with final checks.</p>
-        <div className="container mt-5 pb-2">
-          <div className="row align-items-center pb-10">
-            <div className="col-lg-3 mt-5">
-              <div className="appie-features-tabs-btn">
-                <div
-                  className="nav flex-column nav-pills"
-                  id="v-pills-tab"
-                  role="tablist"
-                  aria-orientation="vertical"
-                >
-                  <a
-                    onClick={(e) => handleClick(e, 'setting')}
-                    className={`nav-link ${tab === 'setting' ? 'active' : ''}`}
-                    id="v-pills-home-tab"
-                    data-toggle="pill"
-                    href="#v-pills-home"
-                    role="tab"
-                    aria-controls="v-pills-home"
-                    aria-selected="true"
-                  >
-                   Transferring the Balance
-                  </a>
-                  <a
-                    onClick={(e) => handleClick(e, 'report')}
-                    className={`nav-link ${tab === 'report' ? 'active' : ''}`}
-                    id="v-pills-profile-tab"
-                    data-toggle="pill"
-                    href="#v-pills-profile"
-                    role="tab"
-                    aria-controls="v-pills-profile"
-                    aria-selected="false"
-                  >
-                   Registering Ownership
-                  </a>
-                  <a
-                    onClick={(e) => handleClick(e, 'notice')}
-                    className={`nav-link ${tab === 'notice' ? 'active' : ''}`}
-                    id="v-pills-messages-tab"
-                    data-toggle="pill"
-                    href="#v-pills-messages"
-                    role="tab"
-                    aria-controls="v-pills-messages"
-                    aria-selected="false"
-                  >
-                     Post-Completion Check and Final Documentation
-                  </a>
-                  {/* <a
-                    onClick={(e) => handleClick(e, 'app')}
-                    className={`nav-link ${tab === 'app' ? 'active' : ''}`}
-                    id="v-pills-settings-tab"
-                    data-toggle="pill"
-                    href="#v-pills-settings"
-                    role="tab"
-                    aria-controls="v-pills-settings"
-                    aria-selected="false"
-                  >
-                    Completion
-                  </a> */}
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-9">
-              <div className="tab-content" id="v-pills-tabContent">
-                <div
-                  className={`${
-                    tab === 'setting' ? 'show active' : ''
-                  } tab-pane fade`}
-                  id="v-pills-home"
-                  role="tabpanel"
-                  aria-labelledby="v-pills-home-tab"
-                >
-                                                 <div className="row align-items-center">
-                                    {/* <div className="col-lg-6">
-                                        <div
-                                            className="appie-features-thumb text-center wow animated fadeInUp"
-                                            data-wow-duration="2000ms"
-                                            data-wow-delay="200ms"
-                                        >
-                                            <img src={thumb} alt="" />
+      <section className="appie-counter-area pt-50 pb-50" id="counter" style={style}>
+                <div className="container">
+                <div className="row">
+                        <div className="col-lg-12">
+                            <div
+                                className="appie-about wow animated fadeInUp"
+                                data-wow-duration="2000ms"
+                                data-wow-delay="200ms"
+                            >
+                                <div className="row">
+                                <div className="col-lg-4">
+                                    <div className="about-thumb mt-50">
+                                            <img src={localconveyancing} alt="" />
                                         </div>
-                                    </div> */}
-                                    <div className="col-lg-12">
-                                        <div
-                                            className="appie-features-content wow animated fadeInRight"
-                                            data-wow-duration="2000ms"
-                                            data-wow-delay="600ms"
-                                        >
-                                            <span>Explanation</span>
-                                            {/* <h3 className="title">
-                                                Let the <br /> Conversation flow
-                                            </h3> */}
-                                            <p className='fs-5'>
-                                            On the completion date, the buyer's solicitor will transfer the remaining balance of the property price to the seller's solicitor.
-                                            If the buyer's lender has a mortgage, the funds will be released to the buyer's solicitor to make this payment possible.
-                                            Once the funds are received, the seller hands over the keys, and the buyer takes possession.
+                                    </div>
+                                    <div className="col-lg-8">
+                                    <div className="appie-about-content"> 
+                                            <h5 className="title ml-5">
+                                            Why Choose a Local Cambridge Solicitor?</h5>
+                                            <p className=' justify-text fs-5'>
+                                            When searching for the best conveyancing quotes in Cambridge, choosing a local solicitor who understands the area is essential. Here's why:
+<br/><p className='fw-semibold fs-5'>Local Knowledge:</p>
+Cambridge has unique property challenges, such as older buildings and conservation areas. A local solicitor will be aware of these issues and can ensure that all necessary checks are performed.
 
-                                            </p>
-                                            {/* <Link className="main-btn" to="/about-us">
-                                                Learn More
-                                            </Link> */}
+<p className='fw-semibold fs-5'>Faster Service:</p>
+Being based locally allows your solicitor to respond to any issues quickly and even visit the property if necessary, helping to expedite the process.
+
+<p className='fw-semibold fs-5'>Established Relationships:</p>
+Local solicitors often have established relationships with estate agents and other professionals in the area, facilitating efficient communication and problem-solving.                                            </p>
+                                            {/* <p className='mt-3  justify-text'>
+                                            When it comes to choosing a conveyancing solicitor, getting a competitive fixed fee is crucial. Our quotes come from highly efficient Cambridge property lawyers who ensure a smooth, quick completion. All quotes cover the fixed conveyancing fee based on the information you provide. Keep in mind that the final amount may vary if additional details affect the original quote, and disbursements may change depending on your circumstances.
+                                            </p> */}
                                         </div>
-                                    </div>
+                                        <div className="appie-btn-box mt-5">
+                                    {/* <a className="main-btn ml-30" href="/#">
+                                        Get a Quote
+                                    </a> */}
+
                                 </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div
-                  className={`${
-                    tab === 'report' ? 'show active' : ''
-                  } tab-pane fade`}
-                  id="v-pills-profile"
-                  role="tabpanel"
-                  aria-labelledby="v-pills-profile-tab"
-                >
-                                    <div className="col-lg-12">
-                                        <div
-                                            className="appie-features-content wow animated fadeInRight"
-                                            data-wow-duration="2000ms"
-                                            data-wow-delay="600ms"
-                                        >
-                                            <span>Explanation</span>
-                                            {/* <h3 className="title">
-                                                Let the <br /> Conversation flow
-                                            </h3> */}
-                                            <p className='fs-5'>
-                                            Once the buyer has taken possession, the solicitor registers the new owner with the Land Registry. This involves submitting the title deed and paying any due Stamp Duty Land Tax (SDLT). The buyer's solicitor will also send the buyer a copy of the registered title for their records, confirming their legal ownership.
-                                            </p>
-                                            {/* <Link className="main-btn" to="/about-us">
-                                                Learn More
-                                            </Link> */}
-                                        </div>
-                                    </div>                
-                                    </div>
-                <div
-                  className={`${
-                    tab === 'notice' ? 'show active' : ''
-                  } tab-pane fade`}
-                  id="v-pills-messages"
-                  role="tabpanel"
-                  aria-labelledby="v-pills-messages-tab"
-                >
-                                    <div className="col-lg-12">
-                                        <div
-                                            className="appie-features-content wow animated fadeInRight"
-                                            data-wow-duration="2000ms"
-                                            data-wow-delay="600ms"
-                                        >
-                                            <span>Explanation</span>
-                                            {/* <h3 className="title">
-                                                Let the <br /> Conversation flow
-                                            </h3> */}
-                                            <p className='fs-5'>
-                                            The solicitor will conduct a final check to confirm that all legal requirements are met and documentation is complete. This step finalises the conveyancing process, allowing the buyer to enjoy their new property with peace of mind.
-                                            </p>
-                                            {/* <Link className="main-btn" to="/about-us">
-                                                Learn More
-                                            </Link> */}
-                                        </div>
-                                    </div>                 
-                                    </div>
-                {/* <div
-                  className={`${
-                    tab === 'app' ? 'show active' : ''
-                  } tab-pane fade`}
-                  id="v-pills-settings"
-                  role="tabpanel"
-                  aria-labelledby="v-pills-settings-tab"
-                >
-                                    <div className="col-lg-12">
-                                        <div
-                                            className="appie-features-content wow animated fadeInRight"
-                                            data-wow-duration="2000ms"
-                                            data-wow-delay="600ms"
-                                        >
-                                            <span>Explanation</span>
-                                            <h3 className="title">
-                                                Let the <br /> Conversation flow
-                                            </h3>
-                                            <p className='fs-5'>
-                                            The final stage of the conveyancing process is completion, where the purchase price balance 
-                                            is transferred, and you receive the keys to your new home. At this point, all legal ownership
-                                             is transferred, completing the process. Your solicitor will ensure that any outstanding fees,
-                                             including stamp duty, are paid and will register the property in your name with the HM Land Registry.
-                                            </p>
-                                            <Link className="main-btn" to="/about-us">
-                                                Learn More
-                                            </Link>
-                                        </div>
-                                    </div>
-                    </div> */}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-            <section >
+            </section>
+            <section>
             <div>
               <div className='container'>
                 <div className='row'>
@@ -668,7 +339,194 @@ These searches help prevent unwanted surprises after purchase. With their local 
                     </div>
                     </div>
             </section>
-
+            <section className="appie-features-area pt-10" id="features">
+      <h2 className='mt-5 text-center'>How to Get the Best Conveyancing Quotes in Cambridge</h2>
+      <p className='mt-3 fs-5 text-center'>Finding the best conveyancing quote doesn't always mean opting for the cheapest option. Here's what to consider:</p>
+        <div className="container mt-5 pb-2">
+          <div className="row align-items-center pb-10">
+            <div className="col-lg-3 mt-5">
+              <div className="appie-features-tabs-btn">
+                <div
+                  className="nav flex-column nav-pills"
+                  id="v-pills-tab"
+                  role="tablist"
+                  aria-orientation="vertical"
+                >
+                  <a
+                    onClick={(e) => handleClick(e, 'setting')}
+                    className={`nav-link ${tab === 'setting' ? 'active' : ''}`}
+                    id="v-pills-home-tab"
+                    data-toggle="pill"
+                    href="#v-pills-home"
+                    role="tab"
+                    aria-controls="v-pills-home"
+                    aria-selected="true"
+                  >
+                     Fixed Fee Quotes
+                  </a>
+                  <a
+                    onClick={(e) => handleClick(e, 'report')}
+                    className={`nav-link ${tab === 'report' ? 'active' : ''}`}
+                    id="v-pills-profile-tab"
+                    data-toggle="pill"
+                    href="#v-pills-profile"
+                    role="tab"
+                    aria-controls="v-pills-profile"
+                    aria-selected="false"
+                  >
+                   No Sale, No Fee
+                  </a>
+                  <a
+                    onClick={(e) => handleClick(e, 'notice')}
+                    className={`nav-link ${tab === 'notice' ? 'active' : ''}`}
+                    id="v-pills-messages-tab"
+                    data-toggle="pill"
+                    href="#v-pills-messages"
+                    role="tab"
+                    aria-controls="v-pills-messages"
+                    aria-selected="false"
+                  >
+                    Fast Turnaround Times
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-9">
+              <div className="tab-content" id="v-pills-tabContent">
+                <div
+                  className={`${
+                    tab === 'setting' ? 'show active' : ''
+                  } tab-pane fade`}
+                  id="v-pills-home"
+                  role="tabpanel"
+                  aria-labelledby="v-pills-home-tab"
+                >
+                                                 <div className="row align-items-center">
+                                    {/* <div className="col-lg-6">
+                                        <div
+                                            className="appie-features-thumb text-center wow animated fadeInUp"
+                                            data-wow-duration="2000ms"
+                                            data-wow-delay="200ms"
+                                        >
+                                            <img src={thumb} alt="" />
+                                        </div>
+                                    </div> */}
+                                    <div className="col-lg-12">
+                                        <div
+                                            className="appie-features-content wow animated fadeInRight"
+                                            data-wow-duration="2000ms"
+                                            data-wow-delay="600ms"
+                                        >
+                                            <span>Explanation</span>
+                                            {/* <h3 className="title">
+                                                Let the <br /> Conversation flow
+                                            </h3> */}
+                                            <p className='fs-5'>
+                                            A reputable conveyancing solicitor will provide a fixed fee quote, ensuring you know what you'll pay from the start.
+                                            Fixed fees are particularly beneficial as they prevent unexpected costs from arising during the process.
+                                            Ensure that the quote includes all services to avoid any hidden extras. At Cambridge Conveyancing,
+                                            we pride ourselves on offering transparent fixed-fee quotes covering all legal work aspects.
+                                            </p>
+                                            {/* <Link className="main-btn" to="/about-us">
+                                                Learn More
+                                            </Link> */}
+                                        </div>
+                                    </div>
+                                </div>
+                </div>
+                <div
+                  className={`${
+                    tab === 'report' ? 'show active' : ''
+                  } tab-pane fade`}
+                  id="v-pills-profile"
+                  role="tabpanel"
+                  aria-labelledby="v-pills-profile-tab"
+                >
+                                    <div className="col-lg-12">
+                                        <div
+                                            className="appie-features-content wow animated fadeInRight"
+                                            data-wow-duration="2000ms"
+                                            data-wow-delay="600ms"
+                                        >
+                                            <span>Explanation</span>
+                                            {/* <h3 className="title">
+                                                Let the <br /> Conversation flow
+                                            </h3> */}
+                                            <p className='fs-5'>
+                                            Choose conveyancers with a "no sale, no fee" guarantee. This means that if your sale or purchase falls through,
+                                            you won't have to pay for any legal work that has already been completed. This can provide peace of mind,
+                                            especially when buying in a competitive market like Cambridge, where deals may not always go as planned.
+                                            </p>
+                                            {/* <Link className="main-btn" to="/about-us">
+                                                Learn More
+                                            </Link> */}
+                                        </div>
+                                    </div>                
+                                    </div>
+                <div
+                  className={`${
+                    tab === 'notice' ? 'show active' : ''
+                  } tab-pane fade`}
+                  id="v-pills-messages"
+                  role="tabpanel"
+                  aria-labelledby="v-pills-messages-tab"
+                >
+                                    <div className="col-lg-12">
+                                        <div
+                                            className="appie-features-content wow animated fadeInRight"
+                                            data-wow-duration="2000ms"
+                                            data-wow-delay="600ms"
+                                        >
+                                            <span>Explanation</span>
+                                            {/* <h3 className="title">
+                                                Let the <br /> Conversation flow
+                                            </h3> */}
+                                            <p className='fs-5'>
+                                            Time is often critical when it comes to property transactions.
+                                            A good conveyancing solicitor should be able to work efficiently to ensure that everything is completed on schedule.
+                                            Ask for an estimated timeline before committing to a conveyancer to ensure they can meet your needs.
+                                            </p>
+                                            {/* <Link className="main-btn" to="/about-us">
+                                                Learn More
+                                            </Link> */}
+                                        </div>
+                                    </div>                 
+                                    </div>
+                <div
+                  className={`${
+                    tab === 'app' ? 'show active' : ''
+                  } tab-pane fade`}
+                  id="v-pills-settings"
+                  role="tabpanel"
+                  aria-labelledby="v-pills-settings-tab"
+                >
+                                    <div className="col-lg-12">
+                                        <div
+                                            className="appie-features-content wow animated fadeInRight"
+                                            data-wow-duration="2000ms"
+                                            data-wow-delay="600ms"
+                                        >
+                                            <span>Explanation</span>
+                                            {/* <h3 className="title">
+                                                Let the <br /> Conversation flow
+                                            </h3> */}
+                                            <p className='fs-5'>
+                                            The final stage of the conveyancing process is completion, where the purchase price balance 
+                                            is transferred, and you receive the keys to your new home. At this point, all legal ownership
+                                             is transferred, completing the process. Your solicitor will ensure that any outstanding fees,
+                                             including stamp duty, are paid and will register the property in your name with the HM Land Registry.
+                                            </p>
+                                            {/* <Link className="main-btn" to="/about-us">
+                                                Learn More
+                                            </Link> */}
+                                        </div>
+                                    </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section className={`appie-faq-area pb-95 mt-5 ${className || ''}`}>
                 <div className="container">
                     <div className="row">
@@ -696,8 +554,7 @@ These searches help prevent unwanted surprises after purchase. With their local 
                                     >
                                         <div className="accrodion-inner">
                                             <div className="accrodion-title">
-                                                <h4>Why Work with Cambridge Conveyancing Solicitors?
-                                                </h4>
+                                                <h4>What is the difference between a conveyancer and a solicitor?</h4>
                                             </div>
                                             <div
                                                 className="accrodion-content"
@@ -707,14 +564,34 @@ These searches help prevent unwanted surprises after purchase. With their local 
                                             >
                                                 <div className="inner">
                                                     <p>
-                                                    While these stages apply to any conveyancing process, using a local Cambridge Conveyancing Solicitor can improve the speed and quality of service.
-                                                    Cambridge solicitors have direct experience with property in the area, so they understand the unique aspects of the local market, potential legal quirks, and the typical turnaround times for critical searches.
-                                                    They also have established relationships with local banks, councils, and agencies, allowing them to anticipate and manage location-specific issues.
+                                                    Both conveyancers and solicitors can manage property transactions.
+                                                    However, solicitors are fully qualified lawyers who can provide a broader range of legal services,
+                                                    while conveyancers specialize in property law. For most residential sales and purchases,
+                                                    either a conveyancer or a solicitor can assist you.
                                                     </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        onClick={() => openQuestion(2)}
+                                        className={`accrodion ${showQues === 2 ? 'active' : ''}`}
+                                    >
+                                        <div className="accrodion-inner">
+                                            <div className="accrodion-title">
+                                                <h4>How long does the conveyancing process take?</h4>
+                                            </div>
+                                            <div
+                                                className="accrodion-content"
+                                                style={{
+                                                    display: showQues === 2 ? 'block' : 'none',
+                                                }}
+                                            >
+                                                <div className="inner">
                                                     <p>
-                                                    For property transactions in Cambridge areas like Chesterton and Cherry Hinton and nearby villages like Sawston and Histon,
-                                                    a local solicitor's expertise ensures a smoother process and clear communication.Additionally, local solicitors often offer flexible appointments and can provide insight into the unique aspects of the Cambridge property market, 
-                                                    benefiting both first-time buyers and experienced investors.
+                                                    The process can last anywhere from 6 to 12 weeks, depending on the complexity of the transaction.
+                                                    Local factors, such as property searches in Cambridge, may also impact the timeline.
+                                                    Your solicitor will give you a clearer idea once they start the process.
                                                     </p>
                                                 </div>
                                             </div>
@@ -734,32 +611,127 @@ These searches help prevent unwanted surprises after purchase. With their local 
                                     data-grp-name="faq-accrodion"
                                 >
                                     <div
-                                        onClick={() => openQuestion(2)}
-                                        className={`accrodion ${showQues === 2 ? 'active' : ''}`}
+                                        onClick={() => openQuestion(3)}
+                                        className={`accrodion ${showQues === 3 ? 'active' : ''}`}
                                     >
                                         <div className="accrodion-inner">
                                             <div className="accrodion-title">
-                                                <h4>Get an Instant, Fixed Fee Conveyancing Quote
-                                                </h4>
+                                                <h4>Can I get an online conveyancing quote?</h4>
                                             </div>
                                             <div
                                                 className="accrodion-content"
                                                 style={{
-                                                    display: showQues === 2 ? 'block' : 'none',
+                                                    display: showQues === 3 ? 'block' : 'none',
                                                 }}
                                             >
                                                 <div className="inner">
                                                     <p>
-                                                    We offer a convenient, online fixed-fee quote if you're ready to begin the process. Simply fill out our form, and you'll receive an accurate estimate based on your needs. Fixed-fee quotes mean no surprise costs so that you can budget confidently.<br/>
-
-Choosing a local Cambridge Conveyancing Solicitor for your property needs means that you're backed by expert local knowledge, ensuring that each conveyancing stage is handled efficiently. Our team is here to make this journey as easy as possible for you, from the first consultation to the final registration.<br/>
-
-Take the first step towards securing your new property by filling out our form to get your quote today. Whether you're in the heart of Cambridge or nearby villages, we're here to provide expert support every step of the way. 
- </p>
+                                                    Absolutely! At Cambridge Conveyancing, we offer instant online fixed-fee quotes for all property transactions.
+                                                    Simply fill out the form on our website, and we'll provide you a tailored quote.
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div
+                                        onClick={() => openQuestion(4)}
+                                        className={`accrodion ${showQues === 4 ? 'active' : ''}`}
+                                    >
+                                        <div className="accrodion-inner">
+                                            <div className="accrodion-title">
+                                                <h4>Do I have to use a solicitor in Cambridge?</h4>
+                                            </div>
+                                            <div
+                                                className="accrodion-content"
+                                                style={{
+                                                    display: showQues === 4 ? 'block' : 'none',
+                                                }}
+                                            >
+                                                <div className="inner">
+                                                    <p>
+                                                    No, but using a local solicitor has many advantages,
+                                                    such as a better understanding of the local property market and addressing location-specific 
+                                                    issues more effectively.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        onClick={() => openQuestion(5)}
+                                        className={`accrodion ${showQues === 5 ? 'active' : ''}`}
+                                    >
+                                        <div className="accrodion-inner">
+                                            <div className="accrodion-title">
+                                                <h4>Are there any hidden fees?</h4>
+                                            </div>
+                                            <div
+                                                className="accrodion-content"
+                                                style={{
+                                                    display: showQues === 5 ? 'block' : 'none',
+                                                }}
+                                            >
+                                                <div className="inner">
+                                                    <p>
+                                                    At Cambridge Conveyancing, we value transparency. All our quotes are fixed-fee,
+                                                    meaning you know exactly what you're paying for from the outset, with no hidden costs..
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {/* <div className="col-lg-12">
+                            <div className="faq-text text-center pt-40">
+                                <p>
+                                    Can't find an answer?{' '}
+                                    <a href="mailto:demo@gmail.com">Email us</a>
+                                </p>
+                            </div>
+                        </div> */}
+                    </div>
+                </div>
+            </section>
+            <section className="appie-counter-area pt-50 pb-50" id="counter" style={style}>
+                <div className="container">
+                <div className="row">
+                        <div className="col-lg-12">
+                            <div
+                                className="appie-about wow animated fadeInUp"
+                                data-wow-duration="2000ms"
+                                data-wow-delay="200ms"
+                            >
+                                <div className="row">
+                                {/* <div className="col-lg-4">
+                                    <div className="about-thumb mt-50">
+                                            <img src={localconveyancing} alt="" />
+                                        </div>
+                                    </div> */}
+                                    <div className="col-lg-12">
+                                    <div className="appie-about-content"> 
+                                            <h5 className="title ml-5">
+                                            Get Your Fixed Fee Conveyancing Quote Today</h5>
+                                            <p className=' justify-text mb-4 fs-5'>
+                                            Now that you understand the conveyancing process and the importance of selecting the right solicitor, it's time to take action. If you're looking for the best conveyancing quotes in Cambridge, look no further. Our fixed-fee quotes are competitive, transparent, and designed to give you peace of mind throughout your property transaction.
+                                            </p>
+                                            <p className=' justify-text mb-4 fs-5'>
+                                            We have extensive experience working with properties in Cambridge and surrounding areas, such as Chesterton, Milton, Histon, and Great Shelford. Our local knowledge enables us to offer you the best possible service tailored to the specific challenges of the Cambridge property market.                                            </p>
+                                            <p className=' justify-text fs-5'>
+                                            Fill out the form today to receive your fixed-fee quote from one of our expert conveyancing solicitors in Cambridge. We're here to make your property transaction as smooth and straightforward as possible.</p>
+                                            {/* <p className='mt-3  justify-text'>
+                                            When it comes to choosing a conveyancing solicitor, getting a competitive fixed fee is crucial. Our quotes come from highly efficient Cambridge property lawyers who ensure a smooth, quick completion. All quotes cover the fixed conveyancing fee based on the information you provide. Keep in mind that the final amount may vary if additional details affect the original quote, and disbursements may change depending on your circumstances.
+                                            </p> */}
+                                        </div>
+                                        <div className="appie-btn-box mt-5">
+                                    {/* <a className="main-btn ml-30" href="/#">
+                                        Get a Quote
+                                    </a> */}
+
+                                </div>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -771,4 +743,4 @@ Take the first step towards securing your new property by filling out our form t
   );
 };
 
-export default StagesConveyancing;
+export default CambridgeConveyancing;
