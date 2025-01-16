@@ -196,7 +196,7 @@ const SellingProperty = () => {
             </AccordionSummary>
             <AccordionDetails className='pt-4'>
               <Grid container spacing={2}>
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={12}>
 
                   <TextField
                     label="Enter Property Price"
@@ -216,7 +216,7 @@ const SellingProperty = () => {
                   />
                 </Grid>
 
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={12}>
                 <FormControl variant="outlined" fullWidth error={validationErrors.leasehold} >
                 <InputLabel>Leasehold</InputLabel>
                     <Select   label="Leasehold"
@@ -236,7 +236,7 @@ const SellingProperty = () => {
                   </FormControl>
                 </Grid>
 
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={12}>
                 <FormControl variant="outlined" fullWidth error={validationErrors.mortgage} >
                     <InputLabel>Mortgage</InputLabel>
                     <Select label="Mortgage"
@@ -256,7 +256,7 @@ const SellingProperty = () => {
                   </FormControl>
                 </Grid>
 
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={12}>
                 <FormControl variant="outlined" fullWidth error={validationErrors.sharedOwnership} >
                     <InputLabel>Shared Ownership</InputLabel>
                     <Select label="Shared Ownership"
@@ -296,7 +296,7 @@ const SellingProperty = () => {
                   </FormControl>
                 </Grid> */}
                 
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={12}>
                 <FormControl variant="outlined" fullWidth error={validationErrors.newBuild} >
                     <InputLabel>New Build</InputLabel>
                     <Select label="New Build"
@@ -316,7 +316,7 @@ const SellingProperty = () => {
                   </FormControl>
                 </Grid>
 
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={12}>
                 <FormControl variant="outlined" fullWidth error={validationErrors.staircasing} >
                     <InputLabel>Staircasing?</InputLabel>
                     <Select label="Staircasing"
@@ -336,7 +336,7 @@ const SellingProperty = () => {
                   </FormControl>
                 </Grid>
 
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={12}>
                 <FormControl variant="outlined" fullWidth error={validationErrors.unregistered} >
                     <InputLabel>Unregistered?</InputLabel>
                     <Select label="Unregistered"
@@ -391,9 +391,9 @@ const SellingProperty = () => {
     gap: '10px', // Space between buttons
   }}
 >
-  <button className="next-btn" onClick={handlePreviewPDF}>
+  {/* <button className="next-btn" onClick={handlePreviewPDF}>
     Preview Data
-  </button>
+  </button> */}
   <button className="next-btn" onClick={handleSubmitClick}>
     Submit
   </button>

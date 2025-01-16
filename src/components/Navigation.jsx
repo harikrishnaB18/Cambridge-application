@@ -13,13 +13,13 @@ function Navigation() {
                         <Link to="/conveyancing-process">Conveyancing Process</Link>
                     </li>
                     <li>
-                        <Link to="/#">What a Conveyancing Solicitor Does</Link>
+                        <Link to="/conveyancing-solicitor">What a Conveyancing Solicitor Does</Link>
                     </li>
                     <li>
-                        <Link to="/#">3 Stages of Conveyancing</Link>
+                        <Link to="/stages-conveyancing">3 Stages of Conveyancing</Link>
                     </li>
                     <li>
-                        <Link to="/#">Guide to Remortgaging in Cambridge</Link>
+                        <Link to="/remortgaging-cambridge">Guide to Remortgaging in Cambridge</Link>
                     </li>
                     <li>
                         <Link to="/#">How Long Does Conveyancing Take</Link>
