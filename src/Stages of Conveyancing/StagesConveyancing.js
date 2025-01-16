@@ -11,16 +11,16 @@ import './StagesConveyancing.css'
 const StagesConveyancing = (style,className) => {
     const [drawer, drawerAction] = useToggle(false);
   const [tab, setTab] = useState('setting');
-  const [showQues, setQues] = useState(1);
+  const [showQues, setQues] = useState(null);
 
   const handleClick = (e, value) => {
     e.preventDefault();
     setTab(value);
   };
 
-  const openQuestion = (value) => {
-      setQues(value);
-  }
+  const openQuestion = (id) => {
+    setQues((prev) => (prev === id ? null : id)); // Toggle between open and close
+};
   return (
     <div>
       <Drawer drawer={drawer} action={drawerAction.toggle} />
