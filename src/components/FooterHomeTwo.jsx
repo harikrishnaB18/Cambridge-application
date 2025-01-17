@@ -53,7 +53,7 @@ function FooterHomeTwo() {
                                         <Link to="/terms-conditions">Terms & Conditions</Link>
                                     </li>
                                     <li>
-                                    <Link to="/#">Privacy Policy</Link>
+                                    <Link to="/privacy-policy">Privacy Policy</Link>
                                     </li>
                                     <li>
                                     <Link to="/contact-us">Contact Us</Link>

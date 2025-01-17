@@ -13,7 +13,10 @@ import ConveyancingTake from './Conveyancing Take/ConveyancingTake';
 import FirstTimeBuyers from './First Time Buyers/FirstTimeBuyers';
 import CambridgeConveyancing from './Cambridge Conveyancing/CambridgeConveyancing';
 import Forms from './components/Forms';
+import ElyConveyancing from './Ely Conveyancing/ElyConveyancing';
 import TermsConditions from './T&C and Privacy/TermsConditions';
+import PrivacyPolicy from './T&C and Privacy/PrivacyPolicy';
+import PeterboroughConveyancing from './Peterborough Conveyancing/PeterboroughConveyancing';
 
 const App = () => {
   return (
@@ -34,6 +37,9 @@ const App = () => {
           <Route path="/conveyancing-in-cambridge" element={<CambridgeConveyancing />} />
           <Route path="/contact-us" element={<Forms />} />
           <Route path="/terms-conditions" element={<TermsConditions />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/conveyancing-in-ely" element={<ElyConveyancing />} />
+          <Route path="/peterborough-conveyancing" element={<PeterboroughConveyancing />} />
         </Routes>
       </Router>
       </>

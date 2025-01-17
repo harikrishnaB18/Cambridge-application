@@ -1,5 +1,4 @@
 import React, { useState, } from 'react';
-import { Link } from 'react-router-dom';
 import HeaderHomeTwo from '../components/HeaderHomeTwo';
 import localconveyancing from '../Images/local conveyancing solicitors.png';
 import '../Conveyancing Process/ConveyancingProcess.css';
@@ -7,7 +6,7 @@ import FooterHomeTwo from '../components/FooterHomeTwo';
 import Drawer from '../Mobile/Drawer.jsx';
 import useToggle from '../components/useToggle.js';
 
-const CambridgeConveyancing = (style,className) => {
+const PeterboroughConveyancing = (style,className) => {
     const [drawer, drawerAction] = useToggle(false);
   const [tab, setTab] = useState('setting');
   const [showQues, setQues] = useState(null);
@@ -27,11 +26,11 @@ const CambridgeConveyancing = (style,className) => {
       <div className='container'>
         <div className='row '>
           <div className='text-center pt-5 '>
-            <h1>Cambridge Conveyancing Solicitors
+            <h1>Peterborough Conveyancing Solicitors
             </h1>
             {/* <h3 className='pt-4'>Free Instant Online Quotes</h3> */}
             <p className='pt-4 fs-5 lh-lg'>
-            Offering expert, reliable services to make buying, selling, or remortgaging a property in Cambridge a smooth and stress-free experience.
+            Providing expert, dependable services to ensure a smooth, stress-free experience when buying, selling, or remortgaging a property in Peterborough.
             </p>
           </div>
         </div>
@@ -71,10 +70,10 @@ const CambridgeConveyancing = (style,className) => {
                                     <div className="col-lg-6">
                                     <div className="appie-about-content"> 
                                             <h5 className="title">
-                                            Local Experts for a Smooth Property Transaction</h5>
+                                            Peterborough Conveyancing Solicitors – Professional and Personalised Service</h5>
                                             <p className=' justify-text fs-5'>
-                                            Buying or selling a property is an exciting milestone, yet it often involves complex processes that can feel overwhelming. Cambridge Conveyancing is here to make the experience as straightforward and stress-free as possible, offering <b>trusted conveyancing services in Cambridge</b> to guide you through every essential step.</p>
-                                            <p className=' justify-text fs-5 mt-5'>Engaging a local conveyancing solicitor with deep expertise in the Cambridge property market is invaluable, whether you're navigating your first home purchase, expanding an investment portfolio, or preparing to sell a family home. With a dedicated, experienced team handling all legal aspects, each stage of the conveyancing journey is managed efficiently, ensuring that the process remains smooth and hassle-free from beginning to end.</p>
+                                            Finding reliable and <b>experienced conveyancing solicitors in Peterborough</b> is crucial for ensuring a smooth property transaction.Whether you’re buying,selling or remortgaging,Peterborough’s conveyancing solicitors specialise in making each step of the process clear and manageable.</p>
+                                            <p className=' justify-text fs-5 mt-5'>For property transactions in areas such as Werrington, Orton Waterville, and Hampton Vale, experienced solicitors provide invaluable local knowledge to guide buyers and sellers through the unique aspects of the Peterborough property market</p>
                                             {/* <p className='mt-3  justify-text'>
                                             When it comes to choosing a conveyancing solicitor, getting a competitive fixed fee is crucial. Our quotes come from highly efficient Cambridge property lawyers who ensure a smooth, quick completion. All quotes cover the fixed conveyancing fee based on the information you provide. Keep in mind that the final amount may vary if additional details affect the original quote, and disbursements may change depending on your circumstances.
                                             </p> */}
@@ -96,19 +95,27 @@ const CambridgeConveyancing = (style,className) => {
       <div className='container'>
         <div className='row '>
           <div className='ml-3 mr-3 pt-3 section-2'>
-            <h2>Why Choose a Cambridge Conveyancing Solicitors?</h2>
+            <h2>Comprehensive Conveyancing Services in Peterborough
+            </h2>
             <p className='pt-4 fs-5'>
-            Cambridge Conveyancing offers trusted local expertise and is dedicated to client satisfaction, making it the go-to website for conveyancing services. With extensive knowledge of the Cambridge property market and years of experience in handling both residential and commercial transactions, the team provides a friendly yet professional service that simplifies even the most complex conveyancing processes.
-            </p>
+            A wide range of conveyancing services is available in Peterborough, catering to first-time buyers and seasoned property investors. Experienced solicitors handle each transaction carefully,
+            ensuring that all legal requirements are met on time.
+            Sellers aiming to achieve the best return on investment and buyers looking for a hassle-free purchase can greatly benefit from reliable conveyancing services.</p>
+        
+          </div>
+          <div className='ml-3 mr-3 pt-3 section-2'>
+            <h2>Why Choose Peterborough Conveyancing Solicitors?
+            </h2>
             <p className='pt-4 fs-5'>
-            Each solicitor is well-acquainted with local areas across Cambridge and surrounding towns, ensuring timely and efficient service tailored to the unique needs of each neighbourhood. From buying in Cherry Hinton to moving to Trumpington or selling in Milton, Cambridge Conveyancing is here to support every step of the way.
+            Choosing a conveyancing solicitor with extensive local expertise can significantly impact your experience, especially in a diverse market like Peterborough. Experienced solicitors understand the specifics of the local housing market and are adept at addressing its unique nuances. Whether dealing with historic properties in the Cathedral Quarter or new builds in Cardea, conveyancing professionals familiar with Peterborough’s laws and regulations provide exceptional service, ensuring smooth and streamlined transactions.
             </p>
+        
           </div>
         </div>
       </div>
       <section className="appie-features-area pt-10" id="features">
-      <h2 className='mt-5 text-center'>What Services Do Cambridge Conveyancing Solicitors Offer?</h2>
-      <p className='mt-3 fs-5 text-center'>Cambridge conveyancing solicitors provide a comprehensive range of services to cover all aspects of property transactions:</p>
+      <h2 className='mt-5 text-center'>Understanding the Peterborough Conveyancing Process</h2>
+      <p className='mt-3 fs-5 text-center'>Many clients are surprised by the number of stages involved in the conveyancing process.<br/>From initial inquiries and property searches to final exchanges and completion, skilled conveyancing solicitors manage each<br/>step to ensure a stress-free experience.In Peterborough, the conveyancing process generally follows this structured pattern:</p>
         <div className="container mt-5 pb-2">
           <div className="row align-items-center pb-10">
             <div className="col-lg-3">
@@ -129,7 +136,7 @@ const CambridgeConveyancing = (style,className) => {
                     aria-controls="v-pills-home"
                     aria-selected="true"
                   >
-                     Buying a Property
+                     Initial Instructions
                   </a>
                   <a
                     onClick={(e) => handleClick(e, 'report')}
@@ -141,7 +148,7 @@ const CambridgeConveyancing = (style,className) => {
                     aria-controls="v-pills-profile"
                     aria-selected="false"
                   >
-                   Selling a Property
+                   Drafting Contracts and Conducting Searches
                   </a>
                   <a
                     onClick={(e) => handleClick(e, 'notice')}
@@ -513,4 +520,4 @@ Complete our free quote calculator now to receive your personalised quote. With 
   );
 };
 
-export default CambridgeConveyancing;
+export default PeterboroughConveyancing;

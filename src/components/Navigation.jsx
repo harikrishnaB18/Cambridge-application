@@ -39,10 +39,10 @@ function Navigation() {
                         <Link to="/conveyancing-in-cambridge">Cambridge Conveyancing</Link>
                     </li>
                     <li>
-                        <Link to="/#">Ely Conveyancing</Link>
+                        <Link to="/conveyancing-in-ely">Ely Conveyancing</Link>
                     </li>
                     <li>
-                        <Link to="/#">Peterborough Conveyancing</Link>
+                        <Link to="/peterborough-conveyancing">Peterborough Conveyancing</Link>
                     </li>
                     <li>
                         <Link to="/#">Chelmsford Conveyancing</Link>

@@ -1,5 +1,4 @@
 import React, { useState, } from 'react';
-import { Link } from 'react-router-dom';
 import HeaderHomeTwo from '../components/HeaderHomeTwo';
 import localconveyancing from '../Images/local conveyancing solicitors.png';
 import '../Conveyancing Process/ConveyancingProcess.css';
@@ -7,7 +6,7 @@ import FooterHomeTwo from '../components/FooterHomeTwo';
 import Drawer from '../Mobile/Drawer.jsx';
 import useToggle from '../components/useToggle.js';
 
-const CambridgeConveyancing = (style,className) => {
+const ElyConveyancing = (style,className) => {
     const [drawer, drawerAction] = useToggle(false);
   const [tab, setTab] = useState('setting');
   const [showQues, setQues] = useState(null);
@@ -27,11 +26,11 @@ const CambridgeConveyancing = (style,className) => {
       <div className='container'>
         <div className='row '>
           <div className='text-center pt-5 '>
-            <h1>Cambridge Conveyancing Solicitors
+            <h1>Ely Conveyancing Solicitors
             </h1>
             {/* <h3 className='pt-4'>Free Instant Online Quotes</h3> */}
             <p className='pt-4 fs-5 lh-lg'>
-            Offering expert, reliable services to make buying, selling, or remortgaging a property in Cambridge a smooth and stress-free experience.
+            Providing expert, reliable services to ensure buying, selling, or remortgaging a property in Ely is a smooth and stress-free experience.
             </p>
           </div>
         </div>
@@ -47,15 +46,18 @@ const CambridgeConveyancing = (style,className) => {
                 <div className="container">
                 <div className="row">
                         <div className="col-lg-12">
+                        <div className="appie-about-content"> 
+                                            <h5 className="title">
+                                            Trusted Expertise for a Smooth Property Journey</h5>
+                                            <p className=' justify-text fs-5'>
+                                            Finding the right support for property transactions in Ely can make all the difference in ensuring a smooth, hassle-free process.<b>Ely conveyancing solicitors are here to provide experienced guidance</b> through every step, whether you're buying your first home, selling a property, or remortgaging. For reliable, affordable, and efficient conveyancing in Ely, turn to professionals who understand the local market and have a track record of success.</p>
+                                        </div>
                             <div
-                                className="appie-about wow animated fadeInUp"
+                                className="appie-about wow animated fadeInUp mt-5"
                                 data-wow-duration="2000ms"
                                 data-wow-delay="200ms"
                             >
-                                <div className="row">
-                                <div className="col-lg-6">
-                                    <div className="about-thumb mt-50">
-                                    <iframe
+                                                                    <iframe
     title="map"
     src="https://maps.google.com/maps?width=720&height=600&hl=en&q=1%20Grafton%20Street,%20Dublin,%20Ireland&ie=UTF8&t=p&z=16&iwloc=B&output=embed"
     width="100%"
@@ -65,29 +67,6 @@ const CambridgeConveyancing = (style,className) => {
     loading="lazy"
     referrerPolicy="no-referrer-when-downgrade"
 ></iframe>
-                                       
-                </div>
-                                    </div>
-                                    <div className="col-lg-6">
-                                    <div className="appie-about-content"> 
-                                            <h5 className="title">
-                                            Local Experts for a Smooth Property Transaction</h5>
-                                            <p className=' justify-text fs-5'>
-                                            Buying or selling a property is an exciting milestone, yet it often involves complex processes that can feel overwhelming. Cambridge Conveyancing is here to make the experience as straightforward and stress-free as possible, offering <b>trusted conveyancing services in Cambridge</b> to guide you through every essential step.</p>
-                                            <p className=' justify-text fs-5 mt-5'>Engaging a local conveyancing solicitor with deep expertise in the Cambridge property market is invaluable, whether you're navigating your first home purchase, expanding an investment portfolio, or preparing to sell a family home. With a dedicated, experienced team handling all legal aspects, each stage of the conveyancing journey is managed efficiently, ensuring that the process remains smooth and hassle-free from beginning to end.</p>
-                                            {/* <p className='mt-3  justify-text'>
-                                            When it comes to choosing a conveyancing solicitor, getting a competitive fixed fee is crucial. Our quotes come from highly efficient Cambridge property lawyers who ensure a smooth, quick completion. All quotes cover the fixed conveyancing fee based on the information you provide. Keep in mind that the final amount may vary if additional details affect the original quote, and disbursements may change depending on your circumstances.
-                                            </p> */}
-                                        </div>
-                                        <div className="appie-btn-box mt-5">
-                                    {/* <a className="main-btn ml-30" href="/#">
-                                        Get a Quote
-                                    </a> */}
-
-                                </div>
-                                    </div>
-                                    
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -96,19 +75,24 @@ const CambridgeConveyancing = (style,className) => {
       <div className='container'>
         <div className='row '>
           <div className='ml-3 mr-3 pt-3 section-2'>
-            <h2>Why Choose a Cambridge Conveyancing Solicitors?</h2>
+            <h2>Why Use Local Ely Conveyancing Solicitors?            </h2>
             <p className='pt-4 fs-5'>
-            Cambridge Conveyancing offers trusted local expertise and is dedicated to client satisfaction, making it the go-to website for conveyancing services. With extensive knowledge of the Cambridge property market and years of experience in handling both residential and commercial transactions, the team provides a friendly yet professional service that simplifies even the most complex conveyancing processes.
-            </p>
+            Choosing local Ely conveyancing solicitors offers several key benefits. A firm with deep knowledge of Ely and surrounding areas will better understand the unique aspects of the property market here, including neighbourhoods, land types, and planning permissions. Local solicitors bring an informed perspective that can speed up the process, avoid potential obstacles, and make communication easy. Access to the latest insights on property transactions within Ely ensures that your experience is efficient and cost-effective while meeting your specific needs            </p>
             <p className='pt-4 fs-5'>
-            Each solicitor is well-acquainted with local areas across Cambridge and surrounding towns, ensuring timely and efficient service tailored to the unique needs of each neighbourhood. From buying in Cherry Hinton to moving to Trumpington or selling in Milton, Cambridge Conveyancing is here to support every step of the way.
+            <b>Personalised Service with Local Market Expertise</b><br/>
+Ely conveyancing solicitors provide an individualised approach to each client, offering the peace of mind that comes from knowing your case is in knowledgeable, experienced hands. With extensive experience in Ely and its surroundings, local conveyancers can advise on specific areas, from assessing property values to knowing about any pending developments that may impact your sale or purchase.<br/>
+<b>Clear and Transparent Pricing</b><br/>
+For anyone buying or selling property, understanding the costs involved is crucial. Ely conveyancing solicitors offer clear, fixed-fee quotes to help you plan your budget accurately. With no hidden fees, clients are assured of transparent pricing. Simply use the free quote calculator on this page to get a quick, accurate cost estimate tailored to your needs.
             </p>
           </div>
         </div>
       </div>
       <section className="appie-features-area pt-10" id="features">
-      <h2 className='mt-5 text-center'>What Services Do Cambridge Conveyancing Solicitors Offer?</h2>
-      <p className='mt-3 fs-5 text-center'>Cambridge conveyancing solicitors provide a comprehensive range of services to cover all aspects of property transactions:</p>
+        <div className='container'>
+      <h2 className='mt-5 text-center'>Residential Conveyancing Services in Ely
+      </h2>
+      <p className='mt-3 fs-5'>Whether buying, selling, or remortgaging, the legal side of property transactions can be complex. Ely conveyancing solicitors handle all aspects of residential conveyancing to ensure each stage is managed professionally and efficiently. With a local team dedicated to staying ahead of any challenges that may arise, you can be confident that every detail will be covered.</p>
+      </div>
         <div className="container mt-5 pb-2">
           <div className="row align-items-center pb-10">
             <div className="col-lg-3">
@@ -153,23 +137,8 @@ const CambridgeConveyancing = (style,className) => {
                     aria-controls="v-pills-messages"
                     aria-selected="false"
                   >
-                    Re-Mortgaging
+                    Re-Mortgaging in Ely
                   </a>
-                  <a
-                    onClick={(e) => handleClick(e, 'app')}
-                    className={`nav-link ${tab === 'app' ? 'active' : ''}`}
-                    id="v-pills-settings-tab"
-                    data-toggle="pill"
-                    href="#v-pills-settings"
-                    role="tab"
-                    aria-controls="v-pills-settings"
-                    aria-selected="false"
-                  >
-                    Transfer of Equity
-                  </a>
-                  <a onClick={(e) => handleClick(e, 'completion')} className={`nav-link ${tab === 'completion' ? 'active' : ''}`} id="v-pills-completion-tab" data-toggle="pill" href="#v-pills-completion" role="tab" aria-controls="v-pills-completion" aria-selected="false">
-                  Shared Ownership and Leasehold Services
-            </a>
                 </div>
               </div>
             </div>
@@ -204,8 +173,7 @@ const CambridgeConveyancing = (style,className) => {
                                                 Let the <br /> Conversation flow
                                             </h3> */}
                                             <p className='fs-5'>
-                                            Purchasing a home is a major step, and conveyancing solicitors are available to handle all the legal details involved. From title checks to communicating with mortgage lenders, these services aim to make the process hassle-free, allowing buyers to focus on the excitement of their new home.
-                                            </p>
+                                            Buying a property is an exciting step, but it can be daunting without the right guidance. Ely conveyancing solicitors manage every aspect of property purchases, from initial enquiries to liaising with mortgage lenders and completing the transaction. Local knowledge helps anticipate issues specific to Ely, allowing a quicker, more streamlined buying experience.                                            </p>
                                             {/* <Link className="main-btn" to="/about-us">
                                                 Learn More
                                             </Link> */}
@@ -232,8 +200,7 @@ const CambridgeConveyancing = (style,className) => {
                                                 Let the <br /> Conversation flow
                                             </h3> */}
                                             <p className='fs-5'>
-                                            Selling a property involves various legal requirements, and experienced conveyancing professionals can guide the process with confidence. They take care of essential tasks, including liaising with the buyer's solicitor, managing contracts, and resolving any queries that may arise.
-                                            </p>
+                                            Selling a property is often time-sensitive, and reliable conveyancing is essential for a smooth transaction. Ely conveyancing solicitors ensure the legal paperwork is completed efficiently, allowing sellers to focus on their next steps. Regular updates and clear communication keep everything on track, minimising delays and ensuring a stress-free process.                                            </p>
                                             {/* <Link className="main-btn" to="/about-us">
                                                 Learn More
                                             </Link> */}
@@ -259,8 +226,7 @@ const CambridgeConveyancing = (style,className) => {
                                                 Let the <br /> Conversation flow
                                             </h3> */}
                                             <p className='fs-5'>
-                                            For those looking to refinance a property, conveyancing solicitors simplify the remortgaging process by handling all necessary legal steps—from title deeds to coordinating with mortgage providers—saving time and reducing stress.
-                                            </p>
+                                            When remortgaging, accurate, efficient conveyancing is essential. Ely conveyancing solicitors provide the expertise needed to handle remortgages effectively, including managing lender requirements and completing the process promptly. With experience in various types of mortgages, they ensure a seamless remortgaging experience that meets all legal requirements.</p>
                                             {/* <Link className="main-btn" to="/about-us">
                                                 Learn More
                                             </Link> */}
@@ -294,14 +260,6 @@ const CambridgeConveyancing = (style,className) => {
                                         </div>
                                     </div>
                     </div>
-                    <div className={`${tab === 'completion' ? 'show active' : ''} tab-pane fade`} id="v-pills-completion" role="tabpanel" aria-labelledby="v-pills-completion-tab">
-            <div className="col-lg-12">
-              <div className="appie-features-content wow animated fadeInRight" data-wow-duration="2000ms" data-wow-delay="600ms">
-                <span>Explanation</span>
-                <p className='fs-5'>Whether purchasing a shared ownership property or navigating a leasehold purchase, conveyancing experts can assist with these more complex transactions. They provide clear, straightforward guidance to help clients make informed decisions throughout the process.</p>
-              </div>
-            </div>
-          </div>
               </div>
             </div>
           </div>
@@ -357,7 +315,160 @@ const CambridgeConveyancing = (style,className) => {
                     {/* <img src={shape13} alt="" /> */}
                 </div>
             </section>
-
+            <section className="appie-features-area pt-10" id="features">
+        <div className='container'>
+      <h2 className='mt-5 text-center'>Key Steps in the Conveyancing Process
+      </h2>
+      <p className='mt-3 fs-5'>Understanding the conveyancing process is helpful for buyers, sellers, and anyone remortgaging a property. Ely conveyancing solicitors follow a structured approach to manage each transaction stage effectively. Here’s a look at the critical steps involved in the conveyancing process:</p>
+      </div>
+        <div className="container mt-5 pb-2">
+          <div className="row align-items-center pb-10">
+            <div className="col-lg-3">
+              <div className="appie-features-tabs-btn">
+                <div
+                  className="nav flex-column nav-pills"
+                  id="v-pills-tab"
+                  role="tablist"
+                  aria-orientation="vertical"
+                >
+                  <a
+                    onClick={(e) => handleClick(e, 'setting')}
+                    className={`nav-link ${tab === 'setting' ? 'active' : ''}`}
+                    id="v-pills-home-tab"
+                    data-toggle="pill"
+                    href="#v-pills-home"
+                    role="tab"
+                    aria-controls="v-pills-home"
+                    aria-selected="true"
+                  >
+                     Initial Enquiries and Searches
+                  </a>
+                  <a
+                    onClick={(e) => handleClick(e, 'report')}
+                    className={`nav-link ${tab === 'report' ? 'active' : ''}`}
+                    id="v-pills-profile-tab"
+                    data-toggle="pill"
+                    href="#v-pills-profile"
+                    role="tab"
+                    aria-controls="v-pills-profile"
+                    aria-selected="false"
+                  >
+                   Contract Preparation and Exchange
+                  </a>
+                  <a
+                    onClick={(e) => handleClick(e, 'notice')}
+                    className={`nav-link ${tab === 'notice' ? 'active' : ''}`}
+                    id="v-pills-messages-tab"
+                    data-toggle="pill"
+                    href="#v-pills-messages"
+                    role="tab"
+                    aria-controls="v-pills-messages"
+                    aria-selected="false"
+                  >
+                    Completion and Final Steps
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-9">
+              <div className="tab-content" id="v-pills-tabContent">
+                <div
+                  className={`${
+                    tab === 'setting' ? 'show active' : ''
+                  } tab-pane fade`}
+                  id="v-pills-home"
+                  role="tabpanel"
+                  aria-labelledby="v-pills-home-tab"
+                >
+                                                 <div className="row align-items-center">
+                                    {/* <div className="col-lg-6">
+                                        <div
+                                            className="appie-features-thumb text-center wow animated fadeInUp"
+                                            data-wow-duration="2000ms"
+                                            data-wow-delay="200ms"
+                                        >
+                                            <img src={thumb} alt="" />
+                                        </div>
+                                    </div> */}
+                                    <div className="col-lg-12">
+                                        <div
+                                            className="appie-features-content wow animated fadeInRight"
+                                            data-wow-duration="2000ms"
+                                            data-wow-delay="600ms"
+                                        >
+                                            <span>Explanation</span>
+                                            {/* <h3 className="title">
+                                                Let the <br /> Conversation flow
+                                            </h3> */}
+                                            <p className='fs-5'>
+                                            The first step in the conveyancing process involves conducting necessary property searches and gathering details about the property. These include local authority searches, environmental checks, and water and drainage checks to uncover any issues affecting the transaction. This stage is crucial for ensuring there are no surprises after the sale is completed.
+                                            </p>
+                                            {/* <Link className="main-btn" to="/about-us">
+                                                Learn More
+                                            </Link> */}
+                                        </div>
+                                    </div>
+                                </div>
+                </div>
+                <div
+                  className={`${
+                    tab === 'report' ? 'show active' : ''
+                  } tab-pane fade`}
+                  id="v-pills-profile"
+                  role="tabpanel"
+                  aria-labelledby="v-pills-profile-tab"
+                >
+                                    <div className="col-lg-12">
+                                        <div
+                                            className="appie-features-content wow animated fadeInRight"
+                                            data-wow-duration="2000ms"
+                                            data-wow-delay="600ms"
+                                        >
+                                            <span>Explanation</span>
+                                            {/* <h3 className="title">
+                                                Let the <br /> Conversation flow
+                                            </h3> */}
+                                            <p className='fs-5'>
+                                            Once searches and initial checks are complete, the solicitor drafts a contract outlining the sale or purchase terms. Both parties review and agree to the contract terms before exchanging contracts. The sale becomes legally binding at this point, providing peace of mind that both parties are committed to the transaction.
+                                            </p>
+                                            {/* <Link className="main-btn" to="/about-us">
+                                                Learn More
+                                            </Link> */}
+                                        </div>
+                                    </div>                
+                                    </div>
+                <div
+                  className={`${
+                    tab === 'notice' ? 'show active' : ''
+                  } tab-pane fade`}
+                  id="v-pills-messages"
+                  role="tabpanel"
+                  aria-labelledby="v-pills-messages-tab"
+                >
+                                    <div className="col-lg-12">
+                                        <div
+                                            className="appie-features-content wow animated fadeInRight"
+                                            data-wow-duration="2000ms"
+                                            data-wow-delay="600ms"
+                                        >
+                                            <span>Explanation</span>
+                                            {/* <h3 className="title">
+                                                Let the <br /> Conversation flow
+                                            </h3> */}
+                                            <p className='fs-5'>
+                                            On completion day, funds are transferred, and keys are exchanged. Ely conveyancing solicitors handle the financial transactions and final paperwork, ensuring everything is legally compliant. At this stage, ownership is transferred, and the process is completed smoothly and efficiently.
+                                            </p>
+                                            {/* <Link className="main-btn" to="/about-us">
+                                                Learn More
+                                            </Link> */}
+                                        </div>
+                                    </div>                 
+                                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>  
       <section className={`appie-faq-area pb-95 mt-5 ${className || ''}`}>
                 <div className="container">
                     <div className="row">
@@ -385,7 +496,7 @@ const CambridgeConveyancing = (style,className) => {
                                     >
                                         <div className="accrodion-inner">
                                             <div className="accrodion-title">
-                                                <h4>Why Local Knowledge Matters in Cambridge Conveyancing
+                                                <h4>Benefits of Fixed-Fee Quotes for Ely Conveyancing Services
                                                 </h4>
                                             </div>
                                             <div
@@ -396,9 +507,11 @@ const CambridgeConveyancing = (style,className) => {
                                             >
                                                 <div className="inner">
                                                     <p>
-                                                    Cambridge has a vibrant and unique property market with distinctive architectural styles and local requirements. Choosing a conveyancing solicitor who understands Cambridge is invaluable in ensuring a smooth and efficient transaction. Our knowledge of local councils, planning laws, and market trends helps us identify and address potential issues before they become problems, saving you time and money.
+                                                    Opting for a fixed-fee quote provides predictability and peace of mind. With a clear outline of all costs upfront, clients can proceed confidently without concerns about unexpected charges. Ely conveyancing solicitors offer competitive, fixed-fee quotes tailored to each transaction,
+                                                    making the process transparent and budget-friendly.<br/>
 
-We also have established relationships with other local professionals, including surveyors, estate agents, and financial advisors, providing a network of support throughout the process.
+<b>Getting an Accurate Fixed-Fee Quote</b><br/>
+For a straightforward estimate cost estimate, simply complete the free quote calculator on this page. You can receive a detailed estimate that covers all aspects of the conveyancing process by entering some basic details. This user-friendly calculator provides an accurate quote that reflects the unique requirements of your property transaction, offering full transparency from the start.
                                                     </p>
                                                 </div>
                                             </div>
@@ -410,7 +523,8 @@ We also have established relationships with other local professionals, including
                                     >
                                         <div className="accrodion-inner">
                                             <div className="accrodion-title">
-                                                <h4>Fixed Fee Conveyancing – Transparency and No Surprises</h4>
+                                                <h4>Additional Services from Ely Conveyancing Solicitors
+                                                </h4>
                                             </div>
                                             <div
                                                 className="accrodion-content"
@@ -420,9 +534,15 @@ We also have established relationships with other local professionals, including
                                             >
                                                 <div className="inner">
                                                     <p>
-                                                    At Cambridge Conveyancing, we believe in providing clarity and transparency from the very beginning. Our fixed fee conveyancing structure ensures you know exactly what to expect regarding costs. We take pride in offering competitive, all-inclusive quotes that cover everything you need to complete your transaction.
+                                                    Beyond buying, selling, and remortgaging, Ely conveyancing solicitors offer various related services to support all types of property transactions. From the transfer of equity to resolving boundary issues, local conveyancers are well-equipped to handle complex legal matters specific to property law.<br/>
 
-When you fill out our free quote calculator, you'll receive a comprehensive breakdown of fees with no hidden costs. This transparent approach allows you to budget confidently, knowing the full scope of what's included in our conveyancing services.
+<b>Transfer of Equity</b><br/>
+When transferring property ownership between parties, having the right legal expertise is essential.
+Whether adding or removing a name on the deed, Ely conveyancing solicitors provide accurate,
+efficient service to complete the transaction smoothly.<br/>
+
+<b>Property Lease Extensions</b><br/>
+Lease extensions are a specialised area requiring in-depth knowledge.Ely conveyancing solicitors offer assistance with negotiating and completing lease extensions, ensuring clients meet all legal obligations and receive a fair deal.
 
 
                                                     </p>
@@ -449,7 +569,8 @@ When you fill out our free quote calculator, you'll receive a comprehensive brea
                                     >
                                         <div className="accrodion-inner">
                                             <div className="accrodion-title">
-                                                <h4>How to Get Started – Try Our Free Quote Calculator</h4>
+                                                <h4>Choosing the Right Ely Conveyancing Solicitors
+                                                </h4>
                                             </div>
                                             <div
                                                 className="accrodion-content"
@@ -459,9 +580,22 @@ When you fill out our free quote calculator, you'll receive a comprehensive brea
                                             >
                                                 <div className="inner">
                                                     <p>
-                                                    Ready to take the next step? Getting a fixed fee quote from Cambridge Conveyancing is quick and easy. Simply fill in our online quote calculator, and within moments, you'll receive a clear estimate tailored to your specific needs. There's no obligation, and our team is here to answer any questions as you review the quote.
+                                                    Choosing the right solicitor can make a significant difference in the success of a property transaction.
+                                                    Ely conveyancing solicitors are known for their expertise, customer focus, and commitment to excellent service.
+                                                    With a transparent approach to pricing and a dedication to timely, effective solutions,
+                                                    local solicitors are an ideal choice for Ely residents.<br/>
 
-Our experienced conveyancing solicitors are committed to providing exceptional service, whether you're buying, selling, or remortgaging. We invite you to see how stress-free the process can be with Cambridge Conveyancing by your side.
+<b>Clear Communication and Client Support</b><br/>
+Reliable communication is essential for a smooth conveyancing experience.
+Ely solicitors maintain regular contact to provide updates, answer questions,
+and guide clients through the process.
+This client-focused approach makes property transactions stress-free and 
+allows clients to feel confident every step of the way.<br/>
+
+<b>Experienced Local Professionals</b><br/>
+Conveyancing requires a comprehensive understanding of local property laws, land regulations, and market trends. Ely conveyancing solicitors bring years of experience, making handling even the most complex transactions easy.
+
+
                                                     </p>
                                                 </div>
                                             </div>
@@ -473,7 +607,7 @@ Our experienced conveyancing solicitors are committed to providing exceptional s
                                     >
                                         <div className="accrodion-inner">
                                             <div className="accrodion-title">
-                                                <h4>Use Cambridge Conveyancing Solicitors Today
+                                                <h4>Get Your Free, Fixed-Fee Quote Today
                                                 </h4>
                                             </div>
                                             <div
@@ -484,9 +618,7 @@ Our experienced conveyancing solicitors are committed to providing exceptional s
                                             >
                                                 <div className="inner">
                                                     <p>
-                                                    If you're looking for reliable, professional conveyancing solicitors in Cambridge, fill out the form today. We're here to make your property transaction as smooth and straightforward as possible, and we look forward to helping you achieve your goals.
-
-Complete our free quote calculator now to receive your personalised quote. With Cambridge Conveyancing, your property journey starts with confidence and peace of mind.
+                                                    For a clear, accurate quote tailored to your property needs, fill in the free quote calculator on this page. This tool provides a quick, detailed cost estimate with no obligation. With fixed-fee pricing, transparent service, and experienced local support, Ely conveyancing solicitors are here to make your property journey smooth and successful. Start your quote today for expert conveyancing assistance designed to meet all your property needs in Ely and beyond.
                                                     </p>
                                                 </div>
                                             </div>
@@ -513,4 +645,4 @@ Complete our free quote calculator now to receive your personalised quote. With 
   );
 };
 
-export default CambridgeConveyancing;
+export default ElyConveyancing;
