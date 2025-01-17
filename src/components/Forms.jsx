@@ -5,6 +5,7 @@ import Drawer from "../Mobile/Drawer";
 import useToggle from "../components/useToggle.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from 'react-router-dom';
 
 function Forms() {
     const errorStyle = {
@@ -66,9 +67,9 @@ function Forms() {
       newErrors.message = "Message is required.";
     }
 
-    if (!formData.terms) {
-      newErrors.terms = "You must agree to the Terms & Conditions.";
-    }
+    // if (!formData.terms) {
+    //   newErrors.terms = "You must agree to the Terms & Conditions.";
+    // }
 
     setErrors(newErrors);
 
@@ -121,8 +122,8 @@ function Forms() {
                   <h5>Headquarters</h5>
                   <p>
                     <i className="fal fa-home"></i>
-                    744 New York Ave, Brooklyn, Kings,
-                    <br /> New York 10224
+                    744 New York Ave, Brooklyn, Kings,             
+                    <br /> Cambridge,  United Kingdom
                   </p>
                 </div>
                 <div className="single-info">
@@ -141,21 +142,30 @@ function Forms() {
                     info@cambridgeconveyancing.com
                   </p>
                 </div>
-                <div className="ab-social">
-                  <h5>Follow Us</h5>
-                  <a className="fac" href="#">
-                    <i className="fab fa-facebook-f"></i>
-                  </a>
-                  <a className="twi" href="#">
-                    <i className="fab fa-twitter"></i>
-                  </a>
-                  <a className="you" href="#">
-                    <i className="fab fa-youtube"></i>
-                  </a>
-                  <a className="lin" href="#">
-                    <i className="fab fa-linkedin-in"></i>
-                  </a>
-                </div>
+               <div className="social mt-30">
+                                                   <ul>
+                                                       <li>
+                                                           <Link to="/#">
+                                                               <i className="fab fa-facebook-f" />
+                                                           </Link>
+                                                       </li>
+                                                       <li>
+                                                           <Link to="/#">
+                                                               <i className="fab fa-twitter" />
+                                                           </Link>
+                                                       </li>
+                                                       <li>
+                                                           <Link to="/#">
+                                                               <i className="fab fa-pinterest-p" />
+                                                           </Link>
+                                                       </li>
+                                                       <li>
+                                                           <Link to="/#">
+                                                               <i className="fab fa-linkedin-in" />
+                                                           </Link>
+                                                       </li>
+                                                   </ul>
+                                               </div>
               </div>
             </div>
             <div className="col-md-8">
@@ -170,7 +180,7 @@ function Forms() {
                       value={formData.fName}
                       onChange={handleChange}
                     />
-                           {errors.fName && <span style={errorStyle}>{errors.fName}</span>}
+                    {errors.fName && <span style={errorStyle}>{errors.fName}</span>}
 
                   </div>
                   <div className="col-md-6">
@@ -231,14 +241,14 @@ function Forms() {
                         checked={formData.terms}
                         onChange={handleChange}
                       />
-                      <label htmlFor="terms-conditions">
+                      {/* <label htmlFor="terms-conditions">
                         I agree to the <a href="#">Terms & Conditions</a>
-                      </label>
+                      </label> */}
                     </div>
 {errors.terms && <span style={errorStyle}>{errors.terms}</span>}
                   </div>
                   <div className="col-md-6 text-right">
-                    <input type="submit" name="submit" value="Send Message" />
+                    <input type="submit" name="submit"  className="next-btn" value="Send Message" />
                   </div>
                 </form>
               </div>
@@ -247,7 +257,6 @@ function Forms() {
         </div>
       </section>
       <ToastContainer />
-
       <FooterHomeTwo />
     </>
   );

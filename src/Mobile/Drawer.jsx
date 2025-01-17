@@ -61,22 +61,22 @@ function Drawer({ drawer = false, action = () => {} }) {
                                                 }}
                                             >
                                                 <li>
-                                                    <Link to="/">Conveyancing Process</Link>
+                                                    <Link to="/conveyancing-process">Conveyancing Process</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/#">What a Conveyancing Solicitor Does</Link>
+                                                    <Link to="/what-a-conveyancing-solicitor-does">What a Conveyancing Solicitor Does</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/#">3 Stages of Conveyancing</Link>
+                                                    <Link to="/3-stages-of-conveyancing">3 Stages of Conveyancing</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/#">Guide to Remortgaging in Cambridge</Link>
+                                                    <Link to="/guide-to-remortgaging-in-cambridge">Guide to Remortgaging in Cambridge</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/#">How Long Does Conveyancing Take</Link>
+                                                    <Link to="/how-long-does-conveyancing-take">How Long Does Conveyancing Take</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/#">Conveyancing for First Time Buyers</Link>
+                                                    <Link to="/conveyancing-for-first-time-buyers">Conveyancing for First Time Buyers</Link>
                                                 </li>
                                             </ul>
                                         </li>
@@ -99,22 +99,22 @@ function Drawer({ drawer = false, action = () => {} }) {
                                                 }}
                                             >
                                                 <li>
-                                                    <Link to="/#">Cambridge Conveyancing</Link>
+                                                    <Link to="/conveyancing-in-cambridge">Cambridge Conveyancing</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/#">Ely Conveyancing</Link>
+                                                    <Link to="/conveyancing-in-ely">Ely Conveyancing</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/#">Peterborough Conveyancing</Link>
+                                                    <Link to="/peterborough-conveyancing">Peterborough Conveyancing</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/#">Chelmsford Conveyancing</Link>
+                                                    <Link to="/chelmsford-conveyancing">Chelmsford Conveyancing</Link>
                                                 </li>
                                             </ul>
                                         </li>
 
                                         <li id="contact" className="menu-item">
-                                            <Link to="/#">Contact</Link>
+                                            <Link to="/contact-us">Contact</Link>
                                         </li>
                                     </ul>
                                 </div>

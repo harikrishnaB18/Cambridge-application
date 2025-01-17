@@ -1,7 +1,6 @@
 import React, { useState, } from 'react';
 import { Link } from 'react-router-dom';
 import HeaderHomeTwo from '../components/HeaderHomeTwo';
-import localconveyancing from '../Images/local conveyancing solicitors.png';
 import '../Conveyancing Process/ConveyancingProcess.css';
 import FooterHomeTwo from '../components/FooterHomeTwo';
 import Drawer from '../Mobile/Drawer.jsx';
@@ -35,7 +34,7 @@ const StagesConveyancing = (style,className) => {
             </p>
           </div>
         </div>
-        <p className='pt-4 text-center  fw-medium section-1'>
+        <p className='pt-4 text-center  section-1'>
         Navigating the conveyancing process can feel overwhelming,
         whether you're buying or selling property in Cambridge or the surrounding villages.
         To help you feel confident in what to expect, let's break down the three main stages of conveyancing.

@@ -7,7 +7,7 @@ import FooterHomeTwo from '../components/FooterHomeTwo';
 import Drawer from '../Mobile/Drawer.jsx';
 import useToggle from '../components/useToggle.js';
 
-const ConveyancingTake = (style,className) => {
+const ConveyancingTake = (style) => {
     const [drawer, drawerAction] = useToggle(false);
   const [tab, setTab] = useState('setting');
   const [showQues, setQues] = useState(null);

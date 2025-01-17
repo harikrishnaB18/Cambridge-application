@@ -11,7 +11,7 @@ function FooterHomeTwo() {
                         <div className="col-lg-5 col-md-6">
                             <div className="footer-about-widget footer-about-widget-2">
                                 <div className="logo">
-                                    <Link to="/#">
+                                    <Link to="/">
                                         <img src={logo} alt="" />
                                     </Link>
                                 </div> 
