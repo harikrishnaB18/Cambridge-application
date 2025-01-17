@@ -30,7 +30,7 @@ const CambridgeConveyancing = (style,className) => {
             <h1>Cambridge Conveyancing Solicitors
             </h1>
             {/* <h3 className='pt-4'>Free Instant Online Quotes</h3> */}
-            <p className='pt-4 fs-5 lh-lg'>
+            <p className='pt-4 '>
             Offering expert, reliable services to make buying, selling, or remortgaging a property in Cambridge a smooth and stress-free experience.
             </p>
           </div>
@@ -57,7 +57,7 @@ const CambridgeConveyancing = (style,className) => {
                                     <div className="about-thumb mt-50">
                                     <iframe
     title="map"
-    src="https://maps.google.com/maps?width=720&height=600&hl=en&q=1%20Grafton%20Street,%20Dublin,%20Ireland&ie=UTF8&t=p&z=16&iwloc=B&output=embed"
+    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d77912.1961585366!2d0.22803185603616621!3d52.39297108902703!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1730212469693!5m2!1sen!2suk"
     width="100%"
     height="500"
     style={{ border: "0" }}
@@ -72,9 +72,9 @@ const CambridgeConveyancing = (style,className) => {
                                     <div className="appie-about-content"> 
                                             <h5 className="title">
                                             Local Experts for a Smooth Property Transaction</h5>
-                                            <p className=' justify-text fs-5'>
+                                            <p className=' justify-text '>
                                             Buying or selling a property is an exciting milestone, yet it often involves complex processes that can feel overwhelming. Cambridge Conveyancing is here to make the experience as straightforward and stress-free as possible, offering <b>trusted conveyancing services in Cambridge</b> to guide you through every essential step.</p>
-                                            <p className=' justify-text fs-5 mt-5'>Engaging a local conveyancing solicitor with deep expertise in the Cambridge property market is invaluable, whether you're navigating your first home purchase, expanding an investment portfolio, or preparing to sell a family home. With a dedicated, experienced team handling all legal aspects, each stage of the conveyancing journey is managed efficiently, ensuring that the process remains smooth and hassle-free from beginning to end.</p>
+                                            <p className=' justify-text  mt-5'>Engaging a local conveyancing solicitor with deep expertise in the Cambridge property market is invaluable, whether you're navigating your first home purchase, expanding an investment portfolio, or preparing to sell a family home. With a dedicated, experienced team handling all legal aspects, each stage of the conveyancing journey is managed efficiently, ensuring that the process remains smooth and hassle-free from beginning to end.</p>
                                             {/* <p className='mt-3  justify-text'>
                                             When it comes to choosing a conveyancing solicitor, getting a competitive fixed fee is crucial. Our quotes come from highly efficient Cambridge property lawyers who ensure a smooth, quick completion. All quotes cover the fixed conveyancing fee based on the information you provide. Keep in mind that the final amount may vary if additional details affect the original quote, and disbursements may change depending on your circumstances.
                                             </p> */}
@@ -97,10 +97,10 @@ const CambridgeConveyancing = (style,className) => {
         <div className='row '>
           <div className='ml-3 mr-3 pt-3 section-2'>
             <h2>Why Choose a Cambridge Conveyancing Solicitors?</h2>
-            <p className='pt-4 fs-5'>
+            <p className='pt-4 '>
             Cambridge Conveyancing offers trusted local expertise and is dedicated to client satisfaction, making it the go-to website for conveyancing services. With extensive knowledge of the Cambridge property market and years of experience in handling both residential and commercial transactions, the team provides a friendly yet professional service that simplifies even the most complex conveyancing processes.
             </p>
-            <p className='pt-4 fs-5'>
+            <p className='pt-4 '>
             Each solicitor is well-acquainted with local areas across Cambridge and surrounding towns, ensuring timely and efficient service tailored to the unique needs of each neighbourhood. From buying in Cherry Hinton to moving to Trumpington or selling in Milton, Cambridge Conveyancing is here to support every step of the way.
             </p>
           </div>
@@ -108,7 +108,7 @@ const CambridgeConveyancing = (style,className) => {
       </div>
       <section className="appie-features-area pt-10" id="features">
       <h2 className='mt-5 text-center'>What Services Do Cambridge Conveyancing Solicitors Offer?</h2>
-      <p className='mt-3 fs-5 text-center'>Cambridge conveyancing solicitors provide a comprehensive range of services to cover all aspects of property transactions:</p>
+      <p className='mt-3  text-center'>Cambridge conveyancing solicitors provide a comprehensive range of services to cover all aspects of property transactions:</p>
         <div className="container mt-5 pb-2">
           <div className="row align-items-center pb-10">
             <div className="col-lg-3">
@@ -203,7 +203,7 @@ const CambridgeConveyancing = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Purchasing a home is a major step, and conveyancing solicitors are available to handle all the legal details involved. From title checks to communicating with mortgage lenders, these services aim to make the process hassle-free, allowing buyers to focus on the excitement of their new home.
                                             </p>
                                             {/* <Link className="main-btn" to="/about-us">
@@ -231,7 +231,7 @@ const CambridgeConveyancing = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Selling a property involves various legal requirements, and experienced conveyancing professionals can guide the process with confidence. They take care of essential tasks, including liaising with the buyer's solicitor, managing contracts, and resolving any queries that may arise.
                                             </p>
                                             {/* <Link className="main-btn" to="/about-us">
@@ -258,7 +258,7 @@ const CambridgeConveyancing = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             For those looking to refinance a property, conveyancing solicitors simplify the remortgaging process by handling all necessary legal steps—from title deeds to coordinating with mortgage providers—saving time and reducing stress.
                                             </p>
                                             {/* <Link className="main-btn" to="/about-us">
@@ -285,7 +285,7 @@ const CambridgeConveyancing = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             When property ownership needs to be transferred between parties, conveyancing solicitors ensure the transaction is handled smoothly, with all legal processes completed accurately and promptly.
                                             </p>
                                             {/* <Link className="main-btn" to="/about-us">
@@ -298,7 +298,7 @@ const CambridgeConveyancing = (style,className) => {
             <div className="col-lg-12">
               <div className="appie-features-content wow animated fadeInRight" data-wow-duration="2000ms" data-wow-delay="600ms">
                 <span>Explanation</span>
-                <p className='fs-5'>Whether purchasing a shared ownership property or navigating a leasehold purchase, conveyancing experts can assist with these more complex transactions. They provide clear, straightforward guidance to help clients make informed decisions throughout the process.</p>
+                <p className=''>Whether purchasing a shared ownership property or navigating a leasehold purchase, conveyancing experts can assist with these more complex transactions. They provide clear, straightforward guidance to help clients make informed decisions throughout the process.</p>
               </div>
             </div>
           </div>

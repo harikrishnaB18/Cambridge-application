@@ -31,11 +31,11 @@ const Remortgaging = (style,className) => {
             </h1>
             <h3 className='pt-4'>Everything You Need to Know About Remortgaging
             </h3>
-            <p className='pt-4 fs-5 lh-lg'>
+            <p className='pt-4 '>
             Read Our Guide & Get a Quote for Your Remotgaging Conveyancing Needs</p>
           </div>
         </div>
-        <p className='pt-4 text-center fs-5 fw-medium section-1'>
+        <p className='pt-4 text-center  fw-medium section-1'>
         Remortgaging can be a powerful tool for homeowners looking to save on monthly payments, access extra funds, or adjust the terms of their mortgage. If you're considering a remortgage in Cambridge, this guide will take you through the essential steps, benefits, and considerations to help you make an informed decision.
         </p>
         {/* <p className='pt-2 fs-5'>Whether you’re new to the property market or a seasoned buyer or seller,
@@ -49,10 +49,10 @@ const Remortgaging = (style,className) => {
           <div className='ml-3 mr-3 pt-3 section-2'>
             <h2>What is Remortgaging?
             </h2>
-            <p className='pt-4 fs-5'>
+            <p className='pt-4 '>
             Remortgaging is switching your existing mortgage to a new one with your current lender or a new provider. This differs from moving home, as it involves keeping the same property but altering your mortgage agreement. In Cambridge, remortgaging has become popular among homeowners looking to take advantage of better interest rates or unlock funds for renovations and other needs.
 </p>
-            <p className='pt-5 fs-5'>
+            <p className='pt-5 '>
            <b> Why Do People Choose to Remortgage?</b><br/><br/>
             There are many reasons Cambridge homeowners decide to remortgage, including reducing monthly payments, consolidating debt, or funding home improvements. By understanding these motivations, you can determine if remortgaging is the right step for you.
             </p>
@@ -62,7 +62,7 @@ const Remortgaging = (style,className) => {
       <section className="appie-features-area pt-10 obligation-conveyance" id="features">
       <h2 className='mt-5 text-center'>Benefits of Remortgaging in Cambridge
       </h2>
-      <p className='mt-3 fs-5 text-center'>Remortgaging can bring significant benefits, mainly when managed through experienced local conveyancing solicitors who know the Cambridge property market well. Here's how you could benefit from remortgaging:
+      <p className='mt-3  text-center'>Remortgaging can bring significant benefits, mainly when managed through experienced local conveyancing solicitors who know the Cambridge property market well. Here's how you could benefit from remortgaging:
 </p>
         <div className="container mt-5 pb-2">
           <div className="row align-items-center pb-10">
@@ -155,7 +155,7 @@ const Remortgaging = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             If interest rates have dropped since you took out your current mortgage, remortgage could mean lower monthly payments, helping you save on your overall cost.
                                             </p>
                                             {/* <Link className="main-btn" to="/about-us">
@@ -183,7 +183,7 @@ const Remortgaging = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Many Cambridge homeowners remortgage to release funds from the equity in their home, which can then be used for major expenses like renovations, education costs, or debt consolidation.
                                             </p>
                                             {/* <Link className="main-btn" to="/about-us">
@@ -210,7 +210,7 @@ const Remortgaging = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Remortgaging can allow you to shorten your loan term, which may increase your monthly payments slightly but reduce the amount of interest you pay over the life of the loan.
                                             </p>
                                             {/* <Link className="main-btn" to="/about-us">
@@ -237,7 +237,7 @@ const Remortgaging = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Switching to a fixed-rate mortgage through remortgaging can offer predictability in monthly payments, giving you peace of mind that your payments won't increase due to rising interest rates.
                                             </p>
                                             {/* <Link className="main-btn" to="/about-us">
@@ -254,7 +254,7 @@ const Remortgaging = (style,className) => {
       <section className="appie-features-area pt-10" id="features">
       <h2 className='mt-5 text-center'>Key Steps to Remortgaging
       </h2>
-      <p className='mt-3 fs-5 text-center'>Understanding the remortgaging process is essential to making the best decisions. Here's a step-by-step guide to help you navigate the process smoothly:
+      <p className='mt-3  text-center'>Understanding the remortgaging process is essential to making the best decisions. Here's a step-by-step guide to help you navigate the process smoothly:
 </p>
         <div className="container mt-5 pb-2">
           <div className="row align-items-center pb-10">
@@ -347,7 +347,7 @@ const Remortgaging = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Before starting the remortgage process, consider what you hope to achieve. Are you looking to save money, access equity, or shorten your mortgage term? Knowing your goals will help guide your decision.
 </p>
                                             {/* <Link className="main-btn" to="/about-us">
@@ -375,7 +375,7 @@ const Remortgaging = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Review your existing mortgage agreement to understand if there are any early repayment fees or other charges. This will help you calculate the true cost of remortgaging.
 </p>
                                             {/* <Link className="main-btn" to="/about-us">
@@ -402,7 +402,7 @@ const Remortgaging = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Your property's current value will influence the terms of your new mortgage. A professional valuation can help you better understand how much equity you have.
 </p>
                                             {/* <Link className="main-btn" to="/about-us">
@@ -429,7 +429,7 @@ const Remortgaging = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             It's essential to compare various mortgage options, considering interest rates, repayment terms, and other conditions. Cambridge Conveyancing can help you secure a remortgage quote from trusted lenders for the best rates.</p>
                                             {/* <Link className="main-btn" to="/about-us">
                                                 Learn More
@@ -445,7 +445,7 @@ const Remortgaging = (style,className) => {
       <section className="appie-features-area pt-10 obligation-conveyance" id="features">
       <h2 className='mt-5 text-center'>How a Cambridge Conveyancing Solicitor Can Help
       </h2>
-      <p className='mt-3 fs-5 text-center'>Working with a local Cambridge conveyancing solicitor can make the remortgage process smoother and faster. Here's why:
+      <p className='mt-3  text-center'>Working with a local Cambridge conveyancing solicitor can make the remortgage process smoother and faster. Here's why:
 </p>
         <div className="container mt-5 pb-2">
           <div className="row align-items-center pb-10">
@@ -538,7 +538,7 @@ const Remortgaging = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             A conveyancing solicitor in Cambridge understands the local property market, making finding the best deals and options tailored to your needs easier.</p>
                                             {/* <Link className="main-btn" to="/about-us">
                                                 Learn More
@@ -565,7 +565,7 @@ const Remortgaging = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Experienced solicitors have a tried-and-tested process for remortgaging, ensuring that all steps are completed efficiently with minimal hassle for you.</p>
                                             {/* <Link className="main-btn" to="/about-us">
                                                 Learn More
@@ -591,7 +591,7 @@ const Remortgaging = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             From paperwork to liaising with lenders, a conveyancing solicitor will handle all legal aspects of your remortgage so you can focus on the benefits of your new mortgage.</p>
                                             {/* <Link className="main-btn" to="/about-us">
                                                 Learn More
@@ -623,15 +623,15 @@ const Remortgaging = (style,className) => {
                                     <div className="appie-about-content"> 
                                             <h5 className="title">
                                             Remortgage Costs to Consider</h5>
-                                            <p className=' justify-text fs-5 '>
+                                            <p className=' justify-text  '>
                                             While remortgaging can be financially beneficial, it's essential to consider potential costs. Some everyday expenses include:
-<br/><br/><p className='fw-semibold fs-5'>Early Repayment Fees</p>
+<br/><br/><p className='fw-semibold '>Early Repayment Fees</p>
 If you're remortgaging before your current mortgage term ends, you may face early repayment charges. Be sure to include these in your calculations.
 <br/><br/>
-<p className='fw-semibold fs-5'>Valuation and Survey Fees
+<p className='fw-semibold '>Valuation and Survey Fees
 </p>
 Some lenders may require a new valuation of your property, which could come with a fee. In some cases, the new lender may cover this cost.
-<p className='fw-semibold fs-5'>Legal Fees
+<p className='fw-semibold '>Legal Fees
 </p>
 Remortgaging involves legal work, so you'll need a conveyancing solicitor. Many conveyancers offer fixed fees, so you know what to expect upfront.
 

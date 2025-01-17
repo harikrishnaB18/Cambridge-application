@@ -31,27 +31,27 @@ const FirstTimeBuyers = (style,className) => {
             </h1>
             <h3 className='pt-4'>No-Obligation Online Quotes
             </h3>
-            <p className='pt-4 fs-5 lh-lg'>
+            <p className='pt-4 '>
             Discover a straightforward, fixed-fee conveyancing service for first-time buyers in Cambridge, designed to make your home purchase smooth, transparent, and stress-free</p>
             </div>
         </div>
-        <p className='pt-4 text-center fs-5 fw-medium section-1 '>
+        <p className='pt-4 text-center  section-1 '>
         Buying your first home is exciting but overwhelming, especially with all the paperwork. At Cambridge Conveyancing, we make the conveyancing process as simple as possible, offering fixed-fee quotes and expert guidance to help you at every stage. Our local knowledge of the Cambridge area ensures that you're working with experts who understand the regional property market, making your first home purchase a smoother experience.
 </p>
 <div className='mb-2'>
 <h3 className='pt-4 mb-3'>What is Conveyancing and Why is it Important?
 </h3>
-        <p className='pt-2 fs-5'>Conveyancing is the legal process that transfers property ownership from the seller to the buyer. For first-time buyers, it's essential to have a trusted conveyancer who can handle all the paperwork, searches, and legal checks on your behalf. With a local Cambridge conveyancer, you get the added benefit of experts familiar with the area, helping you avoid delays and potential complications.
+        <p className='pt-2 '>Conveyancing is the legal process that transfers property ownership from the seller to the buyer. For first-time buyers, it's essential to have a trusted conveyancer who can handle all the paperwork, searches, and legal checks on your behalf. With a local Cambridge conveyancer, you get the added benefit of experts familiar with the area, helping you avoid delays and potential complications.
         </p>
         </div>
         <div className='mb-5'>
         <h3 className='pt-4 mb-3 '>Why First-Time Buyers Need Conveyancing
 </h3>
-        <p className='pt-2 fs-5'>
+        <p className='pt-2 '>
             <b>Handling Legal Processes
             </b><br/><br/>
             As a first-time buyer, you might be unfamiliar with the legal steps of buying a home. A conveyancer ensures everything is handled correctly, from arranging property searches to drafting contracts and transferring funds. This helps avoid undisclosed property restrictions or disputes that could affect your property ownership.</p>
-            <p className='pt-2 fs-5'>
+            <p className='pt-2 '>
             <b>Ensuring Compliance and Security
             </b><br/><br/>
             Conveyancers also perform essential checks to confirm that the property complies with local regulations and has no legal restrictions. At Cambridge Conveyancing, our solicitors handle all compliance checks efficiently, providing peace of mind as you embark on your homeownership journey.
@@ -80,7 +80,7 @@ const FirstTimeBuyers = (style,className) => {
       <section className="appie-features-area pt-10 obligation-conveyance" id="features">       
   <h2 className='mt-5 text-center'>Steps in the Conveyancing Process for First-Time Buyers
   </h2>       
-  <p className='mt-3 fs-5 text-center'>Conveyancing may seem complex, but it can be broken down into key steps. Here's what you can expect when working with Cambridge Conveyancing:
+  <p className='mt-3  text-center'>Conveyancing may seem complex, but it can be broken down into key steps. Here's what you can expect when working with Cambridge Conveyancing:
 </p>         
   <div className="container mt-5 pb-2">           
     <div className="row align-items-center pb-10">             
@@ -112,7 +112,7 @@ const FirstTimeBuyers = (style,className) => {
               <div className="col-lg-12">                                         
                 <div className="appie-features-content wow animated fadeInRight" data-wow-duration="2000ms" data-wow-delay="600ms">                                             
                   <span>Explanation</span>                                             
-                  <p className='fs-5'>Your conveyancing journey begins when you instruct a conveyancer and receive a detailed quote. At Cambridge Conveyancing, we provide an easy-to-understand fixed-fee quote so you know exactly what to expect. Just fill out our online form to get your quote quickly.</p>                                         
+                  <p className=''>Your conveyancing journey begins when you instruct a conveyancer and receive a detailed quote. At Cambridge Conveyancing, we provide an easy-to-understand fixed-fee quote so you know exactly what to expect. Just fill out our online form to get your quote quickly.</p>                                         
                 </div>                                     
               </div>                                 
             </div>                 
@@ -121,7 +121,7 @@ const FirstTimeBuyers = (style,className) => {
             <div className="col-lg-12">
               <div className="appie-features-content wow animated fadeInRight" data-wow-duration="2000ms" data-wow-delay="600ms">
                 <span>Explanation</span>
-                <p className='fs-5'>Once instructed, we'll conduct various searches on the property, including local authority searches, environmental searches, and drainage checks. These searches help uncover any issues that may affect the property value or your enjoyment of it in the future.</p>
+                <p className=''>Once instructed, we'll conduct various searches on the property, including local authority searches, environmental searches, and drainage checks. These searches help uncover any issues that may affect the property value or your enjoyment of it in the future.</p>
               </div>
             </div>
           </div>
@@ -129,7 +129,7 @@ const FirstTimeBuyers = (style,className) => {
             <div className="col-lg-12">
               <div className="appie-features-content wow animated fadeInRight" data-wow-duration="2000ms" data-wow-delay="600ms">
                 <span>Explanation</span>
-                <p className='fs-5'>Your conveyancer will then review the draft contract from the seller and ensure it meets your requirements. This includes negotiating contract terms if necessary, checking the property boundaries, and ensuring there are no hidden issues that could impact your ownership.</p>
+                <p className=''>Your conveyancer will then review the draft contract from the seller and ensure it meets your requirements. This includes negotiating contract terms if necessary, checking the property boundaries, and ensuring there are no hidden issues that could impact your ownership.</p>
               </div>
             </div>
           </div>
@@ -137,7 +137,7 @@ const FirstTimeBuyers = (style,className) => {
             <div className="col-lg-12">
               <div className="appie-features-content wow animated fadeInRight" data-wow-duration="2000ms" data-wow-delay="600ms">
                 <span>Explanation</span>
-                <p className='fs-5'>Once you and the seller are satisfied with the contract, you'll exchange contracts, legally committing both parties to the sale. A deposit is usually paid at this stage, and a completion date is agreed upon.</p>
+                <p className=''>Once you and the seller are satisfied with the contract, you'll exchange contracts, legally committing both parties to the sale. A deposit is usually paid at this stage, and a completion date is agreed upon.</p>
               </div>
             </div>
           </div>
@@ -145,7 +145,7 @@ const FirstTimeBuyers = (style,className) => {
             <div className="col-lg-12">
               <div className="appie-features-content wow animated fadeInRight" data-wow-duration="2000ms" data-wow-delay="600ms">
                 <span>Explanation</span>
-                <p className='fs-5'>On the completion date, the remaining balance is transferred to the seller, and you officially become the property owner. Cambridge Conveyancing will handle this process seamlessly, ensuring everything is in place for a smooth transition.</p>
+                <p className=''>On the completion date, the remaining balance is transferred to the seller, and you officially become the property owner. Cambridge Conveyancing will handle this process seamlessly, ensuring everything is in place for a smooth transition.</p>
               </div>
             </div>
           </div>

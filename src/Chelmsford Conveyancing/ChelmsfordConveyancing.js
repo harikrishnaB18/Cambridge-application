@@ -29,7 +29,7 @@ const ChelmsfordConveyancing = (style,className) => {
             <h1>Chelmsford Conveyancing Solicitors
             </h1>
             {/* <h3 className='pt-4'>Free Instant Online Quotes</h3> */}
-            <p className='pt-4 fs-5 lh-lg'>
+            <p className='pt-4 '>
             Providing expert, dependable services to ensure buying, selling, or remortgaging a property in Chelmsford is straightforward and hassle-free.            </p>
           </div>
         </div>
@@ -46,21 +46,21 @@ const ChelmsfordConveyancing = (style,className) => {
           <div className='ml-3 mr-3 pt-5 section-2'>
             <h2>Chelmsford Conveyancing Solicitors – Expert Legal Guidance
             </h2>
-            <p className='pt-4 fs-5'>
+            <p className='pt-4 '>
             Securing trusted, efficient conveyancing solicitors in Chelmsford is essential for anyone looking to buy, sell, or remortgage property. With in-depth knowledge of the local market, Chelmsford conveyancing solicitors are well-equipped to handle each unique aspect of a property transaction, ensuring every step is clear and straightforward. Whether in the heart of Chelmsford or surrounding areas like Springfield, Great Baddow, or Writtle, experienced solicitors are ready to guide clients through every stage of the process.</p>
         
           </div>
           <div className='ml-3 mr-3 pt-5 section-2'>
             <h2>Comprehensive Conveyancing Services in Chelmsford
             </h2>
-            <p className='pt-4 fs-5'>
+            <p className='pt-4 '>
             Conveyancing services cover many property needs, from helping first-time buyers secure their dream home to supporting seasoned investors managing multiple properties. In Chelmsford, conveyancing solicitors are highly experienced in all property transactions and are prepared to assist with each client’s unique requirements. For those needing guidance through the conveyancing journey in Chelmsford and neighbouring areas such as Galleywood, Broomfield, and Moulsham, expert solicitors are on hand to simplify the process.            </p>
         
           </div>
           <div className='ml-3 mr-3 pt-5 section-2'>
             <h2>Why Choose Chelmsford Conveyancing Solicitors?
             </h2>
-            <p className='pt-4 fs-5'>
+            <p className='pt-4 '>
             Chelmsford’s property market offers unique opportunities and challenges. Working with local conveyancing solicitors provides clients valuable insight into these dynamics, ensuring transactions proceed smoothly. Chelmsford conveyancing solicitors deeply understand the area, including property types in historic Old Moulsham, new developments in Beaulieu Park, and family-friendly areas like Broomfield. This local knowledge can make all the difference, offering clients peace of mind throughout the process.
             </p>
           </div>
@@ -68,7 +68,7 @@ const ChelmsfordConveyancing = (style,className) => {
       </div>
       <section className="appie-features-area pt-10" id="features">
       <h2 className='mt-5 text-center'>The Conveyancing Process in Chelmsford</h2>
-      <p className='mt-3 fs-5 text-center'>Understanding the conveyancing process helps clients feel more confident as they move through each step.<br/>Chelmsford's conveyancing process is tailored to provide clarity, security, and efficiency from initial instructions to final completion.<br/>Here’s what the typical conveyancing journey looks like:</p>
+      <p className='mt-3  text-center'>Understanding the conveyancing process helps clients feel more confident as they move through each step.<br/>Chelmsford's conveyancing process is tailored to provide clarity, security, and efficiency from initial instructions to final completion.<br/>Here’s what the typical conveyancing journey looks like:</p>
         <div className="container mt-5 pb-2">
           <div className="row align-items-center pb-10">
             <div className="col-lg-3">
@@ -163,7 +163,7 @@ const ChelmsfordConveyancing = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             The conveyancing process begins with the client's instructions, outlining specific transaction requirements. For buyers and sellers in areas such as Widford and Tile Kiln, this initial stage includes gathering identification and property details and addressing any specific needs or conditions regarding the transaction.                                            </p>
                                             {/* <Link className="main-btn" to="/about-us">
                                                 Learn More
@@ -190,7 +190,7 @@ const ChelmsfordConveyancing = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             To ensure no hidden issues with the property, conveyancing solicitors in Chelmsford conduct a range of searches. These searches cover local authority details, environmental checks, and flood risks, which are especially important for areas near the River Chelmer. Additionally, contracts are drafted, covering each legal aspect of the transaction.
                                             </p>
                                             {/* <Link className="main-btn" to="/about-us">
@@ -217,7 +217,7 @@ const ChelmsfordConveyancing = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             After the searches and contract drafting are completed, conveyancing solicitors will carefully review the findings with clients. In the case of buyers, this stage may involve coordinating with mortgage lenders, making sure all financial aspects are aligned and fully understood before moving forward.                                           
                                              </p>
                                                                                         {/* <Link className="main-btn" to="/about-us">
@@ -244,7 +244,7 @@ const ChelmsfordConveyancing = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Once both parties are satisfied and all documents are signed, the exchange of contracts occurs, legally binding the sale. Completion follows soon after, finalising the transfer of property ownership. For Chelmsford clients, this stage ensures that the conveyancing process has been handled with expertise and attention to detail.
                                              </p>
                                             {/* <Link className="main-btn" to="/about-us">

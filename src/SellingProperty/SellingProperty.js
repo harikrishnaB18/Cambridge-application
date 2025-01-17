@@ -25,9 +25,13 @@ import HeaderHomeTwo from '../components/HeaderHomeTwo';
 import FooterHomeTwo from '../components/FooterHomeTwo';
 import Drawer from '../Mobile/Drawer.jsx';
 import useToggle from '../components/useToggle.js';
+import ContactCardSelling from "../PropertyManagementForm/ContactCardSelling.js";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SellingProperty = () => {
   const [drawer, drawerAction] = useToggle(false);
+  const [showPopup, setShowPopup] = useState(false);
   const [accordion1Data, setAccordion1Data] = useState({
     price: '',
     leasehold: '',
@@ -46,12 +50,46 @@ const SellingProperty = () => {
   const [open, setOpen] = useState(false);
   const [pdfUrl, setPdfUrl] = useState('');
 
-  const handleAccordion1Change = (field) => (event) => {
-    setAccordion1Data({
-      ...accordion1Data,
-      [field]: event.target.value,
-    });
-    setValidationErrors({ ...validationErrors, [field]: false });
+  const handleAccordion1Change = (key, fieldName) => (event) => {
+    const value = event.target.value;
+
+    setAccordion1Data((prevData) => ({
+      ...prevData,
+      [key]: value,
+    }));
+
+    if (fieldName === "price") {
+      const price = parseFloat(value);
+
+      // Validation logic
+      if (isNaN(price) || price <= 0) {
+        setValidationErrors((prevErrors) => ({
+          ...prevErrors,
+          [key]: true,
+        }));
+      } else {
+        setValidationErrors((prevErrors) => ({
+          ...prevErrors,
+          [key]: false,
+        }));
+      }
+
+      // Check if price exceeds threshold
+      if (price > 2000001) {
+        setShowPopup(true);
+      } else {
+        setShowPopup(false);
+      }
+    }
+  };
+
+  const handleFormSubmit = (formData) => {
+    console.log("Contact form submitted:", formData);
+    setShowPopup(false); // Close popup after submission
+  };
+
+  const closePopup = () => {
+    setShowPopup(false); // Close popup when close button is clicked
   };
 
   const handleSubmitClick = () => {
@@ -170,6 +208,21 @@ const SellingProperty = () => {
     URL.revokeObjectURL(pdfUrl);
     setPdfUrl('');
   };
+
+  const handleSubmit = (formData) => {
+    console.log("Form submitted:", formData);
+    toast.success("Data successfully submitted!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "light",
+    });
+    setShowPopup(false);
+  };
+
   return (
     <>
       <Drawer drawer={drawer} action={drawerAction.toggle} />
@@ -207,7 +260,7 @@ const SellingProperty = () => {
                     value={accordion1Data.price}
                     onChange={handleAccordion1Change('price','price')}
                     error={validationErrors.price}
-                    helperText={validationErrors.price ? 'This field is required' : ''}
+                    helperText={validationErrors.price ? 'This field is required & Only positive numbers are allowed' : ''}
                     sx={{
                       '& .MuiOutlinedInput-root': {
                         '&.Mui-error': { borderColor: 'red' },
@@ -400,7 +453,38 @@ const SellingProperty = () => {
 </Box>
 
     </Box>
-              
+    {showPopup && (
+        <div
+          style={{
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 1000,
+            background: "#fff",
+            padding: "20px",
+            boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
+            borderRadius: "8px",
+          }}
+        >
+          <ContactCardSelling onSubmit={handleSubmit} closePopup={closePopup} />
+        </div>
+      )}
+
+      {/* Overlay for dimming background */}
+      {showPopup && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: "rgba(0, 0, 0, 0.5)",
+            zIndex: 999,
+          }}
+        ></div>
+      )} 
     </AccordionDetails>
     </Accordion>
 
@@ -416,6 +500,7 @@ const SellingProperty = () => {
           </Snackbar>
         </Box>
       </div>
+      <ToastContainer />
       <FooterHomeTwo />
     </>
   );

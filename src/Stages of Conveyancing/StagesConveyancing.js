@@ -30,12 +30,12 @@ const StagesConveyancing = (style,className) => {
           <div className='text-center pt-5 '>
             <h1>3 Stages of Conveyancing</h1>
             <h3 className='pt-4'>Get Expert Help at Affordable Rates</h3>
-            <p className='pt-4 fs-5 lh-lg'>
+            <p className='pt-4 '>
             Understanding the 3 Stages of Conveyancing for Cambridge Property Buyers and Sellers
             </p>
           </div>
         </div>
-        <p className='pt-4 text-center fs-5 fw-medium section-1'>
+        <p className='pt-4 text-center  fw-medium section-1'>
         Navigating the conveyancing process can feel overwhelming,
         whether you're buying or selling property in Cambridge or the surrounding villages.
         To help you feel confident in what to expect, let's break down the three main stages of conveyancing.
@@ -45,7 +45,7 @@ const StagesConveyancing = (style,className) => {
       </div>
       <section className="appie-features-area pt-10 obligation-conveyance" id="features">
       <h2 className='mt-5 text-center'>Stage 1: Pre-Contract Phase</h2>
-      <p className='mt-3 fs-5 text-center'>In the pre-contract phase, the groundwork is laid to ensure both parties are ready for the sale. This stage covers essential tasks like property searches, document reviews, and draft contracts, all necessary to give buyers peace of mind and sellers a clear path to sale.</p>
+      <p className='mt-3  text-center'>In the pre-contract phase, the groundwork is laid to ensure both parties are ready for the sale. This stage covers essential tasks like property searches, document reviews, and draft contracts, all necessary to give buyers peace of mind and sellers a clear path to sale.</p>
         <div className="container mt-5 pb-2">
           <div className="row align-items-center pb-10">
             <div className="col-lg-3 mt-5">
@@ -137,7 +137,7 @@ const StagesConveyancing = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             During this stage, a solicitor conducts various searches to uncover essential information about the property and surrounding area.Typical searches include:
                                             Local authority search: This examines planning permissions, building control records, and any potential issues affecting the property's value.<br/>
 
@@ -174,7 +174,7 @@ These searches help prevent unwanted surprises after purchase. With their local 
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             The solicitor prepares a draft contract, and the seller's solicitor will review this. The contract outlines the property price, boundaries, and any fixtures and fittings included. Both parties will review this carefully to reflect the agreed terms accurately. Any discrepancies or questions are resolved in this phase.
                                             </p>
                                             {/* <Link className="main-btn" to="/about-us">
@@ -201,7 +201,7 @@ These searches help prevent unwanted surprises after purchase. With their local 
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             The solicitor will also liaise with the mortgage lender for buyers.
                                             They ensure all loan conditions are clear and manageable and work to protect the buyer's legal rights.
                                             They'll also arrange to transfer funds for the purchase once contracts are exchanged.
@@ -249,7 +249,7 @@ These searches help prevent unwanted surprises after purchase. With their local 
       </section>
       <section className="appie-features-area pt-10" id="features">
       <h2 className='mt-5 text-center'>Stage 2: Exchange of Contracts</h2>
-      <p className='mt-3 fs-5 text-center'>The exchange of contracts is a significant milestone in conveyancing, as this is when the sale becomes legally binding. After this point, neither the buyer nor the seller can withdraw from the sale without a financial penalty.</p>
+      <p className='mt-3  text-center'>The exchange of contracts is a significant milestone in conveyancing, as this is when the sale becomes legally binding. After this point, neither the buyer nor the seller can withdraw from the sale without a financial penalty.</p>
         <div className="container mt-5 pb-2">
           <div className="row align-items-center pb-10">
             <div className="col-lg-3 mt-5">
@@ -341,7 +341,7 @@ These searches help prevent unwanted surprises after purchase. With their local 
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Once all contract details are agreed upon, the buyer and the seller sign the final contract.
                                             Your solicitor will arrange for you to review the document and explain any terms or clauses.
                                             Once signed,the solicitor will send the contract to the other party's solicitor, completing the exchange.
@@ -372,7 +372,7 @@ These searches help prevent unwanted surprises after purchase. With their local 
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             The buyer's solicitor will transfer the deposit, usually around 10% of the purchase price, to the seller's solicitor at this stage. This deposit serves as a commitment to follow through with the sale. Cambridge Conveyancing Solicitors can help streamline this process with local knowledge of banking times, ensuring funds transfer smoothly.</p>
                                             {/* <Link className="main-btn" to="/about-us">
                                                 Learn More
@@ -398,7 +398,7 @@ These searches help prevent unwanted surprises after purchase. With their local 
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Both parties agree on a completion date when the contracts are exchanged.
                                             This is when the remaining funds are paid, and the buyer officially takes ownership of the property.
                                             The completion date typically occurs 7-28 days after the contract exchange,
@@ -447,7 +447,7 @@ These searches help prevent unwanted surprises after purchase. With their local 
       </section>
       <section className="appie-features-area pt-10 obligation-conveyance" id="features">
       <h2 className='mt-5 text-center'>Stage 3: Completion and Post-Completion</h2>
-      <p className='mt-3 fs-5 text-center'>The final conveyancing stage is the completion phase, where ownership is officially transferred from the seller to the buyer. After this stage, the buyer can move into the property, and the conveyancing process concludes with final checks.</p>
+      <p className='mt-3  text-center'>The final conveyancing stage is the completion phase, where ownership is officially transferred from the seller to the buyer. After this stage, the buyer can move into the property, and the conveyancing process concludes with final checks.</p>
         <div className="container mt-5 pb-2">
           <div className="row align-items-center pb-10">
             <div className="col-lg-3 mt-5">
@@ -539,7 +539,7 @@ These searches help prevent unwanted surprises after purchase. With their local 
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             On the completion date, the buyer's solicitor will transfer the remaining balance of the property price to the seller's solicitor.
                                             If the buyer's lender has a mortgage, the funds will be released to the buyer's solicitor to make this payment possible.
                                             Once the funds are received, the seller hands over the keys, and the buyer takes possession.
@@ -570,7 +570,7 @@ These searches help prevent unwanted surprises after purchase. With their local 
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Once the buyer has taken possession, the solicitor registers the new owner with the Land Registry. This involves submitting the title deed and paying any due Stamp Duty Land Tax (SDLT). The buyer's solicitor will also send the buyer a copy of the registered title for their records, confirming their legal ownership.
                                             </p>
                                             {/* <Link className="main-btn" to="/about-us">
@@ -597,7 +597,7 @@ These searches help prevent unwanted surprises after purchase. With their local 
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             The solicitor will conduct a final check to confirm that all legal requirements are met and documentation is complete. This step finalises the conveyancing process, allowing the buyer to enjoy their new property with peace of mind.
                                             </p>
                                             {/* <Link className="main-btn" to="/about-us">

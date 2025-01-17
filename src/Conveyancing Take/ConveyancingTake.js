@@ -31,11 +31,11 @@ const ConveyancingTake = (style,className) => {
             </h1>
             <h3 className='pt-4'>Free Instant Online Quotes
             </h3>
-            <p className='pt-4 fs-5 lh-lg'>
+            <p className='pt-4 '>
             Expert, transparent conveyancing services with fixed fees, guiding you smoothly through each step of buying, selling, or remortgaging your property.</p>
           </div>
         </div>
-        <p className='pt-4 text-center fs-5 fw-medium section-1'>
+        <p className='pt-4 text-center   section-1'>
         When buying or selling a property in Cambridge or across the UK, understanding the conveyancing process and the time involved can make the entire experience much smoother. Conveyancing can take anywhere from 8 to 12 weeks, depending on factors such as the property type, the complexity of the transaction, and the chain involved. Here, we'll break down the typical conveyancing timeline to give you a clearer idea of what to expect—and how Cambridge Conveyancing can support you every step.
         </p>
         {/* <p className='pt-2 fs-5'>Whether you’re new to the property market or a seasoned buyer or seller,
@@ -63,7 +63,7 @@ const ConveyancingTake = (style,className) => {
       </div> */}
       <section className="appie-features-area pt-10 obligation-conveyance" id="features">       
   <h2 className='mt-5 text-center'>Understanding the Conveyancing Process Timeline</h2>       
-  <p className='mt-3 fs-5 text-center'>Many people aren't entirely sure what the conveyancing process entails. Let's break it down step by step so you know what to expect:</p>         
+  <p className='mt-3  text-center'>Many people aren't entirely sure what the conveyancing process entails. Let's break it down step by step so you know what to expect:</p>         
   <div className="container mt-5 pb-2">           
     <div className="row align-items-center pb-10">             
       <div className="col-lg-3 mt-5">               
@@ -94,7 +94,7 @@ const ConveyancingTake = (style,className) => {
               <div className="col-lg-12">                                         
                 <div className="appie-features-content wow animated fadeInRight" data-wow-duration="2000ms" data-wow-delay="600ms">                                             
                   <span>Explanation</span>                                             
-                  <p className='fs-5'>Your journey with Cambridge Conveyancing starts with an instant, fixed-fee conveyancing quote tailored to your property. This quote gives you transparency from the start, ensuring no hidden fees. Getting a quote only takes minutes, helping you budget and plan your move effectively.</p>                                         
+                  <p className=''>Your journey with Cambridge Conveyancing starts with an instant, fixed-fee conveyancing quote tailored to your property. This quote gives you transparency from the start, ensuring no hidden fees. Getting a quote only takes minutes, helping you budget and plan your move effectively.</p>                                         
                 </div>                                     
               </div>                                 
             </div>                 
@@ -103,7 +103,7 @@ const ConveyancingTake = (style,className) => {
             <div className="col-lg-12">
               <div className="appie-features-content wow animated fadeInRight" data-wow-duration="2000ms" data-wow-delay="600ms">
                 <span>Explanation</span>
-                <p className='fs-5'>Once you've chosen Cambridge Conveyancing, you'll formally instruct us to start work. At this stage, we'll send you a Client Care Pack with essential documents, including the contract, identity verification, and property information forms. Returning these promptly helps us proceed quickly. If you're selling, you'll also provide information on boundaries, utilities, and any work done on the property.</p>
+                <p className=''>Once you've chosen Cambridge Conveyancing, you'll formally instruct us to start work. At this stage, we'll send you a Client Care Pack with essential documents, including the contract, identity verification, and property information forms. Returning these promptly helps us proceed quickly. If you're selling, you'll also provide information on boundaries, utilities, and any work done on the property.</p>
               </div>
             </div>
           </div>
@@ -111,7 +111,7 @@ const ConveyancingTake = (style,className) => {
             <div className="col-lg-12">
               <div className="appie-features-content wow animated fadeInRight" data-wow-duration="2000ms" data-wow-delay="600ms">
                 <span>Explanation</span>
-                <p className='fs-5'>The next step involves thorough searches and checks on the property. These include local authority searches, environmental searches, and water and drainage checks, all critical for identifying potential issues. In Cambridge, specific searches might be required, like checking flood risks or historic preservation restrictions, given the area's unique characteristics. Our local expertise means we know the specifics to look for, ensuring your interests are fully protected.</p>
+                <p className=''>The next step involves thorough searches and checks on the property. These include local authority searches, environmental searches, and water and drainage checks, all critical for identifying potential issues. In Cambridge, specific searches might be required, like checking flood risks or historic preservation restrictions, given the area's unique characteristics. Our local expertise means we know the specifics to look for, ensuring your interests are fully protected.</p>
               </div>
             </div>
           </div>
@@ -119,7 +119,7 @@ const ConveyancingTake = (style,className) => {
             <div className="col-lg-12">
               <div className="appie-features-content wow animated fadeInRight" data-wow-duration="2000ms" data-wow-delay="600ms">
                 <span>Explanation</span>
-                <p className='fs-5'>If you're buying with a mortgage, your lender will conduct a valuation survey and issue a formal offer. This can take up to five weeks, depending on lender requirements. If issues arise, such as a discrepancy between the property value and offer price, our team is here to guide you through options, providing expert advice to keep things on track.</p>
+                <p className=''>If you're buying with a mortgage, your lender will conduct a valuation survey and issue a formal offer. This can take up to five weeks, depending on lender requirements. If issues arise, such as a discrepancy between the property value and offer price, our team is here to guide you through options, providing expert advice to keep things on track.</p>
               </div>
             </div>
           </div>
@@ -127,7 +127,7 @@ const ConveyancingTake = (style,className) => {
             <div className="col-lg-12">
               <div className="appie-features-content wow animated fadeInRight" data-wow-duration="2000ms" data-wow-delay="600ms">
                 <span>Explanation</span>
-                <p className='fs-5'>After completing searches and inquiries, both buyer and seller review and negotiate the contract. Our Cambridge Conveyancing team works diligently to explain each term, answer questions, and resolve last-minute inquiries. This stage is critical, as it sets the groundwork for a smooth completion. Once both parties agree on the contract terms, you'll sign it and prepare for the final step.</p>
+                <p className=''>After completing searches and inquiries, both buyer and seller review and negotiate the contract. Our Cambridge Conveyancing team works diligently to explain each term, answer questions, and resolve last-minute inquiries. This stage is critical, as it sets the groundwork for a smooth completion. Once both parties agree on the contract terms, you'll sign it and prepare for the final step.</p>
               </div>
             </div>
           </div>
@@ -139,7 +139,7 @@ const ConveyancingTake = (style,className) => {
 <section className="appie-features-area pt-10" id="features">       
   <h2 className='mt-5 text-center'>Common Factors That Can Affect Conveyancing Timelines
   </h2>       
-  <p className='mt-3 fs-5 text-center'>While conveyancing generally takes 8-12 weeks, some factors can affect the speed of your transaction:
+  <p className='mt-3  text-center'>While conveyancing generally takes 8-12 weeks, some factors can affect the speed of your transaction:
 </p>         
   <div className="container mt-5 pb-2">           
     <div className="row align-items-center pb-10">             
@@ -171,7 +171,7 @@ const ConveyancingTake = (style,className) => {
               <div className="col-lg-12">                                         
                 <div className="appie-features-content wow animated fadeInRight" data-wow-duration="2000ms" data-wow-delay="600ms">                                             
                   <span>Explanation</span>                                             
-                  <p className='fs-5'>If you're part of a property chain, delays can occur if another party's conveyancing takes longer than expected. We keep you updated regularly, coordinating with all parties to minimise delays and keep the process moving smoothly.</p>                                         
+                  <p className=''>If you're part of a property chain, delays can occur if another party's conveyancing takes longer than expected. We keep you updated regularly, coordinating with all parties to minimise delays and keep the process moving smoothly.</p>                                         
                 </div>                                     
               </div>                                 
             </div>                 
@@ -180,7 +180,7 @@ const ConveyancingTake = (style,className) => {
             <div className="col-lg-12">
               <div className="appie-features-content wow animated fadeInRight" data-wow-duration="2000ms" data-wow-delay="600ms">
                 <span>Explanation</span>
-                <p className='fs-5'>Survey results can sometimes identify issues requiring further investigation or repairs. If this happens, we work with you to negotiate terms with the other party, ensuring the deal remains fair and transparent.</p>
+                <p className=''>Survey results can sometimes identify issues requiring further investigation or repairs. If this happens, we work with you to negotiate terms with the other party, ensuring the deal remains fair and transparent.</p>
               </div>
             </div>
           </div>
@@ -188,7 +188,7 @@ const ConveyancingTake = (style,className) => {
             <div className="col-lg-12">
               <div className="appie-features-content wow animated fadeInRight" data-wow-duration="2000ms" data-wow-delay="600ms">
                 <span>Explanation</span>
-                <p className='fs-5'>Occasionally, local searches take longer than expected, especially if demand is high or specific checks are necessary. Our team's local knowledge and efficient systems help expedite this as much as possible, ensuring you stay informed.</p>
+                <p className=''>Occasionally, local searches take longer than expected, especially if demand is high or specific checks are necessary. Our team's local knowledge and efficient systems help expedite this as much as possible, ensuring you stay informed.</p>
               </div>
             </div>
           </div>
@@ -196,7 +196,7 @@ const ConveyancingTake = (style,className) => {
             <div className="col-lg-12">
               <div className="appie-features-content wow animated fadeInRight" data-wow-duration="2000ms" data-wow-delay="600ms">
                 <span>Explanation</span>
-                <p className='fs-5'>During peak moving times, such as spring and summer, or around bank holidays, timelines may extend. Planning and choosing a dedicated, fixed-fee Cambridge conveyancer can help mitigate these delays.</p>
+                <p className=''>During peak moving times, such as spring and summer, or around bank holidays, timelines may extend. Planning and choosing a dedicated, fixed-fee Cambridge conveyancer can help mitigate these delays.</p>
               </div>
             </div>
           </div>
@@ -232,11 +232,11 @@ const ConveyancingTake = (style,className) => {
                                     <div className="appie-about-content"> 
                                             <h5 className="title">
                                             What Cambridge Conveyancing Does to Speed Up the Process</h5>
-                                            <p className=' justify-text fs-5 '>
+                                            <p className=' justify-text  '>
                                             Our Cambridge based solicitors we use streamlined processes and local expertise to keep your transaction moving forward efficiently. They communicate closely with all parties, ensuring clear documentation, rapid responses, and minimised delays. The Cambridge-based team understands the unique local market and can navigate potential hurdles more effectively, providing reassurance and practical support.<br/><br/>
-<p className='fw-semibold fs-5'>Experienced Local Team</p>
+<p className='fw-semibold'>Experienced Local Team</p>
 Our Cambridge-based solicitors deeply understand the local area, from popular spots like Cherry Hinton and Milton to surrounding villages like Histon and Sawston. We anticipate local market nuances, making the entire process smoother and more straightforward for you.<br/><br/>
-<p className='fw-semibold fs-5'>Transparent Fixed Fees</p>
+<p className='fw-semibold '>Transparent Fixed Fees</p>
 With a fixed-fee quote, you can confidently plan, knowing exactly what conveyancing costs to expect. We also inform you at each stage so you know where your case stands.
 </p>
 
@@ -283,13 +283,13 @@ With a fixed-fee quote, you can confidently plan, knowing exactly what conveyanc
           <div className='ml-3 mr-3 pt-3 section-2'>
             <h2 className='align-center'>Get an Instant Fixed Fee Quote for Your Cambridge Conveyancing
             </h2>
-            <p className='pt-4 fs-5'>
+            <p className='pt-4 '>
             If you're ready to take the next step, Cambridge Conveyancing is here to help you get started easily. Whether buying, selling, or remortgaging in Cambridge or the surrounding areas, our instant fixed-fee quote provides a clear overview of costs, giving you peace of mind and avoiding unexpected expenses.
             </p>
-            <p className='pt-5 fs-5'>
+            <p className='pt-5 '>
             Our experienced team is ready to support you with every step, helping you complete your property transaction efficiently and confidently. Fill out the online form for your free, no-obligation quote and see how simple conveyancing can be with local experts.
             </p>
-            <p className='pt-5 fs-5'>
+            <p className='pt-5 '>
             For quick, reliable, and local conveyancing services tailored to the Cambridge area, contact us today. Start with a fixed-fee quote from Cambridge Conveyancing, and let us guide you through a smooth and stress-free process.</p>
           </div>
         </div>

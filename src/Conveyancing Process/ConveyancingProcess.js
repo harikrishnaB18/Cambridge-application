@@ -29,14 +29,14 @@ const ConveyancingProcess = (style,className) => {
           <div className='text-center pt-5 '>
             <h1>Get the Best Conveyancing Quotes in Cambridge</h1>
             <h3 className='pt-4'>Free Instant Online Quotes</h3>
-            <p className='pt-4 fs-5 lh-lg'>
+            <p className='pt-4 '>
               From start to finish, our guide will help you navigate through the process with
               precise, step-by-step information.<br />
               Get a Fast, Free, and No-obligation Conveyancing Quote today.
             </p>
           </div>
         </div>
-        <p className='pt-4 text-center fs-5 fw-medium section-1'>
+        <p className='pt-4 text-center  fw-medium section-1'>
           Finding the best conveyancing quotes in Cambridge doesn't have to be complicated.
           Understanding the conveyancing process is crucial to ensure everything runs smoothly,
           whether buying, selling, or remortgaging a property. In this guide, we'll explain what
@@ -48,14 +48,14 @@ const ConveyancingProcess = (style,className) => {
         <div className='row '>
           <div className='ml-3 mr-3 pt-3 section-2'>
             <h2>What is Conveyancing?</h2>
-            <p className='pt-4 fs-5'>
+            <p className='pt-4 '>
               Conveyancing is the legal process of transferring property ownership from one
               person to another. It involves several steps, including initial property searches,
               checks, exchanging contracts, and completing the sale. A professional conveyancer or
               solicitor ensures that all legal aspects are properly managed, helping you avoid delays
               or potential issues down the line.
             </p>
-            <p className='pt-5 fs-5'>
+            <p className='pt-5'>
               When moving home in Cambridge, you'll need to hire a licensed conveyancer or a
               conveyancing solicitor to guide you through this process. They will handle the legal
               paperwork, communicate with the other party's solicitor, and ensure everything is in
@@ -67,7 +67,7 @@ const ConveyancingProcess = (style,className) => {
       </div>
       <section className="appie-features-area pt-10" id="features">
       <h2 className='mt-5 text-center'>The Conveyancing Process Explained</h2>
-      <p className='mt-3 fs-5 text-center'>Many people aren't entirely sure what the conveyancing process entails. Let's break it down step by step so you know what to expect:</p>
+      <p className='mt-3  text-center'>Many people aren't entirely sure what the conveyancing process entails. Let's break it down step by step so you know what to expect:</p>
         <div className="container mt-5 pb-2">
           <div className="row align-items-center pb-10">
             <div className="col-lg-3 mt-5">
@@ -159,7 +159,7 @@ const ConveyancingProcess = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Once you've made an offer on a property or agreed to a sale, you'll need to instruct a conveyancing 
                                             solicitor. They will begin by gathering details about the property and preparing the initial paperwork.
                                             It's important to choose a solicitor who is experienced and local to Cambridge, 
@@ -190,7 +190,7 @@ const ConveyancingProcess = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                                 Your solicitor will conduct several property searches to check for any issues that 
                                                 could affect the sale. These include local authority searches, water and drainage searches, 
                                                 and environmental checks. This is particularly important in Cambridge, 
@@ -220,7 +220,7 @@ const ConveyancingProcess = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Once the searches are complete, your solicitor will draft the contract for the sale or purchase.
                                             They will liaise with the other party's solicitor to agree on the terms. Once both parties are satisfied with the contract, 
                                             you'll exchange contracts, which is when the sale becomes legally binding.
@@ -249,7 +249,7 @@ const ConveyancingProcess = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             The final stage of the conveyancing process is completion, where the purchase price balance 
                                             is transferred, and you receive the keys to your new home. At this point, all legal ownership
                                              is transferred, completing the process. Your solicitor will ensure that any outstanding fees,
@@ -285,15 +285,15 @@ const ConveyancingProcess = (style,className) => {
                                     <div className="appie-about-content"> 
                                             <h5 className="title ml-5">
                                             Why Choose a Local Cambridge Solicitor?</h5>
-                                            <p className=' justify-text fs-5'>
+                                            <p className=' justify-text '>
                                             When searching for the best conveyancing quotes in Cambridge, choosing a local solicitor who understands the area is essential. Here's why:
-<br/><p className='fw-semibold fs-5'>Local Knowledge:</p>
+<br/><p className='fw-semibold '>Local Knowledge:</p>
 Cambridge has unique property challenges, such as older buildings and conservation areas. A local solicitor will be aware of these issues and can ensure that all necessary checks are performed.
 
-<p className='fw-semibold fs-5'>Faster Service:</p>
+<p className='fw-semibold '>Faster Service:</p>
 Being based locally allows your solicitor to respond to any issues quickly and even visit the property if necessary, helping to expedite the process.
 
-<p className='fw-semibold fs-5'>Established Relationships:</p>
+<p className='fw-semibold '>Established Relationships:</p>
 Local solicitors often have established relationships with estate agents and other professionals in the area, facilitating efficient communication and problem-solving.                                            </p>
                                             {/* <p className='mt-3  justify-text'>
                                             When it comes to choosing a conveyancing solicitor, getting a competitive fixed fee is crucial. Our quotes come from highly efficient Cambridge property lawyers who ensure a smooth, quick completion. All quotes cover the fixed conveyancing fee based on the information you provide. Keep in mind that the final amount may vary if additional details affect the original quote, and disbursements may change depending on your circumstances.
@@ -342,7 +342,7 @@ Local solicitors often have established relationships with estate agents and oth
             </section>
             <section className="appie-features-area pt-10" id="features">
       <h2 className='mt-5 text-center'>How to Get the Best Conveyancing Quotes in Cambridge</h2>
-      <p className='mt-3 fs-5 text-center'>Finding the best conveyancing quote doesn't always mean opting for the cheapest option. Here's what to consider:</p>
+      <p className='mt-3  text-center'>Finding the best conveyancing quote doesn't always mean opting for the cheapest option. Here's what to consider:</p>
         <div className="container mt-5 pb-2">
           <div className="row align-items-center pb-10">
             <div className="col-lg-3 mt-5">
@@ -422,7 +422,7 @@ Local solicitors often have established relationships with estate agents and oth
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             A reputable conveyancing solicitor will provide a fixed fee quote, ensuring you know what you'll pay from the start.
                                             Fixed fees are particularly beneficial as they prevent unexpected costs from arising during the process.
                                             Ensure that the quote includes all services to avoid any hidden extras. At Cambridge Conveyancing,
@@ -453,7 +453,7 @@ Local solicitors often have established relationships with estate agents and oth
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Choose conveyancers with a "no sale, no fee" guarantee. This means that if your sale or purchase falls through,
                                             you won't have to pay for any legal work that has already been completed. This can provide peace of mind,
                                             especially when buying in a competitive market like Cambridge, where deals may not always go as planned.
@@ -482,7 +482,7 @@ Local solicitors often have established relationships with estate agents and oth
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Time is often critical when it comes to property transactions.
                                             A good conveyancing solicitor should be able to work efficiently to ensure that everything is completed on schedule.
                                             Ask for an estimated timeline before committing to a conveyancer to ensure they can meet your needs.
@@ -511,7 +511,7 @@ Local solicitors often have established relationships with estate agents and oth
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             The final stage of the conveyancing process is completion, where the purchase price balance 
                                             is transferred, and you receive the keys to your new home. At this point, all legal ownership
                                              is transferred, completing the process. Your solicitor will ensure that any outstanding fees,
@@ -714,12 +714,12 @@ Local solicitors often have established relationships with estate agents and oth
                                     <div className="appie-about-content"> 
                                             <h5 className="title ml-5">
                                             Get Your Fixed Fee Conveyancing Quote Today</h5>
-                                            <p className=' justify-text mb-4 fs-5'>
+                                            <p className=' justify-text mb-4'>
                                             Now that you understand the conveyancing process and the importance of selecting the right solicitor, it's time to take action. If you're looking for the best conveyancing quotes in Cambridge, look no further. Our fixed-fee quotes are competitive, transparent, and designed to give you peace of mind throughout your property transaction.
                                             </p>
-                                            <p className=' justify-text mb-4 fs-5'>
+                                            <p className=' justify-text mb-4'>
                                             We have extensive experience working with properties in Cambridge and surrounding areas, such as Chesterton, Milton, Histon, and Great Shelford. Our local knowledge enables us to offer you the best possible service tailored to the specific challenges of the Cambridge property market.                                            </p>
-                                            <p className=' justify-text fs-5'>
+                                            <p className=' justify-text'>
                                             Fill out the form today to receive your fixed-fee quote from one of our expert conveyancing solicitors in Cambridge. We're here to make your property transaction as smooth and straightforward as possible.</p>
                                             {/* <p className='mt-3  justify-text'>
                                             When it comes to choosing a conveyancing solicitor, getting a competitive fixed fee is crucial. Our quotes come from highly efficient Cambridge property lawyers who ensure a smooth, quick completion. All quotes cover the fixed conveyancing fee based on the information you provide. Keep in mind that the final amount may vary if additional details affect the original quote, and disbursements may change depending on your circumstances.

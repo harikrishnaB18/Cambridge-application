@@ -28,17 +28,17 @@ const ConveyancingSolicitor = (style,className) => {
           <div className='text-center pt-5 '>
             <h1>What Conveyancing Solicitors Do</h1>
             <h3 className='pt-4'>Experienced Cambridge Conveyancing Solocitors Guide You</h3>
-            <p className='pt-4 fs-5 lh-lg'>
+            <p className='pt-4 '>
             Understand Just How Good Local Solicitors Can Help You Get Moving Faster & Easier
             </p>
           </div>
         </div>
-        <p className='pt-4 text-center fs-5 fw-medium section-1'>
+        <p className='pt-4 text-center  fw-medium section-1'>
         When buying or selling a property, you’ll encounter the term “conveyancing solicitor.”
         But what exactly does a conveyancing solicitor do? Here, we’ll break down a conveyancing solicitor's key roles and responsibilities,
         helping you understand why they’re essential for a smooth property transaction.
         </p>
-        <p className='pt-2 fs-5'>Whether you’re new to the property market or a seasoned buyer or seller,
+        <p className='pt-2 '>Whether you’re new to the property market or a seasoned buyer or seller,
             knowing the process can help make your experience more straightforward and less stressful.
             Our Cambridge Conveyancing Solicitors are experienced in handling property transactions across the region and offer fixed-fee quotes for all our services,
             so you know what to expect right from the start.
@@ -48,7 +48,7 @@ const ConveyancingSolicitor = (style,className) => {
         <div className='row '>
           <div className='ml-3 mr-3 pt-3 section-2'>
             <h2>The Role of a Conveyancing Solicitor</h2>
-            <p className='pt-4 fs-5'>
+            <p className='pt-4 '>
             A conveyancing solicitor is a qualified legal professional who specialises in property law and oversees the legal aspects of transferring property ownership from one party to another. From managing complex paperwork to ensuring all legal requirements are met, your conveyancing solicitor works to safeguard your interests throughout the process.
             </p>
             {/* <p className='pt-5 fs-5'>
@@ -63,7 +63,7 @@ const ConveyancingSolicitor = (style,className) => {
       </div>
       <section className="appie-features-area pt-10" id="features">
       <h2 className='mt-5 text-center'>What Are the Key Stages of Conveyancing?</h2>
-      <p className='mt-3 fs-5 text-center'>Many people aren't entirely sure what the conveyancing process entails. Let's break it down step by step so you know what to expect:</p>
+      <p className='mt-3  text-center'>Many people aren't entirely sure what the conveyancing process entails. Let's break it down step by step so you know what to expect:</p>
         <div className="container mt-5 pb-2">
           <div className="row align-items-center pb-10">
             <div className="col-lg-3 mt-5">
@@ -155,7 +155,7 @@ const ConveyancingSolicitor = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             The conveyancing process typically begins with you instructing a solicitor. This involves selecting a conveyancing solicitor, ideally a local professional familiar with the Cambridge area, as they’ll bring helpful local insights to your case. After agreeing to a fixed fee,
                                             the solicitor begins by gathering information about your property and transaction goals.
                                             </p>
@@ -184,7 +184,7 @@ const ConveyancingSolicitor = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Conveyancing solicitors conduct a range of legal checks, including land registry checks, title deed reviews, and property searches, to ensure no legal issues are associated with the property. Common searches include:?<br/>
 
 Local authority searches**: Checking for any potential planning permissions or restrictions on the property.<br/>
@@ -217,7 +217,7 @@ Water and drainage searches**: Confirming property connection to the public wate
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Once the property searches are completed, your conveyancing solicitor will prepare the necessary legal documents,
                                             including the draft contract. This contract outlines the terms of the sale,
                                             and your solicitor must thoroughly review it to ensure everything is correct.
@@ -283,13 +283,13 @@ Water and drainage searches**: Confirming property connection to the public wate
                                     <div className="appie-about-content"> 
                                             <h5 className="title ml-5">
                                             Finalising the Process: Exchange and Completion</h5>
-                                            <p className=' justify-text fs-5 '>
+                                            <p className=' justify-text  '>
                                             When searching for the best conveyancing quotes in Cambridge, choosing a local solicitor who understands the area is essential. Here's why:
-<br/><br/><p className='fw-semibold fs-5'>Exchange of Contracts?</p>
+<br/><br/><p className='fw-semibold '>Exchange of Contracts?</p>
 Once all checks are completed and any issues are resolved, contracts can be exchanged.
 At this stage, the transaction is legally binding.Your conveyancing solicitor coordinates this step,
 ensuring all required documents are signed and exchanged.<br/><br/>
-<p className='fw-semibold fs-5'>Completion Day</p>
+<p className='fw-semibold '>Completion Day</p>
 Completion day is the final stage in the conveyancing process, where funds are transferred to the seller, and the property keys are handed over to the buyer. Your solicitor will ensure that all final payments are made, and they’ll register the property in your name with the Land Registry.
 </p>
                                         </div>

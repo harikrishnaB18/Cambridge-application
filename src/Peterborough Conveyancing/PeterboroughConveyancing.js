@@ -29,7 +29,7 @@ const PeterboroughConveyancing = (style,className) => {
             <h1>Peterborough Conveyancing Solicitors
             </h1>
             {/* <h3 className='pt-4'>Free Instant Online Quotes</h3> */}
-            <p className='pt-4 fs-5 lh-lg'>
+            <p className='pt-4 '>
             Providing expert, dependable services to ensure a smooth, stress-free experience when buying, selling, or remortgaging a property in Peterborough.
             </p>
           </div>
@@ -56,8 +56,8 @@ const PeterboroughConveyancing = (style,className) => {
                                     <div className="about-thumb mt-50">
                                     <iframe
     title="map"
-    src="https://maps.google.com/maps?width=720&height=600&hl=en&q=1%20Grafton%20Street,%20Dublin,%20Ireland&ie=UTF8&t=p&z=16&iwloc=B&output=embed"
-    width="100%"
+    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d77912.1961585366!2d0.22803185603616621!3d52.39297108902703!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1730212469693!5m2!1sen!2suk"
+        width="100%"
     height="500"
     style={{ border: "0" }}
     allowFullScreen=""
@@ -71,9 +71,9 @@ const PeterboroughConveyancing = (style,className) => {
                                     <div className="appie-about-content"> 
                                             <h5 className="title">
                                             Peterborough Conveyancing Solicitors – Professional and Personalised Service</h5>
-                                            <p className=' justify-text fs-5'>
+                                            <p className=' justify-text '>
                                             Finding reliable and <b>experienced conveyancing solicitors in Peterborough</b> is crucial for ensuring a smooth property transaction.Whether you’re buying,selling or remortgaging,Peterborough’s conveyancing solicitors specialise in making each step of the process clear and manageable.</p>
-                                            <p className=' justify-text fs-5 mt-5'>For property transactions in areas such as Werrington, Orton Waterville, and Hampton Vale, experienced solicitors provide invaluable local knowledge to guide buyers and sellers through the unique aspects of the Peterborough property market</p>
+                                            <p className=' justify-text  mt-5'>For property transactions in areas such as Werrington, Orton Waterville, and Hampton Vale, experienced solicitors provide invaluable local knowledge to guide buyers and sellers through the unique aspects of the Peterborough property market</p>
                                             {/* <p className='mt-3  justify-text'>
                                             When it comes to choosing a conveyancing solicitor, getting a competitive fixed fee is crucial. Our quotes come from highly efficient Cambridge property lawyers who ensure a smooth, quick completion. All quotes cover the fixed conveyancing fee based on the information you provide. Keep in mind that the final amount may vary if additional details affect the original quote, and disbursements may change depending on your circumstances.
                                             </p> */}
@@ -97,7 +97,7 @@ const PeterboroughConveyancing = (style,className) => {
           <div className='ml-3 mr-3 pt-3 section-2'>
             <h2>Comprehensive Conveyancing Services in Peterborough
             </h2>
-            <p className='pt-4 fs-5'>
+            <p className='pt-4 '>
             A wide range of conveyancing services is available in Peterborough, catering to first-time buyers and seasoned property investors. Experienced solicitors handle each transaction carefully,
             ensuring that all legal requirements are met on time.
             Sellers aiming to achieve the best return on investment and buyers looking for a hassle-free purchase can greatly benefit from reliable conveyancing services.</p>
@@ -106,7 +106,7 @@ const PeterboroughConveyancing = (style,className) => {
           <div className='ml-3 mr-3 pt-3 section-2'>
             <h2>Why Choose Peterborough Conveyancing Solicitors?
             </h2>
-            <p className='pt-4 fs-5'>
+            <p className='pt-4 '>
             Choosing a conveyancing solicitor with extensive local expertise can significantly impact your experience, especially in a diverse market like Peterborough. Experienced solicitors understand the specifics of the local housing market and are adept at addressing its unique nuances. Whether dealing with historic properties in the Cathedral Quarter or new builds in Cardea, conveyancing professionals familiar with Peterborough’s laws and regulations provide exceptional service, ensuring smooth and streamlined transactions.
             </p>
         
@@ -115,7 +115,7 @@ const PeterboroughConveyancing = (style,className) => {
       </div>
       <section className="appie-features-area pt-10" id="features">
       <h2 className='mt-5 text-center'>Understanding the Peterborough Conveyancing Process</h2>
-      <p className='mt-3 fs-5 text-center'>Many clients are surprised by the number of stages involved in the conveyancing process.<br/>From initial inquiries and property searches to final exchanges and completion, skilled conveyancing solicitors manage each<br/>step to ensure a stress-free experience.In Peterborough, the conveyancing process generally follows this structured pattern:</p>
+      <p className='mt-3  text-center'>Many clients are surprised by the number of stages involved in the conveyancing process.<br/>From initial inquiries and property searches to final exchanges and completion, skilled conveyancing solicitors manage each<br/>step to ensure a stress-free experience.In Peterborough, the conveyancing process generally follows this structured pattern:</p>
         <div className="container mt-5 pb-2">
           <div className="row align-items-center pb-10">
             <div className="col-lg-3">
@@ -210,7 +210,7 @@ const PeterboroughConveyancing = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Once a solicitor has been engaged, the process begins by gathering necessary details about the property and the parties involved. This includes verifying identification documents and outlining any specific requirements or circumstances related to the property, particularly in areas like Dogsthorpe or Alwalton.                                            </p>
                                             {/* <Link className="main-btn" to="/about-us">
                                                 Learn More
@@ -237,7 +237,7 @@ const PeterboroughConveyancing = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             The solicitor will draft contracts and conduct essential property searches. These searches cover local authority information, water and drainage data, environmental factors, and other relevant checks specific to areas in Peterborough, such as Eastfield or Bretton. Conducting searches helps to ensure no surprises could impact the property’s value or usage.                                            </p>
                                             {/* <Link className="main-btn" to="/about-us">
                                                 Learn More
@@ -263,7 +263,7 @@ const PeterboroughConveyancing = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             After the searches are complete, the contract details are reviewed with clients to ensure they understand every element involved. For buyers, this stage may also include arranging mortgage financing, a process that conveyancing solicitors guide with clarity and precision.
                                             </p>
                                                                                         {/* <Link className="main-btn" to="/about-us">
@@ -290,7 +290,7 @@ const PeterboroughConveyancing = (style,className) => {
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Once both parties are satisfied and the contracts are signed, an exchange of contracts takes place, legally binding the transaction. Completion typically follows soon after finalising the transfer of property ownership. This critical stage is managed meticulously to ensure clients in Peterborough experience a smooth and successful handover.                                            </p>
                                             {/* <Link className="main-btn" to="/about-us">
                                                 Learn More

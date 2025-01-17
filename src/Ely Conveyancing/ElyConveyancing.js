@@ -29,7 +29,7 @@ const ElyConveyancing = (style,className) => {
             <h1>Ely Conveyancing Solicitors
             </h1>
             {/* <h3 className='pt-4'>Free Instant Online Quotes</h3> */}
-            <p className='pt-4 fs-5 lh-lg'>
+            <p className='pt-4 '>
             Providing expert, reliable services to ensure buying, selling, or remortgaging a property in Ely is a smooth and stress-free experience.
             </p>
           </div>
@@ -49,7 +49,7 @@ const ElyConveyancing = (style,className) => {
                         <div className="appie-about-content"> 
                                             <h5 className="title">
                                             Trusted Expertise for a Smooth Property Journey</h5>
-                                            <p className=' justify-text fs-5'>
+                                            <p className=' justify-text '>
                                             Finding the right support for property transactions in Ely can make all the difference in ensuring a smooth, hassle-free process.<b>Ely conveyancing solicitors are here to provide experienced guidance</b> through every step, whether you're buying your first home, selling a property, or remortgaging. For reliable, affordable, and efficient conveyancing in Ely, turn to professionals who understand the local market and have a track record of success.</p>
                                         </div>
                             <div
@@ -59,8 +59,7 @@ const ElyConveyancing = (style,className) => {
                             >
                                                                     <iframe
     title="map"
-    src="https://maps.google.com/maps?width=720&height=600&hl=en&q=1%20Grafton%20Street,%20Dublin,%20Ireland&ie=UTF8&t=p&z=16&iwloc=B&output=embed"
-    width="100%"
+    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d77912.1961585366!2d0.22803185603616621!3d52.39297108902703!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1730212469693!5m2!1sen!2suk"    width="100%"
     height="500"
     style={{ border: "0" }}
     allowFullScreen=""
@@ -76,9 +75,9 @@ const ElyConveyancing = (style,className) => {
         <div className='row '>
           <div className='ml-3 mr-3 pt-3 section-2'>
             <h2>Why Use Local Ely Conveyancing Solicitors?            </h2>
-            <p className='pt-4 fs-5'>
+            <p className='pt-4 '>
             Choosing local Ely conveyancing solicitors offers several key benefits. A firm with deep knowledge of Ely and surrounding areas will better understand the unique aspects of the property market here, including neighbourhoods, land types, and planning permissions. Local solicitors bring an informed perspective that can speed up the process, avoid potential obstacles, and make communication easy. Access to the latest insights on property transactions within Ely ensures that your experience is efficient and cost-effective while meeting your specific needs            </p>
-            <p className='pt-4 fs-5'>
+            <p className='pt-4 '>
             <b>Personalised Service with Local Market Expertise</b><br/>
 Ely conveyancing solicitors provide an individualised approach to each client, offering the peace of mind that comes from knowing your case is in knowledgeable, experienced hands. With extensive experience in Ely and its surroundings, local conveyancers can advise on specific areas, from assessing property values to knowing about any pending developments that may impact your sale or purchase.<br/>
 <b>Clear and Transparent Pricing</b><br/>
@@ -91,7 +90,7 @@ For anyone buying or selling property, understanding the costs involved is cruci
         <div className='container'>
       <h2 className='mt-5 text-center'>Residential Conveyancing Services in Ely
       </h2>
-      <p className='mt-3 fs-5'>Whether buying, selling, or remortgaging, the legal side of property transactions can be complex. Ely conveyancing solicitors handle all aspects of residential conveyancing to ensure each stage is managed professionally and efficiently. With a local team dedicated to staying ahead of any challenges that may arise, you can be confident that every detail will be covered.</p>
+      <p className='mt-3 '>Whether buying, selling, or remortgaging, the legal side of property transactions can be complex. Ely conveyancing solicitors handle all aspects of residential conveyancing to ensure each stage is managed professionally and efficiently. With a local team dedicated to staying ahead of any challenges that may arise, you can be confident that every detail will be covered.</p>
       </div>
         <div className="container mt-5 pb-2">
           <div className="row align-items-center pb-10">
@@ -172,7 +171,7 @@ For anyone buying or selling property, understanding the costs involved is cruci
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Buying a property is an exciting step, but it can be daunting without the right guidance. Ely conveyancing solicitors manage every aspect of property purchases, from initial enquiries to liaising with mortgage lenders and completing the transaction. Local knowledge helps anticipate issues specific to Ely, allowing a quicker, more streamlined buying experience.                                            </p>
                                             {/* <Link className="main-btn" to="/about-us">
                                                 Learn More
@@ -225,7 +224,7 @@ For anyone buying or selling property, understanding the costs involved is cruci
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             When remortgaging, accurate, efficient conveyancing is essential. Ely conveyancing solicitors provide the expertise needed to handle remortgages effectively, including managing lender requirements and completing the process promptly. With experience in various types of mortgages, they ensure a seamless remortgaging experience that meets all legal requirements.</p>
                                             {/* <Link className="main-btn" to="/about-us">
                                                 Learn More
@@ -251,7 +250,7 @@ For anyone buying or selling property, understanding the costs involved is cruci
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             When property ownership needs to be transferred between parties, conveyancing solicitors ensure the transaction is handled smoothly, with all legal processes completed accurately and promptly.
                                             </p>
                                             {/* <Link className="main-btn" to="/about-us">
@@ -300,7 +299,7 @@ For anyone buying or selling property, understanding the costs involved is cruci
                                 data-wow-duration="2000ms"
                                 data-wow-delay="200ms"
                             > 
-                                <img src={localconveyancing} alt="" /> 
+                                <img src={localconveyancing} alt="image" /> 
                             </div>
                         </div>
                     </div>
@@ -319,7 +318,7 @@ For anyone buying or selling property, understanding the costs involved is cruci
         <div className='container'>
       <h2 className='mt-5 text-center'>Key Steps in the Conveyancing Process
       </h2>
-      <p className='mt-3 fs-5'>Understanding the conveyancing process is helpful for buyers, sellers, and anyone remortgaging a property. Ely conveyancing solicitors follow a structured approach to manage each transaction stage effectively. Here’s a look at the critical steps involved in the conveyancing process:</p>
+      <p className='mt-3 '>Understanding the conveyancing process is helpful for buyers, sellers, and anyone remortgaging a property. Ely conveyancing solicitors follow a structured approach to manage each transaction stage effectively. Here’s a look at the critical steps involved in the conveyancing process:</p>
       </div>
         <div className="container mt-5 pb-2">
           <div className="row align-items-center pb-10">
@@ -400,7 +399,7 @@ For anyone buying or selling property, understanding the costs involved is cruci
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             The first step in the conveyancing process involves conducting necessary property searches and gathering details about the property. These include local authority searches, environmental checks, and water and drainage checks to uncover any issues affecting the transaction. This stage is crucial for ensuring there are no surprises after the sale is completed.
                                             </p>
                                             {/* <Link className="main-btn" to="/about-us">
@@ -428,7 +427,7 @@ For anyone buying or selling property, understanding the costs involved is cruci
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             Once searches and initial checks are complete, the solicitor drafts a contract outlining the sale or purchase terms. Both parties review and agree to the contract terms before exchanging contracts. The sale becomes legally binding at this point, providing peace of mind that both parties are committed to the transaction.
                                             </p>
                                             {/* <Link className="main-btn" to="/about-us">
@@ -455,7 +454,7 @@ For anyone buying or selling property, understanding the costs involved is cruci
                                             {/* <h3 className="title">
                                                 Let the <br /> Conversation flow
                                             </h3> */}
-                                            <p className='fs-5'>
+                                            <p className=''>
                                             On completion day, funds are transferred, and keys are exchanged. Ely conveyancing solicitors handle the financial transactions and final paperwork, ensuring everything is legally compliant. At this stage, ownership is transferred, and the process is completed smoothly and efficiently.
                                             </p>
                                             {/* <Link className="main-btn" to="/about-us">
