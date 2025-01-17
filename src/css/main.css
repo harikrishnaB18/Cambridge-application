@@ -7189,7 +7189,7 @@ blockquote cite {
 ===========================*/
 .contact-section {
   position: relative;
-  background: #f7f6fa;
+  /* background: #f7f6fa; */
   padding: 120px 0;
 }
 

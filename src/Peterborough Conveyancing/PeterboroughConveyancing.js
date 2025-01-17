@@ -160,7 +160,7 @@ const PeterboroughConveyancing = (style,className) => {
                     aria-controls="v-pills-messages"
                     aria-selected="false"
                   >
-                    Re-Mortgaging
+                    Reviewing Contracts and Arranging Finances
                   </a>
                   <a
                     onClick={(e) => handleClick(e, 'app')}
@@ -172,11 +172,11 @@ const PeterboroughConveyancing = (style,className) => {
                     aria-controls="v-pills-settings"
                     aria-selected="false"
                   >
-                    Transfer of Equity
+                     Exchange and Completion
                   </a>
-                  <a onClick={(e) => handleClick(e, 'completion')} className={`nav-link ${tab === 'completion' ? 'active' : ''}`} id="v-pills-completion-tab" data-toggle="pill" href="#v-pills-completion" role="tab" aria-controls="v-pills-completion" aria-selected="false">
+                  {/* <a onClick={(e) => handleClick(e, 'completion')} className={`nav-link ${tab === 'completion' ? 'active' : ''}`} id="v-pills-completion-tab" data-toggle="pill" href="#v-pills-completion" role="tab" aria-controls="v-pills-completion" aria-selected="false">
                   Shared Ownership and Leasehold Services
-            </a>
+            </a> */}
                 </div>
               </div>
             </div>
@@ -211,8 +211,7 @@ const PeterboroughConveyancing = (style,className) => {
                                                 Let the <br /> Conversation flow
                                             </h3> */}
                                             <p className='fs-5'>
-                                            Purchasing a home is a major step, and conveyancing solicitors are available to handle all the legal details involved. From title checks to communicating with mortgage lenders, these services aim to make the process hassle-free, allowing buyers to focus on the excitement of their new home.
-                                            </p>
+                                            Once a solicitor has been engaged, the process begins by gathering necessary details about the property and the parties involved. This includes verifying identification documents and outlining any specific requirements or circumstances related to the property, particularly in areas like Dogsthorpe or Alwalton.                                            </p>
                                             {/* <Link className="main-btn" to="/about-us">
                                                 Learn More
                                             </Link> */}
@@ -239,7 +238,7 @@ const PeterboroughConveyancing = (style,className) => {
                                                 Let the <br /> Conversation flow
                                             </h3> */}
                                             <p className='fs-5'>
-                                            Selling a property involves various legal requirements, and experienced conveyancing professionals can guide the process with confidence. They take care of essential tasks, including liaising with the buyer's solicitor, managing contracts, and resolving any queries that may arise.
+                                            After the searches are complete, the contract details are reviewed with clients to ensure they understand every element involved. For buyers, this stage may also include arranging mortgage financing, a process that conveyancing solicitors guide with clarity and precision.
                                             </p>
                                             {/* <Link className="main-btn" to="/about-us">
                                                 Learn More
@@ -266,8 +265,7 @@ const PeterboroughConveyancing = (style,className) => {
                                                 Let the <br /> Conversation flow
                                             </h3> */}
                                             <p className='fs-5'>
-                                            For those looking to refinance a property, conveyancing solicitors simplify the remortgaging process by handling all necessary legal steps—from title deeds to coordinating with mortgage providers—saving time and reducing stress.
-                                            </p>
+                                            Once both parties are satisfied and the contracts are signed, an exchange of contracts takes place, legally binding the transaction. Completion typically follows soon after finalising the transfer of property ownership. This critical stage is managed meticulously to ensure clients in Peterborough experience a smooth and successful handover.                                            </p>
                                             {/* <Link className="main-btn" to="/about-us">
                                                 Learn More
                                             </Link> */}
@@ -301,14 +299,6 @@ const PeterboroughConveyancing = (style,className) => {
                                         </div>
                                     </div>
                     </div>
-                    <div className={`${tab === 'completion' ? 'show active' : ''} tab-pane fade`} id="v-pills-completion" role="tabpanel" aria-labelledby="v-pills-completion-tab">
-            <div className="col-lg-12">
-              <div className="appie-features-content wow animated fadeInRight" data-wow-duration="2000ms" data-wow-delay="600ms">
-                <span>Explanation</span>
-                <p className='fs-5'>Whether purchasing a shared ownership property or navigating a leasehold purchase, conveyancing experts can assist with these more complex transactions. They provide clear, straightforward guidance to help clients make informed decisions throughout the process.</p>
-              </div>
-            </div>
-          </div>
               </div>
             </div>
           </div>
