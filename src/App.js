@@ -17,6 +17,8 @@ import ElyConveyancing from './Ely Conveyancing/ElyConveyancing';
 import TermsConditions from './T&C and Privacy/TermsConditions';
 import PrivacyPolicy from './T&C and Privacy/PrivacyPolicy';
 import PeterboroughConveyancing from './Peterborough Conveyancing/PeterboroughConveyancing';
+import ChelmsfordConveyancing from './Chelmsford Conveyancing/ChelmsfordConveyancing';
+
 
 const App = () => {
   return (
@@ -40,6 +42,7 @@ const App = () => {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/conveyancing-in-ely" element={<ElyConveyancing />} />
           <Route path="/peterborough-conveyancing" element={<PeterboroughConveyancing />} />
+          <Route path="/chelmsford-conveyancing" element={<ChelmsfordConveyancing />} />
         </Routes>
       </Router>
       </>
