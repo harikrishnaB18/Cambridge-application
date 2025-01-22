@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import {
   Accordion,
   AccordionSummary,
@@ -178,8 +178,11 @@ const SellingProperty = () => {
     setAccordion2Open(false);
   };
 
- 
-  
+  const [formData, setFormData] = useState({ price: "" });
+
+  useEffect(() => {
+    calculateTotal();
+  }, [formData.price, accordion1Data]);
   
   const calculateTotal = () => {
     const price = parseFloat(accordion1Data.price) || 0;
