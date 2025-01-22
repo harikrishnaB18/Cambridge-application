@@ -46,8 +46,18 @@ const PurchasingPropertyForm = () => {
     ownedBefore: '',
     moreThanOneHouse: '',
     mainResidence: '',
-  });
 
+   // Step 3
+   fullName: '',
+   emailAddress: '',
+   phoneNumber: '',
+   
+  });
+  // const [formData, setFormData] = useState({
+  //   // Existing fields from Steps 1 and 2...
+  
+  // });
+  
   const [step1Total, setStep1Total] = useState(0);
   const [step2Total, setStep2Total] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
@@ -55,10 +65,24 @@ const PurchasingPropertyForm = () => {
   const [formSubmitted2, setFormSubmitted2] = useState(false);
   const [showThankYouMessage, setShowThankYouMessage] = useState(false);
   const [error, setError] = useState(false);
+  const [isStep3Complete, setIsStep3Complete] = useState(false);
 
     console.log('Step1 Total:', step1Total);
 
     console.log('Step2 Total:', step2Total);
+    const handleSubmitStep3 = () => {
+      if (validateStep3Fields()) {
+        setIsStep3Complete(true);
+        toast.success('Step 3 is complete! Form submitted successfully.', {
+          position: 'top-right',
+          autoClose: 3000,
+        });
+        // Perform any final submission actions here
+        
+        setShowThankYouMessage(true);
+      }
+      setActiveStep(4);
+    };
 
   // Update state when inputs change
   const handleInputChange = (e) => {
@@ -206,31 +230,28 @@ const PurchasingPropertyForm = () => {
   }, [formData,formSubmitted1]);
   
   const popupOverlayStyle = {
-    position: 'fixed',
+    position: "fixed",
     top: 0,
     left: 0,
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.6)', // Semi-transparent black overlay
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 1000, // Ensure it's above the step content
+    width: "100%",
+    height: "100%",
+    background: "rgba(0, 0, 0, 0.5)",
+    zIndex: 999,
   };
   
   // ContactCard Container Style (Centering the ContactCard)
   const contactCardContainerStyle = {
-    padding: '20px',
-    maxWidth: '600px', // Increased width
-    width: '100%', // Ensure it takes up full width of the container (if needed)
-    fontFamily: 'Arial, sans-serif',
-    margin: '20px auto',
-    border: '1px solid #ccc',
-    borderRadius: '10px',
-    background: '#f9f9f9',
-    boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
-    position: 'relative',
-    zIndex: 1001, // To ensure the contact card is above the overlay
+    position: "fixed",
+            top: "58%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 1000,
+            background: "#fff",
+            padding: "20px",
+            boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
+            borderRadius: "8px",
+            maxHeight: "80vh",
+            overflowY: "auto",
   };
 
 
@@ -300,17 +321,54 @@ const PurchasingPropertyForm = () => {
   const handleNextStep2 = () => {
     if (validateStep2Fields()) {
       setIsStep2Complete(true); // Mark Step 2 as complete
-      toast.success('Step2 is complete! successfully Submit your form', {
+      toast.success('Step2 is complete! Move to Step3', {
         position: 'top-right',
         autoClose: 3000,
       });
       // Logic to move to Step 3
       setActiveStep(3);
-      setShowThankYouMessage(true);
+      // setShowThankYouMessage(true);
 
     }
   };
   
+  const validateStep3Fields = () => {
+    const requiredFields = ['fullName', 'emailAddress', 'phoneNumber'];
+  
+    for (const field of requiredFields) {
+      if (!formData[field]) {
+        toast.error(`Please fill the ${field.replace(/([A-Z])/g, ' $1')} field!`, {
+          position: 'top-right',
+          autoClose: 3000,
+        });
+        return false;
+      }
+    }
+  
+    // Additional validation: email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.emailAddress)) {
+      toast.error('Please enter a valid email address!', {
+        position: 'top-right',
+        autoClose: 3000,
+      });
+      return false;
+    }
+  
+    // Additional validation: phone number format (e.g., 10 digits)
+    const phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(formData.phoneNumber)) {
+      toast.error('Please enter a valid 10-digit phone number!', {
+        position: 'top-right',
+        autoClose: 3000,
+      });
+      return false;
+    }
+  
+    return true;
+  };
+  
+
   const handlePrevious = () => {
     // Logic to move back to Step 1
     toast.success('Moved to Step 1', {
@@ -320,7 +378,15 @@ const PurchasingPropertyForm = () => {
     // Update active step state
     setActiveStep(1);
   };
-      
+  const handlePrevious2 = () => {
+    // Logic to move back to Step 1
+    toast.success('Moved to Step 2', {
+      position: 'top-right',
+      autoClose: 3000,
+    });
+    // Update active step state
+    setActiveStep(2);
+  }; 
   return (
     <>
       <Drawer drawer={drawer} action={drawerAction.toggle} />
@@ -435,29 +501,7 @@ const PurchasingPropertyForm = () => {
           </FormControl>
         </Grid>
 
-        {/* <Grid item xs={12} md={12} display="flex" alignItems="center">
-          <FormControl variant="outlined" fullWidth>
-            <InputLabel>Purchase Funds Being Gifted</InputLabel>
-            <Select
-              label="Purchase Funds Being Gifted"
-              name="giftedFunds"
-              value={formData.giftedFunds}
-              onChange={handleInputChange}
-            >
-              <MenuItem value="Yes">Yes</MenuItem>
-              <MenuItem value="No">No</MenuItem>
-            </Select>
-          </FormControl>
-          <Tooltip title="Funds being gifted by a third party or family to assist with the purchase." arrow>
-    <InfoOutlinedIcon
-      sx={{
-        color: "#233955", // Blue color for the icon
-        marginLeft: "2px", // Add spacing between icon and field
-        cursor: "pointer", // Make it look clickable
-      }}
-    />
-  </Tooltip>
-        </Grid> */}
+        
         <Grid item xs={12} md={12} display="flex" alignItems="center">
   <FormControl variant="outlined" fullWidth>
     <InputLabel>Purchase Funds Being Gifted</InputLabel>
@@ -693,7 +737,7 @@ const PurchasingPropertyForm = () => {
           <button className="next-btn" onClick={handlePrevious}>Previous Step</button>
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px', marginLeft: '12px' }}>
-          <button className="next-btn" onClick={handleNextStep2}>Submit</button>
+          <button className="next-btn" onClick={handleNextStep2}>Next</button>
         </Box>
     </Grid>
     <div> 
@@ -714,6 +758,95 @@ const PurchasingPropertyForm = () => {
       </AccordionDetails>
       )}
     </Accordion>
+    <Accordion expanded={activeStep === 3}>
+  <AccordionSummary
+    sx={{
+      borderBottom: '1px solid #ddd',
+      '& .MuiTypography-root': {
+        fontSize: '1.25rem',
+      },
+    }}
+  >
+    <Typography variant="h6">Step 3</Typography>
+    {isStep3Complete && (
+      <div
+        style={{
+          color: 'green',
+          marginLeft: 'auto',
+          width: '30px',
+          height: '30px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          border: '2px solid green',
+          borderRadius: '50%',
+        }}
+      >
+        ✔
+      </div>
+    )}
+  </AccordionSummary>
+  {activeStep === 3 && (
+    <AccordionDetails>
+      <Grid container spacing={2}>
+        {/* Full Name Field */}
+        <Grid item xs={12} md={12}>
+          <TextField
+            label="Full Name"
+            name="fullName"
+            variant="outlined"
+            fullWidth
+            value={formData.fullName}
+            onChange={handleInputChange}
+            error={error && formData.fullName === ''}
+            helperText={error && formData.fullName === '' ? 'Full Name is required' : ''}
+          />
+        </Grid>
+
+        {/* Email Field */}
+        <Grid item xs={12} md={12}>
+          <TextField
+            label="Email"
+            name="emailAddress"
+            variant="outlined"
+            fullWidth
+            value={formData.emailAddress}
+            onChange={handleInputChange}
+            error={error && formData.emailAddress === ''}
+            helperText={error && formData.emailAddress === '' ? 'Email is required' : ''}
+          />
+        </Grid>
+
+        {/* Phone Field */}
+        <Grid item xs={12} md={12}>
+          <TextField
+            label="Phone"
+            name="phoneNumber"
+            variant="outlined"
+            fullWidth
+            value={formData.phoneNumber}
+            onChange={handleInputChange}
+            error={error && formData.phoneNumber === ''}
+            helperText={error && formData.phoneNumber === '' ? 'Phone number is required' : ''}
+          />
+        </Grid>
+
+        {/* Navigation Buttons */}
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '16px', marginLeft: '12px' }}>
+          <button className="next-btn" onClick={handlePrevious2}>Previous Step</button>
+          <button className="next-btn ml-2" onClick={handleSubmitStep3}>Submit</button>
+        </Box>
+      </Grid>
+      {/* {showThankYouMessage && (
+        <div style={{ marginTop: '20px', textAlign: 'center' }}>
+          <Typography variant="h6" style={{ color: 'green' }}>
+            Thank you for submitting the form! A team member will reach out to you within 1-2 business days.
+          </Typography>
+        </div>
+      )} */}
+    </AccordionDetails>
+  )}
+</Accordion>
 
     {showThankYouMessage && (
         <div style={{ marginTop: "20px", textAlign: "center" }}>

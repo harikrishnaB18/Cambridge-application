@@ -13,10 +13,8 @@ import {
   Grid,
   Snackbar,
   Alert,
-  Modal,
   FormHelperText,
 } from '@mui/material';
-import jsPDF from 'jspdf';
 import "jspdf-autotable";
 import '../SellingProperty/SellingProperty.css'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -43,12 +41,19 @@ const SellingProperty = () => {
     unregistered: '',
   });
 
+  const [accordion2Data, setAccordion2Data] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+  });
+
+  const [totalAmount, setTotalAmount] = useState(0); 
   const [isAccordion1Open, setAccordion1Open] = useState(true);
+  const [isAccordion2Open, setAccordion2Open] = useState(false);
   const [isAccordionCompleted, setAccordionCompleted] = useState(false);
+  const [isAccordion2Completed, setAccordion2Completed] = useState(false);
   const [toastOpen, setToastOpen] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
-  const [open, setOpen] = useState(false);
-  const [pdfUrl, setPdfUrl] = useState('');
 
   const handleAccordion1Change = (key, fieldName) => (event) => {
     const value = event.target.value;
@@ -81,12 +86,9 @@ const SellingProperty = () => {
         setShowPopup(false);
       }
     }
+    calculateTotal();
   };
-
-  const handleFormSubmit = (formData) => {
-    console.log("Contact form submitted:", formData);
-    setShowPopup(false); // Close popup after submission
-  };
+  console.log("step1:" + totalAmount)
 
   const closePopup = () => {
     setShowPopup(false); // Close popup when close button is clicked
@@ -102,126 +104,136 @@ const SellingProperty = () => {
     setValidationErrors(errors);
 
     if (allFieldsFilled) {
-      console.log('Form Data:', accordion1Data); // Print data to console
+      console.log('Form Data:', accordion1Data); 
       setAccordionCompleted(true);
       setAccordion1Open(false);
+      setAccordion2Open(true);
     } else {
+
       setToastOpen(true);
     }
-  };
-  const handlePreviewPDF = () => {
-    const doc = new jsPDF();
-  
-    // Title for the PDF
-    doc.setFontSize(18);
-    doc.text('Selling Purchase Information', 10, 10);
-  
-    // Function to calculate price based on price input
-    const calculatePrice = (price) => {
-      if (price < 250001) return 1140;
-      if (price < 500001) return 1140;
-      if (price < 750001) return 1450;
-      if (price < 900001) return 1800;
-      if (price < 1000001) return 2400;
-      if (price < 1500001) return 2500;
-      if (price < 2000001) return 3000;
-      return "Please Contact Us";
-    };
-  
-    // Create table headers
-    const headers = [['Field', 'Value', 'Cost']];
-  
-    // Calculate cost based on the user-provided price
-    const priceCost = calculatePrice(accordion1Data.price);
-  
-    // Create the data array dynamically from the form data
-    const data = [
-      ['Price', accordion1Data.price, priceCost], // Price entered by user as Value, calculated cost as Cost
-      ['Leasehold', accordion1Data.leasehold, accordion1Data.leasehold === 'Yes' ? '£300' : '-'],
-      ['Mortgage', accordion1Data.mortgage, accordion1Data.mortgage === 'Yes' ? '£360' : '-'],
-      ['Shared Ownership', accordion1Data.sharedOwnership, accordion1Data.sharedOwnership === 'Yes' ? '£150' : '-'],
-      ['New Build', accordion1Data.newBuild, accordion1Data.newBuild === 'Yes' ? '£420' : '-'],
-      ['Staircasing', accordion1Data.staircasing, accordion1Data.staircasing === 'Yes' ? '£420' : '-'],
-      ['Unregistered', accordion1Data.unregistered, accordion1Data.unregistered === 'Yes' ? '£420' : '-'],
-    ];
-  
-    // Calculate the total amount, excluding non-numeric values (like "-")
-    const totalAmount = data.reduce((total, row) => {
-      let cost = row[2];
-  
-      // Only process cost if it's a number or string that can be parsed to a number
-      if (cost === '-' || cost === 'Please Contact Us') {
-        return total;  // Skip non-numeric or unprocessable values
-      }
-  
-      // Ensure cost is a string if it's numeric
-      const parsedCost = typeof cost === 'string' ? parseFloat(cost.replace('€', '').trim()) : cost;
-  
-      // If parsed cost is valid, add it to the total
-      if (!isNaN(parsedCost)) {
-        return total + parsedCost;
-      }
-  
-      return total;
-    }, 0);
-  
-    // Add the total row to the data array
-    data.push(['Total', '', `€${totalAmount}`]);
-  
-    // Add the table to the PDF with styling
-    doc.autoTable({
-      head: headers,
-      body: data,
-      startY: 20, // Adjust starting Y position for the table
-      margin: { top: 20 }, // Add top margin to avoid collision with title
-      styles: {
-        font: 'helvetica',
-        fontSize: 10,
-        cellPadding: 5,
-        overflow: 'linebreak',
-        lineColor: [44, 62, 80],
-        lineWidth: 0.3,
-      },
-      headStyles: {
-        fillColor: [44, 62, 80], // Header background color
-        textColor: [255, 255, 255], // Header text color
-        fontSize: 12,
-        fontStyle: 'bold',
-      },
-      bodyStyles: {
-        fillColor: [255, 255, 255], // Body background color
-      },
-    });
-  
-    // Generate the PDF as a Blob and preview it in a modal
-    const pdfBlob = doc.output('blob');
-    const pdfUrl = URL.createObjectURL(pdfBlob);
-  
-    // Set the PDF URL and open the modal
-    setPdfUrl(pdfUrl);
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-    // Revoke the URL to free memory
-    URL.revokeObjectURL(pdfUrl);
-    setPdfUrl('');
   };
 
   const handleSubmit = (formData) => {
     console.log("Form submitted:", formData);
-    toast.success("Data successfully submitted!", {
-      position: "top-right",
+    toast.success('Data Submitted Successfully.', {
+      position: 'top-right',
       autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      theme: "light",
     });
     setShowPopup(false);
   };
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneRegex = /^[0-9]*$/;
+
+  const handleAccordion2Change = (key) => (event) => {
+    const value = event.target.value;
+    setAccordion2Data((prevData) => ({
+      ...prevData,
+      [key]: value,
+    }));
+
+    let error = false;
+
+    if (value.trim() === '') {
+      error = true;
+    } else if (key === 'email' && !emailRegex.test(value)) {
+      error = true;
+    } else if (key === 'phone' && !phoneRegex.test(value)) {
+      error = true;
+    } else {
+      setValidationErrors((prevErrors) => ({
+        ...prevErrors,
+        [key]: false,
+      }));
+    }
+  };
+
+  const handleAccordion2Submit = () => {
+    const allFieldsFilled = Object.values(accordion2Data).every((value) => value.trim() !== '');
+    let errors = {};
+    Object.keys(accordion2Data).forEach((key) => {
+      if (!accordion2Data[key].trim()) {
+        errors[key] = true;
+      } else if (key === 'email' && !emailRegex.test(accordion2Data[key])) {
+        errors[key] = true;
+      }
+    });
+
+    setValidationErrors(errors);
+    if (allFieldsFilled && Object.keys(errors).length === 0) {
+      setAccordion2Completed(true);
+      setAccordion2Open(false);
+      toast.success('Form submitted successfully!', {
+        position: 'top-right',
+        autoClose: 3000,
+      });
+    } else {
+      setToastOpen(true);
+    }
+  };
+
+  const handlePrevious = () => {
+    setAccordion1Open(true);
+    setAccordion2Open(false);
+  };
+
+ 
+  
+  
+  const calculateTotal = () => {
+    const price = parseFloat(accordion1Data.price) || 0;
+  
+    // Define price ranges and their corresponding fees
+    const priceRanges = [
+      { max: 250000, fee: 1200 },
+      { max: 500000, fee: 1500 },
+      { max: 750000, fee: 1800 },
+      { max: 900000, fee: 2100 },
+      { max: 1000000, fee: 2400 },
+      { max: 1500000, fee: 2500 },
+      { max: 2000000, fee: 3000 },
+      { max: 2500000, fee: 3600 },
+    ];
+  
+    // Determine the price fee based on the price range
+    let priceFee = 0;
+    for (const range of priceRanges) {
+      if (price <= range.max) {
+        priceFee = range.fee;
+        break;
+      }
+    }
+  
+    // Show popup and exit if price exceeds the highest range
+    if (price > 2500001 ) {
+      setShowPopup(true); // Show the popup for ContactCard
+      return; // Exit the function early
+    }
+  
+    // Base total amount starts with the price fee
+    let total = priceFee;
+  
+    // Add additional fees based on user selections
+    const additionalFees = {
+      leasehold: 300,
+      mortgage: 360,
+      sharedOwnership: 150,
+      newBuild: 420,
+      staircasing: 420,
+      unregistered: 420,
+    };
+  
+    for (const [key, fee] of Object.entries(additionalFees)) {
+      if (accordion1Data[key] === 'Yes') {
+        total += fee;
+      }
+    }
+  
+    // Update the total amount state
+    setTotalAmount(total);
+  };
+  
 
   return (
     <>
@@ -412,47 +424,19 @@ const SellingProperty = () => {
               
 
               </Grid>
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-              <Modal open={open} onClose={handleClose}>
-        <Box
-          sx={{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)',width: '80%',height: '80%',bgcolor: 'background.paper',boxShadow: 24, p: 4,display: 'flex',flexDirection: 'column',
-          }}
-        >
-          <iframe
-            src={pdfUrl}
-            title="PDF Preview"
-            style={{ flex: 1, border: 'none' }}
-          ></iframe>
-          <button
-            className='next-btn mt-2' onClick={handleClose}
-            style={{
-              float:'left',
-              width: '200px', 
-            }}
-          >
-            Close
-          </button>
-        </Box>
-      </Modal>
       <Box
   sx={{
     display: 'flex',
-    flexDirection: { xs: 'column', sm: 'row' }, // Column on mobile, row on larger screens
-    alignItems: 'center', // Center align items
-    justifyContent: { sm: 'flex-end' }, // Right align on larger screens if needed
+    flexDirection: { xs: 'column', sm: 'row' }, 
+    alignItems: 'center', 
+    justifyContent: { sm: 'flex-end' },
     marginTop: '14px',
-    gap: '10px', // Space between buttons
+    gap: '10px',
   }}
 >
-  {/* <button className="next-btn" onClick={handlePreviewPDF}>
-    Preview Data
-  </button> */}
-  <button className="next-btn" onClick={handleSubmitClick}>
-    Submit
-  </button>
-</Box>
+  <button className="next-btn" onClick={handleSubmitClick}>Next</button>
 
-    </Box>
+</Box>
     {showPopup && (
         <div
           style={{
@@ -465,6 +449,8 @@ const SellingProperty = () => {
             padding: "20px",
             boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
             borderRadius: "8px",
+            maxHeight: "80vh",
+            overflowY: "auto",
           }}
         >
           <ContactCardSelling onSubmit={handleSubmit} closePopup={closePopup} />
@@ -485,9 +471,71 @@ const SellingProperty = () => {
           }}
         ></div>
       )} 
-    </AccordionDetails>
+            </AccordionDetails>
     </Accordion>
-
+    <Accordion expanded={isAccordion2Open} className='mb-2'>
+            <AccordionSummary
+              expandIcon={isAccordion2Completed ? <CheckCircleIcon color="success" /> : <ExpandMoreIcon />}
+            >
+              <Typography variant="h6">Step 2</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    label="Full Name"
+                    name="fullName"
+                    variant="outlined"
+                    fullWidth
+                    value={accordion2Data.fullName}
+                    onChange={handleAccordion2Change('fullName')}
+                    error={validationErrors.fullName}
+                    helperText={validationErrors.fullName ? 'This field is required' : ''}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    label="Email"
+                    name="email"
+                    variant="outlined"
+                    fullWidth
+                    value={accordion2Data.email}
+                    onChange={handleAccordion2Change('email')}
+                    error={validationErrors.email}
+                    helperText={
+      validationErrors.email
+        ? accordion2Data.email.trim() === ''
+          ? 'This field is required'
+          : 'Invalid email format'
+        : ''
+    }
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    label="Phone"
+                    name="phone"
+                    variant="outlined"
+                    fullWidth
+                    value={accordion2Data.phone}
+                    onChange={handleAccordion2Change('phone')}
+                    error={validationErrors.phone}
+                    helperText={
+                      validationErrors.phone
+                        ? accordion2Data.phone.trim() === ''
+                          ? 'This field is required'
+                          : 'Phone number must contain only numbers'
+                        : ''
+                    }
+                  />
+                </Grid>
+              </Grid>
+              <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
+              <button className="next-btn mr-2" onClick={handlePrevious}>Previous</button>
+                <button className="next-btn" onClick={handleAccordion2Submit}>Submit</button>
+              </Box>
+            </AccordionDetails>
+          </Accordion>
           <Snackbar
             open={toastOpen}
             autoHideDuration={4000}
@@ -500,7 +548,7 @@ const SellingProperty = () => {
           </Snackbar>
         </Box>
       </div>
-      <ToastContainer />
+      <ToastContainer/>
       <FooterHomeTwo />
     </>
   );
