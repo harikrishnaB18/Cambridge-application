@@ -391,7 +391,7 @@ const PurchasingPropertyForm = () => {
 
   const generatePDF = () => {
     const doc = new jsPDF();
-    doc.setFontSize(18);
+    doc.setFontSize(18); 
     doc.text("PropertyManagemntForm", 14, 20);
     // Step 1: Calculate fees
     const price = parseFloat(formData.price);
@@ -478,8 +478,10 @@ const PurchasingPropertyForm = () => {
     ];
   
     // Add Step 1 to PDF
-    doc.setFontSize(16);
-    doc.text("Step 1", 20, 20);
+    doc.setFontSize(18); 
+    doc.text("PropertyManagemntForm", 14, 20);
+    doc.setFontSize(13); 
+    doc.text("Step 1", 14, 28);
     doc.autoTable({
       startY: 30,
       head: [["Field", "Value", "Amount"]],
@@ -489,8 +491,8 @@ const PurchasingPropertyForm = () => {
   
     // Add Step 2 to PDF
     const step2StartY = doc.previousAutoTable.finalY + 10;
-    doc.setFontSize(16);
-    doc.text("Step 2", 20, step2StartY);
+    doc.setFontSize(13);
+    doc.text("Step 2", 14, step2StartY);
     doc.autoTable({
       startY: step2StartY + 10,
       head: [["Field", "Value", "Amount"]],
@@ -500,8 +502,8 @@ const PurchasingPropertyForm = () => {
   
     // Add Step 3 to PDF
     const step3StartY = doc.previousAutoTable.finalY + 10;
-    doc.setFontSize(16);
-    doc.text("Step 3", 20, step3StartY);
+    doc.setFontSize(13);
+    doc.text("Step 3", 14, step3StartY);
     doc.autoTable({
       startY: step3StartY + 10,
       head: [["Field", "Value"]],
