@@ -180,6 +180,7 @@ const PurchasingPropertyForm = () => {
         setStep1Total("Please Contact Us");
         return;
       }  
+
       setStep1Total(step1TotalAmount);
     };
   
@@ -444,30 +445,35 @@ const PurchasingPropertyForm = () => {
     }
   
     const step2Total = ukResidentsFee + moreThanOneHouseFee + mainResidenceFee;
-  
+    const stampDuty = 200;
+    const solicitorsFees = 200;
+  const overallTotal = step2Total +  stampDuty + solicitorsFees;
+
     // Step 1 Table
     const step1Entries = [
-      ["Price", formData.price, `€ ${priceFee}`],
-      ["Leasehold", formData.leasehold, `€ ${leaseholdFee}`],
-      ["Mortgage", formData.mortgage, `€ ${mortgageFee}`],
-      ["Shared Ownership", formData.sharedOwnership, `€ ${sharedOwnershipFee}`],
-      ["Gifted Funds", formData.giftedFunds, `€ ${giftedFundsFee}`],
-      ["New Build", formData.newBuild, `€ ${newBuildFee}`],
-      ["Staircasing", formData.staircasing, `€ ${staircasingFee}`],
-      ["Unregistered", formData.unregistered, `€ ${unregisteredFee}`],
-      ["Step 1 Total", "", `€ ${step1Total}`],
+      ["Price", formData.price, `£ ${priceFee}`],
+      ["Leasehold", formData.leasehold, `£ ${leaseholdFee}`],
+      ["Mortgage", formData.mortgage, `£ ${mortgageFee}`],
+      ["Shared Ownership", formData.sharedOwnership, `£ ${sharedOwnershipFee}`],
+      ["Gifted Funds", formData.giftedFunds, `£ ${giftedFundsFee}`],
+      ["New Build", formData.newBuild, `£ ${newBuildFee}`],
+      ["Staircasing", formData.staircasing, `£ ${staircasingFee}`],
+      ["Unregistered", formData.unregistered, `£ ${unregisteredFee}`],
+      ["Step 1 Total", "", `£ ${step1Total}`],
     ];
   
     // Step 2 Table
     const step2Entries = [
-      ["Buyers (Individuals)", formData.buyersIndividuals, ""],
-      ["UK Residents", formData.ukResidents, `€ ${ukResidentsFee.toFixed(2)}`],
-      ["Residential Property", formData.residentialProperty, ""],
-      ["New Leasehold", formData.newLeasehold, ""],
-      ["Owned Before", formData.ownedBefore, ""],
-      ["More Than One House", formData.moreThanOneHouse, `€ ${moreThanOneHouseFee.toFixed(2)}`],
-      ["Main Residence", formData.mainResidence, `€ ${mainResidenceFee.toFixed(2)}`],
-      ["Step 2 Total", "", `€ ${step2Total.toFixed(2)}`],
+      ["Buyers (Individuals)", formData.buyersIndividuals, "-"],
+      ["UK Residents", formData.ukResidents, `£ ${ukResidentsFee.toFixed(2)}`],
+      ["Residential Property", formData.residentialProperty, "-"],
+      ["New Leasehold", formData.newLeasehold, "-"],
+      ["Owned Before", formData.ownedBefore, "-"],
+      ["More Than One House", formData.moreThanOneHouse, `£ ${moreThanOneHouseFee.toFixed(2)}`],
+      ["Main Residence", formData.mainResidence, `£ ${mainResidenceFee.toFixed(2)}`],
+      ["Stamp Duty", "-", `£ ${stampDuty.toFixed(2)}`], // Add Stamp Duty row
+      ["Solicitors' Fees", "-", `£ ${solicitorsFees.toFixed(2)}`], // Add this row
+      ["Total", "-", `£ ${overallTotal.toFixed(2)}`], 
     ];
   
     // Step 3 Table

@@ -233,7 +233,9 @@ const SellingProperty = () => {
         total += fee;
       }
     }
-  
+    const stampDuty = 200;
+    const solicitorsFees = 200;
+    total += stampDuty+solicitorsFees;
     // Update the total amount state
     setTotalAmount(total);
   };
@@ -283,7 +285,8 @@ const SellingProperty = () => {
         }
       }
     });
-  
+    accordion1Entries.push(["Stamp Duty", "-", "£200"]);
+    accordion1Entries.push(["Solicitors Fees", "-", "£200"]);
     // Calculate and add the total amount
     const total = totalAmount; // Assuming totalAmount includes the price fee and additional fees
     accordion1Entries.push(["Total Amount", "", `£${total}`]);
