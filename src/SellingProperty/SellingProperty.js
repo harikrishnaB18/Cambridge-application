@@ -293,6 +293,7 @@ const SellingProperty = () => {
       startY: 35,
       head: [["Field", "Value", "Amount"]],
       body: accordion1Entries,
+      headStyles: { fillColor: [35, 57, 85] },
     });
   
     // Add user contact details
@@ -306,6 +307,7 @@ const SellingProperty = () => {
       startY: doc.lastAutoTable.finalY + 15,
       head: [["Field", "Value"]],
       body: accordion2Entries,
+      headStyles: { fillColor: [35, 57, 85] },
     });
   
     // Open the PDF in a new window for preview
@@ -646,7 +648,7 @@ const SellingProperty = () => {
               </Grid>
               <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
               <button className="next-btn mr-2" onClick={handlePrevious}>PreviousStep</button>
-              <button className="next-btn mr-2" onClick={generatePDF}>PreviewData</button>
+              <button className="next-btn mr-2" onClick={generatePDF}>Preview Data</button>
                 <button className="next-btn" onClick={handleAccordion2Submit}>Submit</button>
               </Box>
             </AccordionDetails>

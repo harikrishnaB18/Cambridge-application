@@ -18,6 +18,7 @@ import '../PropertyManagementForm/PropertyManagemntForm.css'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "jspdf-autotable";
+import { jsPDF } from "jspdf";
 import HeaderHomeTwo from '../components/HeaderHomeTwo';
 import FooterHomeTwo from '../components/FooterHomeTwo';
 import ContactCard from './ContactCard'
@@ -387,6 +388,134 @@ const PurchasingPropertyForm = () => {
     // Update active step state
     setActiveStep(2);
   }; 
+
+  const generatePDF = () => {
+    const doc = new jsPDF();
+    doc.setFontSize(18);
+    doc.text("PropertyManagemntForm", 14, 20);
+    // Step 1: Calculate fees
+    const price = parseFloat(formData.price);
+    let priceFee = 0;
+    let leaseholdFee = formData.leasehold === 'Yes' ? 300 : 0;
+    let mortgageFee = formData.mortgage === 'Yes' ? 360 : 0;
+    let sharedOwnershipFee = formData.sharedOwnership === 'Yes' ? 150 : 0;
+    let giftedFundsFee = formData.giftedFunds === 'Yes' ? 150 : 0;
+    let newBuildFee = formData.newBuild === 'Yes' ? 420 : 0;
+    let staircasingFee = formData.staircasing === 'Yes' ? 420 : 0;
+    let unregisteredFee = formData.unregistered === 'Yes' ? 420 : 0;
+  
+    if (price < 250001) priceFee = 1200;
+    else if (price < 500001) priceFee = 1500;
+    else if (price < 750001) priceFee = 1800;
+    else if (price < 900001) priceFee = 2100;
+    else if (price < 1000001) priceFee = 2400;
+    else if (price < 1500001) priceFee = 2500;
+    else if (price < 2000001) priceFee = 3000;
+    else if (price < 2500001) priceFee = 3600;
+  
+    const step1Total = priceFee + leaseholdFee + mortgageFee + sharedOwnershipFee + giftedFundsFee + newBuildFee + staircasingFee + unregisteredFee;
+  
+    // Step 2: Calculate fees
+    const ukResidentsFee = formData.ukResidents === 'No' ? price * 0.02 : 0;
+    const moreThanOneHouseFee = formData.moreThanOneHouse === 'Yes' ? price * 0.03 : 0;
+  
+    let mainResidenceFee = 0;
+    if (formData.mainResidence === 'Yes' && formData.ownedBefore === 'Yes') {
+      if (price > 250000) {
+        if (price <= 925000) {
+          mainResidenceFee = (price - 250000) * 0.05;
+        } else if (price <= 1500000) {
+          mainResidenceFee = (925000 - 250000) * 0.05 + (price - 925000) * 0.1;
+        } else {
+          mainResidenceFee =
+            (925000 - 250000) * 0.05 +
+            (1500000 - 925000) * 0.1 +
+            (price - 1500000) * 0.12;
+        }
+      }
+    } else if (formData.ownedBefore === 'No') {
+      if (price > 450000) {
+        if (price <= 625000) {
+          mainResidenceFee = (price - 450000) * 0.05;
+        } else {
+          mainResidenceFee = (625000 - 450000) * 0.05 + (price - 625000);
+        }
+      }
+    }
+  
+    const step2Total = ukResidentsFee + moreThanOneHouseFee + mainResidenceFee;
+  
+    // Step 1 Table
+    const step1Entries = [
+      ["Price", formData.price, `€ ${priceFee}`],
+      ["Leasehold", formData.leasehold, `€ ${leaseholdFee}`],
+      ["Mortgage", formData.mortgage, `€ ${mortgageFee}`],
+      ["Shared Ownership", formData.sharedOwnership, `€ ${sharedOwnershipFee}`],
+      ["Gifted Funds", formData.giftedFunds, `€ ${giftedFundsFee}`],
+      ["New Build", formData.newBuild, `€ ${newBuildFee}`],
+      ["Staircasing", formData.staircasing, `€ ${staircasingFee}`],
+      ["Unregistered", formData.unregistered, `€ ${unregisteredFee}`],
+      ["Step 1 Total", "", `€ ${step1Total}`],
+    ];
+  
+    // Step 2 Table
+    const step2Entries = [
+      ["Buyers (Individuals)", formData.buyersIndividuals, ""],
+      ["UK Residents", formData.ukResidents, `€ ${ukResidentsFee.toFixed(2)}`],
+      ["Residential Property", formData.residentialProperty, ""],
+      ["New Leasehold", formData.newLeasehold, ""],
+      ["Owned Before", formData.ownedBefore, ""],
+      ["More Than One House", formData.moreThanOneHouse, `€ ${moreThanOneHouseFee.toFixed(2)}`],
+      ["Main Residence", formData.mainResidence, `€ ${mainResidenceFee.toFixed(2)}`],
+      ["Step 2 Total", "", `€ ${step2Total.toFixed(2)}`],
+    ];
+  
+    // Step 3 Table
+    const step3Entries = [
+      ["Full Name", formData.fullName, ""],
+      ["Email Address", formData.emailAddress, ""],
+      ["Phone Number", formData.phoneNumber, ""],
+    ];
+  
+    // Add Step 1 to PDF
+    doc.setFontSize(16);
+    doc.text("Step 1", 20, 20);
+    doc.autoTable({
+      startY: 30,
+      head: [["Field", "Value", "Amount"]],
+      body: step1Entries,
+      headStyles: { fillColor: [35, 57, 85] },
+    });
+  
+    // Add Step 2 to PDF
+    const step2StartY = doc.previousAutoTable.finalY + 10;
+    doc.setFontSize(16);
+    doc.text("Step 2", 20, step2StartY);
+    doc.autoTable({
+      startY: step2StartY + 10,
+      head: [["Field", "Value", "Amount"]],
+      body: step2Entries,
+      headStyles: { fillColor: [35, 57, 85] },
+    });
+  
+    // Add Step 3 to PDF
+    const step3StartY = doc.previousAutoTable.finalY + 10;
+    doc.setFontSize(16);
+    doc.text("Step 3", 20, step3StartY);
+    doc.autoTable({
+      startY: step3StartY + 10,
+      head: [["Field", "Value"]],
+      body: step3Entries,
+      headStyles: { fillColor: [35, 57, 85] },
+    });
+  
+    // Save the PDF
+    window.open(doc.output("bloburl"), "_blank");
+  };
+  
+  
+  
+    // window.open(doc.output("bloburl"), "_blank");  };
   return (
     <>
       <Drawer drawer={drawer} action={drawerAction.toggle} />
@@ -833,6 +962,7 @@ const PurchasingPropertyForm = () => {
 
         {/* Navigation Buttons */}
         <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '16px', marginLeft: '12px' }}>
+        <button className="next-btn mr-2" onClick={generatePDF}>Preview Data</button>
           <button className="next-btn" onClick={handlePrevious2}>Previous Step</button>
           <button className="next-btn ml-2" onClick={handleSubmitStep3}>Submit</button>
         </Box>
