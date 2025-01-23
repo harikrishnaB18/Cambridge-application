@@ -15,6 +15,7 @@ import {
   Alert,
   FormHelperText,
 } from '@mui/material';
+import jsPDF from "jspdf";
 import "jspdf-autotable";
 import '../SellingProperty/SellingProperty.css'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -238,6 +239,116 @@ const SellingProperty = () => {
   };
   
 
+  const generatePDF = () => {
+    const doc = new jsPDF();
+  
+    // Add a title
+    doc.setFontSize(18);
+    doc.text("Selling Property Summary", 14, 20);
+  
+    // Add user selections and related amounts
+    doc.setFontSize(12);
+    doc.text("Step1:", 14, 30);
+  
+    // Calculate price fee
+    const price = parseFloat(accordion1Data.price) || 0;
+    const priceFee = calculatePriceFee(price);
+  
+    // Start creating table rows
+    const accordion1Entries = [];
+  
+    // Add price and its fee
+    accordion1Entries.push([
+      "Property Price",
+      `£${price.toLocaleString()}`, // Display price
+      `£${priceFee}`, // Display fee for the price
+    ]);
+  
+    // Add user selections and their respective amounts
+    Object.entries(accordion1Data).forEach(([key, value]) => {
+      if (key !== "price") {
+        if (value === "Yes") {
+          const amount = calculateAmountForKey(key); // Function to get amount for the specific key
+          accordion1Entries.push([
+            key.charAt(0).toUpperCase() + key.slice(1), // Capitalize key names
+            value,
+            `£${amount}`, // Add the amount
+          ]);
+        } else {
+          accordion1Entries.push([
+            key.charAt(0).toUpperCase() + key.slice(1),
+            value || "Not Selected",
+            "-", // No amount for "No" or unselected options
+          ]);
+        }
+      }
+    });
+  
+    // Calculate and add the total amount
+    const total = totalAmount; // Assuming totalAmount includes the price fee and additional fees
+    accordion1Entries.push(["Total Amount", "", `£${total}`]);
+  
+    // Add table for user selections and amounts
+    doc.autoTable({
+      startY: 35,
+      head: [["Field", "Value", "Amount"]],
+      body: accordion1Entries,
+    });
+  
+    // Add user contact details
+    doc.text("Step2", 14, doc.lastAutoTable.finalY + 10);
+    const accordion2Entries = Object.entries(accordion2Data).map(([key, value]) => [
+      key.charAt(0).toUpperCase() + key.slice(1),
+      value || "Not Provided",
+    ]);
+  
+    doc.autoTable({
+      startY: doc.lastAutoTable.finalY + 15,
+      head: [["Field", "Value"]],
+      body: accordion2Entries,
+    });
+  
+    // Open the PDF in a new window for preview
+    window.open(doc.output("bloburl"), "_blank");
+  };
+  
+  // Helper function to calculate price fee based on ranges
+  const calculatePriceFee = (price) => {
+    const priceRanges = [
+      { max: 250000, fee: 1200 },
+      { max: 500000, fee: 1500 },
+      { max: 750000, fee: 1800 },
+      { max: 900000, fee: 2100 },
+      { max: 1000000, fee: 2400 },
+      { max: 1500000, fee: 2500 },
+      { max: 2000000, fee: 3000 },
+      { max: 2500000, fee: 3600 },
+    ];
+  
+    for (const range of priceRanges) {
+      if (price <= range.max) {
+        return range.fee;
+      }
+    }
+    return 0; // Default fee if no range matches
+  };
+  
+  // Helper function to calculate amount for a specific key
+  const calculateAmountForKey = (key) => {
+    const amounts = {
+      leasehold: 300,
+      mortgage: 360,
+      sharedOwnership: 150,
+      newBuild: 420,
+      staircasing: 420,
+      unregistered: 420,
+      // Add all your options and their respective amounts here
+    };
+    return amounts[key] || 0; // Return the amount or 0 if the key is not found
+  };
+  
+  
+  
   return (
     <>
       <Drawer drawer={drawer} action={drawerAction.toggle} />
@@ -534,7 +645,8 @@ const SellingProperty = () => {
                 </Grid>
               </Grid>
               <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-              <button className="next-btn mr-2" onClick={handlePrevious}>Previous</button>
+              <button className="next-btn mr-2" onClick={handlePrevious}>PreviousStep</button>
+              <button className="next-btn mr-2" onClick={generatePDF}>PreviewData</button>
                 <button className="next-btn" onClick={handleAccordion2Submit}>Submit</button>
               </Box>
             </AccordionDetails>
