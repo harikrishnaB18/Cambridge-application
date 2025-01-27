@@ -1157,7 +1157,8 @@ const PurchasingPropertyForm = () => {
         </Grid>
 
         {/* Navigation Buttons */}
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '16px', marginLeft: '12px' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '16px', marginLeft: '12px', flexDirection: { xs: 'column', sm: 'row' }, // Stack buttons vertically on mobile
+    gap: '8px'}}>
         <button className="next-btn mr-2" onClick={generatePDF}>Preview Data</button>
           <button className="next-btn" onClick={handlePrevious2}>Previous Step</button>
           <button className="next-btn ml-2" onClick={handleSubmitStep3}>Submit</button>
@@ -1179,10 +1180,6 @@ const PurchasingPropertyForm = () => {
           <Typography variant="h6" style={{ color: "green" }}>
             Thank you for submitting the form! A team member will reach out to you within 1-2 business days.
           </Typography>
-   
-  
-  {solicitorsFees.total}
-  {stampDuty}
 
   <div className='container'>
           <table

@@ -814,32 +814,20 @@ const SellingProperty = () => {
                   />
                 </Grid>
               </Grid>
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
+              <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px'  ,   flexDirection: { xs: 'column', sm: 'row' }, // Stack buttons vertically on mobile
+    gap: '8px',}}>
               <button className="next-btn mr-2" onClick={handlePrevious}>PreviousStep</button>
               <button className="next-btn mr-2" onClick={generatePDF}>Preview Data</button>
                 <button className="next-btn" onClick={handleAccordion2Submit}>Submit</button>
               </Box>
             </AccordionDetails>
           </Accordion>
-          <Snackbar
-            open={toastOpen}
-            autoHideDuration={4000}
-            onClose={() => setToastOpen(false)}
-            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-          >
-            <Alert onClose={() => setToastOpen(false)} severity="error" sx={{ width: '100%' }}>
-              Please fill out all fields before proceeding.
-            </Alert>
-          </Snackbar>
-        </Box>
-        {showThankYouMessage && (
-  <div>
+          {showThankYouMessage && (
     <div style={{ marginTop: "20px", textAlign: "center" }}>
       <Typography variant="h6" style={{ color: "green" }}>
         Thank you for submitting the form! A team member will reach out to you within 1-2 business days.
       </Typography> 
-    </div>
-          <div className='container'>
+      <div className='container'>
           <table
   style={{
     width: '100%',
@@ -878,8 +866,21 @@ const SellingProperty = () => {
 </table>
 
     </div>
-  </div>
+    </div>
+
 )}
+          <Snackbar
+            open={toastOpen}
+            autoHideDuration={4000}
+            onClose={() => setToastOpen(false)}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+          >
+            <Alert onClose={() => setToastOpen(false)} severity="error" sx={{ width: '100%' }}>
+              Please fill out all fields before proceeding.
+            </Alert>
+          </Snackbar>
+        </Box>
+
 
       </div>
 
