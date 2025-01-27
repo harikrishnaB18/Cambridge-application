@@ -1157,7 +1157,7 @@ const PurchasingPropertyForm = () => {
         </Grid>
 
         {/* Navigation Buttons */}
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '16px', marginLeft: '12px', flexDirection: { xs: 'column', sm: 'row' }, // Stack buttons vertically on mobile
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px', marginLeft: '12px', flexDirection: { xs: 'column', sm: 'row' }, // Stack buttons vertically on mobile
     gap: '8px'}}>
         <button className="next-btn mr-2" onClick={generatePDF}>Preview Data</button>
           <button className="next-btn" onClick={handlePrevious2}>Previous Step</button>
