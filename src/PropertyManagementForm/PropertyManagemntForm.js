@@ -72,18 +72,41 @@ const PurchasingPropertyForm = () => {
 
     console.log('Step2 Total:', step2Total);
     const handleSubmitStep3 = () => {
-      if (validateStep3Fields()) {
+      const errorField = validateStep3Fields();
+    
+      if (!errorField) {
         setIsStep3Complete(true);
         toast.success('Step 3 is complete! Form submitted successfully.', {
           position: 'top-right',
           autoClose: 3000,
         });
         // Perform any final submission actions here
-        
         setShowThankYouMessage(true);
+        setActiveStep(4);
+      } else {
+        // Display a specific error message for the field
+        let errorMessage = '';
+        switch (errorField) {
+          case 'fullName':
+            errorMessage = 'Full Name is required!';
+            break;
+          case 'emailAddress':
+            errorMessage = 'Please enter a valid email address!';
+            break;
+          case 'phoneNumber':
+            errorMessage = 'Please enter a valid phone number!';
+            break;
+          default:
+            errorMessage = 'Please fix the errors before proceeding!';
+        }
+    
+        toast.error(errorMessage, {
+          position: 'top-right',
+          autoClose: 3000,
+        });
       }
-      setActiveStep(4);
     };
+    
 
   // Update state when inputs change
   const handleInputChange = (e) => {
@@ -339,35 +362,23 @@ const PurchasingPropertyForm = () => {
   
     for (const field of requiredFields) {
       if (!formData[field]) {
-        toast.error(`Please fill the ${field.replace(/([A-Z])/g, ' $1')} field!`, {
-          position: 'top-right',
-          autoClose: 3000,
-        });
-        return false;
+        return field; // Return the field name with an error
       }
     }
   
-    // Additional validation: email format
+    // Email format validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.emailAddress)) {
-      toast.error('Please enter a valid email address!', {
-        position: 'top-right',
-        autoClose: 3000,
-      });
-      return false;
+      return 'emailAddress'; // Return the field name with an error
     }
   
-    // Additional validation: phone number format (e.g., 10 digits)
-    const phoneRegex = /^[0-9]{10}$/;
+    // Phone number format validation
+    const phoneRegex = /^([+](44|1|91)[\s]?)?[0-9\s]{10,11}$/;
     if (!phoneRegex.test(formData.phoneNumber)) {
-      toast.error('Please enter a valid 10-digit phone number!', {
-        position: 'top-right',
-        autoClose: 3000,
-      });
-      return false;
+      return 'phoneNumber'; // Return the field name with an error
     }
   
-    return true;
+    return null; // Return null if no errors
   };
   
 
@@ -711,6 +722,8 @@ const PurchasingPropertyForm = () => {
     stampDuty +
     solicitorsFees.total;
 
+    const subtotal=step1Totalinfo+step2Totalinfo;
+    const overalltotal=subtotal+stampDuty+solicitorsFees.total;
     // window.open(doc.output("bloburl"), "_blank");  };
   return (
     <>
@@ -1067,7 +1080,6 @@ const PurchasingPropertyForm = () => {
     </Grid>
     <div> 
 
-
           {/* <Typography variant="h6">console.log(Step2 Total: {step2Total})</Typography> */}
         </div>
         {showPopup && (
@@ -1112,6 +1124,7 @@ const PurchasingPropertyForm = () => {
     )}
   </AccordionSummary>
   {activeStep === 3 && (
+    
     <AccordionDetails>
       <Grid container spacing={2}>
         {/* Full Name Field */}
@@ -1155,7 +1168,6 @@ const PurchasingPropertyForm = () => {
             helperText={error && formData.phoneNumber === '' ? 'Phone number is required' : ''}
           />
         </Grid>
-
       </Grid>
               <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px'  ,   flexDirection: { xs: 'column', sm: 'row' }, // Stack buttons vertically on mobile
     gap: '8px',}}>
@@ -1205,12 +1217,12 @@ const PurchasingPropertyForm = () => {
       <td style={{ padding: '12px', border: '1px solid #ddd' }}>{solicitorsFees.total}</td>
     </tr>
     <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
-      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Step1Total</td>
-      <td style={{ padding: '12px', border: '1px solid #ddd' }}>{step1Totalinfo}</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>SubTotal</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>{subtotal}</td>
     </tr>
     <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
-      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Step2Total</td>
-      <td style={{ padding: '12px', border: '1px solid #ddd' }}>{step2Totalinfo}</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Total</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>{overalltotal}</td>
     </tr>
   </tbody>
 </table>
@@ -1221,7 +1233,6 @@ const PurchasingPropertyForm = () => {
   </Box>
   <ToastContainer />
 </div>
-
       <FooterHomeTwo />
     </>
   );

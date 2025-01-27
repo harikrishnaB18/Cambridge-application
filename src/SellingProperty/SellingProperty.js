@@ -126,7 +126,7 @@ const SellingProperty = () => {
   };
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const phoneRegex = /^[0-9]*$/;
+  const phoneRegex = /^([+](44|1|91)[\s]?)?[0-9\s]{10,11}$/;
 
   const handleAccordion2Change = (key) => (event) => {
     const value = event.target.value;
@@ -519,6 +519,8 @@ const SellingProperty = () => {
       .filter((value) => value === "Yes")
       .reduce((sum, key) => sum + calculateAmountForKey(key), 0);
   accordion1Entries.push(["Total Amount", "", `£${total.toLocaleString()}`]);
+
+  const overalltotal=solicitorsFees.total+total+stampDuty
   return (
     <>
       <Drawer drawer={drawer} action={drawerAction.toggle} />
@@ -859,8 +861,12 @@ const SellingProperty = () => {
       <td style={{ padding: '12px', border: '1px solid #ddd' }}>{solicitorsFees.total}</td>
     </tr>
     <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
-      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Total</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Sub-Total</td>
       <td style={{ padding: '12px', border: '1px solid #ddd' }}>{total}</td>
+    </tr>
+    <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Total</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>{overalltotal}</td>
     </tr>
   </tbody>
 </table>
