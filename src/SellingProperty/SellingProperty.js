@@ -285,11 +285,74 @@ const SellingProperty = () => {
         }
       }
     });
-    accordion1Entries.push(["Stamp Duty", "-", "£200"]);
-    accordion1Entries.push(["Solicitors Fees", "-", "£200"]);
+  
+    // Stamp Duty calculation
+    const calculateStampDuty = (price) => {
+      let stampDuty = 0;
+      if (price > 3000000) {
+        stampDuty += (price - 3000000) * 0.12;
+        price = 3000000;
+      }
+      if (price > 1500000) {
+        stampDuty += (price - 1500000) * 0.10;
+        price = 1500000;
+      }
+      if (price > 925000) {
+        stampDuty += (price - 925000) * 0.05;
+        price = 925000;
+      }
+      if (price > 250000) {
+        stampDuty += (price - 250000) * 0.05;
+        price = 250000;
+      }
+      return stampDuty;
+    };
+  
+    const stampDuty = calculateStampDuty(price);
+    accordion1Entries.push(["Stamp Duty", "-", `£${stampDuty.toLocaleString()}`]);
+  
+    // Solicitors Fees calculation
+    const calculateSolicitorsFees = (price) => {
+      let fee = 0;
+      let vat = 0;
+      if (price <= 500000) {
+        fee = 950;
+        vat = 190;
+      } else if (price <= 750000) {
+        fee = 1250;
+        vat = 250;
+      } else if (price <= 950000) {
+        fee = 1500;
+        vat = 300;
+      } else if (price <= 1000000) {
+        fee = 2000;
+        vat = 400;
+      } else if (price <= 1500000) {
+        fee = 2500;
+        vat = 500;
+      } else if (price <= 2000000) {
+        fee = 3000;
+        vat = 600;
+      }
+      return { fee, vat, total: fee + vat };
+    };
+  
+    const solicitorsFees = calculateSolicitorsFees(price);
+    accordion1Entries.push([
+      "Solicitors Fees",
+      "-",
+      `£${solicitorsFees.total.toLocaleString()}`,
+    ]);
+  
     // Calculate and add the total amount
-    const total = totalAmount; // Assuming totalAmount includes the price fee and additional fees
-    accordion1Entries.push(["Total Amount", "", `£${total}`]);
+    const total =
+      priceFee +
+      stampDuty +
+      solicitorsFees.total +
+      Object.values(accordion1Data)
+        .filter((value) => value === "Yes")
+        .reduce((sum, key) => sum + calculateAmountForKey(key), 0);
+    accordion1Entries.push(["Total Amount", "", `£${total.toLocaleString()}`]);
   
     // Add table for user selections and amounts
     doc.autoTable({
@@ -316,6 +379,7 @@ const SellingProperty = () => {
     // Open the PDF in a new window for preview
     window.open(doc.output("bloburl"), "_blank");
   };
+  
   
   // Helper function to calculate price fee based on ranges
   const calculatePriceFee = (price) => {

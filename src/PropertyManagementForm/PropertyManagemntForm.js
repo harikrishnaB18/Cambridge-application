@@ -392,18 +392,19 @@ const PurchasingPropertyForm = () => {
 
   const generatePDF = () => {
     const doc = new jsPDF();
-    doc.setFontSize(18); 
+    doc.setFontSize(18);
     doc.text("PropertyManagemntForm", 14, 20);
+  
     // Step 1: Calculate fees
     const price = parseFloat(formData.price);
     let priceFee = 0;
-    let leaseholdFee = formData.leasehold === 'Yes' ? 300 : 0;
-    let mortgageFee = formData.mortgage === 'Yes' ? 360 : 0;
-    let sharedOwnershipFee = formData.sharedOwnership === 'Yes' ? 150 : 0;
-    let giftedFundsFee = formData.giftedFunds === 'Yes' ? 150 : 0;
-    let newBuildFee = formData.newBuild === 'Yes' ? 420 : 0;
-    let staircasingFee = formData.staircasing === 'Yes' ? 420 : 0;
-    let unregisteredFee = formData.unregistered === 'Yes' ? 420 : 0;
+    let leaseholdFee = formData.leasehold === "Yes" ? 300 : 0;
+    let mortgageFee = formData.mortgage === "Yes" ? 360 : 0;
+    let sharedOwnershipFee = formData.sharedOwnership === "Yes" ? 150 : 0;
+    let giftedFundsFee = formData.giftedFunds === "Yes" ? 150 : 0;
+    let newBuildFee = formData.newBuild === "Yes" ? 420 : 0;
+    let staircasingFee = formData.staircasing === "Yes" ? 420 : 0;
+    let unregisteredFee = formData.unregistered === "Yes" ? 420 : 0;
   
     if (price < 250001) priceFee = 1200;
     else if (price < 500001) priceFee = 1500;
@@ -414,19 +415,85 @@ const PurchasingPropertyForm = () => {
     else if (price < 2000001) priceFee = 3000;
     else if (price < 2500001) priceFee = 3600;
   
-    const step1Total = priceFee + leaseholdFee + mortgageFee + sharedOwnershipFee + giftedFundsFee + newBuildFee + staircasingFee + unregisteredFee;
+    const step1Total =
+      priceFee +
+      leaseholdFee +
+      mortgageFee +
+      sharedOwnershipFee +
+      giftedFundsFee +
+      newBuildFee +
+      staircasingFee +
+      unregisteredFee;
   
-    // Step 2: Calculate fees
-    const ukResidentsFee = formData.ukResidents === 'No' ? price * 0.02 : 0;
-    const moreThanOneHouseFee = formData.moreThanOneHouse === 'Yes' ? price * 0.03 : 0;
+    // Step 2: Stamp Duty Logic (unchanged)
+    const calculateStampDuty = (price) => {
+      let stampDuty = 0;
+      if (price > 3000000) {
+        stampDuty += (price - 3000000) * 0.12;
+        price = 3000000;
+      }
+      if (price > 1500000) {
+        stampDuty += (price - 1500000) * 0.10;
+        price = 1500000;
+      }
+      if (price > 925000) {
+        stampDuty += (price - 925000) * 0.05;
+        price = 925000;
+      }
+      if (price > 250000) {
+        stampDuty += (price - 250000) * 0.05;
+        price = 250000;
+      }
+      return stampDuty;
+    };
+  
+    const stampDuty = calculateStampDuty(price);
+  
+    // Updated Solicitors Fees Logic
+    const calculateSolicitorsFees = (price) => {
+      let fee = 0;
+      let vat = 0;
+  
+      if (price <= 250000) {
+        fee = 1000;
+        vat = 200;
+      } else if (price === 250001) {
+        fee = 1250;
+        vat = 250;
+      } else if (price === 250002) {
+        fee = 1500;
+        vat = 300;
+      } else if (price === 250003) {
+        fee = 1750;
+        vat = 350;
+      } else if (price === 250004) {
+        fee = 2000;
+        vat = 400;
+      } else if (price === 250005) {
+        fee = 2500;
+        vat = 500;
+      } else if (price >= 250006) {
+        fee = 3000;
+        vat = 600;
+      }
+  
+      return { fee, vat, total: fee + vat };
+    };
+  
+    const solicitorsFees = calculateSolicitorsFees(price);
+  
+    // Calculate Step 2 Total
+    const ukResidentsFee = formData.ukResidents === "No" ? price * 0.02 : 0;
+    const moreThanOneHouseFee = formData.moreThanOneHouse === "Yes" ? price * 0.03 : 0;
   
     let mainResidenceFee = 0;
-    if (formData.mainResidence === 'Yes' && formData.ownedBefore === 'Yes') {
+    if (formData.mainResidence === "Yes" && formData.ownedBefore === "Yes") {
       if (price > 250000) {
         if (price <= 925000) {
           mainResidenceFee = (price - 250000) * 0.05;
         } else if (price <= 1500000) {
-          mainResidenceFee = (925000 - 250000) * 0.05 + (price - 925000) * 0.1;
+          mainResidenceFee =
+            (925000 - 250000) * 0.05 + (price - 925000) * 0.1;
         } else {
           mainResidenceFee =
             (925000 - 250000) * 0.05 +
@@ -434,7 +501,7 @@ const PurchasingPropertyForm = () => {
             (price - 1500000) * 0.12;
         }
       }
-    } else if (formData.ownedBefore === 'No') {
+    } else if (formData.ownedBefore === "No") {
       if (price > 450000) {
         if (price <= 625000) {
           mainResidenceFee = (price - 450000) * 0.05;
@@ -444,11 +511,13 @@ const PurchasingPropertyForm = () => {
       }
     }
   
-    const step2Total = ukResidentsFee + moreThanOneHouseFee + mainResidenceFee;
-    const stampDuty = 200;
-    const solicitorsFees = 200;
-  const overallTotal = step2Total +  stampDuty + solicitorsFees;
-
+    const step2Total =
+      ukResidentsFee +
+      moreThanOneHouseFee +
+      mainResidenceFee +
+      stampDuty +
+      solicitorsFees.total;
+  
     // Step 1 Table
     const step1Entries = [
       ["Price", formData.price, `£ ${priceFee}`],
@@ -471,9 +540,9 @@ const PurchasingPropertyForm = () => {
       ["Owned Before", formData.ownedBefore, "-"],
       ["More Than One House", formData.moreThanOneHouse, `£ ${moreThanOneHouseFee.toFixed(2)}`],
       ["Main Residence", formData.mainResidence, `£ ${mainResidenceFee.toFixed(2)}`],
-      ["Stamp Duty", "-", `£ ${stampDuty.toFixed(2)}`], // Add Stamp Duty row
-      ["Solicitors' Fees", "-", `£ ${solicitorsFees.toFixed(2)}`], // Add this row
-      ["Total", "-", `£ ${overallTotal.toFixed(2)}`], 
+      ["Stamp Duty", "-", `£ ${stampDuty.toFixed(2)}`],
+      ["Solicitors' Fees", "-", `£ ${solicitorsFees.total.toFixed(2)}`],
+      ["Step 2 Total", "-", `£ ${step2Total.toFixed(2)}`],
     ];
   
     // Step 3 Table
@@ -484,9 +553,9 @@ const PurchasingPropertyForm = () => {
     ];
   
     // Add Step 1 to PDF
-    doc.setFontSize(18); 
+    doc.setFontSize(18);
     doc.text("PropertyManagemntForm", 14, 20);
-    doc.setFontSize(13); 
+    doc.setFontSize(13);
     doc.text("Step 1", 14, 28);
     doc.autoTable({
       startY: 30,
@@ -520,8 +589,6 @@ const PurchasingPropertyForm = () => {
     // Save the PDF
     window.open(doc.output("bloburl"), "_blank");
   };
-  
-  
   
     // window.open(doc.output("bloburl"), "_blank");  };
   return (
