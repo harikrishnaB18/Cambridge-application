@@ -31,6 +31,7 @@ import "react-toastify/dist/ReactToastify.css";
 const SellingProperty = () => {
   const [drawer, drawerAction] = useToggle(false);
   const [showPopup, setShowPopup] = useState(false);
+    const [showThankYouMessage, setShowThankYouMessage] = useState(false);
   const [accordion1Data, setAccordion1Data] = useState({
     price: '',
     leasehold: '',
@@ -165,12 +166,14 @@ const SellingProperty = () => {
     if (allFieldsFilled && Object.keys(errors).length === 0) {
       setAccordion2Completed(true);
       setAccordion2Open(false);
+      setShowThankYouMessage(true);
       toast.success('Form submitted successfully!', {
         position: 'top-right',
         autoClose: 3000,
       });
     } else {
       setToastOpen(true);
+      setShowThankYouMessage(false);
     }
   };
 
@@ -255,7 +258,7 @@ const SellingProperty = () => {
     // Calculate price fee
     const price = parseFloat(accordion1Data.price) || 0;
     const priceFee = calculatePriceFee(price);
-  
+    
     // Start creating table rows
     const accordion1Entries = [];
   
@@ -343,7 +346,7 @@ const SellingProperty = () => {
       "-",
       `£${solicitorsFees.total.toLocaleString()}`,
     ]);
-  
+
     // Calculate and add the total amount
     const total =
       priceFee +
@@ -416,8 +419,106 @@ const SellingProperty = () => {
     return amounts[key] || 0; // Return the amount or 0 if the key is not found
   };
   
+  const price = parseFloat(accordion1Data.price) || 0;
+  const priceFee = calculatePriceFee(price);
   
-  
+  // Start creating table rows
+  const accordion1Entries = [];
+
+  // Add price and its fee
+  accordion1Entries.push([
+    "Property Price",
+    `£${price.toLocaleString()}`, // Display price
+    `£${priceFee}`, // Display fee for the price
+  ]);
+
+  // Add user selections and their respective amounts
+  Object.entries(accordion1Data).forEach(([key, value]) => {
+    if (key !== "price") {
+      if (value === "Yes") {
+        const amount = calculateAmountForKey(key); // Function to get amount for the specific key
+        accordion1Entries.push([
+          key.charAt(0).toUpperCase() + key.slice(1), // Capitalize key names
+          value,
+          `£${amount}`, // Add the amount
+        ]);
+      } else {
+        accordion1Entries.push([
+          key.charAt(0).toUpperCase() + key.slice(1),
+          value || "Not Selected",
+          "-", // No amount for "No" or unselected options
+        ]);
+      }
+    }
+  });
+
+  // Stamp Duty calculation
+  const calculateStampDuty = (price) => {
+    let stampDuty = 0;
+    if (price > 3000000) {
+      stampDuty += (price - 3000000) * 0.12;
+      price = 3000000;
+    }
+    if (price > 1500000) {
+      stampDuty += (price - 1500000) * 0.10;
+      price = 1500000;
+    }
+    if (price > 925000) {
+      stampDuty += (price - 925000) * 0.05;
+      price = 925000;
+    }
+    if (price > 250000) {
+      stampDuty += (price - 250000) * 0.05;
+      price = 250000;
+    }
+    return stampDuty;
+  };
+
+  const stampDuty = calculateStampDuty(price);
+  accordion1Entries.push(["Stamp Duty", "-", `£${stampDuty.toLocaleString()}`]);
+
+  // Solicitors Fees calculation
+  const calculateSolicitorsFees = (price) => {
+    let fee = 0;
+    let vat = 0;
+    if (price <= 500000) {
+      fee = 950;
+      vat = 190;
+    } else if (price <= 750000) {
+      fee = 1250;
+      vat = 250;
+    } else if (price <= 950000) {
+      fee = 1500;
+      vat = 300;
+    } else if (price <= 1000000) {
+      fee = 2000;
+      vat = 400;
+    } else if (price <= 1500000) {
+      fee = 2500;
+      vat = 500;
+    } else if (price <= 2000000) {
+      fee = 3000;
+      vat = 600;
+    }
+    return { fee, vat, total: fee + vat };
+  };
+
+  const solicitorsFees = calculateSolicitorsFees(price);
+  accordion1Entries.push([
+    "Solicitors Fees",
+    "-",
+    `£${solicitorsFees.total.toLocaleString()}`,
+  ]);
+
+  // Calculate and add the total amount
+  const total =
+    priceFee +
+    stampDuty +
+    solicitorsFees.total +
+    Object.values(accordion1Data)
+      .filter((value) => value === "Yes")
+      .reduce((sum, key) => sum + calculateAmountForKey(key), 0);
+  accordion1Entries.push(["Total Amount", "", `£${total.toLocaleString()}`]);
   return (
     <>
       <Drawer drawer={drawer} action={drawerAction.toggle} />
@@ -731,7 +832,57 @@ const SellingProperty = () => {
             </Alert>
           </Snackbar>
         </Box>
+        {showThankYouMessage && (
+  <div>
+    <div style={{ marginTop: "20px", textAlign: "center" }}>
+      <Typography variant="h6" style={{ color: "green" }}>
+        Thank you for submitting the form! A team member will reach out to you within 1-2 business days.
+      </Typography> 
+    </div>
+          <div className='container'>
+          <table
+  style={{
+    width: '100%',
+    borderCollapse: 'collapse',
+    marginTop: '20px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+  }}
+>
+  <thead>
+    <tr
+      style={{
+        backgroundColor: '#233955',
+        color: 'white',
+        textAlign: 'center',
+        fontWeight: 'bold',
+      }}
+    >
+      <th style={{ padding: '12px' }}>Field</th>
+      <th style={{ padding: '12px' }}>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Stamp Duty</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>{stampDuty}</td>
+    </tr>
+    <tr style={{ backgroundColor: '#ffffff', textAlign: 'center' }}>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Solicitors Fees</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>{solicitorsFees.total}</td>
+    </tr>
+    <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Total</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>{total}</td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+  </div>
+)}
+
       </div>
+
       <ToastContainer/>
       <FooterHomeTwo />
     </>

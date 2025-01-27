@@ -590,6 +590,127 @@ const PurchasingPropertyForm = () => {
     window.open(doc.output("bloburl"), "_blank");
   };
   
+  const price = parseFloat(formData.price);
+  let priceFee = 0;
+  let leaseholdFee = formData.leasehold === "Yes" ? 300 : 0;
+  let mortgageFee = formData.mortgage === "Yes" ? 360 : 0;
+  let sharedOwnershipFee = formData.sharedOwnership === "Yes" ? 150 : 0;
+  let giftedFundsFee = formData.giftedFunds === "Yes" ? 150 : 0;
+  let newBuildFee = formData.newBuild === "Yes" ? 420 : 0;
+  let staircasingFee = formData.staircasing === "Yes" ? 420 : 0;
+  let unregisteredFee = formData.unregistered === "Yes" ? 420 : 0;
+
+  if (price < 250001) priceFee = 1200;
+  else if (price < 500001) priceFee = 1500;
+  else if (price < 750001) priceFee = 1800;
+  else if (price < 900001) priceFee = 2100;
+  else if (price < 1000001) priceFee = 2400;
+  else if (price < 1500001) priceFee = 2500;
+  else if (price < 2000001) priceFee = 3000;
+  else if (price < 2500001) priceFee = 3600;
+
+  const step1Totalinfo =
+    priceFee +
+    leaseholdFee +
+    mortgageFee +
+    sharedOwnershipFee +
+    giftedFundsFee +
+    newBuildFee +
+    staircasingFee +
+    unregisteredFee;
+
+  const calculateStampDuty = (price) => {
+    let stampDuty = 0;
+    if (price > 3000000) {
+      stampDuty += (price - 3000000) * 0.12;
+      price = 3000000;
+    }
+    if (price > 1500000) {
+      stampDuty += (price - 1500000) * 0.10;
+      price = 1500000;
+    }
+    if (price > 925000) {
+      stampDuty += (price - 925000) * 0.05;
+      price = 925000;
+    }
+    if (price > 250000) {
+      stampDuty += (price - 250000) * 0.05;
+      price = 250000;
+    }
+    return stampDuty;
+  };
+
+  const stampDuty = calculateStampDuty(price);
+
+  // Updated Solicitors Fees Logic
+  const calculateSolicitorsFees = (price) => {
+    let fee = 0;
+    let vat = 0;
+
+    if (price <= 250000) {
+      fee = 1000;
+      vat = 200;
+    } else if (price === 250001) {
+      fee = 1250;
+      vat = 250;
+    } else if (price === 250002) {
+      fee = 1500;
+      vat = 300;
+    } else if (price === 250003) {
+      fee = 1750;
+      vat = 350;
+    } else if (price === 250004) {
+      fee = 2000;
+      vat = 400;
+    } else if (price === 250005) {
+      fee = 2500;
+      vat = 500;
+    } else if (price >= 250006) {
+      fee = 3000;
+      vat = 600;
+    }
+
+    return { fee, vat, total: fee + vat };
+  };
+
+  const solicitorsFees = calculateSolicitorsFees(price);
+
+  // Calculate Step 2 Total
+  const ukResidentsFee = formData.ukResidents === "No" ? price * 0.02 : 0;
+  const moreThanOneHouseFee = formData.moreThanOneHouse === "Yes" ? price * 0.03 : 0;
+
+  let mainResidenceFee = 0;
+  if (formData.mainResidence === "Yes" && formData.ownedBefore === "Yes") {
+    if (price > 250000) {
+      if (price <= 925000) {
+        mainResidenceFee = (price - 250000) * 0.05;
+      } else if (price <= 1500000) {
+        mainResidenceFee =
+          (925000 - 250000) * 0.05 + (price - 925000) * 0.1;
+      } else {
+        mainResidenceFee =
+          (925000 - 250000) * 0.05 +
+          (1500000 - 925000) * 0.1 +
+          (price - 1500000) * 0.12;
+      }
+    }
+  } else if (formData.ownedBefore === "No") {
+    if (price > 450000) {
+      if (price <= 625000) {
+        mainResidenceFee = (price - 450000) * 0.05;
+      } else {
+        mainResidenceFee = (625000 - 450000) * 0.05 + (price - 625000);
+      }
+    }
+  }
+
+  const step2Totalinfo =
+    ukResidentsFee +
+    moreThanOneHouseFee +
+    mainResidenceFee +
+    stampDuty +
+    solicitorsFees.total;
+
     // window.open(doc.output("bloburl"), "_blank");  };
   return (
     <>
@@ -1058,6 +1179,54 @@ const PurchasingPropertyForm = () => {
           <Typography variant="h6" style={{ color: "green" }}>
             Thank you for submitting the form! A team member will reach out to you within 1-2 business days.
           </Typography>
+   
+  
+  {solicitorsFees.total}
+  {stampDuty}
+
+  <div className='container'>
+          <table
+  style={{
+    width: '100%',
+    borderCollapse: 'collapse',
+    marginTop: '20px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+  }}
+>
+  <thead>
+    <tr
+      style={{
+        backgroundColor: '#233955',
+        color: 'white',
+        textAlign: 'center',
+        fontWeight: 'bold',
+      }}
+    >
+      <th style={{ padding: '12px' }}>Field</th>
+      <th style={{ padding: '12px' }}>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Stamp Duty</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>{stampDuty}</td>
+    </tr>
+    <tr style={{ backgroundColor: '#ffffff', textAlign: 'center' }}>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Solicitors Fees</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>{solicitorsFees.total}</td>
+    </tr>
+    <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Step1Total</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>{step1Totalinfo}</td>
+    </tr>
+    <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Step2Total</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>{step2Totalinfo}</td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
         </div>
       )}
   </Box>
