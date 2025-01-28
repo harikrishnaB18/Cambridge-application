@@ -854,19 +854,19 @@ const SellingProperty = () => {
   <tbody>
     <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
       <td style={{ padding: '12px', border: '1px solid #ddd' }}>Stamp Duty</td>
-      <td style={{ padding: '12px', border: '1px solid #ddd' }}>{stampDuty}</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{stampDuty}</td>
     </tr>
     <tr style={{ backgroundColor: '#ffffff', textAlign: 'center' }}>
       <td style={{ padding: '12px', border: '1px solid #ddd' }}>Solicitors Fees</td>
-      <td style={{ padding: '12px', border: '1px solid #ddd' }}>{solicitorsFees.total}</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{solicitorsFees.total}</td>
     </tr>
     <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
       <td style={{ padding: '12px', border: '1px solid #ddd' }}>Sub-Total</td>
-      <td style={{ padding: '12px', border: '1px solid #ddd' }}>{total}</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{total}</td>
     </tr>
     <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
       <td style={{ padding: '12px', border: '1px solid #ddd' }}>Total</td>
-      <td style={{ padding: '12px', border: '1px solid #ddd' }}>{overalltotal}</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{overalltotal}</td>
     </tr>
   </tbody>
 </table>

@@ -38,6 +38,7 @@ const PurchasingPropertyForm = () => {
     newBuild: '',
     staircasing: '',
     unregistered: '',
+    firstTimeBuyer: '',
     
     // Step 2
     buyersIndividuals: '',
@@ -290,6 +291,7 @@ const PurchasingPropertyForm = () => {
       'newBuild',
       'staircasing',
       'unregistered',
+      'firstTimeBuyer',
     ];
   
 
@@ -437,8 +439,14 @@ const PurchasingPropertyForm = () => {
       unregisteredFee;
   
     // Step 2: Stamp Duty Logic (unchanged)
-    const calculateStampDuty = (price) => {
+    const calculateStampDuty = (price, firstTimeBuyer) => {
+      if (firstTimeBuyer === "Yes") {
+        return 0; // No stamp duty for first-time buyers
+      }
+  
       let stampDuty = 0;
+  
+      // Normal rates for non-first-time buyers
       if (price > 3000000) {
         stampDuty += (price - 3000000) * 0.12;
         price = 3000000;
@@ -455,10 +463,11 @@ const PurchasingPropertyForm = () => {
         stampDuty += (price - 250000) * 0.05;
         price = 250000;
       }
+  
       return stampDuty;
     };
   
-    const stampDuty = calculateStampDuty(price);
+    const stampDuty = calculateStampDuty(price, formData.firstTimeBuyer);
   
     // Updated Solicitors Fees Logic
     const calculateSolicitorsFees = (price) => {
@@ -539,6 +548,7 @@ const PurchasingPropertyForm = () => {
       ["New Build", formData.newBuild, `£ ${newBuildFee}`],
       ["Staircasing", formData.staircasing, `£ ${staircasingFee}`],
       ["Unregistered", formData.unregistered, `£ ${unregisteredFee}`],
+      ["First Time Buyer", formData.firstTimeBuyer, `  -`], 
       ["Step 1 Total", "", `£ ${step1Total}`],
     ];
   
@@ -556,11 +566,12 @@ const PurchasingPropertyForm = () => {
       ["Step 2 Total", "-", `£ ${step2Total.toFixed(2)}`],
     ];
   
-    // Step 3 Table
+    // Step 3 Table (with new field)
     const step3Entries = [
       ["Full Name", formData.fullName, ""],
       ["Email Address", formData.emailAddress, ""],
       ["Phone Number", formData.phoneNumber, ""],
+      // Added field here
     ];
   
     // Add Step 1 to PDF
@@ -601,6 +612,7 @@ const PurchasingPropertyForm = () => {
     window.open(doc.output("bloburl"), "_blank");
   };
   
+  
   const price = parseFloat(formData.price);
   let priceFee = 0;
   let leaseholdFee = formData.leasehold === "Yes" ? 300 : 0;
@@ -630,26 +642,33 @@ const PurchasingPropertyForm = () => {
     staircasingFee +
     unregisteredFee;
 
-  const calculateStampDuty = (price) => {
-    let stampDuty = 0;
-    if (price > 3000000) {
-      stampDuty += (price - 3000000) * 0.12;
-      price = 3000000;
-    }
-    if (price > 1500000) {
-      stampDuty += (price - 1500000) * 0.10;
-      price = 1500000;
-    }
-    if (price > 925000) {
-      stampDuty += (price - 925000) * 0.05;
-      price = 925000;
-    }
-    if (price > 250000) {
-      stampDuty += (price - 250000) * 0.05;
-      price = 250000;
-    }
-    return stampDuty;
-  };
+    const calculateStampDuty = (price, firstTimeBuyer) => {
+      if (firstTimeBuyer === "Yes") {
+        return 0; // No stamp duty for first-time buyers
+      }
+  
+      let stampDuty = 0;
+  
+      // Normal rates for non-first-time buyers
+      if (price > 3000000) {
+        stampDuty += (price - 3000000) * 0.12;
+        price = 3000000;
+      }
+      if (price > 1500000) {
+        stampDuty += (price - 1500000) * 0.10;
+        price = 1500000;
+      }
+      if (price > 925000) {
+        stampDuty += (price - 925000) * 0.05;
+        price = 925000;
+      }
+      if (price > 250000) {
+        stampDuty += (price - 250000) * 0.05;
+        price = 250000;
+      }
+  
+      return stampDuty;
+    };
 
   const stampDuty = calculateStampDuty(price);
 
@@ -661,22 +680,22 @@ const PurchasingPropertyForm = () => {
     if (price <= 250000) {
       fee = 1000;
       vat = 200;
-    } else if (price === 250001) {
+    } else if (price <= 500000) {
       fee = 1250;
       vat = 250;
-    } else if (price === 250002) {
+    } else if (price <= 750000) {
       fee = 1500;
       vat = 300;
-    } else if (price === 250003) {
+    } else if (price <= 900000) {
       fee = 1750;
       vat = 350;
-    } else if (price === 250004) {
+    } else if (price <= 1000000) {
       fee = 2000;
       vat = 400;
-    } else if (price === 250005) {
+    } else if (price <= 1500000) {
       fee = 2500;
       vat = 500;
-    } else if (price >= 250006) {
+    } else if (price <= 2000000) {
       fee = 3000;
       vat = 600;
     }
@@ -719,7 +738,7 @@ const PurchasingPropertyForm = () => {
     ukResidentsFee +
     moreThanOneHouseFee +
     mainResidenceFee +
-    stampDuty +
+    calculateStampDuty(price, formData.firstTimeBuyer) +
     solicitorsFees.total;
 
     const subtotal=step1Totalinfo+step2Totalinfo;
@@ -838,7 +857,20 @@ const PurchasingPropertyForm = () => {
             </Select>
           </FormControl>
         </Grid>
-
+        <Grid item xs={12} md={12}>
+  <FormControl variant="outlined" fullWidth>
+    <InputLabel>Are You a First Time Buyer</InputLabel>
+    <Select
+      label="Are You a First Time Buyer"
+      name="firstTimeBuyer"
+      value={formData.firstTimeBuyer}
+      onChange={handleInputChange}
+    >
+      <MenuItem value="Yes">Yes</MenuItem>
+      <MenuItem value="No">No</MenuItem>
+    </Select>
+  </FormControl>
+</Grid>
         
         <Grid item xs={12} md={12} display="flex" alignItems="center">
   <FormControl variant="outlined" fullWidth>
@@ -1210,19 +1242,20 @@ const PurchasingPropertyForm = () => {
   <tbody>
     <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
       <td style={{ padding: '12px', border: '1px solid #ddd' }}>Stamp Duty</td>
-      <td style={{ padding: '12px', border: '1px solid #ddd' }}>{stampDuty}</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{formData.firstTimeBuyer === "Yes" ? "0" : stampDuty.toFixed(2)}
+      </td>
     </tr>
     <tr style={{ backgroundColor: '#ffffff', textAlign: 'center' }}>
       <td style={{ padding: '12px', border: '1px solid #ddd' }}>Solicitors Fees</td>
-      <td style={{ padding: '12px', border: '1px solid #ddd' }}>{solicitorsFees.total}</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{solicitorsFees.total}</td>
     </tr>
     <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
       <td style={{ padding: '12px', border: '1px solid #ddd' }}>SubTotal</td>
-      <td style={{ padding: '12px', border: '1px solid #ddd' }}>{subtotal}</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{subtotal}</td>
     </tr>
     <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
       <td style={{ padding: '12px', border: '1px solid #ddd' }}>Total</td>
-      <td style={{ padding: '12px', border: '1px solid #ddd' }}>{overalltotal}</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{overalltotal}</td>
     </tr>
   </tbody>
 </table>
