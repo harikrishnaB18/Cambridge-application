@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+
+    environment {
+        DEPLOY_SERVER = "ubuntu@172.31.45.164"  // EC2 or deployment server
+        DEPLOY_PATH = "/var/www/html"           // Directory to deploy the app
+        GIT_REPO = "https://github.com/harikrishnaB18/Cambridge-application.git"
+    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main', url: env.GIT_REPO
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                script {
+                    sh 'npm install'  // Install React dependencies
+                }
+            }
+        }
+
+        stage('Build React App') {
+            steps {
+                script {
+                    sh 'npm run build'  // Generate production-ready files
+                }
+            }
+        }
+
+        stage('Deploy to EC2') {
+            steps {
+                script {
+                    sshagent(['your-ssh-credential-id']) {
+                        sh """
+                            scp -r build/* $DEPLOY_SERVER:$DEPLOY_PATH/
+                            ssh $DEPLOY_SERVER 'sudo systemctl restart nginx'
+                        """
+                    }
+                }
+            }
+        }
+    }
+}
