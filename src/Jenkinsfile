@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DEPLOY_SERVER = "ubuntu@172.31.45.164"  // EC2 or deployment server
-        DEPLOY_PATH = "/var/www/html"           // Directory to deploy the app
+        DEPLOY_SERVER = "ubuntu@172.31.45.164" 
+        DEPLOY_PATH = "/var/www/html"           
         GIT_REPO = "https://github.com/harikrishnaB18/Cambridge-application.git"
     }
 
@@ -17,7 +17,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                    sh 'npm install'  // Install React dependencies
+                    sh 'npm install' 
                 }
             }
         }
@@ -25,7 +25,7 @@ pipeline {
         stage('Build React App') {
             steps {
                 script {
-                    sh 'npm run build'  // Generate production-ready files
+                    sh 'npm run build'  
                 }
             }
         }
@@ -35,8 +35,8 @@ pipeline {
                 script {
                     sshagent(['your-ssh-credential-id']) {
                         sh """
-                            scp -r build/* $DEPLOY_SERVER:$DEPLOY_PATH/
-                            ssh $DEPLOY_SERVER 'sudo systemctl restart nginx'
+                            scp -r build/* ubuntu@172.31.45.164:/var/www/html/
+                            ssh ubuntu@172.31.45.164 'sudo systemctl restart nginx'
                         """
                     }
                 }
