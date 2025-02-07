@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/harikrishnaB18/Cambridge-application.git'
+                git url: 'https://github.com/harikrishnaB18/Cambridge-application.git', branch: 'main'
             }
         }
         
