@@ -5,7 +5,7 @@ pipeline {
         REACT_APP_DIR = '/home/ubuntu/projects/Cambridge-application' 
         BUILD_DIR = "$REACT_APP_DIR/build"
         DEPLOY_DIR = '/var/www/react-app'
-        EC2_IP = '315.206.178.33'  // Your EC2 instance IP
+        EC2_IP = '15.206.178.33'  // Your EC2 instance IP
     }
 
     stages {
