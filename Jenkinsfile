@@ -10,14 +10,11 @@ pipeline {
 
     stages {
         stage('Install Dependencies') {
-            steps {
-                // Install dependencies in the existing project directory
-                sh """
-                    cd $REACT_APP_DIR
-                    npm ci  // Install dependencies using npm ci
-                """
-            }
-        }
+    steps {
+        sh 'npm ci --cache ~/.npm'
+    }
+}
+
 
         stage('Build React App') {
             steps {
