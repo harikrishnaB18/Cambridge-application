@@ -5,7 +5,7 @@ pipeline {
         REACT_APP_DIR = '/home/ubuntu/projects/Cambridge-application' 
         BUILD_DIR = "$REACT_APP_DIR/build"
         DEPLOY_DIR = '/var/www/react-app'
-        EC2_IP = '3.109.208.222'  // Your EC2 instance IP
+        EC2_IP = '315.206.178.33'  // Your EC2 instance IP
     }
 
     stages {
@@ -31,7 +31,7 @@ pipeline {
                 // SSH into the EC2 instance and deploy the app
                 withCredentials([sshUserPrivateKey(credentialsId: 'ec2-ssh-key', keyFileVariable: 'SSH_KEY_PATH')]) {
                     sh """
-                        ssh -i ${SSH_KEY_PATH} ubuntu@3.109.208.222 << EOF
+                        ssh -i ${SSH_KEY_PATH} ubuntu@15.206.178.33 << EOF
                             cd $REACT_APP_DIR
                             git pull origin main  // Pull the latest changes if applicable
                             npm ci  // Install dependencies again on the server
