@@ -17,7 +17,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                     // Install Node.js dependencies
-                    sh 'npm install'
+                    sh 'npm ci'
             }
         }
 
@@ -39,7 +39,7 @@ pipeline {
             steps {
                     // Deploy the built application (e.g., using SSH or Docker)
                     sshagent(['deploy-key']) {
-                        sh "scp -r ./build ubuntu@13.233.9.110:/home/ubuntu/Cambridge-application/"
+                        sh "scp -r ./build ubuntu@13.232.22.230:/home/ubuntu/Cambridge-application/"
             }
         }
     }
