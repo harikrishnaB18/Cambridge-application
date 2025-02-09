@@ -18,8 +18,7 @@ pipeline {
             steps {
                 script {
                     // Install Node.js dependencies
-                     echo "NodeJS path: ${env.NODE_HOME}"
-                     sh "${env.NODE_HOME}/bin/npm install"
+                    sh 'npm install'
                 }
             }
         }
