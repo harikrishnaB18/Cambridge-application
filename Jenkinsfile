@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         // Define necessary environment variables, like Node Version
-        NODE_HOME = tool name: 'NodeJS', type: 'NodeJS'
         PATH = "/usr/bin:${env.PATH}"  // Add Node.js to PATH
     }
 
@@ -40,14 +39,14 @@ pipeline {
             steps {
                     // Deploy the built application (e.g., using SSH or Docker)
                     sshagent(['deploy-key']) {
-                        sh "scp -r ./build ubuntu@13.233.9.110:/home/ubuntu/Cambridge-application'"
+                        sh "scp -r ./build ubuntu@13.233.9.110:/home/ubuntu/Cambridge-application/"
             }
         }
     }
+}
 
     post {
         always {
             echo 'Cleaning up workspace...'
         }
     }
-}
