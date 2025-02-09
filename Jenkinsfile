@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+
     environment {
         // Define the name of the NodeJS tool installed in Jenkins (configured above)
         NODE_HOME = tool name: 'NodeJS', type: 'NodeJS'
@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     // Install dependencies using npm
-                    sh 'npm install'
+                    sh '"${NODE_HOME}/bin/npm" install'
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     // Build the project (e.g., npm run build)
-                    sh 'npm run build'  // If you're using a build command like "build" in package.json
+                    sh '"${NODE_HOME}/bin/npm" run build'  // Ensure you're using the correct path for npm
                 }
             }
         }
@@ -37,7 +37,7 @@ pipeline {
                 script {
                     // Deploy to remote server using SSH or SCP (adjust according to your deployment method)
                     sshagent(['deploy-key']) {  // Replace 'deploy-key' with your Jenkins credentials ID
-                    sh "scp -r ./build ubuntu@65.1.148.76:/path/to/deploy"
+                        sh "scp -r ./build ubuntu@65.1.148.76:/home/ubuntu/Cambridge-application"
                     }
                 }
             }
@@ -48,6 +48,12 @@ pipeline {
         always {
             // Clean up workspace (optional)
             cleanWs()
+        }
+        success {
+            echo 'Deployment completed successfully!'
+        }
+        failure {
+            echo 'Deployment failed, please check the logs.'
         }
     }
 }
