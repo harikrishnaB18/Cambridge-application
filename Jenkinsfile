@@ -18,10 +18,12 @@ pipeline {
             steps {
                 script {
                     // Install Node.js dependencies
-                    sh 'npm install'
+                      withEnv(['PATH+NODE=/usr/bin']) {
+                     sh 'npm install'
                 }
             }
         }
+    }
 
         stage('Run Tests') {
             steps {
