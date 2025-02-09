@@ -1,42 +1,38 @@
 pipeline {
     agent any
-
+    
     environment {
-        // Define necessary environment variables, like Node Version
-               NODE_HOME = tool name: 'NodeJS', 'NodeJS 14.11.0', type: 'NodeJS'
+        // Use the exact NodeJS name configured in Jenkins (e.g., 'NodeJS 14.11.0')
+        NODE_HOME = tool name: 'NodeJS 14.11.0', type: 'NodeJS'
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                // Pull the code from the GitHub repository
-                git branch: 'main', url: 'https://github.com/harikrishnaB18/Cambridge-application.git'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 script {
-                    // Install Node.js dependencies
-                    sh 'npm install'
+                    // Print the NodeJS path to verify it's set correctly
+                    echo "NODE_HOME: ${env.NODE_HOME}"
+
+                    // Run npm install using the NodeJS path
+                    sh "${env.NODE_HOME}/bin/npm install"
                 }
             }
         }
 
-        stage('Run Tests') {
+        stage('Build') {
             steps {
                 script {
-                    // Run any tests
-                    sh 'npm test'
+                    // Run build command
+                    sh "${env.NODE_HOME}/bin/npm run build"
                 }
             }
         }
 
-        stage('Build Application') {
+        stage('Test') {
             steps {
                 script {
-                    // Build the application (adjust as necessary)
-                    sh 'npm run build'
+                    // Run test command
+                    sh "${env.NODE_HOME}/bin/npm test"
                 }
             }
         }
@@ -47,7 +43,6 @@ pipeline {
                     // Deploy the built application (e.g., using SSH or Docker)
                     sshagent(['deploy-key']) {
                         sh "scp -r ./build ubuntu@13.203.76.23:'/home/ubuntu/Cambridge-application"
-                    }
                 }
             }
         }
@@ -55,8 +50,7 @@ pipeline {
 
     post {
         always {
-            // Cleanup or notifications
-            cleanWs()
+            echo "Pipeline completed."
         }
     }
 }
