@@ -2,46 +2,52 @@ pipeline {
     agent any
 
     environment {
-        REACT_APP_DIR = '/home/ubuntu/projects/Cambridge-application' 
-        BUILD_DIR = "$REACT_APP_DIR/build"
-        DEPLOY_DIR = '/var/www/react-app'
-        EC2_IP = '15.206.178.33'  // Your EC2 instance IP
+        // Define necessary environment variables, like Node Version
+        NODE_HOME = tool name: 'nodejs', type: 'NodeJS'
     }
 
     stages {
-        stage('Install Dependencies') {
-    steps {
-        sh 'npm ci --cache ~/.npm'
-    }
-}
-
-
-        stage('Build React App') {
+        stage('Checkout') {
             steps {
-                // Build the React app in the existing project directory
-                sh """
-                    cd $REACT_APP_DIR
-                    npm run build  // Run the build command for your React app
-                """
+                // Pull the code from the GitHub repository
+                git branch: 'main', url: 'https://github.com/harikrishnaB18/Cambridge-application.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                script {
+                    // Install Node.js dependencies
+                    sh 'npm install'
+                }
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                script {
+                    // Run any tests
+                    sh 'npm test'
+                }
+            }
+        }
+
+        stage('Build Application') {
+            steps {
+                script {
+                    // Build the application (adjust as necessary)
+                    sh 'npm run build'
+                }
             }
         }
 
         stage('Deploy to Server') {
             steps {
-                // SSH into the EC2 instance and deploy the app
-                withCredentials([sshUserPrivateKey(credentialsId: 'ec2-ssh-key', keyFileVariable: 'SSH_KEY_PATH')]) {
-                    sh """
-                        ssh -i ${SSH_KEY_PATH} ubuntu@15.206.178.33 << EOF
-                            cd $REACT_APP_DIR
-                            git pull origin main  // Pull the latest changes if applicable
-                            npm ci  // Install dependencies again on the server
-                            npm run build  // Rebuild the React app
-                            sudo rm -rf $DEPLOY_DIR  // Remove existing deployment folder
-                            sudo mkdir -p $DEPLOY_DIR  // Create the deploy directory
-                            sudo cp -r $BUILD_DIR/* $DEPLOY_DIR/  // Copy build files to the server
-                            sudo systemctl restart nginx  // Restart Nginx to serve the updated app
-                        EOF
-                    """
+                script {
+                    // Deploy the built application (e.g., using SSH or Docker)
+                    sshagent(['deploy-key']) {
+                        sh 'scp -r ./build ubuntu@13.203.76.23:'/home/ubuntu/Cambridge-application'
+                    }
                 }
             }
         }
@@ -49,7 +55,8 @@ pipeline {
 
     post {
         always {
-            echo 'Pipeline finished'
+            // Cleanup or notifications
+            cleanWs()
         }
     }
 }
