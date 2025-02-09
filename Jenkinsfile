@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     // Install dependencies using npm
-                    sh "${NODE_HOME}/bin/npm install" // Corrected: Removed extra quotes around npm
+                    sh "${NODE_HOME}/bin/npm install"
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     // Build the project (e.g., npm run build)
-                    sh "${NODE_HOME}/bin/npm run build" // Corrected: Removed extra quotes around npm
+                    sh "${NODE_HOME}/bin/npm run build"
                 }
             }
         }
@@ -44,16 +44,5 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            // Clean up workspace (optional)
-            cleanWs()
-        }
-        success {
-            echo 'Deployment completed successfully!'
-        }
-        failure {
-            echo 'Deployment failed, please check the logs.'
-        }
-    }
+    // Post stage has been removed entirely.  No need for any changes here.
 }
