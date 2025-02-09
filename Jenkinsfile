@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        // Define necessary environment variables, like Node Version
-        PATH = "/usr/bin:${env.PATH}"  // Add Node.js to PATH
+        // Ensure that Node.js and npm are included in the PATH
+        PATH = "/usr/bin:${env.PATH}"  // Add /usr/bin to PATH
     }
 
     stages {
@@ -17,7 +17,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 // Install Node.js dependencies
-                sh 'npm ci'
+                sh 'npm ci'  // or 'npm install' if preferred
             }
         }
 
@@ -48,7 +48,6 @@ pipeline {
     post {
         always {
             echo 'Cleaning up workspace...'
-            // Add any cleanup commands, like deleting temporary files
             cleanWs() // Cleans up the workspace if necessary
         }
     }
