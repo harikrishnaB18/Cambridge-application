@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Define necessary environment variables, like Node Version
-               NODE_HOME = tool name: 'NodeJS', type: 'NodeJS'
+        NODE_HOME = tool name: 'NodeJS', type: 'NodeJS'
     }
 
     stages {
@@ -18,12 +18,10 @@ pipeline {
             steps {
                 script {
                     // Install Node.js dependencies
-                      withEnv(['PATH+NODE=/usr/bin']) {
-                     sh 'npm install'
+                    sh 'npm install'
                 }
             }
         }
-    }
 
         stage('Run Tests') {
             steps {
@@ -48,16 +46,16 @@ pipeline {
                 script {
                     // Deploy the built application (e.g., using SSH or Docker)
                     sshagent(['deploy-key']) {
-                        sh "scp -r ./build ubuntu@13.203.76.23:'/home/ubuntu/Cambridge-application"
+                        sh "scp -r ./build ubuntu@13.203.76.23:'/home/ubuntu/Cambridge-application'"
                     }
                 }
             }
         }
     }
-}
 
     post {
         always {
             echo 'Cleaning up workspace...'
         }
     }
+}
