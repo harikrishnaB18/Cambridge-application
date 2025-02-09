@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Define necessary environment variables, like Node Version
-        NODE_HOME = tool name: 'NodeJS', type: 'NodeJS'
+               NODE_HOME = tool name: 'NodeJS', type: 'NodeJS'
     }
 
     stages {
@@ -18,7 +18,8 @@ pipeline {
             steps {
                 script {
                     // Install Node.js dependencies
-                    sh 'npm install'
+                     echo "NodeJS path: ${env.NODE_HOME}"
+                     sh "${env.NODE_HOME}/bin/npm install"
                 }
             }
         }
