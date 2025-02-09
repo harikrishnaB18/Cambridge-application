@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         // Use the exact NodeJS name configured in Jenkins (e.g., 'NodeJS 14.11.0')
-        NODE_HOME = tool name: 'NodeJS 14.11.0', type: 'NodeJS'
+      NODE_HOME = tool name: 'NodeJS', type: 'NodeJS'  // If the name in Jenkins is "NodeJS"
     }
 
     stages {
