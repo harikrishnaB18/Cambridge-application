@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Define necessary environment variables, like Node Version
-               NODE_HOME = tool name: 'NodeJS', type: 'NodeJS'
+               NODE_HOME = tool name: 'NodeJS', 'NodeJS 14.11.0', type: 'NodeJS'
     }
 
     stages {
