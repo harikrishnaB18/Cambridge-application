@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     environment {
-        // Define the name of the NodeJS tool installed in Jenkins (configured above)
-        NODE_HOME = tool name: 'NodeJS', type: 'NodeJS'
+        // Define necessary environment variables, like Node Version
+               NODE_HOME = tool name: 'NodeJS', type: 'NodeJS'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                // Clone the GitHub repository (adjust the URL as necessary)
+                // Pull the code from the GitHub repository
                 git branch: 'main', url: 'https://github.com/harikrishnaB18/Cambridge-application.git'
             }
         }
@@ -17,32 +17,46 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                    // Install dependencies using npm
-                    sh "${NODE_HOME}/bin/npm install"
+                    // Install Node.js dependencies
+                    sh 'npm install'
                 }
             }
         }
 
-        stage('Build') {
+        stage('Run Tests') {
             steps {
                 script {
-                    // Build the project (e.g., npm run build)
-                    sh "${NODE_HOME}/bin/npm run build"
+                    // Run any tests
+                    sh 'npm test'
                 }
             }
         }
 
-        stage('Deploy') {
+        stage('Build Application') {
             steps {
                 script {
-                    // Deploy to remote server using SSH or SCP (adjust according to your deployment method)
-                    sshagent(['deploy-key']) { // Replace 'deploy-key' with your Jenkins credentials ID
-                        sh "scp -r ./build ubuntu@65.1.148.76:/home/ubuntu/Cambridge-application"
+                    // Build the application (adjust as necessary)
+                    sh 'npm run build'
+                }
+            }
+        }
+
+        stage('Deploy to Server') {
+            steps {
+                script {
+                    // Deploy the built application (e.g., using SSH or Docker)
+                    sshagent(['deploy-key']) {
+                        sh "scp -r ./build ubuntu@13.203.76.23:'/home/ubuntu/Cambridge-application"
                     }
                 }
             }
         }
     }
 
-    // Post stage has been removed entirely.  No need for any changes here.
+    post {
+        always {
+            // Cleanup or notifications
+            cleanWs()
+        }
+    }
 }
