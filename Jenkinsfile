@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     // Install dependencies using npm
-                    sh '"${NODE_HOME}/bin/npm" install'
+                    sh "${NODE_HOME}/bin/npm install" // Corrected: Removed extra quotes around npm
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     // Build the project (e.g., npm run build)
-                    sh '"${NODE_HOME}/bin/npm" run build'  // Ensure you're using the correct path for npm
+                    sh "${NODE_HOME}/bin/npm run build" // Corrected: Removed extra quotes around npm
                 }
             }
         }
@@ -36,7 +36,7 @@ pipeline {
             steps {
                 script {
                     // Deploy to remote server using SSH or SCP (adjust according to your deployment method)
-                    sshagent(['deploy-key']) {  // Replace 'deploy-key' with your Jenkins credentials ID
+                    sshagent(['deploy-key']) { // Replace 'deploy-key' with your Jenkins credentials ID
                         sh "scp -r ./build ubuntu@65.1.148.76:/home/ubuntu/Cambridge-application"
                     }
                 }
