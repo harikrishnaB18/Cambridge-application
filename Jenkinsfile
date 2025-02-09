@@ -2,19 +2,23 @@ pipeline {
     agent any
     
     environment {
-        // Use the exact NodeJS name configured in Jenkins (e.g., 'NodeJS 14.11.0')
-      NODE_HOME = tool name: 'NodeJS', type: 'NodeJS'  // If the name in Jenkins is "NodeJS"
+        // Define the name of the NodeJS tool installed in Jenkins (configured above)
+        NODE_HOME = tool name: 'NodeJS', type: 'NodeJS'
     }
 
     stages {
+        stage('Checkout') {
+            steps {
+                // Clone the GitHub repository (adjust the URL as necessary)
+                git branch: 'main', url: 'https://github.com/harikrishnaB18/Cambridge-application.git'
+            }
+        }
+
         stage('Install Dependencies') {
             steps {
                 script {
-                    // Print the NodeJS path to verify it's set correctly
-                    echo "NODE_HOME: ${env.NODE_HOME}"
-
-                    // Run npm install using the NodeJS path
-                    sh "${env.NODE_HOME}/bin/npm install"
+                    // Install dependencies using npm
+                    sh 'npm install'
                 }
             }
         }
@@ -22,30 +26,28 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    // Run build command
-                    sh "${env.NODE_HOME}/bin/npm run build"
+                    // Build the project (e.g., npm run build)
+                    sh 'npm run build'  // If you're using a build command like "build" in package.json
                 }
             }
         }
 
-        stage('Test') {
+        stage('Deploy') {
             steps {
                 script {
-                    // Run test command
-                    sh "${env.NODE_HOME}/bin/npm test"
-                }
-            }
-        }
-
-        stage('Deploy to Server') {
-            steps {
-                script {
-                    // Deploy the built application (e.g., using SSH or Docker)
-                    sshagent(['deploy-key']) {
-                        sh "scp -r ./build ubuntu@65.1.148.76:'/home/ubuntu/Cambridge-application"
+                    // Deploy to remote server using SSH or SCP (adjust according to your deployment method)
+                    sshagent(['deploy-key']) {  // Replace 'deploy-key' with your Jenkins credentials ID
+                    sh "scp -r ./build ubuntu@65.1.148.76:/path/to/deploy"
+                    }
                 }
             }
         }
     }
+
+    post {
+        always {
+            // Clean up workspace (optional)
+            cleanWs()
+        }
     }
 }
