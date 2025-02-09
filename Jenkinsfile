@@ -50,3 +50,4 @@ pipeline {
             echo 'Cleaning up workspace...'
         }
     }
+}
