@@ -52,11 +52,10 @@ pipeline {
             }
         }
     }
+}
 
     post {
         always {
-            // Cleanup or notifications
-            cleanWs()
+            echo 'Cleaning up workspace...'
         }
     }
-}
