@@ -1,9 +1,8 @@
-import { act } from 'react-dom/test-utils';
+import { render, screen, act } from '@testing-library/react'; // Updated import
 import App from './App';
 
-
-test('renders learn react link', () => {
+test('renders learn react link', async () => {  // Use async for awaiting async functions
   render(<App />);
-  const linkElement = screen.findByText(/learn react/i);
+  const linkElement = await screen.findByText(/learn react/i);  // await the result
   expect(linkElement).toBeInTheDocument();
 });
