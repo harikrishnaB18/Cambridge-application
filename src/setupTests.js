@@ -4,4 +4,7 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
 import 'jest-canvas-mock';
+module.exports = {
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+};
 
