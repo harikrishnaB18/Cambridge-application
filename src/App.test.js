@@ -1,8 +1,11 @@
-import { render, screen, act } from '@testing-library/react'; // Updated import
+import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', async () => {  // Use async for awaiting async functions
+test('renders learn react link', async () => {
   render(<App />);
-  const linkElement = await screen.findByText(/learn react/i);  // await the result
+  
+  // Using findByText for async rendering
+  const linkElement = await screen.findByText(/learn react/i); 
+  
   expect(linkElement).toBeInTheDocument();
 });
