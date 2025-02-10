@@ -5,7 +5,7 @@ test('renders learn react link', async () => {
   render(<App />);
   
   // Using findByText for async rendering
-  const linkElement = await screen.findByText(/learn react/i);  // Adjust this if needed
+const linkElement = screen.getByText(/Learn React/i);
   
   expect(linkElement).toBeInTheDocument();
 });
