@@ -39,7 +39,7 @@ pipeline {
             steps {
                 // Deploy the built application (e.g., using SSH or Docker)
                 sshagent(['deploy-key']) {
-                    sh "scp -r ./build ubuntu@13.200.222.34:/home/ubuntu/Cambridge-application/"
+                    sh "scp -r ./build ubuntu@65.0.61.44:/home/ubuntu/Cambridge-application/"
                 }
             }
         }
