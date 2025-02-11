@@ -17,7 +17,7 @@ const ConveyancingTake = (style) => {
     setTab(value);
   };
 
-  const = (id) => {
+  const togglequestion = (id) => {
     setQues((prev) => (prev === id ? null : id)); // Toggle between open and close
 };
   return (
