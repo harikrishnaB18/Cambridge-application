@@ -21,7 +21,7 @@
     "react-countup": "^6.5.3",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-toastify": "^11.0.2",
     "web-vitals": "^2.1.4"
   },
@@ -50,8 +50,9 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
-     "jest": {
-     "preset": "react-app"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "canvas": "^2.11.2",
+    "jest-canvas-mock": "^2.5.2",
+    "react-app-rewired": "^2.2.1"
   }
 }
