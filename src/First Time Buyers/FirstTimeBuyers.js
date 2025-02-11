@@ -1,7 +1,6 @@
 import React, { useState, } from 'react';
 import { Link } from 'react-router-dom';
 import HeaderHomeTwo from '../components/HeaderHomeTwo';
-import localconveyancing from '../Images/local conveyancing solicitors.png';
 import '../Conveyancing Process/ConveyancingProcess.css';
 import FooterHomeTwo from '../components/FooterHomeTwo';
 import Drawer from '../Mobile/Drawer.jsx';
