@@ -299,7 +299,7 @@ For anyone buying or selling property, understanding the costs involved is cruci
                                 data-wow-duration="2000ms"
                                 data-wow-delay="200ms"
                             > 
-                                <img src={localconveyancing} alt="image" /> 
+                                <img src={localconveyancing} alt={localconveyancing} /> 
                             </div>
                         </div>
                     </div>
