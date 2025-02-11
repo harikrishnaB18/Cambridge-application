@@ -52,7 +52,6 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
      "jest": {
-     "preset": "react-app",
-     "setupFilesAfterEnv": ["<rootDir>/src/setupTests.js"]
+     "preset": "react-app"
   }
 }
