@@ -17,7 +17,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 // Install Node.js dependencies
-                sh 'npm ci'  // or 'npm install' if preferred
+                sh 'npm install'  // or 'npm install' if preferred
             }
         }
 
