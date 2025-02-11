@@ -10,14 +10,14 @@ import useToggle from '../components/useToggle.js';
 const ConveyancingTake = (style) => {
     const [drawer, drawerAction] = useToggle(false);
   const [tab, setTab] = useState('setting');
-  const [showQues, setQues] = useState(null);
+  const [setQues] = useState(null);
 
   const handleClick = (e, value) => {
     e.preventDefault();
     setTab(value);
   };
 
-  const openQuestion = (id) => {
+  const = (id) => {
     setQues((prev) => (prev === id ? null : id)); // Toggle between open and close
 };
   return (
