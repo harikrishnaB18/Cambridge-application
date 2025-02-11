@@ -22,9 +22,7 @@ import ChelmsfordConveyancing from './Chelmsford Conveyancing/ChelmsfordConveyan
 
 const App = () => {
   return (
-    <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-    learn React
-    </a>
+   
     <>
       <Router>
         <Routes> 
@@ -32,7 +30,6 @@ const App = () => {
           <Route path='/purchasing-property' element={<PropertyManagemntForm/>} />
           <Route path='/selling-property' element={<SellingProperty/>} />
           {/* <Route path="/contact-us" element={<ContactUsForm />} /> */}
-          <Route path="/learn-react" element={<div>Learn React</div>} /> 
           <Route path="/conveyancing-process" element={<ConveyancingProcess />} />
           <Route path="/what-a-conveyancing-solicitor-does" element={<ConveyancingSolicitor />} />
           <Route path="/3-stages-of-conveyancing" element={<StagesConveyancing />} />
