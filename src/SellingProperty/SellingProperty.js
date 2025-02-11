@@ -182,7 +182,7 @@ const SellingProperty = () => {
     setAccordion2Open(false);
   };
 
-  const [formData, setFormData] = useState({ price: "" });
+  const [formData] = useState({ price: "" });
 
   useEffect(() => {
     calculateTotal();
