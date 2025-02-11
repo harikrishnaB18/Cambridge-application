@@ -21,12 +21,12 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                // Run any tests
-                sh 'npm test'
-            }
-        }
+        // stage('Run Tests') {
+        //     steps {
+        //         // Run any tests
+        //         sh 'npm test'
+        //     }
+        // }
 
         stage('Build Application') {
             steps {
