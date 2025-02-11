@@ -18,7 +18,7 @@ import TermsConditions from './T&C and Privacy/TermsConditions';
 import PrivacyPolicy from './T&C and Privacy/PrivacyPolicy';
 import PeterboroughConveyancing from './Peterborough Conveyancing/PeterboroughConveyancing';
 import ChelmsfordConveyancing from './Chelmsford Conveyancing/ChelmsfordConveyancing';
-import toast from "react-toastify";
+import * as toastify from "react-toastify";
 
 
 
