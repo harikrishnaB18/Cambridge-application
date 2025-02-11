@@ -1,25 +1,25 @@
-import React, { useState, } from 'react';
-import { Link } from 'react-router-dom';
-import HeaderHomeTwo from '../components/HeaderHomeTwo';
-import localconveyancing from '../Images/local conveyancing solicitors.png';
-import '../Conveyancing Process/ConveyancingProcess.css';
-import FooterHomeTwo from '../components/FooterHomeTwo';
-import Drawer from '../Mobile/Drawer.jsx';
-import useToggle from '../components/useToggle.js';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import HeaderHomeTwo from "../components/HeaderHomeTwo";
+import localconveyancing from "../Images/local conveyancing solicitors.png";
+import "../Conveyancing Process/ConveyancingProcess.css";
+import FooterHomeTwo from "../components/FooterHomeTwo";
+import Drawer from "../Mobile/Drawer.jsx";
+import useToggle from "../components/useToggle.js";
 
 const ConveyancingTake = (style) => {
-    const [drawer, drawerAction] = useToggle(false);
-  const [tab, setTab] = useState('setting');
-  const [setQues] = useState(null);
+  const [drawer, drawerAction] = useToggle(false);
+  const [tab, setTab] = useState("setting");
+  const [activeQuestion, setActiveQuestion] = useState(null);
 
   const handleClick = (e, value) => {
     e.preventDefault();
     setTab(value);
   };
 
-  const useToggle = (id) => {
-    setQues((prev) => (prev === id ? null : id)); // Toggle between open and close
-};
+  const toggleQuestion = (id) => {
+    setActiveQuestion((prev) => (prev === id ? null : id)); // Toggle open/close state
+  };
   return (
     <div>
       <Drawer drawer={drawer} action={drawerAction.toggle} />
