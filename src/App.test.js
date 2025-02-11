@@ -5,7 +5,7 @@ test('renders learn react link', async () => {
   render(<App />);
   
   // Find the element that contains "Learn React" text
-  const linkElement = await screen.findByText(/learn react/i);
+  const linkElement = await screen.getByText(/learn react/i);
 
   expect(linkElement).toBeInTheDocument();
 });
