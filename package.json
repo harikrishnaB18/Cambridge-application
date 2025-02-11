@@ -55,7 +55,4 @@
     "jest-canvas-mock": "^2.5.2",
     "react-app-rewired": "^2.2.1"
   }
-  {
-  "type": "module"
-}
 }
