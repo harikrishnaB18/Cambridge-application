@@ -15,36 +15,25 @@ import {
   Alert,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import Drawer from "../Mobile/Drawer.jsx";
 import useToggle from "../components/useToggle.js";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const SellingProperty = () => {
   const [drawer, drawerAction] = useToggle(false);
-  const [showThankYouMessage, setShowThankYouMessage] = useState(false);
   const [totalAmount, setTotalAmount] = useState(0);
   const [isAccordion1Open, setAccordion1Open] = useState(true);
   const [isAccordion2Open, setAccordion2Open] = useState(false);
-  const [isAccordionCompleted, setAccordionCompleted] = useState(false);
-  const [isAccordion2Completed, setAccordion2Completed] = useState(false);
   const [toastOpen, setToastOpen] = useState(false);
-  
+
   const [accordion1Data, setAccordion1Data] = useState({
     price: "",
     leasehold: "",
-    mortgage: "",
-    sharedOwnership: "",
-    newBuild: "",
-    staircasing: "",
-    unregistered: "",
   });
 
   const [accordion2Data, setAccordion2Data] = useState({
     fullName: "",
-    email: "",
-    phone: "",
   });
 
   const handleAccordion1Change = (key) => (event) => {
@@ -62,9 +51,7 @@ const SellingProperty = () => {
   };
 
   const handleSubmitClick = () => {
-    const allFieldsFilled = Object.values(accordion1Data).every((value) => Boolean(value));
-    if (allFieldsFilled) {
-      setAccordionCompleted(true);
+    if (accordion1Data.price && accordion1Data.leasehold) {
       setAccordion1Open(false);
       setAccordion2Open(true);
     } else {
@@ -73,15 +60,14 @@ const SellingProperty = () => {
   };
 
   const handleAccordion2Submit = () => {
-    const allFieldsFilled = Object.values(accordion2Data).every((value) => value.trim() !== "");
-    if (allFieldsFilled) {
-      setAccordion2Completed(true);
+    if (accordion2Data.fullName.trim() !== "") {
       setAccordion2Open(false);
-      setShowThankYouMessage(true);
-      toast.success("Form submitted successfully!", { position: "top-right", autoClose: 3000 });
+      toast.success("Form submitted successfully!", {
+        position: "top-right",
+        autoClose: 3000,
+      });
     } else {
       setToastOpen(true);
-      setShowThankYouMessage(false);
     }
   };
 
@@ -106,19 +92,8 @@ const SellingProperty = () => {
     let priceFee = Object.entries(priceFees).find(([max]) => price <= max)?.[1] || 0;
 
     let total = priceFee;
-    const additionalFees = {
-      leasehold: 300,
-      mortgage: 360,
-      sharedOwnership: 150,
-      newBuild: 420,
-      staircasing: 420,
-      unregistered: 420,
-    };
-
-    for (const [key, fee] of Object.entries(additionalFees)) {
-      if (accordion1Data[key] === "Yes") {
-        total += fee;
-      }
+    if (accordion1Data.leasehold === "Yes") {
+      total += 300;
     }
 
     const stampDuty = 200;
@@ -135,8 +110,8 @@ const SellingProperty = () => {
   return (
     <>
       <Drawer drawer={drawer} action={drawerAction.toggle} />
-      <Box sx={{ padding: '50px', maxWidth: '900px', margin: 'auto' }}>
-        <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 'bold' }}>
+      <Box sx={{ padding: "50px", maxWidth: "900px", margin: "auto" }}>
+        <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: "bold" }}>
           Selling Property
         </Typography>
 
@@ -152,9 +127,9 @@ const SellingProperty = () => {
                   name="price"
                   variant="outlined"
                   fullWidth
-                  type='number'
+                  type="number"
                   value={accordion1Data.price}
-                  onChange={handleAccordion1Change('price')}
+                  onChange={handleAccordion1Change("price")}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -163,7 +138,7 @@ const SellingProperty = () => {
                   <Select
                     name="leasehold"
                     value={accordion1Data.leasehold}
-                    onChange={handleAccordion1Change('leasehold')}
+                    onChange={handleAccordion1Change("leasehold")}
                   >
                     <MenuItem value="Yes">Yes</MenuItem>
                     <MenuItem value="No">No</MenuItem>
@@ -171,8 +146,10 @@ const SellingProperty = () => {
                 </FormControl>
               </Grid>
             </Grid>
-            <Box sx={{ marginTop: '14px' }}>
-              <button className="next-btn" onClick={handleSubmitClick}>Next</button>
+            <Box sx={{ marginTop: "14px" }}>
+              <button className="next-btn" onClick={handleSubmitClick}>
+                Next
+              </button>
             </Box>
           </AccordionDetails>
         </Accordion>
@@ -190,22 +167,22 @@ const SellingProperty = () => {
                   variant="outlined"
                   fullWidth
                   value={accordion2Data.fullName}
-                  onChange={handleAccordion2Change('fullName')}
+                  onChange={handleAccordion2Change("fullName")}
                 />
               </Grid>
             </Grid>
-            <Box sx={{ marginTop: '16px' }}>
-              <button className="next-btn mr-2" onClick={handlePrevious}>Previous Step</button>
-              <button className="next-btn" onClick={handleAccordion2Submit}>Submit</button>
+            <Box sx={{ marginTop: "16px" }}>
+              <button className="next-btn mr-2" onClick={handlePrevious}>
+                Previous Step
+              </button>
+              <button className="next-btn" onClick={handleAccordion2Submit}>
+                Submit
+              </button>
             </Box>
           </AccordionDetails>
         </Accordion>
 
-        <Snackbar
-          open={toastOpen}
-          autoHideDuration={3000}
-          onClose={() => setToastOpen(false)}
-        >
+        <Snackbar open={toastOpen} autoHideDuration={3000} onClose={() => setToastOpen(false)}>
           <Alert severity="error">Please fill all required fields!</Alert>
         </Snackbar>
       </Box>
