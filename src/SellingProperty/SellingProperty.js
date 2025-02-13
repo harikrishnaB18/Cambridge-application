@@ -411,7 +411,6 @@ return (
         </div>
       </div>
 
-      {/* Snackbar for validation errors */}
       <Snackbar
         open={toastOpen}
         autoHideDuration={4000}
@@ -423,10 +422,7 @@ return (
         </Alert>
       </Snackbar>
 
-      {/* Toast for success */}
       <ToastContainer />
-
-      {/* Footer component */}
       <FooterHomeTwo />
     </>
   );
