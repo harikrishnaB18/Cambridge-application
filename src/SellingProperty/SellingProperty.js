@@ -535,21 +535,22 @@ const allFieldsFilled = Object.values(accordion1Data).every((value) => Boolean(v
   </thead>
   <tbody>
     <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
-  <td style={{ padding: '12px', border: '1px solid #ddd' }}>Stamp Duty</td>
-  <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{stampDuty ?? "0.00"}</td>
-<tr style={{ backgroundColor: '#ffffff', textAlign: 'center' }}>
-  <td style={{ padding: '12px', border: '1px solid #ddd' }}>Solicitors Fees</td>
-  <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{solicitorsFees?.total ?? "0.00"}</td>
-</tr>
-<tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
-  <td style={{ padding: '12px', border: '1px solid #ddd' }}>Sub-Total</td>
-  <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{total ?? "0.00"}</td>
-</tr>
-<tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
-  <td style={{ padding: '12px', border: '1px solid #ddd' }}>Total</td>
-  <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{overalltotal ?? "0.00"}</td>
-</tr>
-  </tbody>
+        <td style={{ padding: '12px', border: '1px solid #ddd' }}>Stamp Duty</td>
+        <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{stampDuty ?? "0.00"}</td>
+    </tr>
+    <tr style={{ backgroundColor: '#ffffff', textAlign: 'center' }}>
+        <td style={{ padding: '12px', border: '1px solid #ddd' }}>Solicitors Fees</td>
+        <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{solicitorsFees?.total ?? "0.00"}</td>
+    </tr>
+    <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
+        <td style={{ padding: '12px', border: '1px solid #ddd' }}>Sub-Total</td>
+        <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{total ?? "0.00"}</td>
+    </tr>
+    <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
+        <td style={{ padding: '12px', border: '1px solid #ddd' }}>Total</td>
+        <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{overalltotal ?? "0.00"}</td>
+    </tr>
+</tbody>
 </table>
 
     </div>
