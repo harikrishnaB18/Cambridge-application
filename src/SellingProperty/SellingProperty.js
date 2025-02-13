@@ -13,6 +13,7 @@ import {
   Grid,
   Snackbar,
   Alert,
+  Button,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Drawer from "../Mobile/Drawer.jsx";
@@ -36,17 +37,19 @@ const SellingProperty = () => {
     fullName: "",
   });
 
-  const handleAccordion1Change = (key) => (event) => {
+  const handleAccordion1Change = (event) => {
+    const { name, value } = event.target;
     setAccordion1Data((prevData) => ({
       ...prevData,
-      [key]: event.target.value,
+      [name]: value,
     }));
   };
 
-  const handleAccordion2Change = (key) => (event) => {
+  const handleAccordion2Change = (event) => {
+    const { name, value } = event.target;
     setAccordion2Data((prevData) => ({
       ...prevData,
-      [key]: event.target.value,
+      [name]: value,
     }));
   };
 
@@ -129,7 +132,7 @@ const SellingProperty = () => {
                   fullWidth
                   type="number"
                   value={accordion1Data.price}
-                  onChange={handleAccordion1Change("price")}
+                  onChange={handleAccordion1Change}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -138,7 +141,8 @@ const SellingProperty = () => {
                   <Select
                     name="leasehold"
                     value={accordion1Data.leasehold}
-                    onChange={handleAccordion1Change("leasehold")}
+                    onChange={handleAccordion1Change}
+                    label="Leasehold"
                   >
                     <MenuItem value="Yes">Yes</MenuItem>
                     <MenuItem value="No">No</MenuItem>
@@ -147,9 +151,9 @@ const SellingProperty = () => {
               </Grid>
             </Grid>
             <Box sx={{ marginTop: "14px" }}>
-              <button className="next-btn" onClick={handleSubmitClick}>
+              <Button variant="contained" color="primary" onClick={handleSubmitClick}>
                 Next
-              </button>
+              </Button>
             </Box>
           </AccordionDetails>
         </Accordion>
@@ -167,17 +171,17 @@ const SellingProperty = () => {
                   variant="outlined"
                   fullWidth
                   value={accordion2Data.fullName}
-                  onChange={handleAccordion2Change("fullName")}
+                  onChange={handleAccordion2Change}
                 />
               </Grid>
             </Grid>
             <Box sx={{ marginTop: "16px" }}>
-              <button className="next-btn mr-2" onClick={handlePrevious}>
+              <Button variant="outlined" color="secondary" onClick={handlePrevious} sx={{ mr: 2 }}>
                 Previous Step
-              </button>
-              <button className="next-btn" onClick={handleAccordion2Submit}>
+              </Button>
+              <Button variant="contained" color="success" onClick={handleAccordion2Submit}>
                 Submit
-              </button>
+              </Button>
             </Box>
           </AccordionDetails>
         </Accordion>
