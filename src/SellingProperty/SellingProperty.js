@@ -410,22 +410,22 @@ return (
           </table>
         </div>
       </div>
-    <>
-  <Snackbar
-    open={toastOpen}
-    autoHideDuration={4000}
-    onClose={() => setToastOpen(false)}
-    anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-  >
-    <Alert onClose={() => setToastOpen(false)} severity="error" sx={{ width: '100%' }}>
-      Please fill out all fields before proceeding.
-    </Alert>
-  </Snackbar>
-</>
-
-
-      <ToastContainer />
-      <FooterHomeTwo />
+   return (
+  <>
+    <Snackbar
+      open={toastOpen}
+      autoHideDuration={4000}
+      onClose={() => setToastOpen(false)}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+    >
+      <Alert onClose={() => setToastOpen(false)} severity="error" sx={{ width: '100%' }}>
+        Please fill out all fields before proceeding.
+      </Alert>
+    </Snackbar>
+  </>
+);
+<ToastContainer />
+    <FooterHomeTwo />
     </>
   );
 };
