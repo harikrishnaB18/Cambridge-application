@@ -410,7 +410,7 @@ return (
           </table>
         </div>
       </div>
-   return (
+  return (
   <>
     <Snackbar
       open={toastOpen}
@@ -422,12 +422,10 @@ return (
         Please fill out all fields before proceeding.
       </Alert>
     </Snackbar>
+
+    <ToastContainer />
+    <FooterHomeTwo />
   </>
 );
-<ToastContainer />
-    <FooterHomeTwo />
-    </>
-  );
-};
 
 export default SellingProperty;
