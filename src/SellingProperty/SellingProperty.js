@@ -110,7 +110,7 @@ const SellingProperty = () => {
   };
 
   const handleSubmitClick = () => {
-    const allFieldsFilled = Object.values(accordion1Data).every((value) => value !== "");
+const allFieldsFilled = Object.values(accordion1Data).every((value) => Boolean(value));
     let errors = {};
 
     Object.keys(accordion1Data).forEach((field) => {
@@ -421,7 +421,7 @@ const SellingProperty = () => {
             overflowY: "auto",
           }}
         >
-          <ContactCardSelling onSubmit={handleSubmit} closePopup={closePopup} />
+<ContactCardSelling onSubmit={handleSubmit} closePopup={closePopup || (() => {})} />
         </div>
       )}
 
@@ -501,7 +501,7 @@ const SellingProperty = () => {
               <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px'  ,   flexDirection: { xs: 'column', sm: 'row' }, // Stack buttons vertically on mobile
     gap: '8px',}}>
               <button className="next-btn mr-2" onClick={handlePrevious}>PreviousStep</button>
-              <button className="next-btn mr-2" onClick={generatePDF}>Preview Data</button>
+              <button className="next-btn mr-2" onClick={() => generatePDF(data)}>Preview Data</button>
                 <button className="next-btn" onClick={handleAccordion2Submit}>Submit</button>
               </Box>
             </AccordionDetails>
@@ -535,21 +535,20 @@ const SellingProperty = () => {
   </thead>
   <tbody>
     <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
-      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Stamp Duty</td>
-      <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{stampDuty}</td>
-    </tr>
-    <tr style={{ backgroundColor: '#ffffff', textAlign: 'center' }}>
-      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Solicitors Fees</td>
-      <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{solicitorsFees.total}</td>
-    </tr>
-    <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
-      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Sub-Total</td>
-      <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{total}</td>
-    </tr>
-    <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
-      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Total</td>
-      <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{overalltotal}</td>
-    </tr>
+  <td style={{ padding: '12px', border: '1px solid #ddd' }}>Stamp Duty</td>
+  <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{stampDuty ?? "0.00"}</td>
+<tr style={{ backgroundColor: '#ffffff', textAlign: 'center' }}>
+  <td style={{ padding: '12px', border: '1px solid #ddd' }}>Solicitors Fees</td>
+  <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{solicitorsFees?.total ?? "0.00"}</td>
+</tr>
+<tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
+  <td style={{ padding: '12px', border: '1px solid #ddd' }}>Sub-Total</td>
+  <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{total ?? "0.00"}</td>
+</tr>
+<tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
+  <td style={{ padding: '12px', border: '1px solid #ddd' }}>Total</td>
+  <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{overalltotal ?? "0.00"}</td>
+</tr>
   </tbody>
 </table>
 
