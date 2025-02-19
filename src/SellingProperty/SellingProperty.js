@@ -182,11 +182,12 @@ const SellingProperty = () => {
     setAccordion2Open(false);
   };
 
-  const [formData, setFormData] = useState({ price: "" });
+  const [formData /*, setFormData */] = useState({});
 
-  useEffect(() => {
-    calculateTotal();
-  }, [formData.price, accordion1Data]);
+
+ useEffect(() => {
+  calculateTotal();
+}, [calculateTotal]);
   
   const calculateTotal = () => {
     const price = parseFloat(accordion1Data.price) || 0;
