@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import { useCallback, useEffect, useState } from "react";
 import {
   Accordion,
   AccordionSummary,
@@ -182,11 +182,19 @@ const SellingProperty = () => {
     setAccordion2Open(false);
   };
 
-  const [formData /*, setFormData */] = useState({});
+  // Remove the whole line if not needed
+// const [formData, setFormData] = useState({});
+
+// OR, if `setFormData` is used but not `formData`, update it like this:
+const [, setFormData] = useState({});
 
 
- useEffect(() => {
-  calculateTotal();
+ const calculateTotal = useCallback(() => {
+  // Function logic
+}, []);  // ✅ Wrapped in useCallback
+
+useEffect(() => {
+  calculateTotal();  // ✅ No more infinite re-renders
 }, [calculateTotal]);
   
   const calculateTotal = () => {
