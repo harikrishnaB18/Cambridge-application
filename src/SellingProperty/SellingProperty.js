@@ -406,17 +406,19 @@ const allFieldsFilled = Object.values(accordion1Data).every((value) => Boolean(v
     gap: '10px',
   }}
 >
-  <button className="next-btn" onClick={handleSubmitClick}>Next</button>
 const MyComponent = () => { // Component defined OUTSIDE
     const [popupVisible, setPopupVisible] = useState(false); // useState here if needed for this component
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const handleSubmit = () => {
         console.log("Form submitted!");
         // Your logic here
     };
 
     return (
+      <div>
+            <button className="next-btn" onClick={handleSubmitClick}>Next</button>
+        </div>
+        );
+};
 </Box>
     {showPopup && (
         <div
