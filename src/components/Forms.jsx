@@ -29,7 +29,7 @@ function Forms() {
     terms: false,
   });
 
-const [error, setError] = useState("");
+  const [errors, setErrors] = useState({});
 
   // Handle input changes
   const handleChange = (e) => {
