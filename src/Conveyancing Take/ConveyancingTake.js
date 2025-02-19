@@ -10,14 +10,15 @@ import useToggle from "../components/useToggle.js";
 const ConveyancingTake = (style) => {
   const [drawer, drawerAction] = useToggle(false);
   const [tab, setTab] = useState("setting");
+  // eslint-disable-next-line no-unused-vars
   const [activeQuestion, setActiveQuestion] = useState(null);
 
   const handleClick = (e, value) => {
     e.preventDefault();
     setTab(value);
   };
-
-  const toggleQuestion = (id) => {
+// eslint-disable-next-line no-unused-vars
+const toggleQuestion = (id) => {
     setActiveQuestion((prev) => (prev === id ? null : id)); // Toggle open/close state
   };
   return (
