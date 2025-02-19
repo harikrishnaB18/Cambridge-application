@@ -519,7 +519,7 @@ useEffect(() => {
       .reduce((sum, key) => sum + calculateAmountForKey(key), 0);
   accordion1Entries.push(["Total Amount", "", `£${total.toLocaleString()}`]);
 
-  const overalltotal=solicitorsFees.total+total+stampDuty
+  const overalltotal=solicitorsFees.total+total+stampDuty;
   return (
     <>
       <Drawer drawer={drawer} action={drawerAction.toggle} />
