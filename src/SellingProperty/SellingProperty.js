@@ -425,6 +425,17 @@ const allFieldsFilled = Object.values(accordion1Data).every((value) => Boolean(v
             overflowY: "auto",
           }}
         >
+          const MyComponent = () => {
+    const [popupVisible, setPopupVisible] = useState(false);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log("Form submitted!");
+        // Your logic here
+    };
+
+    return (
+        <>
             <ContactCardSelling onSubmit={handleSubmit} closePopup={() => setPopupVisible(false)} />
         </div>
       )}
@@ -505,8 +516,18 @@ const allFieldsFilled = Object.values(accordion1Data).every((value) => Boolean(v
               <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px'  ,   flexDirection: { xs: 'column', sm: 'row' }, // Stack buttons vertically on mobile
     gap: '8px',}}>
               <button className="next-btn mr-2" onClick={handlePrevious}>PreviousStep</button>
-              <button className="next-btn mr-2" onClick={() => generatePDF(data)}>
-            Preview Data </button>
+              const MyComponent = () => {
+    const [data, setData] = useState({}); // Example state
+
+    const generatePDF = (data) => {
+        console.log("Generating PDF with data:", data);
+        // Your PDF logic here
+    };
+
+    return (
+        <button className="next-btn mr-2" onClick={() => generatePDF(data)}>
+            Preview Data
+        </button>
                 <button className="next-btn" onClick={handleAccordion2Submit}>Submit</button>
               </Box>
             </AccordionDetails>
