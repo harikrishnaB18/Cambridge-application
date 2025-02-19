@@ -407,26 +407,8 @@ const allFieldsFilled = Object.values(accordion1Data).every((value) => Boolean(v
   }}
 >
   <button className="next-btn" onClick={handleSubmitClick}>Next</button>
-
-</Box>
-    {showPopup && (
-        <div
-          style={{
-            position: "fixed",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            zIndex: 1000,
-            background: "#fff",
-            padding: "20px",
-            boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
-            borderRadius: "8px",
-            maxHeight: "80vh",
-            overflowY: "auto",
-          }}
-        >
-          const MyComponent = () => {
-    const [popupVisible, setPopupVisible] = useState(false);
+const MyComponent = () => { // Component defined OUTSIDE
+    const [popupVisible, setPopupVisible] = useState(false); // useState here if needed for this component
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -435,9 +417,26 @@ const allFieldsFilled = Object.values(accordion1Data).every((value) => Boolean(v
     };
 
     return (
-        <>
-            <ContactCardSelling onSubmit={handleSubmit} closePopup={() => setPopupVisible(false)} />
-        </div>
+</Box>
+    {showPopup && (
+        <div
+                    style={{
+                        position: "fixed",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        zIndex: 1000,
+                        background: "#fff",
+                        padding: "20px",
+                        boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
+                        borderRadius: "8px",
+                        maxHeight: "80vh",
+                        overflowY: "auto",
+                    }}
+                >
+                    <ContactCardSelling onSubmit={handleSubmit} closePopup={() => setPopupVisible(false)} />
+                </div>
+            )}
       )}
 
       {/* Overlay for dimming background */}
