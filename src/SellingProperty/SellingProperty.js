@@ -190,15 +190,13 @@ const [, setFormData] = useState({});
 
 
  const calculateTotal = useCallback(() => {
-  // Function logic
-}, []);  // ✅ Wrapped in useCallback
+  const price = parseFloat(accordion1Data?.price) || 0;
+}, [accordion1Data]);  // ✅ Dependency array ensures updates when data changes
 
 useEffect(() => {
-  calculateTotal();  // ✅ No more infinite re-renders
-}, [calculateTotal]);
-  
-  const calculateTotal = () => {
-    const price = parseFloat(accordion1Data.price) || 0;
+  calculateTotal();  
+}, [calculateTotal]);  // ✅ No more infinite re-renders
+
   
     // Define price ranges and their corresponding fees
     const priceRanges = [
