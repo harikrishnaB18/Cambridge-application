@@ -29,6 +29,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const SellingProperty = () => {
+  const [data, setData] = useState({});
+    const [stampDuty, setStampDuty] = useState(0);
+const [solicitorsFees, setSolicitorsFees] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [overalltotal, setOverallTotal] = useState(0);
+  const [popupVisible, setPopupVisible] = useState(false);
   const [drawer, drawerAction] = useToggle(false);
   const [showPopup, setShowPopup] = useState(false);
   const [showThankYouMessage, setShowThankYouMessage] = useState(false);
@@ -59,55 +65,54 @@ const SellingProperty = () => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^([+](44|1|91)[\s]?)?[0-9\s]{10,11}$/;
 
-  const handleAccordion1Change = (key) => (event) => {
-    const value = event.target.value;
+   const handleAccordion1Change = (key) => (event) => {
+        const value = event.target.value;
 
-    setAccordion1Data((prevData) => ({
-      ...prevData,
-      [key]: value,
-    }));
-
-    if (key === "price") {
-      const price = parseFloat(value);
-      if (isNaN(price) || price <= 0) {
-        setValidationErrors((prevErrors) => ({
-          ...prevErrors,
-          [key]: true,
+        setAccordion1Data((prevData) => ({
+            ...prevData,
+            [key]: value,
         }));
-      } else {
-        setValidationErrors((prevErrors) => ({
-          ...prevErrors,
-          [key]: false,
+
+        if (key === "price") {
+            const price = parseFloat(value);
+            if (isNaN(price) || price <= 0) {
+                setValidationErrors((prevErrors) => ({
+                    ...prevErrors,
+                    [key]: true,
+                }));
+            } else {
+                setValidationErrors((prevErrors) => ({
+                    ...prevErrors,
+                    [key]: false,
+                }));
+            }
+            if (price > 2000001) {
+                setShowPopup(true);
+            } else {
+                setShowPopup(false);
+            }
+        }
+    };
+ const handleAccordion2Change = (key) => (event) => {
+        const value = event.target.value;
+
+        setAccordion2Data((prevData) => ({
+            ...prevData,
+            [key]: value,
         }));
-      }
-      if (price > 2000001) {
-        setShowPopup(true);
-      } else {
-        setShowPopup(false);
-      }
-    }
-  };
 
-  const handleAccordion2Change = (key) => (event) => {
-    const value = event.target.value;
-
-    setAccordion2Data((prevData) => ({
-      ...prevData,
-      [key]: value,
-    }));
-
-    if (!value.trim() || (key === "email" && !emailRegex.test(value)) || (key === "phone" && !phoneRegex.test(value))) {
-      setValidationErrors((prevErrors) => ({
-        ...prevErrors,
-        [key]: true,
-      }));
-    } else {
-      setValidationErrors((prevErrors) => ({
-        ...prevErrors,
-        [key]: false,
-      }));
-    }
-  };
+        if (!value.trim() || (key === "email" && !emailRegex.test(value)) || (key === "phone" && !phoneRegex.test(value))) {
+            setValidationErrors((prevErrors) => ({
+                ...prevErrors,
+                [key]: true,
+            }));
+        } else {
+            setValidationErrors((prevErrors) => ({
+                ...prevErrors,
+                [key]: false,
+            }));
+        }
+    };
 
   const handleSubmitClick = () => {
 const allFieldsFilled = Object.values(accordion1Data).every((value) => Boolean(value));
@@ -128,34 +133,33 @@ const allFieldsFilled = Object.values(accordion1Data).every((value) => Boolean(v
     }
   };
 
-  const handleAccordion2Submit = () => {
-    const allFieldsFilled = Object.values(accordion2Data).every((value) => value.trim() !== "");
-    let errors = {};
+   const handleAccordion2Submit = () => {
+        const allFieldsFilled = Object.values(accordion2Data).every((value) => value.trim() !== "");
+        let errors = {};
 
-    Object.keys(accordion2Data).forEach((key) => {
-      if (!accordion2Data[key].trim() || (key === "email" && !emailRegex.test(accordion2Data[key]))) {
-        errors[key] = true;
-      }
-    });
+        Object.keys(accordion2Data).forEach((key) => {
+            if (!accordion2Data[key].trim() || (key === "email" && !emailRegex.test(accordion2Data[key]))) {
+                errors[key] = true;
+            }
+        });
 
-    setValidationErrors(errors);
-    
-    if (allFieldsFilled && Object.keys(errors).length === 0) {
-      setAccordion2Completed(true);
-      setAccordion2Open(false);
-      setShowThankYouMessage(true);
-      toast.success("Form submitted successfully!", { position: "top-right", autoClose: 3000 });
-    } else {
-      setToastOpen(true);
-      setShowThankYouMessage(false);
-    }
-  };
+        setValidationErrors(errors);
 
-  const handlePrevious = () => {
-    setAccordion1Open(true);
-    setAccordion2Open(false);
-  };
+        if (allFieldsFilled && Object.keys(errors).length === 0) {
+            setAccordion2Completed(true);
+            setAccordion2Open(false);
+            setShowThankYouMessage(true);
+           toast.success("Form submitted successfully!", { position: "top-right", autoClose: 3000 });
+        } else {
+            setToastOpen(true);
+            setShowThankYouMessage(false);
+        }
+    };
 
+    const handlePrevious = () => {
+        setAccordion1Open(true);
+        setAccordion2Open(false);
+    };
   const calculateTotal = useCallback(() => {
     const price = parseFloat(accordion1Data.price) || 0;
     const priceFees = {
@@ -421,7 +425,7 @@ const allFieldsFilled = Object.values(accordion1Data).every((value) => Boolean(v
             overflowY: "auto",
           }}
         >
-<ContactCardSelling onSubmit={handleSubmit} closePopup={closePopup || (() => {})} />
+<ContactCardSelling onSubmit={handleSubmit} closePopup={() => setPopupVisible(false)} />
         </div>
       )}
 
