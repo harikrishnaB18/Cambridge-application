@@ -143,13 +143,14 @@ const SellingProperty = () => {
       error = true;
     } else if (key === 'phone' && !phoneRegex.test(value)) {
       error = true;
-    } else {
-      setValidationErrors((prevErrors) => ({
-        ...prevErrors,
-        [key]: false,
-      }));
-    }
-  };
+    } 
+    // ✅ Use 'error' in state update
+    setValidationErrors((prevErrors) => ({
+      ...prevErrors,
+      [key]: error, // Assign 'error' to the validation state
+    }));
+    };
+
 
   const handleAccordion2Submit = () => {
     const allFieldsFilled = Object.values(accordion2Data).every((value) => value.trim() !== '');
@@ -182,12 +183,12 @@ const SellingProperty = () => {
     setAccordion2Open(false);
   };
 
-  const [formData, setFormData] = useState({ price: "" });
+  const [formData] = useState({ price: "" }); // ✅ Remove setFormData if it's not used
 
   useEffect(() => {
     calculateTotal();
-  }, [formData.price, accordion1Data]);
-
+  }, [formData.price, accordion1Data, calculateTotal]); // ✅ Add calculateTotal to dependencies
+  
   const calculateTotal = () => {
     const price = parseFloat(accordion1Data.price) || 0;
 
