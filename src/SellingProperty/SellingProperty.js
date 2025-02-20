@@ -518,8 +518,6 @@ useEffect(() => {
       .filter((value) => value === "Yes")
       .reduce((sum, key) => sum + calculateAmountForKey(key), 0);
   accordion1Entries.push(["Total Amount", "", `£${total.toLocaleString()}`]);
-const SellingProperty = ({ drawer, drawerAction, isAccordion1Open, isAccordionCompleted, solicitorsFees, total, stampDuty }) => {
-
   const overalltotal=solicitorsFees.total+total+stampDuty;
   return (
     <>
