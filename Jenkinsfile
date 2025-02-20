@@ -38,7 +38,7 @@ pipeline {
             steps {
                 sshagent(['deploy-key']) {
                     sh """
-                    scp -o StrictHostKeyChecking=no -r ./build/* ubuntu@3.108.64.9:/home/ubuntu/Cambridge-application/build/
+                    scp -o StrictHostKeyChecking=no -r ./build/* ubuntu@13.233.146.247:/home/ubuntu/Cambridge-application/build/
                     """
                 }
             }
