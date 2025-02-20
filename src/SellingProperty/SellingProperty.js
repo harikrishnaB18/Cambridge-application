@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Accordion,
   AccordionSummary,
@@ -31,7 +31,7 @@ import "react-toastify/dist/ReactToastify.css";
 const SellingProperty = () => {
   const [drawer, drawerAction] = useToggle(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [showThankYouMessage, setShowThankYouMessage] = useState(false);
+    const [showThankYouMessage, setShowThankYouMessage] = useState(false);
   const [accordion1Data, setAccordion1Data] = useState({
     price: '',
     leasehold: '',
@@ -49,7 +49,7 @@ const SellingProperty = () => {
     phone: '',
   });
 
-  const [totalAmount, setTotalAmount] = useState(0);
+  const [totalAmount, setTotalAmount] = useState(0); 
   const [isAccordion1Open, setAccordion1Open] = useState(true);
   const [isAccordion2Open, setAccordion2Open] = useState(false);
   const [isAccordionCompleted, setAccordionCompleted] = useState(false);
@@ -106,7 +106,7 @@ const SellingProperty = () => {
     setValidationErrors(errors);
 
     if (allFieldsFilled) {
-      console.log('Form Data:', accordion1Data);
+      console.log('Form Data:', accordion1Data); 
       setAccordionCompleted(true);
       setAccordion1Open(false);
       setAccordion2Open(true);
@@ -117,7 +117,7 @@ const SellingProperty = () => {
   };
 
   const handleSubmit = (formData) => {
-    console.log("Form submitted:", formData);
+    // console.log("Form submitted:", formData);
     toast.success('Data Submitted Successfully.', {
       position: 'top-right',
       autoClose: 3000,
@@ -135,22 +135,28 @@ const SellingProperty = () => {
       [key]: value,
     }));
 
-    let error = false;
-
     if (value.trim() === '') {
-      error = true;
+      setValidationErrors((prevErrors) => ({
+        ...prevErrors,
+        [key]: true,
+      }));
     } else if (key === 'email' && !emailRegex.test(value)) {
-      error = true;
+      setValidationErrors((prevErrors) => ({
+        ...prevErrors,
+        [key]: true,
+      }));
     } else if (key === 'phone' && !phoneRegex.test(value)) {
-      error = true;
-    } 
-    // ✅ Use 'error' in state update
-    setValidationErrors((prevErrors) => ({
-      ...prevErrors,
-      [key]: error, // Assign 'error' to the validation state
-    }));
-    };
-
+      setValidationErrors((prevErrors) => ({
+        ...prevErrors,
+        [key]: true,
+      }));
+    } else {
+      setValidationErrors((prevErrors) => ({
+        ...prevErrors,
+        [key]: false,
+      }));
+    }
+  };
 
   const handleAccordion2Submit = () => {
     const allFieldsFilled = Object.values(accordion2Data).every((value) => value.trim() !== '');
@@ -160,8 +166,10 @@ const SellingProperty = () => {
         errors[key] = true;
       } else if (key === 'email' && !emailRegex.test(accordion2Data[key])) {
         errors[key] = true;
-      }
-    });
+      }  else if (key === 'phone' && !phoneRegex.test(accordion2Data[key])) {
+        errors[key] = true;
+    }
+  });
 
     setValidationErrors(errors);
     if (allFieldsFilled && Object.keys(errors).length === 0) {
@@ -183,15 +191,13 @@ const SellingProperty = () => {
     setAccordion2Open(false);
   };
 
-  const [formData] = useState({ price: "" }); // ✅ Remove setFormData if it's not used
+  // const [formData] = useState({ price: "" });
 
-  useEffect(() => {
-    calculateTotal();
-  }, [formData.price, accordion1Data, calculateTotal]); // ✅ Add calculateTotal to dependencies
+
   
-  const calculateTotal = () => {
+  const calculateTotal = useCallback(() => {
     const price = parseFloat(accordion1Data.price) || 0;
-
+  
     // Define price ranges and their corresponding fees
     const priceRanges = [
       { max: 250000, fee: 1200 },
@@ -203,7 +209,7 @@ const SellingProperty = () => {
       { max: 2000000, fee: 3000 },
       { max: 2500000, fee: 3600 },
     ];
-
+  
     // Determine the price fee based on the price range
     let priceFee = 0;
     for (const range of priceRanges) {
@@ -212,16 +218,16 @@ const SellingProperty = () => {
         break;
       }
     }
-
+  
     // Show popup and exit if price exceeds the highest range
-    if (price > 2500001) {
+    if (price > 2500001 ) {
       setShowPopup(true); // Show the popup for ContactCard
       return; // Exit the function early
     }
-
+  
     // Base total amount starts with the price fee
-    let total = priceFee;   
-
+    let total = priceFee;
+  
     // Add additional fees based on user selections
     const additionalFees = {
       leasehold: 300,
@@ -231,7 +237,7 @@ const SellingProperty = () => {
       staircasing: 420,
       unregistered: 420,
     };
-
+  
     for (const [key, fee] of Object.entries(additionalFees)) {
       if (accordion1Data[key] === 'Yes') {
         total += fee;
@@ -239,38 +245,40 @@ const SellingProperty = () => {
     }
     const stampDuty = 200;
     const solicitorsFees = 200;
-    total += stampDuty + solicitorsFees;
+    total += stampDuty+solicitorsFees;
     // Update the total amount state
     setTotalAmount(total);
-    return total;
-  };
+  }, [accordion1Data]);  
 
-
+  useEffect(() => {
+    calculateTotal();
+  }, [accordion1Data, calculateTotal]);
+  
   const generatePDF = () => {
     const doc = new jsPDF();
-
+  
     // Add a title
     doc.setFontSize(18);
     doc.text("Selling Property Summary", 14, 20);
-
+  
     // Add user selections and related amounts
     doc.setFontSize(12);
     doc.text("Step1:", 14, 30);
-
+  
     // Calculate price fee
     const price = parseFloat(accordion1Data.price) || 0;
     const priceFee = calculatePriceFee(price);
-
+    
     // Start creating table rows
     const accordion1Entries = [];
-
+  
     // Add price and its fee
     accordion1Entries.push([
       "Property Price",
       `£${price.toLocaleString()}`, // Display price
       `£${priceFee}`, // Display fee for the price
     ]);
-
+  
     // Add user selections and their respective amounts
     Object.entries(accordion1Data).forEach(([key, value]) => {
       if (key !== "price") {
@@ -290,7 +298,7 @@ const SellingProperty = () => {
         }
       }
     });
-
+  
     // Stamp Duty calculation
     const calculateStampDuty = (price) => {
       let stampDuty = 0;
@@ -312,10 +320,10 @@ const SellingProperty = () => {
       }
       return stampDuty;
     };
-
+  
     const stampDuty = calculateStampDuty(price);
     accordion1Entries.push(["Stamp Duty", "-", `£${stampDuty.toLocaleString()}`]);
-
+  
     // Solicitors Fees calculation
     const calculateSolicitorsFees = (price) => {
       let fee = 0;
@@ -341,7 +349,7 @@ const SellingProperty = () => {
       }
       return { fee, vat, total: fee + vat };
     };
-
+  
     const solicitorsFees = calculateSolicitorsFees(price);
     accordion1Entries.push([
       "Solicitors Fees",
@@ -358,7 +366,7 @@ const SellingProperty = () => {
         .filter((value) => value === "Yes")
         .reduce((sum, key) => sum + calculateAmountForKey(key), 0);
     accordion1Entries.push(["Total Amount", "", `£${total.toLocaleString()}`]);
-
+  
     // Add table for user selections and amounts
     doc.autoTable({
       startY: 35,
@@ -366,26 +374,26 @@ const SellingProperty = () => {
       body: accordion1Entries,
       headStyles: { fillColor: [35, 57, 85] },
     });
-
+  
     // Add user contact details
     doc.text("Step2", 14, doc.lastAutoTable.finalY + 10);
     const accordion2Entries = Object.entries(accordion2Data).map(([key, value]) => [
       key.charAt(0).toUpperCase() + key.slice(1),
       value || "Not Provided",
     ]);
-
+  
     doc.autoTable({
       startY: doc.lastAutoTable.finalY + 15,
       head: [["Field", "Value"]],
       body: accordion2Entries,
       headStyles: { fillColor: [35, 57, 85] },
     });
-
+  
     // Open the PDF in a new window for preview
     window.open(doc.output("bloburl"), "_blank");
   };
-
-
+  
+  
   // Helper function to calculate price fee based on ranges
   const calculatePriceFee = (price) => {
     const priceRanges = [
@@ -398,7 +406,7 @@ const SellingProperty = () => {
       { max: 2000000, fee: 3000 },
       { max: 2500000, fee: 3600 },
     ];
-
+  
     for (const range of priceRanges) {
       if (price <= range.max) {
         return range.fee;
@@ -406,16 +414,24 @@ const SellingProperty = () => {
     }
     return 0; // Default fee if no range matches
   };
-
+  
   // Helper function to calculate amount for a specific key
   const calculateAmountForKey = (key) => {
-    const amounts = { leasehold: 300, mortgage: 360, sharedOwnership: 150, newBuild: 420, staircasing: 420, unregistered: 420 };
-    return amounts[key] || 0;
+    const amounts = {
+      leasehold: 300,
+      mortgage: 360,
+      sharedOwnership: 150,
+      newBuild: 420,
+      staircasing: 420,
+      unregistered: 420,
+      // Add all your options and their respective amounts here
+    };
+    return amounts[key] || 0; // Return the amount or 0 if the key is not found
   };
-
+  
   const price = parseFloat(accordion1Data.price) || 0;
   const priceFee = calculatePriceFee(price);
-
+  
   // Start creating table rows
   const accordion1Entries = [];
 
@@ -514,7 +530,7 @@ const SellingProperty = () => {
       .reduce((sum, key) => sum + calculateAmountForKey(key), 0);
   accordion1Entries.push(["Total Amount", "", `£${total.toLocaleString()}`]);
 
-  const overalltotal = solicitorsFees.total + total + stampDuty;
+  const overalltotal=solicitorsFees.total+total+stampDuty
   return (
     <>
       <Drawer drawer={drawer} action={drawerAction.toggle} />
@@ -531,9 +547,9 @@ const SellingProperty = () => {
             <AccordionSummary
               expandIcon={isAccordionCompleted ? <CheckCircleIcon color="success" /> : <ExpandMoreIcon />}
               sx={{
-                borderBottom: '1px solid #ddd',
+                borderBottom: '1px solid #ddd', 
                 '& .MuiTypography-root': {
-                  fontSize: '1.15rem',
+                  fontSize: '1.15rem', 
                 },
               }}
             >
@@ -550,7 +566,7 @@ const SellingProperty = () => {
                     fullWidth
                     type='number'
                     value={accordion1Data.price}
-                    onChange={handleAccordion1Change('price', 'price')}
+                    onChange={handleAccordion1Change('price','price')}
                     error={validationErrors.price}
                     helperText={validationErrors.price ? 'This field is required & Only positive numbers are allowed' : ''}
                     sx={{
@@ -560,64 +576,64 @@ const SellingProperty = () => {
                     }}
                   />
                 </Grid>
-              
+
                 <Grid item xs={12} md={12}>
-                  <FormControl variant="outlined" fullWidth error={validationErrors.leasehold} >
-                    <InputLabel>Leasehold</InputLabel>
-                    <Select label="Leasehold"
-                      name='leasehold'
+                <FormControl variant="outlined" fullWidth error={validationErrors.leasehold} >
+                <InputLabel>Leasehold</InputLabel>
+                    <Select   label="Leasehold"
+                    name='leasehold'
                       value={accordion1Data.leasehold}
-                      onChange={handleAccordion1Change('leasehold', 'leasehold')}
+                      onChange={handleAccordion1Change('leasehold','leasehold')}
                       sx={{
                         '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
                       }}
-                    >
+                      >
                       <MenuItem value="Yes">Yes</MenuItem>
                       <MenuItem value="No">No</MenuItem>
                     </Select>
                     {validationErrors.leasehold && (
-                      <FormHelperText error>This field is required</FormHelperText>
-                    )}
+                <FormHelperText error>This field is required</FormHelperText>
+              )}
                   </FormControl>
                 </Grid>
 
                 <Grid item xs={12} md={12}>
-                  <FormControl variant="outlined" fullWidth error={validationErrors.mortgage} >
+                <FormControl variant="outlined" fullWidth error={validationErrors.mortgage} >
                     <InputLabel>Mortgage</InputLabel>
                     <Select label="Mortgage"
-                      name='mortgage'
-                      value={accordion1Data.mortgage}
-                      onChange={handleAccordion1Change('mortgage', 'mortgage')}
-                      sx={{
-                        '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
-                      }}
-                    >
+                    name='mortgage'
+                     value={accordion1Data.mortgage}
+                     onChange={handleAccordion1Change('mortgage','mortgage')}
+                     sx={{
+                      '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
+                    }}
+                     >
                       <MenuItem value="Yes">Yes</MenuItem>
                       <MenuItem value="no">No</MenuItem>
                     </Select>
                     {validationErrors.mortgage && (
-                      <FormHelperText error>This field is required</FormHelperText>
-                    )}
+                <FormHelperText error>This field is required</FormHelperText>
+              )}
                   </FormControl>
                 </Grid>
 
                 <Grid item xs={12} md={12}>
-                  <FormControl variant="outlined" fullWidth error={validationErrors.sharedOwnership} >
+                <FormControl variant="outlined" fullWidth error={validationErrors.sharedOwnership} >
                     <InputLabel>Shared Ownership</InputLabel>
                     <Select label="Shared Ownership"
-                      name='sharedOwnership'
-                      value={accordion1Data.sharedOwnership}
-                      onChange={handleAccordion1Change('sharedOwnership', 'sharedOwnership')}
-                      sx={{
-                        '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
-                      }}
-                    >
+                    name='sharedOwnership'
+                                         value={accordion1Data.sharedOwnership}
+                                         onChange={handleAccordion1Change('sharedOwnership','sharedOwnership')}
+                                         sx={{
+                                          '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
+                                        }}
+                                         >
                       <MenuItem value="Yes">Yes</MenuItem>
                       <MenuItem value="no">No</MenuItem>
                     </Select>
                     {validationErrors.sharedOwnership && (
-                      <FormHelperText error>This field is required</FormHelperText>
-                    )}
+                <FormHelperText error>This field is required</FormHelperText>
+              )}
                   </FormControl>
                 </Grid>
 
@@ -640,121 +656,120 @@ const SellingProperty = () => {
               )}
                   </FormControl>
                 </Grid> */}
-
+                
                 <Grid item xs={12} md={12}>
-                  <FormControl variant="outlined" fullWidth error={validationErrors.newBuild} >
+                <FormControl variant="outlined" fullWidth error={validationErrors.newBuild} >
                     <InputLabel>New Build</InputLabel>
                     <Select label="New Build"
-                      name='newBuild'
-                      value={accordion1Data.newBuild}
-                      onChange={handleAccordion1Change('newBuild', 'newBuild')}
-                      sx={{
-                        '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
-                      }}
-                    >
+                    name='newBuild'
+                                          value={accordion1Data.newBuild}
+                                          onChange={handleAccordion1Change('newBuild','newBuild')}
+                                          sx={{
+                                            '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
+                                          }}
+                                          >
                       <MenuItem value="Yes">Yes</MenuItem>
                       <MenuItem value="no">No</MenuItem>
                     </Select>
                     {validationErrors.newBuild && (
-                      <FormHelperText error>This field is required</FormHelperText>
-                    )}
+                <FormHelperText error>This field is required</FormHelperText>
+              )}
                   </FormControl>
                 </Grid>
 
                 <Grid item xs={12} md={12}>
-                  <FormControl variant="outlined" fullWidth error={validationErrors.staircasing} >
+                <FormControl variant="outlined" fullWidth error={validationErrors.staircasing} >
                     <InputLabel>Staircasing?</InputLabel>
                     <Select label="Staircasing"
-                      name='staircasing'
-                      value={accordion1Data.staircasing}
-                      onChange={handleAccordion1Change('staircasing', 'staircasing')}
-                      sx={{
-                        '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
-                      }}
-                    >
+                    name='staircasing'
+                                          value={accordion1Data.staircasing}
+                                          onChange={handleAccordion1Change('staircasing','staircasing')}
+                                          sx={{
+                                            '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
+                                          }}
+                                          >
                       <MenuItem value="Yes">Yes</MenuItem>
                       <MenuItem value="no">No</MenuItem>
                     </Select>
                     {validationErrors.staircasing && (
-                      <FormHelperText error>This field is required</FormHelperText>
-                    )}
+                <FormHelperText error>This field is required</FormHelperText>
+              )}
                   </FormControl>
                 </Grid>
 
                 <Grid item xs={12} md={12}>
-                  <FormControl variant="outlined" fullWidth error={validationErrors.unregistered} >
+                <FormControl variant="outlined" fullWidth error={validationErrors.unregistered} >
                     <InputLabel>Unregistered?</InputLabel>
                     <Select label="Unregistered"
-                      name='unregistered'
-                      value={accordion1Data.unregistered}
-                      onChange={handleAccordion1Change('unregistered', 'unregistered')}
-                      sx={{
-                        '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
-                      }}
-                    >
+                    name='unregistered'
+                                          value={accordion1Data.unregistered}
+                                          onChange={handleAccordion1Change('unregistered','unregistered')}
+                                          sx={{
+                                            '&.Mui-error .MuiOutlinedInput-notchedOutline': { borderColor: 'red' },
+                                          }}
+                                          >
                       <MenuItem value="Yes">Yes</MenuItem>
                       <MenuItem value="no">No</MenuItem>
                     </Select>
                     {validationErrors.unregistered && (
-                      <FormHelperText error>This field is required</FormHelperText>
-                    )}
+                <FormHelperText error>This field is required</FormHelperText>
+              )}
                   </FormControl>
                 </Grid>
 
-
+              
 
               </Grid>
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: { xs: 'column', sm: 'row' },
-                  alignItems: 'center',
-                  justifyContent: { sm: 'flex-end' },
-                  marginTop: '14px',
-                  gap: '10px',
-                }}
-              >
-                <button className="next-btn" onClick={handleSubmitClick}>Next</button>
+      <Box
+  sx={{
+    display: 'flex',
+    flexDirection: { xs: 'column', sm: 'row' }, 
+    alignItems: 'center', 
+    justifyContent: { sm: 'flex-end' },
+    marginTop: '14px',
+    gap: '10px',
+  }}
+>
+  <button className="next-btn" onClick={handleSubmitClick}>Next</button>
 
-              </Box>
-              {showPopup && (
-                <div
-                  style={{
-                    position: "fixed",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    zIndex: 1000,
-                    background: "#fff",
-                    padding: "20px",
-                    boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
-                    borderRadius: "8px",
-                    maxHeight: "80vh",
-                    overflowY: "auto",
-                  }}
-                >
-                  <ContactCardSelling onSubmit={handleSubmit} closePopup={closePopup} />
-                </div>
-              )}
+</Box>
+    {showPopup && (
+        <div
+          style={{
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 1000,
+            background: "#fff",
+            padding: "20px",
+            boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
+            borderRadius: "8px",
+            maxHeight: "80vh",
+            overflowY: "auto",
+          }}
+        >
+          <ContactCardSelling onSubmit={handleSubmit} closePopup={closePopup} />
+        </div>
+      )}
 
-              {/* Overlay for dimming background */}
-              {showPopup && (
-                <div
-                  style={{
-                    position: "fixed",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                    background: "rgba(0, 0, 0, 0.5)",
-                    zIndex: 999,
-                  }}
-                  >
-                 </div>
-              )};
+      {/* Overlay for dimming background */}
+      {showPopup && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: "rgba(0, 0, 0, 0.5)",
+            zIndex: 999,
+          }}
+        ></div>
+      )} 
             </AccordionDetails>
-          </Accordion>
-          <Accordion expanded={isAccordion2Open} className='mb-2'>
+    </Accordion>
+    <Accordion expanded={isAccordion2Open} className='mb-2'>
             <AccordionSummary
               expandIcon={isAccordion2Completed ? <CheckCircleIcon color="success" /> : <ExpandMoreIcon />}
             >
@@ -784,12 +799,12 @@ const SellingProperty = () => {
                     onChange={handleAccordion2Change('email')}
                     error={validationErrors.email}
                     helperText={
-                      validationErrors.email
-                        ? accordion2Data.email.trim() === ''
-                          ? 'This field is required'
-                          : 'Invalid email format'
-                        : ''
-                    }
+      validationErrors.email
+        ? accordion2Data.email.trim() === ''
+          ? 'This field is required'
+          : 'Invalid email format'
+        : ''
+    }
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -805,73 +820,71 @@ const SellingProperty = () => {
                       validationErrors.phone
                         ? accordion2Data.phone.trim() === ''
                           ? 'This field is required'
-                          : 'Phone number must contain only numbers'
+                          : 'Phone number must contain only numbers and Valid phone number'
                         : ''
                     }
                   />
                 </Grid>
               </Grid>
-              <Box sx={{
-                display: 'flex', justifyContent: 'flex-end', marginTop: '16px', flexDirection: { xs: 'column', sm: 'row' }, // Stack buttons vertically on mobile
-                gap: '8px',
-              }}>
-                <button className="next-btn mr-2" onClick={handlePrevious}>PreviousStep</button>
-                <button className="next-btn mr-2" onClick={generatePDF}>Preview Data</button>
+              <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px'  ,   flexDirection: { xs: 'column', sm: 'row' }, // Stack buttons vertically on mobile
+    gap: '8px',}}>
+              <button className="next-btn mr-2" onClick={handlePrevious}>PreviousStep</button>
+              <button className="next-btn mr-2" onClick={generatePDF}>Preview Data</button>
                 <button className="next-btn" onClick={handleAccordion2Submit}>Submit</button>
               </Box>
             </AccordionDetails>
           </Accordion>
           {showThankYouMessage && (
-            <div style={{ marginTop: "20px", textAlign: "center" }}>
-              <Typography variant="h6" style={{ color: "green" }}>
-                Thank you for submitting the form! A team member will reach out to you within 1-2 business days.
-              </Typography>
-              <div className='container'>
-                <table
-                  style={{
-                    width: '100%',
-                    borderCollapse: 'collapse',
-                    marginTop: '20px',
-                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-                  }}
-                >
-                  <thead>
-                    <tr
-                      style={{
-                        backgroundColor: '#233955',
-                        color: 'white',
-                        textAlign: 'center',
-                        fontWeight: 'bold',
-                      }}
-                    >
-                      <th style={{ padding: '12px' }}>Field</th>
-                      <th style={{ padding: '12px' }}>Amount</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
-                      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Stamp Duty</td>
-                      <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{stampDuty}</td>
-                    </tr>
-                    <tr style={{ backgroundColor: '#ffffff', textAlign: 'center' }}>
-                      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Solicitors Fees</td>
-                      <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{solicitorsFees.total}</td>
-                    </tr>
-                    <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
-                      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Sub-Total</td>
-                      <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{total}</td>
-                    </tr>
-                    <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
-                      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Total</td>
-                      <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{overalltotal}</td>
-                    </tr>
-                  </tbody>
-                </table>
+    <div style={{ marginTop: "20px", textAlign: "center" }}>
+      <Typography variant="h6" style={{ color: "green" }}>
+        Thank you for submitting the form! A team member will reach out to you within 1-2 business days.
+      </Typography> 
+      <div className='container'>
+          <table
+  style={{
+    width: '100%',
+    borderCollapse: 'collapse',
+    marginTop: '20px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+  }}
+>
+  <thead>
+    <tr
+      style={{
+        backgroundColor: '#233955',
+        color: 'white',
+        textAlign: 'center',
+        fontWeight: 'bold',
+      }}
+    >
+      <th style={{ padding: '12px' }}>Field</th>
+      <th style={{ padding: '12px' }}>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Stamp Duty</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{stampDuty}</td>
+    </tr>
+    <tr style={{ backgroundColor: '#ffffff', textAlign: 'center' }}>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Solicitors Fees</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{solicitorsFees.total}</td>
+    </tr>
+    <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Sub-Total</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{total}</td>
+    </tr>
+    <tr style={{ backgroundColor: '#f9f9f9', textAlign: 'center' }}>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>Total</td>
+      <td style={{ padding: '12px', border: '1px solid #ddd' }}>£{overalltotal}</td>
+    </tr>
+  </tbody>
+</table>
 
-              </div>
-            </div>
+    </div>
+    </div>
 
-          )}
+)}
           <Snackbar
             open={toastOpen}
             autoHideDuration={4000}
@@ -887,7 +900,7 @@ const SellingProperty = () => {
 
       </div>
 
-      <ToastContainer />
+      <ToastContainer/>
       <FooterHomeTwo />
     </>
   );
