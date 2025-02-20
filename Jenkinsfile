@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     environment {
-        // Ensure that Node.js and npm are included in the PATH
-        PATH = "/usr/bin:${env.PATH}"  // Add /usr/bin to PATH
+        // Ensure Node.js and npm are in the PATH
+        PATH = "/usr/bin:${env.PATH}"
     }
 
     stages {
         stage('Checkout') {
             steps {
-                // Pull the code from the GitHub repository
+                // Pull the latest code from GitHub
                 git branch: 'main', url: 'https://github.com/harikrishnaB18/Cambridge-application.git'
             }
         }
@@ -17,10 +17,9 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 // Install Node.js dependencies
-                sh 'npm install'  // or 'npm install' if preferred
+                sh 'npm install'
             }
         }
-
         // stage('Run Tests') {
         //     steps {
         //         // Run any tests
@@ -30,16 +29,18 @@ pipeline {
 
         stage('Build Application') {
             steps {
-                // Build the application (adjust as necessary)
+                // Build the React application
                 sh 'npm run build'
             }
         }
 
         stage('Deploy to Server') {
             steps {
-                // Deploy the built application (e.g., using SSH or Docker)
                 sshagent(['deploy-key']) {
-                    sh "scp -r ./build ubuntu@3.108.64.9:/home/ubuntu/Cambridge-application/"
+                    sh """
+                    ssh ubuntu@3.108.64.9 'mkdir -p /home/ubuntu/Cambridge-application/build'
+                    scp -r ./build/* ubuntu@3.108.64.9:/home/ubuntu/Cambridge-application/build/
+                    """
                 }
             }
         }
@@ -48,7 +49,7 @@ pipeline {
     post {
         always {
             echo 'Cleaning up workspace...'
-            cleanWs() // Cleans up the workspace if necessary
+            cleanWs()
         }
     }
 }
